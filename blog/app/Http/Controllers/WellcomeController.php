@@ -8,6 +8,8 @@ class WellcomeController extends Controller
 {
     public function Index($controller = "welcome" ,$name = "Xin chào :))"){
         $data['name'] = $name;
+        $data['fullname'] = "Day la full name trang chu";
+        $data['lastname'] = $name;
         return view($controller, $data);
     }
     // public function TrangChu($name = "Đây là trang chủ"){
