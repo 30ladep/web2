@@ -10,6 +10,12 @@ class WellcomeController extends Controller
         $data['name'] = $name;
         $data['fullname'] = "Day la full name trang chu";
         $data['lastname'] = $name;
+
+        if($controller == "admin" && $name == true){
+            $data['message'] = "Bạn đã đăng nhập thành công!";
+            return view($controller, $data);
+        }
+
         return view($controller, $data);
     }
     // public function TrangChu($name = "Đây là trang chủ"){
