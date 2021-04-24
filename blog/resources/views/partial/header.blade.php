@@ -7,9 +7,9 @@
       <div class="row">
         <div class="top-bar-links">
           <ul class="col-sm-6 top-bar-acc">
-            <li class="top-bar-link"><a href="#">My Account</a></li>
+            <li class="top-bar-link"><a href="#">User Account</a></li>
             <li class="top-bar-link"><a href="#">Login</a></li>
-            <li class="top-bar-link"><a href="contact.html">Contact</a></li>
+            <li class="top-bar-link"><a href="{{url('/contact')}}">Contact</a></li>
           </ul>
 
           <ul class="col-sm-6 text-right top-bar-currency-language">
@@ -48,7 +48,7 @@
           <div class="nav-cart mobile-cart hidden-lg hidden-md">
             <div class="nav-cart-outer">
               <div class="nav-cart-inner">
-                <a href="#" class="nav-cart-icon">2</a>
+                <a href="{{url('/shop-cart')}}" class="nav-cart-icon">2</a>
               </div>
             </div>
           </div>
@@ -81,14 +81,14 @@
               <div class="nav-cart right">
                 <div class="nav-cart-outer">
                   <div class="nav-cart-inner">
-                    <a href="#" class="nav-cart-icon">2</a>
+                    <a href="{{url('/shop-cart')}}" class="nav-cart-icon">2</a>
                   </div>
                 </div>
               </div>
               <div class="menu-cart-amount right">
                 <span>
                   Cart /
-                  <a href="#"> $1299.50</a>
+                  <a href="{{url('/shop-cart')}}"> $1299.50</a>
                 </span>
               </div>
             </div> <!-- end cart -->
@@ -118,10 +118,10 @@
                 <a href="#">Pages</a>
                 <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"></i>
                 <ul class="dropdown-menu">
-                  <li><a href="about-us.html">About Us</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-                  <li><a href="login.html">Login</a></li>
-                  <li><a href="faq.html">F.A.Q</a></li>
+                  <li><a href="{{url('/about-us')}}">About Us</a></li>
+                  <li><a href="{{url('/contact')}}">Contact</a></li>
+                  <li><a href="{{url('/login')}}">Login</a></li>
+                  <li><a href="{{url('/faq')}}">F.A.Q</a></li>
                 </ul>
               </li>
 
@@ -135,40 +135,40 @@
                         <div class="col-md-3 megamenu-item">
                           <h6>For Man</h6>
                           <ul class="menu-list">
-                            <li><a href="#">Shirts</a></li>
-                            <li><a href="#">Jeans</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Shoes</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Shirts</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Jeans</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Accessories</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Shoes</a></li>
                           </ul>
                         </div>
 
                         <div class="col-md-3 megamenu-item">
                           <h6>For Woman</h6>
                           <ul class="menu-list">
-                            <li><a href="#">Dresses</a></li>
-                            <li><a href="#">Coats</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Sandals</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Dresses</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Coats</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Accessories</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Sandals</a></li>
                           </ul>
                         </div>
 
                         <div class="col-md-3 megamenu-item">
                           <h6>Accessories</h6>
                           <ul class="menu-list">
-                            <li><a href="#">Wallets</a></li>
-                            <li><a href="#">Watches</a></li>
-                            <li><a href="#">Belts</a></li>
-                            <li><a href="#">Scarfs</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Wallets</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Watches</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Belts</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Scarfs</a></li>
                           </ul>
                         </div>
 
                         <div class="col-md-3 megamenu-item">
                           <h6>Bags</h6>
                           <ul class="menu-list">
-                            <li><a href="#">Leather</a></li>
-                            <li><a href="#">Sports</a></li>
-                            <li><a href="#">Street Style</a></li>
-                            <li><a href="#">Creative</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Leather</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Sports</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Street Style</a></li>
+                            <li><a href="{{url('/shop-catalog')}}">Creative</a></li>
                           </ul>
                         </div>
 
@@ -179,45 +179,20 @@
               </li> <!-- end categories -->
 
               <li class="dropdown">
-                <a href="#">Blog</a>
-                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"></i>
-                <ul class="dropdown-menu">
-                  <li><a href="blog-standard.html">Standard</a></li>
-                  <li><a href="blog-single.html">Single Post</a></li>
-                </ul>
-              </li>
-
-              <li class="dropdown">
                 <a href="#">Shop</a>
                 <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"></i>
                 <ul class="dropdown-menu">
-                  <li><a href="shop-catalog.html">Catalog</a></li>
-                  <li><a href="shop-collections.html">Collections</a></li>
-                  <li><a href="shop-single-product.html">Single Product</a></li>
-                  <li><a href="shop-cart.html">Cart</a></li>
-                  <li><a href="shop-checkout.html">Checkout</a></li>
-                </ul>
-              </li>
-
-              <li class="dropdown">
-                <a href="#">Elements</a>
-                <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"></i>
-                <ul class="dropdown-menu">
-                  <li><a href="shortcodes.html">Shortcodes</a></li>
-                  <li><a href="typography.html">Typography</a></li>
+                  <li><a href="{{url('/shop-catalog')}}">Catalog</a></li>
                 </ul>
               </li>
 
               <li class="mobile-links">
                 <ul>
                   <li>
-                    <a href="#">Login</a>
+                    <a href="{{url('/login')}}">Login</a>
                   </li>
                   <li>
-                    <a href="#">My Account</a>
-                  </li>
-                  <li>
-                    <a href="#">My Wishlist</a>
+                    <a href="#">User Account</a>
                   </li>
                 </ul>
               </li>
