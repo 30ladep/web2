@@ -13,8 +13,8 @@ class TypeUser extends Migration
      */
     public function up()
     {
-        Schema::create('TypeUser', function (Blueprint $table) {
-            $table->id();
+        Schema::create('typeuser', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('Name');
         });
     }
@@ -26,6 +26,6 @@ class TypeUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TypeUser');
+        Schema::dropIfExists('typeuser');
     }
 }

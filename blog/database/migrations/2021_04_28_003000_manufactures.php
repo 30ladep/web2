@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Evalute extends Migration
+class Manufactures extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class Evalute extends Migration
      */
     public function up()
     {
-        Schema::create('evalute', function (Blueprint $table) {
+        Schema::create('manufactures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('rate');
-            $table->longtext('comment');
-            
+            $table->string('manu_name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class Evalute extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evalute');
+        Schema::dropIfExists('manufactures');
     }
 }
