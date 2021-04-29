@@ -14,7 +14,7 @@ class Evalute extends Migration
     public function up()
     {
         Schema::create('evalute', function (Blueprint $table) {
-            $table->increments('evalute_id');
+            $table->increments('id');
             $table->string('rate');
             $table->longtext('comment');
             

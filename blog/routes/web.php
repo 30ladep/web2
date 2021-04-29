@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/{controller?}', 'HomeController@Index');
+Route::get('products','HomeController@getAllProducts');
+//Route::get('/{controller?}', 'HomeController@Index');
 // Route::get('/trangchu', function () {
 //     return view('trangchu');
 // });
@@ -23,7 +23,7 @@ Route::get('/{controller?}', 'HomeController@Index');
 // Route::get('/lienhe', function () {
 //     return view('lienhe');
 // });
-//Route::get('/', 'WellcomeController@Index');
+Route::get('/', 'HomeController@Index');
 // Route::get('/admin')->middleware("CheckAge");
 // Route::get('/{controller?}/{id?}', 'WellcomeController@Index');
 // Route::get('/gioithieu', 'WellcomeController@GioiThieu');

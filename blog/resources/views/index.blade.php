@@ -70,12 +70,17 @@
 
         <div class="row row-10">              
 
+          @foreach($products as $value)
+          
           <div class="col-md-3 col-xs-6">
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_1.jpg" alt="">
-                  <img src="img/shop/shop_item_1_back.jpg" alt="" class="back-img">
+                  <!-- <img src="img/shop/shop_item_1.jpg" alt="">
+                  <img src="img/shop/shop_item_1_back.jpg" alt="" class="back-img"> -->
+
+                      <img src="{{$value->image}}" alt="">
+                  <img src="{{$value->image}}" alt="" class="back-img"> 
                 </a>
                 <div class="product-label">
                   <span class="sale">sale</span>
@@ -96,105 +101,17 @@
                 </h3>
                 <span class="price">
                   <del>
-                    <span>$388.00</span>
+                    <span>{{$value->price .'VND'}}</span>
                   </del>
                   <ins>
-                    <span class="ammount">$159.99</span>
+                    <span class="ammount">{{$value->price-30}}</span>
                   </ins>
                 </span>
               </div>
             </div>
           </div>
-
-          <div class="col-md-3 col-xs-6">
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="img/shop/shop_item_2.jpg" alt="">
-                  <img src="img/shop/shop_item_2_back.jpg" alt="" class="back-img">
-                </a>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Elegant White Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$219.00</span>
-                  </ins>
-                </span>
-              </div>                          
-            </div>
-          </div>
-
-          <div class="col-md-3 col-xs-6">
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="img/shop/shop_item_2.jpg" alt="">
-                  <img src="img/shop/shop_item_2_back.jpg" alt="" class="back-img">
-                </a>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Elegant White Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$219.00</span>
-                  </ins>
-                </span>
-              </div>                          
-            </div>
-          </div>
-
-          <div class="col-md-3 col-xs-6">
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="img/shop/shop_item_4.jpg" alt="">
-                  <img src="img/shop/shop_item_4_back.jpg" alt="" class="back-img">
-                </a>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Sexy Pink Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$120.00</span>
-                  </ins>
-                </span>
-              </div>                        
-            </div>
-          </div>            
+        @endforeach
+                     
 
         </div> <!-- end row -->
       </div>
