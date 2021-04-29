@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TypeUser extends Migration
+class typeuser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class TypeUser extends Migration
      */
     public function up()
     {
-        Schema::create('TypeUser', function (Blueprint $table) {
-            $table->id();
+        Schema::create('typeuser', function (Blueprint $table) {
+            $table->increments('type_id');
             $table->string('Name');
+           
         });
     }
 
@@ -26,6 +27,6 @@ class TypeUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TypeUser');
+        Schema::dropIfExists('typeuser');
     }
 }

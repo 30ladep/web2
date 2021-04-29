@@ -14,18 +14,18 @@ class Users extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->increments('user_id');;
             $table->string('UserName');
-            $table->PassWord;
+            $table->string('PassWord');
             $table->string('FullName');
             $table->unique('Email');
             $table->string('Phone');
-            $table->CreateDate;
-            $table->LoginCart;
+            $table->timestamps('CreateDate');
+            $table->remember_token('LoginCart');
             $table->string('TokenCart');
             $table->int('TypeUserID');
-
-            $table->timestamps();
+          
+        
         });
     }
 
