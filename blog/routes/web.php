@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('products','HomeController@getAllProducts');
+Route::get('allproducts','ProductController@getAllProduct');
+// Route::get('allproducts',function(){
+//     $data= Product::all()->toArray();
+//     echo "<pre>";
+//     print_r($data[0]['product_name']);
+//     echo "</pre>";
+// });
+//Route::get('products','HomeController@getAllProducts');
 //Route::get('/{controller?}', 'HomeController@Index');
 // Route::get('/trangchu', function () {
 //     return view('trangchu');

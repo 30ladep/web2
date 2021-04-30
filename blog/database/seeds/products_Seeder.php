@@ -12,8 +12,8 @@ class products_Seeder extends Seeder
     public function run()
     {
         for($i=0;$i=10;$i++){
-            $start    = new Datetime('1st October 2012');
-            $end      = new Datetime('1st Jan 2013');
+            $start    = new Datetime('1st Jan 2021');
+            $end      = new Datetime('1st April 2021');
 
             $random   = new DateTime('@' . mt_rand($start->getTimestamp(), $end->getTimestamp()));
             DB::table('products')->insert([
