@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Detailbills extends Migration
+class CreateTypeProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class Detailbills extends Migration
      */
     public function up()
     {
-        Schema::create('detailbills', function (Blueprint $table) {
+        Schema::create('type_products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('bill_id');
-            $table->foreign('bill_id')->references('id')->on('bills');
-            $table->integer('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->integer('count_product');
+            $table->string('type_name');
+            $table->integer('manu_id')->unsigned();
+            $table->foreign('manu_id')->references('id')->on('manufactures')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class Detailbills extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detailbills');
+        Schema::dropIfExists('type_products');
     }
 }

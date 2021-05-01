@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Partner extends Migration
+class CreateDetailBillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class Partner extends Migration
      */
     public function up()
     {
-        Schema::create('partner', function (Blueprint $table) {
+        Schema::create('detail_bills', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('image');
+            $table->integer('bill_id');
+            $table->foreign('bill_id')->references('id')->on('bills');
+            $table->integer('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->integer('count_product');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class Partner extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partner');
+        Schema::dropIfExists('detail_bills');
     }
 }

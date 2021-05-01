@@ -1,6 +1,7 @@
 @extends('layout.master_layout')
 @section('content')
 
+
 <!-- Breadcrumbs -->
 <div class="container">
       <ol class="breadcrumb">

@@ -97,7 +97,7 @@
               </div>
               <div class="product-details">
                 <h3>
-                  <a class="product-title" href="shop-single-product.html">{{$key['product_name'] }}</a>
+                <a class="product-title" href="{{url('allproducts',$key['id'])}}">{{$key['product_name'] }}</a>
                 </h3>
                 <span class="price">
                   <del>

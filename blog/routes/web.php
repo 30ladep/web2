@@ -14,23 +14,28 @@ use App\Product;
 |
 */
 Route::get('allproducts','ProductController@getAllProduct');
+Route::get('detailProduct/{id?}','ProductController@getDetailProductByID');
+//test detail route
+// Route::get('allproducts/{id?}  ',function($id){
+//     echo "dit me".$id;
+//     $productsDetailByID = Product::get()->where('id',$id)->toArray();
+//      echo "<pre>";
+//     print_r($productsDetailByID);
+//     echo "</pre>";
+// });
+//test 
 // Route::get('allproducts',function(){
 //     $data= Product::all()->toArray();
 //     echo "<pre>";
-//     print_r($data[0]['product_name']);
+//     foreach ($data as $key => $value) {
+//         print_r($value);
+//     }
+  
 //     echo "</pre>";
 // });
 //Route::get('products','HomeController@getAllProducts');
 //Route::get('/{controller?}', 'HomeController@Index');
-// Route::get('/trangchu', function () {
-//     return view('trangchu');
-// });
-// Route::get('/gioithieu', function () {
-//     return view('gioithieu');
-// });
-// Route::get('/lienhe', function () {
-//     return view('lienhe');
-// });
+
 Route::get('/', 'HomeController@Index');
 // Route::get('/admin')->middleware("CheckAge");
 // Route::get('/{controller?}/{id?}', 'WellcomeController@Index');
