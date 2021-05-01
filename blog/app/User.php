@@ -12,6 +12,21 @@ class User extends Authenticatable
     protected $table='users';
     protected $fillable=['id','username','password','fullname','email','phone','create_date','login_cart','token_cart','type_user_id'];
     public $timestamps=false;
+
+    //typeuser
+    public function TypeUser(){
+        return $this->belongsTo(App\TypeUser);
+    }
+
+    //bill 
+    public function Bill(){
+        return $this->hasMany('App\Bills');
+    }
+
+    //evaluate
+    public function Evaluate(){
+        return $this->hasMany(App\Evaluate);
+    }
     /**
      * The attributes that are mass assignable.
      *
