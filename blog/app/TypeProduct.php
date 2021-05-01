@@ -17,6 +17,6 @@ class TypeProduct extends Model
 
     //manufacture
     public function Manufacture(){
-        return $this->hasOne(App\Manufacture);
+        return $this->belongsTo(App\Manufacture);
     }
 }

@@ -13,7 +13,7 @@ class User extends Authenticatable
     protected $fillable=['id','username','password','fullname','email','phone','create_date','login_cart','token_cart','type_user_id'];
     public $timestamps=false;
 
-    //typeuser
+    //type user
     public function TypeUser(){
         return $this->belongsTo(App\TypeUser);
     }

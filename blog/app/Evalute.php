@@ -14,4 +14,9 @@ class Evalute extends Model
     public function User(){
         return $this->belongsTo(App\User);
     }
+
+    //product 
+    public function Product(){
+        return $this->belongsTo(App\Product);
+    }
 }
