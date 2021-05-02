@@ -1,13 +1,15 @@
 @extends('admin-layout.admin-layout')
 @section('content')
 
-<div>
+
+<!-- <div>
     <fb:login-button 
         scope="public_profile,email"
         onlogin="checkLoginState();">
     </fb:login-button>
-</div>
+</div> -->
 <script>
+  //facebook login
     window.fbAsyncInit = function () {
       FB.init({
         appId: "1114114352401912",

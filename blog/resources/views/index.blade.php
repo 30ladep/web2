@@ -70,7 +70,7 @@
 
         <div class="row row-10">              
 
-          @foreach($products as $value =>$key)
+          @foreach($products as $item)
           
           <div class="col-md-3 col-xs-6">
             <div class="product-item">
@@ -79,8 +79,8 @@
                   <!-- <img src="img/shop/shop_item_1.jpg" alt="">
                   <img src="img/shop/shop_item_1_back.jpg" alt="" class="back-img"> -->
 
-                      <img src="{{$key['image']}}" alt="">
-                  <img src="{{$key['image']}}" alt="" class="back-img"> 
+                      <img src="{{url('/img/image_product/'.$item->image)}}" alt="">
+                  <img src="{{url('/img/image_product/'.$item->image)}}" alt="" class="back-img"> 
                 </a>
                 <div class="product-label">
                   <span class="sale">sale</span>
@@ -97,15 +97,10 @@
               </div>
               <div class="product-details">
                 <h3>
-                <a class="product-title" href="{{url('allproducts',$key['id'])}}">{{$key['product_name'] }}</a>
+                <a class="product-title" href="#">{{$item->product_name}}</a>
                 </h3>
                 <span class="price">
-                  <del>
-                    <span>{{number_format($key['price'])  .'VND'}}</span>
-                  </del>
-                  <ins>
-                    <span class="ammount">{{$key['price']-30}}</span>
-                  </ins>
+                    <span>$ {{$item->price}}</span>
                 </span>
               </div>
             </div>

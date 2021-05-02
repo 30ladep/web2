@@ -11,8 +11,10 @@ class ProductController extends Controller
 {
     //get all product
     function getAllProduct(){
-        $products= Product::all()->toArray();
-        return view('index',['products'=>$products]);
+        $products= DB::table('products')->take(4)->get();
+        return view('index',array(
+            'products' => $products
+        ));
     }
 
     //get detail product
