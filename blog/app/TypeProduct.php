@@ -10,4 +10,13 @@ class TypeProduct extends Model
     protected $fillable=['id','type_name','manu_id'];
     public $timestamps=false;
 
+    //product
+    public function Product(){
+        return $this->hasMany(App\Product);
+    }
+
+    //manufacture
+    public function Manufacture(){
+        return $this->belongsTo(App\Manufacture);
+    }
 }
