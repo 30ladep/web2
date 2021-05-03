@@ -12,21 +12,21 @@ class Product extends Model
 
     //detail bill
     public function DetailBill(){
-        return $this->hasOne(App\DetailBill);
+        return $this->hasOne('App\DetailBill');
     }
 
     //evaluate
     public function Evaluate(){
-        return $this->hasMany(App\Evaluate);
+        return $this->hasMany('App\Evaluate');
     }
 
     //type Product
     public function TypeProduct(){
-        return $this->belongsTo(App\TypeProduct);
+        return $this->belongsTo('App\TypeProduct');
     }
 
     //manufactures
     public function Manufacture(){
-        return $this->belongsTo(App\TypeProduct);
+        return $this->belongsTo('App\TypeProduct');
     }
 }

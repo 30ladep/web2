@@ -12,11 +12,11 @@ class Evalute extends Model
 
     //user
     public function User(){
-        return $this->belongsTo(App\User);
+        return $this->belongsTo('App\User');
     }
 
     //product 
     public function Product(){
-        return $this->belongsTo(App\Product);
+        return $this->belongsTo('App\Product');
     }
 }

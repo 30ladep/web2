@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->float('price');
             $table->float('size');
-            $table->integer('hot');
+            $table->tinyint('hot');
             $table->text('note');
             $table->datetime('create_date');
             $table->string('color');
