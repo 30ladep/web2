@@ -11,7 +11,7 @@ class products_Seeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i=5;$i++){
+        for($i=0;$i<=5;$i++){
             $start    = new Datetime('1st Jan 2021');
             $end      = new Datetime('1st April 2021');
 
