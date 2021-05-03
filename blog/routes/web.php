@@ -13,10 +13,16 @@ use App\Product;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('detail',function(){
+    return view('shop-single-product');
+});
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 Route::get('allproducts','ProductController@getAllProduct');
-Route::get('detailProduct/{id?}','ProductController@getDetailProductByID');
+Route::get('detailProduct/{id?}',[
+'as'=>'shop-single-product',
+'uses'=>'ProductController@getDetailProductByID']
+);
 //test detail route
 // Route::get('allproducts/{id?}  ',function($id){
 //     echo "dit me".$id;

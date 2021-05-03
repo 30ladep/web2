@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $table='type_products';
-    protected $fillable=['id','type_name','manu_id'];
+    protected $table='products';
+    protected $fillable=['id','product_name','image','price','size','hot','note','create_date','color','gender','type_id','manu_id'];
     public $timestamps=false;
 
     //detail bill
@@ -27,6 +27,6 @@ class Product extends Model
 
     //manufactures
     public function Manufacture(){
-        return $this->belongsTo('App\TypeProduct');
+        return $this->belongsTo('App\Manufacture','id','id');
     }
 }
