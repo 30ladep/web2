@@ -5,27 +5,44 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //man hinh them san pham
     public function index($action = "index")
     {
         $color = DB::table('color')->get();
         $typeProduct = DB::table('type_product')->get();
         $manu = DB::table('manu')->get();
-        
+        $products = DB::table('products')->get();
         return view('admin-pages.'.$action, array(
             'color' => $color,
             'typeProduct' => $typeProduct,
-            'manu' => $manu
+            'manu' => $manu,
+            'products' => $products
         ));
     }
 
-    //ham upload product
+    public function ProductAction($action = "", $id = "")
+    {
+        $color = DB::table('color')->get();
+        $typeProduct = DB::table('type_product')->get();
+        $manu = DB::table('manu')->get();
+        
+        //dd($products);
+        if($action == "edit"){
+            $product = DB::table('products')->where('id', $id)->first();
+            return view('admin-pages.UploadProduct', array(
+            'color' => $color,
+            'typeProduct' => $typeProduct,
+            'manu' => $manu,
+            'product' => $product
+        ));
+        }
+        return view('admin-pages.ListProduct');
+    }
+
+    //ham them moi san pham
     public function UploadProduct(Request $request)
     {
         //dd(public_path('\img\image_product'));

@@ -13,9 +13,10 @@ use App\Product;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
-Route::get('allproducts','ProductController@getAllProduct');
+Route::get('/','ProductController@getAllProduct');
 Route::get('detailProduct/{id?}','ProductController@getDetailProductByID');
 //test detail route
 // Route::get('allproducts/{id?}  ',function($id){
@@ -38,7 +39,7 @@ Route::get('detailProduct/{id?}','ProductController@getDetailProductByID');
 //Route::get('products','HomeController@getAllProducts');
 //Route::get('/{controller?}', 'HomeController@Index');
 
-Route::get('/', 'HomeController@Index');
+//Route::get('/', 'HomeController@Index');
 // Route::get('/admin')->middleware("CheckAge");
 // Route::get('/{controller?}/{id?}', 'WellcomeController@Index');
 // Route::get('/gioithieu', 'WellcomeController@GioiThieu');
