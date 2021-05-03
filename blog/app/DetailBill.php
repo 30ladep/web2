@@ -12,12 +12,12 @@ class DetailBill extends Model
 
     //bill
     public function Bill(){
-        return $this->belongsTo(App\Bill);
+        return $this->belongsTo('App\Bill');
     }
 
     //product 
     
     public function Product(){
-        return $this->hasOne(App\Product);
+        return $this->hasOne('App\Product');
     }
 }

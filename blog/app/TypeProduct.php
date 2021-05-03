@@ -12,11 +12,11 @@ class TypeProduct extends Model
 
     //product
     public function Product(){
-        return $this->hasMany(App\Product);
+        return $this->hasMany('App\Product');
     }
 
     //manufacture
     public function Manufacture(){
-        return $this->belongsTo(App\Manufacture);
+        return $this->belongsTo('App\Manufacture');
     }
 }

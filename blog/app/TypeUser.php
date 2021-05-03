@@ -12,6 +12,6 @@ class TypeUser extends Model
 
     //user
     public function User(){
-        return $this->hasMany(App\User);
+        return $this->hasMany('App\User');
     }
 }

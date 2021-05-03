@@ -82,7 +82,7 @@
           </div> <!-- end col img slider -->
 
           <div class="col-sm-6 col-xs-12 product-description-wrap">
-            <h1 class="product-title">Summer Dress</h1>
+          <h1 class="product-title">{!!$products->product_name !!}</h1>
             <span class="rating">
               <a href="#">3 Reviews</a>
             </span>
@@ -91,32 +91,24 @@
                 <span>$1550.00</span>
               </del>
               <ins>
-                <span class="ammount">$1250.00</span>
+                <span class="ammount">{!!$products->price!!}</span>
               </ins>
             </span>
-            <p class="product-description">A-ha Shop is a very slick and clean e-commerce template with endless possibilities. Creating an awesome clothes store with this Theme is easy than you can imagine</p>
+            <p class="product-description">{!!$products->description!!}</p>
 
             <div class="select-options">
               <div class="row row-20">
                 <div class="col-sm-6">
                   <select class="color-select">
-                    <option value>Select color</option>
-                    <option value="white">white</option>
-                    <option value="grey">grey</option>
-                    <option value="black">black</option>
-                    <option value="green">green</option>
-                    <option value="blue">blue</option>
+                    <option value>{!!$products->color!!}</option>
+                   
                   </select>
                 </div>
 
                 <div class="col-sm-6">
                   <select class="size-options">
-                    <option value>Select size</option>
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
+                    <option selected value>{!!$products->size!!}</option>
+                  
                   </select>
                 </div>
               </div>
@@ -140,8 +132,8 @@
             </ul>
 
             <div class="product_meta">
-              <span class="sku">SKU: <a href="#">111763</a></span>
-              <span class="posted_in">Category: <a href="#">Accessories</a></span>
+              <span class="sku">SKU: <a href="#">{!!$products->product_name !!}</a></span>
+              <span class="posted_in">Category: <a href="#">{!!$products->Manufacture->manu_name !!}</a></span>
               <span class="tagged_as">Tags: <a href="#">Elegant</a>, <a href="#">Bag</a></span>
             </div>
 

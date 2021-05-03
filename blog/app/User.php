@@ -15,7 +15,7 @@ class User extends Authenticatable
 
     //type user
     public function TypeUser(){
-        return $this->belongsTo(App\TypeUser);
+        return $this->belongsTo('App\TypeUser');
     }
 
     //bill 
@@ -25,7 +25,7 @@ class User extends Authenticatable
 
     //evaluate
     public function Evaluate(){
-        return $this->hasMany(App\Evaluate);
+        return $this->hasMany('App\Evaluate');
     }
     /**
      * The attributes that are mass assignable.

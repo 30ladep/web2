@@ -12,12 +12,12 @@ class Bill extends Model
 
     //user
     public function User(){
-        return $this->hasMany(App\User);
+        return $this->hasMany('App\User');
     }
 
     //detail bill
     public function DetailBill(){
-        return $this->hasMany(App\DetailBill);
+        return $this->hasMany('App\DetailBill');
     }
 }
 
