@@ -62,6 +62,10 @@
                 </select>
             </div>
             <div class="form-group">
+                <label>Count:</label>
+                <input type="number" class="form-control" name="count" min="0" required>
+            </div>
+            <div class="form-group">
                 <label>Image product:</label><br>
                 <img id="img-show" src="https://png.pngtree.com/element_our/20190528/ourlarge/pngtree-black-and-white-prohibition-icon-image_1128425.jpg" width="50px" alt="" srcset="">
                 <input type="file" id="img-file" onchange="loadFile(event)" name="image" accept="image/*" class="form-control-file" required>
@@ -137,6 +141,10 @@
                     @endforeach
                     
                 </select>
+            </div>
+            <div class="form-group">
+                <label>Count:</label>
+                <input type="number" class="form-control" name="count" min="0" value="{{$product->count}}" required>
             </div>
             <div class="form-group">
                 <label>Image product:</label><br>

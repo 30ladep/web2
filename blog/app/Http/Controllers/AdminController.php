@@ -67,12 +67,13 @@ class AdminController extends Controller
                  'color' => $request->color,
                  'gender' => $request->gender,
                  'type_id' => $request->productType,
-                 'manu_id' => $request->manuid
+                 'manu_id' => $request->manuid,
+                 'count' => $request->count
                  ]
             );
             $request->image->move(public_path('\img\image_product'), $imageName);
         }
-        return view('admin-pages.index');
+        return redirect('/admin/ListProduct');
     }
 
     //edit san pham
@@ -98,7 +99,8 @@ class AdminController extends Controller
                  'color' => $request->color,
                  'gender' => $request->gender,
                  'type_id' => $request->productType,
-                 'manu_id' => $request->manuid
+                 'manu_id' => $request->manuid,
+                 'count' => $request->count
                  ]
             );
             $request->image->move(public_path('\img\image_product'), $imageName);
@@ -114,7 +116,8 @@ class AdminController extends Controller
                  'color' => $request->color,
                  'gender' => $request->gender,
                  'type_id' => $request->productType,
-                 'manu_id' => $request->manuid
+                 'manu_id' => $request->manuid,
+                 'count' => $request->count
                  ]
             );
         }
