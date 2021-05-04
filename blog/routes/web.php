@@ -13,9 +13,11 @@ use App\Product;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//AdminController
 Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
+
 Route::get('/','ProductController@getAllProduct');
 Route::get('detailProduct/{id?}','ProductController@getDetailProductByID');
 //test detail route
