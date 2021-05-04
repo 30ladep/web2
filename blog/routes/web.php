@@ -28,7 +28,7 @@ Route::get('/report/bestview', 'ReportController@bestview');
 Route::get('/report/sales', 'ReportController@sales');
 
 Route::get('/','ProductController@getAllProduct');
-Route::get('detailProduct/{id?}','ProductController@getDetailProductByID');
+Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
 //test detail route
 // Route::get('allproducts/{id?}  ',function($id){
 //     echo "dit me".$id;

@@ -18,11 +18,9 @@ class ProductController extends Controller
     }
 
     //get detail product
-    function getDetailProductByID(Request $request){
-        //echo $request->id;
-        $id = $request->id;
-        $productsDetailByID = Product::where('id',$id)->first();
-        
+    function getDetailProductByID($id){
+        $productsDetailByID = DB::table('products')->where('id',$id)->first();
+        //dd($productsDetailByID);
        //$productsDetailByID = DB::table('products')->where('id',$id)->first();
       
 
