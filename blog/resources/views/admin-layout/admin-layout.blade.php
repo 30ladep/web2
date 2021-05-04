@@ -50,9 +50,19 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwoDashboard" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <div id="collapseTwoDashboard" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/report/bestsale')}}">Bán chạy</a>
+                        <a class="collapse-item" href="{{url('/admin/bestview')}}">Xem nhiều</a>
+                        <a class="collapse-item" href="{{url('/admin/sales')}}">Doanh thu</a>
+                    </div>
+                </div>
             </li>
 
             <hr class="sidebar-divider my-0">
@@ -81,22 +91,22 @@
                 <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('/admin')}}">Đã thanh toán</a>
-                        <a class="collapse-item" href="{{url('/admin')}}">Chưa thanh toán</a>
+                        <a class="collapse-item" href="{{url('/bill/paid')}}">Đã thanh toán</a>
+                        <a class="collapse-item" href="{{url('/bill/unpaid')}}">Chưa thanh toán</a>
                     </div>
                 </div>
             </li>
 
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
+                <a class="nav-link" href="{{url('/account')}}">
                     <i class="fas fa-shield-alt"></i>
                     <span>Phân quyền</span></a>
             </li>
 
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
+                <a class="nav-link" href="{{url('/contact')}}">
                     <i class="far fa-address-card"></i>
                     <span>Thông tin liên hệ</span></a>
             </li>

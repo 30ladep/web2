@@ -21,13 +21,14 @@
                         <th>Nhà sản xuất</th>
                         <th>Màu sắc</th>
                         <th>Giới tính</th>
+                        <th>Số lượng</th>
                         <th>Giá</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($products as $item)
-                        <tr>
+                        <tr @php if($item->count < 10){echo "style='color:red'";} @endphp>
                         <td>{{$stt++}}</td>
                         <td>{{$item->product_name}}</td>
                         <td><img style="width: 50px" src="{{url('/img/image_product/'.$item->image)}}" alt=""></td>
@@ -43,11 +44,13 @@
                             @endforeach
                         </td>
                         <td>
-                            @foreach ($color->where('id', $item->color) as $col)
+                            {{-- @foreach ($color->where('id', $item->color) as $col)
                                 {{$col->name}}
-                            @endforeach
+                            @endforeach --}}
+                            {{$color->where('id', $item->color)->first()->name}}
                         </td>
                         <td>{{$item->gender == 1 ? "Nam" : "Nữ"}}</td>
+                        <td>{{$item->count}}</td>
                         <td>${{$item->price}}</td>
                         <td>
                             <a href="{{url('/product/delete/'.$item->id)}}" class="text-danger"><i class="fas fa-trash"></i></a>

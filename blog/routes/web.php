@@ -19,6 +19,13 @@ Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 Route::post('/admin/EditProduct','AdminController@EditProduct');
 Route::get('/product/delete/{id}','AdminController@DeleteProduct');
+//BillController
+Route::get('/bill/paid', 'BillController@paid');
+Route::get('/bill/unpaid', 'BillController@unpaid');
+//ReportController
+Route::get('/report/bestsale', 'ReportController@bestsale');
+Route::get('/report/bestview', 'ReportController@bestview');
+Route::get('/report/sales', 'ReportController@sales');
 
 Route::get('/','ProductController@getAllProduct');
 Route::get('detailProduct/{id?}','ProductController@getDetailProductByID');

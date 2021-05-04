@@ -32,6 +32,8 @@ class AdminController extends Controller
         //dd($products);
         if($action == "edit"){
             $product = DB::table('products')->where('id', $id)->first();
+            $str_json = json_encode($product); //arrary to string json
+            $arr_json = json_decode($str_json);// string to array
             return view('admin-pages.UploadProduct', array(
             'color' => $color,
             'typeProduct' => $typeProduct,
