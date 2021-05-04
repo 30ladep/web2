@@ -14,6 +14,24 @@ use App\Product;
 |
 */
 ;
+//authencation
+Route::get('/login',function(){
+    return view('login');
+});
+
+Route::group(['prefix'=>'user'],function(){
+    Route::get('danhsach','UserController@layDanhSach');
+    
+    Route::get('sua/{id}','UserController@getSua');
+    Route::post('sua/{id}','UserController@postSua');
+
+    Route::get('them','UserController@getThem');
+    Route::post('them','UserController@postThem');
+
+    Route::get('xoa/{id}','UserController@getXoa');
+});
+
+
 //admin route
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');

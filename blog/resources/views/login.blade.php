@@ -19,37 +19,60 @@
           <div class="col-sm-5 col-sm-offset-1 mb-40">
             <div class="login">
               <h4 class="uppercase">login</h4>
-              <p class="form-row form-row-wide">
-                <label>username or email
-                  <abbr class="required" title="required">*</abbr>
-                </label>
-                <input type="text" class="input-text" placeholder="" value="">
-              </p>
-              <p class="form-row form-row-wide">
-                <label>password
-                  <abbr class="required" title="required">*</abbr>
-                </label>
-                <input type="text" class="input-text" placeholder="" value="">
-              </p>
-              <input type="submit" value="Login" class="btn">
+            <form action="user/them" method="post">
+                <p class="form-row form-row-wide">
+                  <label>username or email
+                    <abbr class="required" title="required">*</abbr>
+                  </label>
+                  <input type="text" class="input-text" placeholder="" value="">
+                </p>
+                <p class="form-row form-row-wide">
+                  <label>password
+                    <abbr class="required" title="required">*</abbr>
+                  </label>
+                  <input type="text" class="input-text" placeholder="" value="">
+                </p>
+                <input type="submit" value="Login" class="btn">
+              </form>                      
             </div>
           </div>
           <div class="col-sm-5">
             <div class="register">
               <h4 class="uppercase">Register</h4>
+            <form action="" method="post">         
+              <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <p class="form-row form-row-wide">
+                      <label>User Name
+                        <abbr class="required" title="required">*</abbr>
+                      </label>
+                      <input type="text" class="input-text" placeholder="Nhap UserName" value="username" name="username">
+                    </p>  
+                    <p class="form-row form-row-wide">
+                        <label>Full Name
+                          <abbr class="required" title="required">*</abbr>
+                        </label>
+                        <input type="text" class="input-text" placeholder="Nhap FullName" value="fullname" name="fullname">
+                      </p>      
               <p class="form-row form-row-wide">
-                <label>email
+                <label>Email
                   <abbr class="required" title="required">*</abbr>
                 </label>
-                <input type="text" class="input-text" placeholder="" value="">
+                <input type="email" class="input-text" placeholder="Nhập Email" name="email" value="">
               </p>
               <p class="form-row form-row-wide">
-                <label>password
+                <label>Password
                   <abbr class="required" title="required">*</abbr>
                 </label>
-                <input type="text" class="input-text" placeholder="" value="">
+                <input type="text" class="input-text" placeholder="Nhap Password" name="password" value="">
               </p>
+              <p class="form-row form-row-wide">
+                  <label>Nhap lai password
+                    <abbr class="required" title="required">*</abbr>
+                  </label>
+                  <input type="text" class="input-text" placeholder="Nhap lai Password" name="passwordmatch" value="">
+                </p>
               <input type="submit" value="Register" class="btn">
+              </form>
             </div>
           </div>
         </div>

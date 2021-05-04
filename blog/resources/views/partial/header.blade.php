@@ -8,7 +8,7 @@
         <div class="top-bar-links">
           <ul class="col-sm-6 top-bar-acc">
             <li class="top-bar-link"><a href="#">User Account</a></li>
-            <li class="top-bar-link"><a href="#">Login</a></li>
+            <li class="top-bar-link"><a href="{!! url('/login')!!}">Login</a></li>
             <li class="top-bar-link"><a href="{{url('/contact')}}">Contact</a></li>
           </ul>
 
