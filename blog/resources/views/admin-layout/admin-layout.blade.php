@@ -39,9 +39,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand align-items-center justify-content-center mb-5" href="{{url('/admin')}}">
                 <div class="sidebar-brand-icon">
-                    <img src="<?php echo $img ?>" alt="" srcset="">
+                    <img width="50px" src="https://i.pinimg.com/170x/3c/63/1a/3c631aab6d165c9abafa4e387ebf6936.jpg" alt="avatar">
                 </div>
-                <div><span id="name"></span></div>
+                <div><span id="name">Admin</span></div>
                 <div class="sidebar-brand-text mx-3">@yield('admin-name')</div>
             </a>
 
@@ -67,6 +67,22 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{url('/admin/ListProduct')}}">Danh sách</a>
                         <a class="collapse-item" href="{{url('/admin/UploadProduct')}}">Thêm mới</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Đơn hàng</span>
+                </a>
+                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/admin')}}">Đã thanh toán</a>
+                        <a class="collapse-item" href="{{url('/admin')}}">Chưa thanh toán</a>
                     </div>
                 </div>
             </li>
@@ -136,9 +152,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><i class="fas fa-cog fa-2x"></i></span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

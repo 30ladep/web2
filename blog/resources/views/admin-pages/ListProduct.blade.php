@@ -50,7 +50,7 @@
                         <td>{{$item->gender == 1 ? "Nam" : "Nữ"}}</td>
                         <td>${{$item->price}}</td>
                         <td>
-                            <a href="#" class="text-danger"><i class="fas fa-trash"></i></a>
+                            <a href="{{url('/product/delete/'.$item->id)}}" class="text-danger"><i class="fas fa-trash"></i></a>
                             <a href="{{url('/admin/product/edit/'.$item->id)}}" class="text-primary"><i class="fas fa-edit"></i></a>
                         </td>
                     </tr>
