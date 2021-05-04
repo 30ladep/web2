@@ -13,9 +13,7 @@ use App\Product;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('detail',function(){
-    return view('shop-single-product');
-});
+;
 //admin route
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
@@ -23,14 +21,12 @@ Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 //user route
 Route::get('allproducts','ProductController@getAllProduct');
 
-Route::get('detailproduct/{id?}',[
-'as'=>'detailproduct',
-'uses'=>'ProductController@getDetailProductByID']);
 
-// Route::get('shop-single-product/{id?}',[
-// 'as'=>'detailProduct',
-// 'uses'=>'ProductController@getDetailProductByID']
-// );
+
+Route::get('shop-single-product/{id?}',[
+'as'=>'detailProduct',
+'uses'=>'ProductController@getDetailProductByID']
+);
 
 //Route::get('products','HomeController@getAllProducts');
 //Route::get('/{controller?}', 'HomeController@Index');
