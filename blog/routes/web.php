@@ -19,9 +19,9 @@ Route::get('detail',function(){
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 Route::get('allproducts','ProductController@getAllProduct');
-//oute::get('detailProduct/{id?}','ProductController@getDetailProductByID');
-//Route::get('detailProduct/{id?}','ProductController@getDetailProductByID');
-Route::get('shop-single-produc/{id?}',[
+
+
+Route::get('shop-single-product/{id?}',[
 'as'=>'detailProduct',
 'uses'=>'ProductController@getDetailProductByID']
 );
