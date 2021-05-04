@@ -18,9 +18,17 @@ class ProductController extends Controller
     }
 
     //get detail product
-    function getDetailProductByID(Request $request){       
-        $id = $request->id;
-        $productsDetailByID = Product::where('id',$id)->first();             
+    // function getDetailProductByID(Request $request){       
+    //     $id = $request->id;
+    //     $productsDetailByID = Product::where('id',$id)->first();     
+    // }        
+    function getDetailProductByID($id){
+        $productsDetailByID = DB::table('products')->where('id',$id)->first();
+        //dd($productsDetailByID);
+       //$productsDetailByID = DB::table('products')->where('id',$id)->first();
+      
+
+        //return view('shop-single-product',compact('productsDetailByID'));
        return view('shop-single-product',['products'=>$productsDetailByID]);
     }
 

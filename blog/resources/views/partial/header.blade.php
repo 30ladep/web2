@@ -71,7 +71,7 @@
             <div class="logo-container">
               <div class="logo-wrap text-center">
                 <a href="index.html">
-                  <img class="logo" src="img/logo_dark.png" alt="logo">
+                  <img class="logo" src="{{url('/img/logo_dark.png')}}" alt="logo">
                 </a>
               </div>
             </div>

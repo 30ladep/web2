@@ -45,19 +45,19 @@
                       <label>User Name
                         <abbr class="required" title="required">*</abbr>
                       </label>
-                      <input type="text" class="input-text" placeholder="Nhap UserName" value="username" name="username">
+                      <input type="text" class="input-text" placeholder="Nhap UserName" value="" name="username">
                     </p>  
                     <p class="form-row form-row-wide">
                         <label>Full Name
                           <abbr class="required" title="required">*</abbr>
                         </label>
-                        <input type="text" class="input-text" placeholder="Nhap FullName" value="fullname" name="fullname">
+                        <input type="text" class="input-text" placeholder="Nhap FullName" value="" name="fullname">
                       </p>   
                       <p class="form-row form-row-wide">
                           <label>Phone Number
                             <abbr class="required" title="required">*</abbr>
                           </label>
-                          <input type="text" class="input-text" placeholder="Nhap PhoneNumber" value="fullname" name="phone">
+                          <input type="text" class="input-text" placeholder="Nhap PhoneNumber" value="" name="phone">
                         </p>      
               <p class="form-row form-row-wide">
                 <label>Email

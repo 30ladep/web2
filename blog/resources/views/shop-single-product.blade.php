@@ -28,32 +28,32 @@
             <div class="flickity flickity-slider-wrap mfp-hover" id="gallery-main">
 
               <div class="gallery-cell">
-                <a href="img/shop/single_img_1.jpg" class="lightbox-img">
-                  <img src="img/shop/single_img_1.jpg" alt="" />
+                <a href="{{url('img/shop/single_img_1.jpg')}}" class="lightbox-img">
+                  <img src="{{url('img/shop/single_img_1.jpg')}}" alt="" />
                   <i class="icon arrow_expand"></i>
                 </a>
               </div>
               <div class="gallery-cell">
-                <a href="img/shop/single_img_2.jpg" class="lightbox-img">
-                  <img src="img/shop/single_img_2.jpg" alt="" />
+                <a href="{{url('img/shop/single_img_2.jpg')}}" class="lightbox-img">
+                  <img src="{{url('img/shop/single_img_2.jpg')}}" alt="" />
                   <i class="icon arrow_expand"></i>
                 </a>
               </div>
               <div class="gallery-cell">
-                <a href="img/shop/single_img_3.jpg" class="lightbox-img">
-                  <img src="img/shop/single_img_3.jpg" alt="" />
+                <a href="{{url('img/shop/single_img_3.jpg')}}" class="lightbox-img">
+                  <img src="{{url('img/shop/single_img_3.jpg')}}" alt="" />
                   <i class="icon arrow_expand"></i>
                 </a>
               </div>
               <div class="gallery-cell">
-                <a href="img/shop/single_img_4.jpg" class="lightbox-img">
-                  <img src="img/shop/single_img_4.jpg" alt="" />
+                <a href="{{url('img/shop/single_img_4.jpg')}}" class="lightbox-img">
+                  <img src="{{url('img/shop/single_img_4.jpg')}}" alt="" />
                   <i class="icon arrow_expand"></i>
                 </a>
               </div>
               <div class="gallery-cell">
-                <a href="img/shop/single_img_5.jpg" class="lightbox-img">
-                  <img src="img/shop/single_img_5.jpg" alt="" />
+                <a href="{{url('img/shop/single_img_5.jpg')}}" class="lightbox-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" />
                   <i class="icon arrow_expand"></i>
                 </a>
               </div>
@@ -62,19 +62,19 @@
             <div class="gallery-thumbs">
 
               <div class="gallery-cell">
-                <img src="img/shop/single_img_1.jpg" alt="" />
+                <img src="{{url('img/shop/single_img_1.jpg')}}" alt="" />
               </div>
               <div class="gallery-cell">
-                <img src="img/shop/single_img_2.jpg" alt="" />
+                <img src="{{url('img/shop/single_img_2.jpg')}}" alt="" />
               </div>
               <div class="gallery-cell">
-                <img src="img/shop/single_img_3.jpg" alt="" />
+                <img src="{{url('img/shop/single_img_3.jpg')}}" alt="" />
               </div>
               <div class="gallery-cell">
-                <img src="img/shop/single_img_4.jpg" alt="" />
+                <img src="{{url('img/shop/single_img_4.jpg')}}" alt="" />
               </div>
               <div class="gallery-cell">
-                <img src="img/shop/single_img_5.jpg" alt="" />
+                <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" />
               </div>
 
             </div> <!-- end gallery thumbs -->
@@ -94,7 +94,7 @@
                 <span class="ammount">{!!$products->price!!}</span>
               </ins>
             </span>
-            <p class="product-description">{!!$products->description!!}</p>
+            <p class="product-description">{!!$products->note!!}</p>
 
             <div class="select-options">
               <div class="row row-20">
@@ -133,7 +133,7 @@
 
             <div class="product_meta">
               <span class="sku">SKU: <a href="#">{!!$products->product_name !!}</a></span>
-              <span class="posted_in">Category: <a href="#">{!!$products->Manufacture->manu_name !!}</a></span>
+              <span class="posted_in">Category: <a href="#">{!!$products->manu_id !!}</a></span>
               <span class="tagged_as">Tags: <a href="#">Elegant</a>, <a href="#">Bag</a></span>
             </div>
 
@@ -253,8 +253,8 @@
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_1.jpg" alt="">
-                  <img src="img/shop/shop_item_1_back.jpg" alt="" class="back-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
                 </a>
                 <div class="product-label">
                   <span class="sale">sale</span>
@@ -287,8 +287,8 @@
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_2.jpg" alt="">
-                  <img src="img/shop/shop_item_2_back.jpg" alt="" class="back-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
                 </a>
                 <div class="product-actions">
                   <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
@@ -315,8 +315,8 @@
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_3.jpg" alt="">
-                  <img src="img/shop/shop_item_3_back.jpg" alt="" class="back-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
                 </a>
                 <span class="sold-out valign">out of stock</span>
                 <div class="product-actions">
@@ -344,8 +344,8 @@
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_4.jpg" alt="">
-                  <img src="img/shop/shop_item_4_back.jpg" alt="" class="back-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
                 </a>
                 <div class="product-actions">
                   <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
@@ -372,8 +372,8 @@
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_5.jpg" alt="">
-                  <img src="img/shop/shop_item_5_back.jpg" alt="" class="back-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
                 </a>
                 <div class="product-actions">
                   <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
@@ -401,8 +401,8 @@
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_6.jpg" alt="">
-                  <img src="img/shop/shop_item_6_back.jpg" alt="" class="back-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
                 </a>
                 <div class="product-label">
                   <span class="sale">sale</span>
@@ -433,8 +433,8 @@
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_7.jpg" alt="">
-                  <img src="img/shop/shop_item_7_back.jpg" alt="" class="back-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
                 </a>
                 <div class="product-actions">
                   <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
@@ -462,8 +462,8 @@
             <div class="product-item">
               <div class="product-img">
                 <a href="#">
-                  <img src="img/shop/shop_item_8.jpg" alt="">
-                  <img src="img/shop/shop_item_8_back.jpg" alt="" class="back-img">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
+                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
                 </a>
                 <div class="product-label">
                   <span class="sale">sale</span>

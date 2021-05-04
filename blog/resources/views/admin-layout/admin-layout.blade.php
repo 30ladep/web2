@@ -26,9 +26,8 @@
     <link href="{{url('../resources/views/admin-layout/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="{{url('../resources/views/admin-layout/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
+    
 </head>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -40,9 +39,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand align-items-center justify-content-center mb-5" href="{{url('/admin')}}">
                 <div class="sidebar-brand-icon">
-                    <img src="<?php echo $img ?>" alt="" srcset="">
+                    <img width="50px" src="https://i.pinimg.com/170x/3c/63/1a/3c631aab6d165c9abafa4e387ebf6936.jpg" alt="avatar">
                 </div>
-                <div><span id="name"></span></div>
+                <div><span id="name">Admin</span></div>
                 <div class="sidebar-brand-text mx-3">@yield('admin-name')</div>
             </a>
 
@@ -51,29 +50,64 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwoDashboard" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+                <div id="collapseTwoDashboard" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/report/bestsale')}}">Bán chạy</a>
+                        <a class="collapse-item" href="{{url('/admin/bestview')}}">Xem nhiều</a>
+                        <a class="collapse-item" href="{{url('/admin/sales')}}">Doanh thu</a>
+                    </div>
+                </div>
             </li>
 
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Sản phẩm</span></a>
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Sản phẩm</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/admin/ListProduct')}}">Danh sách</a>
+                        <a class="collapse-item" href="{{url('/admin/UploadProduct')}}">Thêm mới</a>
+                    </div>
+                </div>
             </li>
 
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Đơn hàng</span>
+                </a>
+                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/bill/paid')}}">Đã thanh toán</a>
+                        <a class="collapse-item" href="{{url('/bill/unpaid')}}">Chưa thanh toán</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/account')}}">
+                    <i class="fas fa-shield-alt"></i>
                     <span>Phân quyền</span></a>
             </li>
 
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                <a class="nav-link" href="{{url('/contact')}}">
+                    <i class="far fa-address-card"></i>
                     <span>Thông tin liên hệ</span></a>
             </li>
 
@@ -87,11 +121,83 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
+            <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+                        <!-- Nav Item - Messages -->
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <!-- Counter - Messages -->
+                                <span class="badge badge-danger badge-counter">7</span>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                            told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><i class="fas fa-cog fa-2x"></i></span>
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
             <!-- Main Content -->
             <div id="content">
 
-                @yield('content')
-
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
             </div>
             <!-- End of Main Content -->
 
@@ -149,7 +255,6 @@
 
     <!-- Page level custom scripts -->
     <script src="{{url('../resources/views/admin-layout/js/demo/datatables-demo.js')}}"></script>
-
 </body>
 
 </html>

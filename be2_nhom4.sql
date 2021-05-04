@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 02, 2021 at 12:44 PM
+-- Generation Time: May 04, 2021 at 10:50 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -21,6 +21,63 @@ SET time_zone = "+00:00";
 --
 -- Database: `be2_nhom4`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE IF NOT EXISTS `account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `roleID` int(11) NOT NULL,
+  `token_cart` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `login_fail` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`id`, `username`, `password`, `roleID`, `token_cart`, `login_fail`) VALUES
+(1, 'admin', 'admin123', 0, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill`
+--
+
+DROP TABLE IF EXISTS `bill`;
+CREATE TABLE IF NOT EXISTS `bill` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `create_date` date NOT NULL,
+  `status` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `image_checkout` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `AddressShip` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bill_detail`
+--
+
+DROP TABLE IF EXISTS `bill_detail`;
+CREATE TABLE IF NOT EXISTS `bill_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bill_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `count_product` int(11) NOT NULL,
+  `count_price` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -96,8 +153,9 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `count` int(11) NOT NULL DEFAULT 0,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` double(8,2) NOT NULL,
+  `price` float NOT NULL,
   `size` double(8,2) NOT NULL,
   `hot` tinyint(1) NOT NULL,
   `note` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -106,19 +164,23 @@ CREATE TABLE IF NOT EXISTS `products` (
   `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_id` int(11) NOT NULL,
   `manu_id` int(11) NOT NULL,
+  `sold` int(11) NOT NULL DEFAULT 0,
+  `view` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `products_type_id_foreign` (`type_id`),
   KEY `products_manu_id_foreign` (`manu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_name`, `image`, `price`, `size`, `hot`, `note`, `create_date`, `color`, `gender`, `type_id`, `manu_id`, `created_at`, `updated_at`) VALUES
-(2, 'san pham 2', '1619958513_dbpeg5w-7a5638e8-07e6-40df-b684-2d5c5db2c887.jpg', 500000.00, 33.00, 0, 'san pham bi loi nen ha gia', '2021-05-02', '7', '1', 1, 1, NULL, NULL);
+INSERT INTO `products` (`id`, `product_name`, `count`, `image`, `price`, `size`, `hot`, `note`, `create_date`, `color`, `gender`, `type_id`, `manu_id`, `sold`, `view`, `created_at`, `updated_at`) VALUES
+(4, 'sản phẩm hot tháng 3', 10, '1620104608_a2___nier__automata_by_sciamano240_dbemcpo-fullview.jpg', 120000, 39.00, 1, 'Đồ da cosplay', '2021-05-04', '8', '0', 3, 5, 5, 12, NULL, NULL),
+(5, 'Áo da cừu', 0, '1620108732_dbpeg5w-7a5638e8-07e6-40df-b684-2d5c5db2c887.jpg', 169000, 30.00, 1, 'Áo đẹp lắm nha mấy bạn', '2021-05-04', '6', '0', 2, 4, 23, 1, NULL, NULL),
+(6, 'Áo nam', 31, '1620119471_104575273_267369337913947_2539629738782033094_n.jpg', 15, 31.00, 1, 'Áo khoác mùa hè cho nam', '2021-05-04', '1', '1', 1, 1, 0, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 

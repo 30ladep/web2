@@ -5,27 +5,46 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //man hinh them san pham
     public function index($action = "index")
     {
         $color = DB::table('color')->get();
         $typeProduct = DB::table('type_product')->get();
         $manu = DB::table('manu')->get();
-        
+        $products = DB::table('products')->orderby('id','desc')->get();
         return view('admin-pages.'.$action, array(
             'color' => $color,
             'typeProduct' => $typeProduct,
-            'manu' => $manu
+            'manu' => $manu,
+            'products' => $products
         ));
     }
 
-    //ham upload product
+    public function ProductAction($action = "", $id = "")
+    {
+        $color = DB::table('color')->get();
+        $typeProduct = DB::table('type_product')->get();
+        $manu = DB::table('manu')->get();
+        
+        //dd($products);
+        if($action == "edit"){
+            $product = DB::table('products')->where('id', $id)->first();
+            $str_json = json_encode($product); //arrary to string json
+            $arr_json = json_decode($str_json);// string to array
+            return view('admin-pages.UploadProduct', array(
+            'color' => $color,
+            'typeProduct' => $typeProduct,
+            'manu' => $manu,
+            'product' => $product
+        ));
+        }
+        return view('admin-pages.ListProduct');
+    }
+
+    //ham them moi san pham
     public function UploadProduct(Request $request)
     {
         //dd(public_path('\img\image_product'));
@@ -48,77 +67,67 @@ class AdminController extends Controller
                  'color' => $request->color,
                  'gender' => $request->gender,
                  'type_id' => $request->productType,
-                 'manu_id' => $request->manuid
+                 'manu_id' => $request->manuid,
+                 'count' => $request->count
                  ]
             );
             $request->image->move(public_path('\img\image_product'), $imageName);
         }
-        return view('admin-pages.index');
+        return redirect('/admin/ListProduct');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    //edit san pham
+    public function EditProduct(Request $request)
     {
-        //
+        //dd(public_path('\img\image_product'));
+        //dd($request->all());
+        $hot = false;
+        if($request->hot == "on"){
+            $hot = true;
+        }
+        if($request->hasFile('image'))
+        {
+            $imageName = time().'_'.$request->image->getClientOriginalName();
+            DB::table('products')->where('id',$request->id)->update(
+                ['product_name' => $request->productName,
+                 'image' => $imageName,
+                 'price' => $request->price,
+                 'size' => $request->size,
+                 'hot' => $hot,
+                 'note' => $request->note,
+                 'create_date' => Carbon::now()->format('Y-m-d'),
+                 'color' => $request->color,
+                 'gender' => $request->gender,
+                 'type_id' => $request->productType,
+                 'manu_id' => $request->manuid,
+                 'count' => $request->count
+                 ]
+            );
+            $request->image->move(public_path('\img\image_product'), $imageName);
+        }
+        else{
+            DB::table('products')->where('id',$request->id)->update(
+                ['product_name' => $request->productName,
+                 'price' => $request->price,
+                 'size' => $request->size,
+                 'hot' => $hot,
+                 'note' => $request->note,
+                 'create_date' => Carbon::now()->format('Y-m-d'),
+                 'color' => $request->color,
+                 'gender' => $request->gender,
+                 'type_id' => $request->productType,
+                 'manu_id' => $request->manuid,
+                 'count' => $request->count
+                 ]
+            );
+        }
+        return redirect('/admin/ListProduct');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    //ham xoa san pham
+    public function DeleteProduct($id){
+        //dd($id);
+        DB::table('products')->where('id', $id)->delete();
+        return redirect('/admin/ListProduct');
     }
 }
