@@ -2,6 +2,9 @@
 @section('content')
 
 <!-- Hero Slider -->
+@if(isset($user))
+  {{$user->name}}
+@endif
 <section class="section-wrap nopadding">
       <div class="container">
         <div class="entry-slider">

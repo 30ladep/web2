@@ -15,20 +15,20 @@ class UserController extends Controller
     //     return view();
     // }
 
-    //getThem   
-    public function getThem(){
+     //get register   
+     public function getThem(){
         return view('login');
     }
-    //post them
+    //post register
     public function postThem(Request $request){
         $this->validate($request,[
             'username'=>'required|min:3',
             'fullname'=>'required|min:3|max:30',
             'email'=>'required|email|unique:users,email',
-            'phone'=>'required|number',
+            'phone'=>'required',
             'password'=>'required|min:3|max:30',
             'passwordmatch'=>'required|same:password'
-           
+
         ],[
             'username.required'=>'Ban chua nhap ten',
             'username.min'=>'Ten phai hon 3 ky tu',
@@ -36,7 +36,7 @@ class UserController extends Controller
             'fullname.min'=>'Ten day du lon hon 3 ky tu',
             'fullname.max'=>'Ten day be hon 30 ky tu',
             'phone.required'=>'Ban chua nham so dien thoai',
-            'phone.number'=>'Khong duoc nhap chu',
+            
             'email.required'=>'Ban chua nhap email',
 
             'email.email'=>'Ban chua nhap  dung dinh dang email',
@@ -51,11 +51,39 @@ class UserController extends Controller
         $user->username =$request->username;
         $user->fullname =$request->fullname;
         $user->email =$request->email;
+        $user->phone=$request->phone;
+        $user->create_date= Carbon::now();
+        $user->login_cart="";
+        $user->token_cart="";
         $user->password = Hash::make($request->password);
         $user->type_user_id=0;
         $user->save();
         return redirect('user/them')->with('thongbao','them thanh cong');
         
+    }
+
+    //post login
+    public function postLogin(Request $request){
+        $this->validate($request,[
+            'email'=>'required|',
+            'password'=>'required|min:3|max:30'
+
+        ],
+        [
+            'email.required'=>'Ban chua nhap email',
+            'password.required'=>'Ban chua nhap password',
+            'password.min'=>'Password phai co hon 3 ky tu',
+            'password.man'=>'Password toi da 30 ky tu'
+        ]);
+
+        //Auth
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+            return ridirect('index');
+        }
+        else
+        {
+            return ridirect('login')->with('thongbao','dang nhap khong thanh cong');
+        }
     }
 
 }

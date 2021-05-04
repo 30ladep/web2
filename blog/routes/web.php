@@ -15,10 +15,18 @@ use App\Product;
 */
 ;
 //authencation
-Route::get('/login',function(){
+Route::get('user/login',function(){
     return view('login');
 });
 
+
+//login
+Route::get('user/login','UserController@getLogin');
+Route::post('user/login','UserController@postLogin');
+
+//logout
+Route::get('user/logout','UserController@Logout');
+//register
 Route::group(['prefix'=>'user'],function(){
     Route::get('danhsach','UserController@layDanhSach');
     

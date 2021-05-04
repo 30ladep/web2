@@ -7,8 +7,12 @@
       <div class="row">
         <div class="top-bar-links">
           <ul class="col-sm-6 top-bar-acc">
-            <li class="top-bar-link"><a href="#">User Account</a></li>
-            <li class="top-bar-link"><a href="{!! url('/login')!!}">Login</a></li>
+              @if(isset($user))
+              <li class="top-bar-link"><a href="#">{{$user->name}}</a></li>
+              @endif
+           
+            <li class="top-bar-link"><a href="{!! url('user/login')!!}">Login</a></li>
+            <li class="top-bar-link"><a href="{!! url('user/login')!!}">Logout</a></li>
             <li class="top-bar-link"><a href="{{url('/contact')}}">Contact</a></li>
           </ul>
 
@@ -190,9 +194,10 @@
                 <ul>
                   <li>
                     <a href="{{url('/login')}}">Login</a>
-                  </li>
-                  <li>
-                    <a href="#">User Account</a>
+                  </li>                
+                
+                  <a href="#">User Accout</a>
+                 
                   </li>
                 </ul>
               </li>
