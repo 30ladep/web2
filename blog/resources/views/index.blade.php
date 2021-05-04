@@ -98,7 +98,9 @@
               <div class="product-details">
                 <h3>
              
-             <a class="product-title" href="{{url('shop-single-product?id='.$item->id)}}">{{$item->product_name}}</a>
+            <!-- <a class="product-title" href="{{url('shop-single-product?id='.$item->id)}}">{{$item->product_name}}</a>-->
+
+             <a class="product-title" href="{{route('detailproduct',$item->id)}}">{{$item->product_name}}</a>
                 </h3>
                 <span class="price">
                     <span>$ {{$item->price}}</span>

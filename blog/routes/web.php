@@ -16,33 +16,22 @@ use App\Product;
 Route::get('detail',function(){
     return view('shop-single-product');
 });
+//admin route
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
+
+//user route
 Route::get('allproducts','ProductController@getAllProduct');
 
+Route::get('detailproduct/{id?}',[
+'as'=>'detailproduct',
+'uses'=>'ProductController@getDetailProductByID']);
 
-Route::get('shop-single-product/{id?}',[
-'as'=>'detailProduct',
-'uses'=>'ProductController@getDetailProductByID']
-);
-//test detail route
-// Route::get('allproducts/{id?}  ',function($id){
-//     echo "dit me".$id;
-//     $productsDetailByID = Product::get()->where('id',$id)->toArray();
-//      echo "<pre>";
-//     print_r($productsDetailByID);
-//     echo "</pre>";
-// });
-//test 
-// Route::get('allproducts',function(){
-//     $data= Product::all()->toArray();
-//     echo "<pre>";
-//     foreach ($data as $key => $value) {
-//         print_r($value);
-//     }
-  
-//     echo "</pre>";
-// });
+// Route::get('shop-single-product/{id?}',[
+// 'as'=>'detailProduct',
+// 'uses'=>'ProductController@getDetailProductByID']
+// );
+
 //Route::get('products','HomeController@getAllProducts');
 //Route::get('/{controller?}', 'HomeController@Index');
 
