@@ -96,7 +96,7 @@
                     <i class="fa fa-heart"></i>
                   </a>                    
                 </div>
-                <a href="#" class="product-quickview">Quick View</a>
+                <a href="{{url('shop-single-product?id='.$item->id)}}" class="product-quickview">Quick View</a>
               </div>
               <div class="product-details">
                 <h3>            

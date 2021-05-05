@@ -28,8 +28,8 @@
             <div class="flickity flickity-slider-wrap mfp-hover" id="gallery-main">
 
               <div class="gallery-cell">
-                <a href="{{url('img/shop/single_img_1.jpg')}}" class="lightbox-img">
-                  <img src="{{url('img/shop/single_img_1.jpg')}}" alt="" />
+                <a href="{{url('img/image_product/'.$products->image)}}" class="lightbox-img">
+                  <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
                   <i class="icon arrow_expand"></i>
                 </a>
               </div>
@@ -62,19 +62,19 @@
             <div class="gallery-thumbs">
 
               <div class="gallery-cell">
-                <img src="{{url('img/shop/single_img_1.jpg')}}" alt="" />
+                <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
               </div>
               <div class="gallery-cell">
-                <img src="{{url('img/shop/single_img_2.jpg')}}" alt="" />
+              <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
               </div>
               <div class="gallery-cell">
-                <img src="{{url('img/shop/single_img_3.jpg')}}" alt="" />
+              <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
               </div>
               <div class="gallery-cell">
-                <img src="{{url('img/shop/single_img_4.jpg')}}" alt="" />
+              <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
               </div>
               <div class="gallery-cell">
-                <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" />
+                       <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
               </div>
 
             </div> <!-- end gallery thumbs -->
@@ -133,7 +133,7 @@
 
             <div class="product_meta">
               <span class="sku">SKU: <a href="#">{!!$products->product_name !!}</a></span>
-              <span class="posted_in">Category: <a href="#">{!!$products->manu_id !!}</a></span>
+              <span class="posted_in">Category: <a href="#">{!!$products->Manufacture->manu_name !!}</a></span>
               <span class="tagged_as">Tags: <a href="#">Elegant</a>, <a href="#">Bag</a></span>
             </div>
 

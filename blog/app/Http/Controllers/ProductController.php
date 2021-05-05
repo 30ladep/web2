@@ -10,8 +10,14 @@ use DB;
 class ProductController extends Controller
 {
     //get all product
+    // function getAllProduct(){
+    //     $products= DB::table('products')->take(4)->get();
+    //     return view('index',array(
+    //         'products' => $products
+    //     ));
+    // }
     function getAllProduct(){
-        $products= DB::table('products')->take(4)->get();
+        $products= Product::all();
         return view('index',array(
             'products' => $products
         ));

@@ -20,6 +20,7 @@ class products_Seeder extends Seeder
                 
                 'product_name' => Str::random(10),     
                 'image'=> "https://loremflickr.com/320/240",
+                'count'=>rand(1,50),
                 'price'=>rand(1,50),
                 'type_id'=>rand(1,50),
                 'manu_id'=>rand(1,50),
