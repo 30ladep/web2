@@ -17,7 +17,7 @@ class Controller extends BaseController
 
     function checkLogin(){
         if(Auth::check()){
-            view()::share('user',Auth::User());
+            view()->share('user',Auth::user());
         }
     }
 }
