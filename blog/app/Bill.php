@@ -12,7 +12,7 @@ class Bill extends Model
 
     //user
     public function User(){
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\User','user_id','id');
     }
 
     //detail bill
