@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Product;
+//use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +13,16 @@ use App\Product;
 | contains the "web" middleware group. Now create something great!
 |
 */
-;
+
+
+//test lien ket 
+Route::get('testHasOne',function(){
+    // $product = App\Product::where('id',3)->Manufacture->manu_name;
+    // var_dump($product);
+    $product = App\Product::find(3)->Manufacture->manu_name;
+    var_dump($product);
+});
+
 //authencation
 Route::get('user/login',function(){
     return view('login');

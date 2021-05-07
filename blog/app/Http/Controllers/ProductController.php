@@ -26,7 +26,7 @@ class ProductController extends Controller
     //get detail product
     function getDetailProductByID(Request $request){       
         $id = $request->id;
-        $productsDetailByID = Product::where('id',$id)->first();     
+        $productsDetailByID = Product::find($id)->first();     
         return view('shop-single-product',['products'=>$productsDetailByID]);
     }        
     // function getDetailProductByID($id){

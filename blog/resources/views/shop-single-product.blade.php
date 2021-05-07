@@ -133,7 +133,7 @@
 
             <div class="product_meta">
               <span class="sku">SKU: <a href="#">{!!$products->product_name !!}</a></span>
-              <span class="posted_in">Category: <a href="#">{!!$products->Manufacture->manu_name !!}</a></span>
+              <span class="posted_in">Category: <a href="#">{!!$products->Manufacture->manu_name!!}</a></span>
               <span class="tagged_as">Tags: <a href="#">Elegant</a>, <a href="#">Bag</a></span>
             </div>
 
