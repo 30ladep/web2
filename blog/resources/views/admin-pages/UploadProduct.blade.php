@@ -19,7 +19,7 @@
                 <label>Product type:</label>
                 <select class="form-control" name="productType" required>
                     @foreach ($typeProduct as $item)
-                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        <option value="{{$item->id}}">{{$item->type_name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -34,7 +34,7 @@
                 <label>Manufacture:</label>
                 <select class="form-control" name="manuid" required>
                     @foreach ($manu as $item)
-                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        <option value="{{$item->id}}">{{$item->manu_name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -51,15 +51,6 @@
             <div class="form-group">
                 <label>Discription:</label>
                 <input type="text" name="note" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>Color:</label>
-                <select class="form-control" name="color" required>
-                    @foreach ($color as $col)
-                        <option value="{{$col->id}}">{{$col->name}}</option>
-                    @endforeach
-                    
-                </select>
             </div>
             <div class="form-group">
                 <label>Count:</label>
@@ -93,7 +84,7 @@
                 <label>Product type:</label>
                 <select class="form-control" name="productType" required>
                     @foreach ($typeProduct as $item)
-                        <option value="{{$item->id}}" @php if($item->id == $product->type_id){echo "selected";} @endphp>{{$item->name}}</option>
+                        <option value="{{$item->id}}" @php if($item->id == $product->type_id){echo "selected";} @endphp>{{$item->type_name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -115,7 +106,7 @@
                 <label>Manufacture:</label>
                 <select class="form-control" name="manuid" required>
                     @foreach ($manu as $item)
-                        <option value="{{$item->id}}" @php if($item->id == $product->manu_id){echo "selected";} @endphp>{{$item->name}}</option>
+                        <option value="{{$item->id}}" @php if($item->id == $product->manu_id){echo "selected";} @endphp>{{$item->manu_name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -132,15 +123,6 @@
             <div class="form-group">
                 <label>Discription:</label>
                 <input type="text" name="note" value="{{$product->note}}" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>Color:</label>
-                <select class="form-control" name="color" required>
-                    @foreach ($color as $col)
-                        <option value="{{$col->id}}" @php if($product->color == $col->id){echo "selected";} @endphp>{{$col->name}}</option>
-                    @endforeach
-                    
-                </select>
             </div>
             <div class="form-group">
                 <label>Count:</label>

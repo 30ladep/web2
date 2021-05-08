@@ -19,10 +19,12 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->integer('count');
             $table->float('price');
+            $table->integer('sold');
             $table->double('size');
             $table->tinyInteger('hot');
             $table->text('note');
             $table->date('create_date');
+            $table->integer('view');
             $table->string('color');
             $table->string('gender');
             $table->integer('type_id');

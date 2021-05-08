@@ -16,8 +16,6 @@ class CreateTypeProductsTable extends Migration
         Schema::create('type_products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type_name');
-            $table->integer('manu_id')->unsigned();
-            $table->foreign('manu_id')->references('id')->on('manufactures')->onDelete('cascade');
             $table->timestamps();
         });
     }
