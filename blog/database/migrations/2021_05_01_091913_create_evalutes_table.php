@@ -24,6 +24,8 @@ class CreateEvalutesTable extends Migration
           
             $table->timestamps();
         });
+
+       
     }
 
     /**
