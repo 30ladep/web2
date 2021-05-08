@@ -19,9 +19,9 @@ class CreateBillsTable extends Migration
             $table->datetime('create_date');          
             $table->string('status');
             $table->string('image_check_out');
-            $table->string('address_ship');
+            $table->string('address');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
     }

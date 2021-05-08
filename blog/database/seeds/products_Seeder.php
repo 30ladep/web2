@@ -11,7 +11,7 @@ class products_Seeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i<=5;$i++){
+        for($i=0;$i<=10;$i++){
             $start    = new Datetime('1st Jan 2021');
             $end      = new Datetime('1st April 2021');
 
@@ -23,8 +23,9 @@ class products_Seeder extends Seeder
                 'count'=>rand(1,50),
                 'price'=>rand(1,50),
                 'type_id'=>rand(1,50),
-                'manu_id'=>rand(1,50),
+                'manu_id'=>rand(1,23),
                 'size'=>rand(1,50),
+                'count'=>rand(1,5),
                 'hot'=>rand(1,2),
                 'note'=>Str::random(30),  
                 'create_date'=>$random ,

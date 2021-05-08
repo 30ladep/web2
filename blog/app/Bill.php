@@ -17,7 +17,7 @@ class Bill extends Model
 
     //detail bill
     public function DetailBill(){
-        return $this->hasMany('App\DetailBill');
+        return $this->hasMany('App\DetailBill','bill_id','id');
     }
 }
 

@@ -12,10 +12,10 @@ class Manufacture extends Model
     
     //type product
     public function TypeProduct(){
-        return $this->hasMany('App\TypeProduct');
+        return $this->hasMany('App\TypeProduct','manu_id','id');
     }
     //product 
     public function Product(){
-        return $this->hasMany('App\Product','product_id','id');
+        return $this->hasMany('App\Product','manu_id','id');
     }
 }

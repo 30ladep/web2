@@ -10,22 +10,22 @@ class User extends Authenticatable
 {
     // use Notifiable;
     protected $table='users';
-    protected $fillable=['id','username','password','fullname','email','phone','create_date','login_cart','token_cart','type_user_id'];
+    protected $fillable=['id','username','password','email','phone','token_cart','remmember_token','role_id','type_user_id'];
     public $timestamps=false;
 
     //type user
     public function TypeUser(){
-        return $this->belongsTo('App\TypeUser');
+        return $this->belongsTo('App\TypeUser','type_user_id','id');
     }
 
     //bill 
     public function Bill(){
-        return $this->hasMany('App\Bills');
+        return $this->hasMany('App\Bills','user_id','id');
     }
 
     //evaluate
     public function Evaluate(){
-        return $this->hasMany('App\Evaluate');
+        return $this->hasMany('App\Evaluate','	user_id','id');
     }
     /**
      * The attributes that are mass assignable.
