@@ -133,15 +133,21 @@
                 <label>Discription:</label>
                 <input type="text" name="note" value="{{$product->note}}" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label>Color:</label>
-                <select class="form-control" name="color" required>
-                    @foreach ($color as $col)
-                        <option value="{{$col->id}}" @php if($product->color == $col->id){echo "selected";} @endphp>{{$col->name}}</option>
-                    @endforeach
+          //  <div class="form-group">
+            //    <label>Color:</label>
+              //  <select class="form-control" name="color" required>
+                //    @foreach ($color as $col)
+                  //      <option value="{{$col->id}}" @php if($product->color == $col->id){echo "selected";} @endphp>{{$col->name}}</option>
+                   // @endforeach
                     
-                </select>
+                //</select>
+            //</div>
+            <div class="col-5">
+                <div class="form-group">
+                <label>Size:</label>
+                <input type="text" name="color" value="{{$product->color}}" class="form-control" min="25" required>
             </div>
+            
             <div class="form-group">
                 <label>Count:</label>
                 <input type="number" class="form-control" name="count" min="0" value="{{$product->count}}" required>
