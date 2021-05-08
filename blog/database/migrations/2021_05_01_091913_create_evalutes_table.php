@@ -16,11 +16,12 @@ class CreateEvalutesTable extends Migration
         Schema::create('evalutes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('rate');
+            $table->integer('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->longtext('comment');          
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+          
             $table->timestamps();
         });
     }

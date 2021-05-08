@@ -15,20 +15,23 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('product_name');
-            $table->string('image');
+            $table->string('product_name');   
             $table->integer('count');
+            $table->string('image');
             $table->float('price');
             $table->double('size');
             $table->tinyInteger('hot');
             $table->text('note');
             $table->date('create_date');
-            $table->string('color');
+            $table->integer('color_id');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
             $table->string('gender');
             $table->integer('type_id');
-            $table->foreign('type_id')->references('id')->on('type_products');
+            $table->foreign('type_id')->references('id')->on('type_products')->onDelete('cascade');
             $table->integer('manu_id');
-            $table->foreign('manu_id')->references('id')->on('manufactures');
+            $table->foreign('manu_id')->references('id')->on('manufactures')->onDelete('cascade');
+            $table->integer('sold');
+            $table->integer('view');
             $table->timestamps();
         });
     }

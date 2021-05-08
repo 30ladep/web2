@@ -17,14 +17,14 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username');
             $table->string('password');
-            $table->string('fullname');
             $table->string('email');
             $table->string('phone');
-            $table->datetime('create_date');
-            $table->string('login_cart');
             $table->string('token_cart');
             $table->integer('type_user_id');
-            $table->foreign('type_user_id')->references('id')->on('type_user')->onDelete('cascade');
+            $table->foreign('type_user_id')->references('id')->on('type_users')->onDelete('cascade');
+            $table->integer('role_id');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
