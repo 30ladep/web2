@@ -23,8 +23,9 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('hot');
             $table->text('note');
             $table->date('create_date');
-            $table->integer('color_id');
-            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
+            // $table->integer('color_id');
+            // $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
+            $table->string('color');
             $table->string('gender');
             $table->integer('type_id');
             $table->foreign('type_id')->references('id')->on('type_products')->onDelete('cascade');

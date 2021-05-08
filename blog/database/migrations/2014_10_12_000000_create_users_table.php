@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('email');
             $table->string('phone');
-            $table->string('token_cart');
+            $table->string('token_cart');          
             $table->integer('type_user_id');
             $table->foreign('type_user_id')->references('id')->on('type_users')->onDelete('cascade');
             $table->integer('role_id');
