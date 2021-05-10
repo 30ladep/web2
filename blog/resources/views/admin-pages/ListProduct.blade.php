@@ -19,7 +19,6 @@
                         <th>Size</th>
                         <th>Loại sản phẩm</th>
                         <th>Nhà sản xuất</th>
-                        <th>Màu sắc</th>
                         <th>Giới tính</th>
                         <th>Số lượng</th>
                         <th>Giá</th>
@@ -35,19 +34,13 @@
                         <td>{{$item->size}}</td>
                         <td>
                             @foreach ($typeProduct->where('id', $item->type_id) as $type)
-                                {{$type->name}}
+                                {{$type->type_name}}
                             @endforeach
                         </td>
                         <td>
                             @foreach ($manu->where('id', $item->manu_id) as $mn)
-                                {{$mn->name}}
+                                {{$mn->manu_name}}
                             @endforeach
-                        </td>
-                        <td>
-                            {{-- @foreach ($color->where('id', $item->color) as $col)
-                                {{$col->name}}
-                            @endforeach --}}
-                            {{$color->where('id', $item->color)->first()->name}}
                         </td>
                         <td>{{$item->gender == 1 ? "Nam" : "Nữ"}}</td>
                         <td>{{$item->count}}</td>

@@ -19,12 +19,12 @@ class CreateProductsTable extends Migration
             $table->integer('count');
             $table->string('image');
             $table->float('price');
+            $table->integer('sold');
             $table->double('size');
             $table->tinyInteger('hot');
             $table->text('note');
             $table->date('create_date');
-            // $table->integer('color_id');
-            // $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade');
+            $table->integer('view');
             $table->string('color');
             $table->string('gender');
             $table->integer('type_id');

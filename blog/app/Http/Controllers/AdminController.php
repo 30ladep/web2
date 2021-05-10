@@ -11,12 +11,12 @@ class AdminController extends Controller
     //man hinh them san pham
     public function index($action = "index")
     {
-        $color = DB::table('color')->get();
-        $typeProduct = DB::table('type_product')->get();
-        $manu = DB::table('manu')->get();
+        //$color = DB::table('color')->get();
+        $typeProduct = DB::table('type_products')->get();
+        $manu = DB::table('manufactures')->get();
         $products = DB::table('products')->orderby('id','desc')->get();
         return view('admin-pages.'.$action, array(
-            'color' => $color,
+            // 'color' => $color,
             'typeProduct' => $typeProduct,
             'manu' => $manu,
             'products' => $products
@@ -25,9 +25,9 @@ class AdminController extends Controller
 
     public function ProductAction($action = "", $id = "")
     {
-        $color = DB::table('color')->get();
-        $typeProduct = DB::table('type_product')->get();
-        $manu = DB::table('manu')->get();
+        //$color = DB::table('color')->get();
+        $typeProduct = DB::table('type_products')->get();
+        $manu = DB::table('manufactures')->get();
         
         //dd($products);
         if($action == "edit"){
@@ -35,7 +35,7 @@ class AdminController extends Controller
             $str_json = json_encode($product); //arrary to string json
             $arr_json = json_decode($str_json);// string to array
             return view('admin-pages.UploadProduct', array(
-            'color' => $color,
+            //'color' => $color,
             'typeProduct' => $typeProduct,
             'manu' => $manu,
             'product' => $product
@@ -64,7 +64,7 @@ class AdminController extends Controller
                  'hot' => $hot,
                  'note' => $request->note,
                  'create_date' => Carbon::now()->format('Y-m-d'),
-                 'color' => $request->color,
+                 //'color' => $request->color,
                  'gender' => $request->gender,
                  'type_id' => $request->productType,
                  'manu_id' => $request->manuid,
@@ -96,7 +96,7 @@ class AdminController extends Controller
                  'hot' => $hot,
                  'note' => $request->note,
                  'create_date' => Carbon::now()->format('Y-m-d'),
-                 'color' => $request->color,
+                 //'color' => $request->color,
                  'gender' => $request->gender,
                  'type_id' => $request->productType,
                  'manu_id' => $request->manuid,
