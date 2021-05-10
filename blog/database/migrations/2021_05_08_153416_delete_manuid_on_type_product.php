@@ -16,7 +16,8 @@ class DeleteManuidOnTypeProduct extends Migration
         //
 
         Schema::table('type_products',function(Blueprint $table){
-            $table->dropColumn('manu_id');
+          //  $table->dropColumn('manu_id');
+          $table->string('manu_id');
         });
     }
 
