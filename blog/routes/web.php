@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use App\Product;
+use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('testHasOne',function(){
     // $product = App\Product::where('id',3)->Manufacture->manu_name;
     // var_dump($product);
-    $product = App\Product::find(3)->Manufacture->manu_name;
-    var_dump($product);
+    // $product = App\Product::find(3)->Manufacture->manu_name;
+    // var_dump($product);
+    $products =Product::all()->toArray();
+
+    var_dump($products);
 });
 
 //authencation
