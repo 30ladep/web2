@@ -15,14 +15,30 @@ class products_Seeder extends Seeder
         $color = array('white', 'green', 'red','yellow','green','blue','black',);
         $products =Product::all()->toArray();
 
-        foreach ($products as $value => $key) {
-            $key['sold']= rand(1,50);
-            $key['view']= rand(25,520);
-            $key['color']=Str::random($color[0],$color[6]);
-            $key['gender']= rand(1,2);
+        // foreach ($products as $value => $key) {
+           
+        //     $key['sold']= rand(1,50);
+        //     $key['view']= rand(25,520);
+        //     $key['color']=Str::random($color[0],$color[6]);
+         
 
-            $value->save();
+          
             
+        // }
+        $start = 2;
+        $end = count($products);
+
+        for ($i= $start ;$i <= $end ; $i++){
+           
+            DB::table('products')->update([
+                
+                'sold' => rand(1,50),
+                'view'=> rand(25,520),
+                'color'=>Str::random($color[0],$color[6])
+              
+                               
+
+            ]->where('id',$i));
         }
        
         // for($i=2;$i<= count($products);$i++){

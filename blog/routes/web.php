@@ -19,11 +19,9 @@ use App\Product;
 Route::get('testHasOne',function(){
     // $product = App\Product::where('id',3)->Manufacture->manu_name;
     // var_dump($product);
-    // $product = App\Product::find(3)->Manufacture->manu_name;
-    // var_dump($product);
-    $products =Product::all()->toArray();
-
-    var_dump($products);
+    $product = App\Product::find(3)->first();
+    var_dump($product->TypeProduct->type_name);
+  
 });
 
 //authencation
