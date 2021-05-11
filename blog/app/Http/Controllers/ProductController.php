@@ -17,7 +17,7 @@ class ProductController extends Controller
     //     ));
     // }
     function getAllProduct(){
-        $products= Product::all();
+        $products= Product::all()->random(8);
         return view('index',array(
             'products' => $products
         ));
