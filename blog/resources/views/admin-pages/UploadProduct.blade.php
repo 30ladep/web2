@@ -1,6 +1,15 @@
 @extends('admin-layout.admin-layout')
 @section('content')
-
+<style>
+    body{
+        position: relative;
+    }
+    img:hover{
+        width: 300px !important;
+        position: absolute;
+        transition: width 1s;
+    }
+</style>
 @if (!isset($product))
     <div class="ml-2">
         <h3>Thêm mới sản phẩm</h3>
@@ -57,9 +66,13 @@
                 <input type="number" class="form-control" name="count" min="0" required>
             </div>
             <div class="form-group">
-                <label>Image product:</label><br>
-                <img id="img-show" src="https://png.pngtree.com/element_our/20190528/ourlarge/pngtree-black-and-white-prohibition-icon-image_1128425.jpg" width="50px" alt="" srcset="">
-                <input type="file" id="img-file" onchange="loadFile(event)" name="image" accept="image/*" class="form-control-file" required>
+                <label>Image product <i class="fas fa-exclamation-triangle" data-toggle="tooltip" title="Tối đa 5 ảnh: Ảnh ngoài cùng bên trái là ảnh chính"></i></label><br>
+                <img class="img-show" src="" width="50px" alt="" srcset="">
+                <img class="img-show" src="" width="50px" alt="" srcset="">
+                <img class="img-show" src="" width="50px" alt="" srcset="">
+                <img class="img-show" src="" width="50px" alt="" srcset="">
+                <img class="img-show" src="" width="50px" alt="" srcset="">
+                <input type="file" id="img-file" onchange="loadFile(event)" multiple name="image[]" accept="image/*" class="form-control-file" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             </div>
@@ -129,20 +142,43 @@
                 <input type="number" class="form-control" name="count" min="0" value="{{$product->count}}" required>
             </div>
             <div class="form-group">
-                <label>Image product:</label><br>
-                <img id="img-show" src="{{url('/img/image_product/'.$product->image)}}" width="50px" alt="" srcset="">
-                <input type="file" id="img-file" onchange="loadFile(event)" name="image" accept="image/*" class="form-control-file">
+                <label>Image product <i class="fas fa-exclamation-triangle" data-toggle="tooltip" title="Tối đa 5 ảnh: Ảnh ngoài cùng bên trái là ảnh chính"></i></label><br>
+                @php
+                    $count = 5;
+                @endphp
+                @foreach ($listImage as $item)
+                    @php
+                        $count--;
+                    @endphp
+                    <img class="img-show" src="{{url('/img/image_product/'.$item->image)}}" width="50px" alt="" srcset="">
+                @endforeach
+                @for ($i = 0; $i < $count; $i++)
+                    <img class="img-show" src="" width="50px" alt="" srcset="">
+                @endfor
+                <input type="file" id="img-file" onchange="loadFile(event)" multiple name="image[]" accept="image/*" class="form-control-file">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
     </div>
 @endif
-
+<div style="margin-bottom: 100px"></div>
 <script>
 var loadFile = function(event) {
-	var image = document.getElementById('img-show');
-	image.src = URL.createObjectURL(event.target.files[0]);
+    var image = document.getElementsByClassName('img-show');
+    for(var i = 0; i < 5; i++){
+            image[i].src = "";
+        }
+    if(event.target.files.length <= 5){
+        for(var i = 0; i < event.target.files.length; i++){
+            image[i].src = URL.createObjectURL(event.target.files[i]);
+        }
+    }
+    else{
+        alert("Tối đa 1 ảnh chính và 4 ảnh phụ");
+        document.getElementById("img-file").value = "";
+    }
+	
 };
 </script>
 

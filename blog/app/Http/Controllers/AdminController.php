@@ -33,13 +33,16 @@ class AdminController extends Controller
         //dd($products);
         if($action == "edit"){
             $product = DB::table('products')->where('id', $id)->first();
-            $str_json = json_encode($product); //arrary to string json
-            $arr_json = json_decode($str_json);// string to array
+            $listImage = DB::table('image_products')->where('product_id', $id)->orderBy('id', 'asc')->get();
+            //dd($listImage);
+            // $str_json = json_encode($product); //arrary to string json
+            // $arr_json = json_decode($str_json);// string to array
             return view('admin-pages.UploadProduct', array(
             //'color' => $color,
             'typeProduct' => $typeProduct,
             'manu' => $manu,
-            'product' => $product
+            'product' => $product,
+            'listImage' => $listImage
         ));
         
         }
@@ -123,21 +126,28 @@ class AdminController extends Controller
 
 
 
-      //ham them moi san pham
+      //ham them moi san pham - TriS
       public function UploadProduct(Request $request)
       {
           //dd(public_path('\img\image_product'));
           //dd($request->all());
+          //Khoi tao mang chua image name
+          $imageName = [];
           if($request->hasFile('image'))
           {
-              $imageName = time().'_'.$request->image->getClientOriginalName();
+              //dd(count($request->image));
+              //dd($image->getClientOriginalName());
+              for($i = 0; $i < count($request->image); $i++){
+                  $imageName[$i] = (time() + $i).'_'.$request->image[$i]->getClientOriginalName();
+              }
+              //dd($imageName);
               $hot = false;
               if($request->hot == "on"){
                   $hot = true;
               }
-              DB::table('products')->insert(
+              $check = DB::table('products')->insert(
                   ['product_name' => $request->productName,
-                   'image' => $imageName,
+                   'image' => $imageName[0],
                    'price' => $request->price,
                    'size' => $request->size,
                    'hot' => $hot,
@@ -150,7 +160,22 @@ class AdminController extends Controller
                    'count' => $request->count
                    ]
               );
-              $request->image->move(public_path('\img\image_product'), $imageName);
+              $pd = DB::table('products')->orderBy('id', 'DESC')->first();
+              //dd(DB::table('products')->orderBy('id', 'DESC')->first());
+              //$request->image->move(public_path('\img\image_product'), $imageName);
+              //insert image product
+              if($check == true){
+                    $index = 0;
+                    foreach($request->image as $item){
+                        DB::table('image_products')->insert(
+                        ['product_id' => $pd->id,
+                        'image' => $imageName[$index]
+                        ]);
+                        $item->move(public_path('\img\image_product'), $imageName[$index]);
+                        $index++;
+                    }
+              }
+              
           }
           return redirect('/admin/ListProduct');
       }
@@ -160,16 +185,19 @@ class AdminController extends Controller
     {
         //dd(public_path('\img\image_product'));
         //dd($request->all());
+        $imageName = [];
         $hot = false;
         if($request->hot == "on"){
             $hot = true;
         }
         if($request->hasFile('image'))
         {
-            $imageName = time().'_'.$request->image->getClientOriginalName();
-            DB::table('products')->where('id',$request->id)->update(
+            for($i = 0; $i < count($request->image); $i++){
+                  $imageName[$i] = (time() + $i).'_'.$request->image[$i]->getClientOriginalName();
+            }
+            $check = DB::table('products')->where('id',$request->id)->update(
                 ['product_name' => $request->productName,
-                 'image' => $imageName,
+                 'image' => $imageName[0],
                  'price' => $request->price,
                  'size' => $request->size,
                  'hot' => $hot,
@@ -182,7 +210,21 @@ class AdminController extends Controller
                  'count' => $request->count
                  ]
             );
-            $request->image->move(public_path('\img\image_product'), $imageName);
+            $pd = DB::table('products')->orderBy('id', 'DESC')->first();
+            if($check == true){
+                //xoa tat ca image product
+                DB::table('image_products')->where('product_id', $pd->id)->delete();
+                //them moi lai
+                $index = 0;
+                foreach($request->image as $item){
+                    DB::table('image_products')->insert(
+                    ['product_id' => $pd->id,
+                    'image' => $imageName[$index]
+                    ]);
+                    $item->move(public_path('\img\image_product'), $imageName[$index]);
+                    $index++;
+                }
+            }
         }
         else{
             DB::table('products')->where('id',$request->id)->update(
@@ -207,6 +249,7 @@ class AdminController extends Controller
     public function DeleteProduct($id){
         //dd($id);
         DB::table('products')->where('id', $id)->delete();
+        DB::table('image_products')->where('product_id', $id)->delete();
         return redirect('/admin/ListProduct');
     }
 }
