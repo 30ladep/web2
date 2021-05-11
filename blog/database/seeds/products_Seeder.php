@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Product;
 
 class products_Seeder extends Seeder
 {
@@ -11,28 +12,42 @@ class products_Seeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i<=10;$i++){
-            $start    = new Datetime('1st Jan 2021');
-            $end      = new Datetime('1st April 2021');
+        $color = array('white', 'green', 'red','yellow','green','blue','black',);
+        $products =Product::all()->toArray();
 
-            $random   = new DateTime('@' . mt_rand($start->getTimestamp(), $end->getTimestamp()));
-            DB::table('products')->insert([
+        // foreach ($products as $value => $key) {
+           
+        //     $key['sold']= rand(1,50);
+        //     $key['view']= rand(25,520);
+        //     $key['color']=Str::random($color[0],$color[6]);
+         
+
+          
+            
+        // }
+        $start = 2;
+        $end = count($products);
+
+        for ($i= $start ;$i <= $end ; $i++){
+           
+            DB::table('products')->update([
                 
-                'product_name' => Str::random(10),     
-                'image'=> "https://loremflickr.com/320/240",
-                'count'=>rand(1,50),
-                'price'=>rand(1,50),
-                'type_id'=>rand(1,50),
-                'manu_id'=>rand(1,23),
-                'size'=>rand(1,50),
-                'count'=>rand(1,5),
-                'hot'=>rand(1,2),
-                'note'=>Str::random(30),  
-                'create_date'=>$random ,
-                'color'=>Str::random(10),
-                'gender'=>Str::random(5),    
+                'sold' => rand(1,50),
+                'view'=> rand(25,520),
+                'color'=>Str::random($color[0],$color[6])
+              
+                               
 
-            ]);
+            ]->where('id',$i));
         }
+       
+        // for($i=2;$i<= count($products);$i++){
+        //     $products[i]->sold = rand(1,50);
+        //     $products[i]->view = rand(5,50);
+        //     $products[i]->color = rand($color[0],$color[6]);
+        //     $products[i]->gender = rand(1,2);
+
+        //     $products->save();
+        // }
     }
 }

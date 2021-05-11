@@ -16,7 +16,6 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('product_name');   
-            $table->integer('count');
             $table->string('image');
             $table->float('price');
             $table->integer('sold');
@@ -31,8 +30,7 @@ class CreateProductsTable extends Migration
             $table->foreign('type_id')->references('id')->on('type_products')->onDelete('cascade');
             $table->integer('manu_id');
             $table->foreign('manu_id')->references('id')->on('manufactures')->onDelete('cascade');
-            $table->integer('sold');
-            $table->integer('view');
+            $table->integer('count');
             $table->timestamps();
         });
     }

@@ -101,14 +101,19 @@
                 <div class="col-sm-6">
                   <select class="color-select">
                     <option value>{!!$products->color!!}</option>
-                   
+                    <option selected value>Yellow</option>
+                    <option value="Red">Red</option>
+                    <option value="White">White</option>
+                    <option value="Black">Black</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Organe">Organe</option>
                   </select>
                 </div>
 
                 <div class="col-sm-6">
                   <select class="size-options">
-                    <option selected value>{!!$products->size!!}</option>
-                  
+                    <option value>{!!$products->size!!}</option>
                   </select>
                 </div>
               </div>
@@ -126,7 +131,7 @@
               </li> 
               <li>
                 <div class="quantity buttons_added">
-                  <input type="button" value="-" class="minus" /><input type="number" step="1" min="0" value="1" title="Qty" class="input-text qty text" /><input type="button" value="+" class="plus" />
+                  <input type="button" value="-" class="minus" /><input type="number" step="1" min="0" value="{!! !!}" title="Qty" class="input-text qty text" /><input type="button" value="+" class="plus" />
                 </div>
               </li>          
             </ul>
@@ -134,7 +139,7 @@
             <div class="product_meta">
               <span class="sku">SKU: <a href="#">{!!$products->product_name !!}</a></span>
               <span class="posted_in">Category: <a href="#">{!!$products->Manufacture->manu_name!!}</a></span>
-              <span class="tagged_as">Tags: <a href="#">Elegant</a>, <a href="#">Bag</a></span>
+              <span class="tagged_as">Tags: <a href="#">{!!$products->TypeProduct->type_name!!}</a></span>
             </div>
 
             <div class="socials-share clearfix">
