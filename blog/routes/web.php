@@ -18,11 +18,19 @@ use Illuminate\Http\Request;
 
 //test lien ket 
 Route::get('testHasOne',function(){
-    // $product = App\Product::where('id',3)->Manufacture->manu_name;
+    // $product = Product::where('id',5)->get()->toArray();
+    // $typeID = Product::where('id',5)->select('type_id')->get()->toArray();
+    // $
+    // var_dump($typeIDproduct);
+    // var_dump($typeIDproduct->type_name);
     // var_dump($product);
-    $product = App\Product::find(3)->first();
-    var_dump($product->TypeProduct->type_name);
-  
+    // $product =Product::find(6)->get()->toArray();
+    // echo "<pre>";
+    // foreach ($typeIDproduct as $key) {
+    //     var_dump($typeIDproduct);
+    // }
+    // var_dump($product);
+   // echo "</pre>";
 });
 
 //authencation

@@ -9,15 +9,9 @@ use DB;
 
 class ProductController extends Controller
 {
-    //get all product
-    // function getAllProduct(){
-    //     $products= DB::table('products')->take(4)->get();
-    //     return view('index',array(
-    //         'products' => $products
-    //     ));
-    // }
+ 
     function getAllProduct(){
-        $products= Product::all()->random(8);
+        $products= Product::all();
         return view('index',array(
             'products' => $products
         ));
@@ -26,18 +20,18 @@ class ProductController extends Controller
     //get detail product
     function getDetailProductByID(Request $request){       
         $id = $request->id;
-        $productsDetailByID = Product::find($id)->first();     
+        // $productsDetailByID = Product::find($id)->first();   
+        $productsDetailByID = Product::where('id',$id)->first();
         return view('shop-single-product',['products'=>$productsDetailByID]);
     }        
-    // function getDetailProductByID($id){
-    //     $productsDetailByID = DB::table('products')->where('id',$id)->first();
-    //     //dd($productsDetailByID);
-    //    //$productsDetailByID = DB::table('products')->where('id',$id)->first();
-      
+    
 
-    //     //return view('shop-single-product',compact('productsDetailByID'));
-    //    return view('shop-single-product',['products'=>$productsDetailByID]);
-    // }
+    //get product related 
+    function getProductRelated(Request $request){
+        $id = $request->id;
+        $typeIDproduct = Prododuct::where('id',$id)->select('type_id');
+        $productsRelated = Product::where('type_id',$id)->get();
+    }
 
    
     

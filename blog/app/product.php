@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $table='products';
-    protected $fillable=['id','product_name','image','count','price','size','hot','note','create_date','color','gender','type_id','manu_id'];
+    protected $fillable=['id','product_name','image','price','sold','size','hot','note','create_date','view','color','gender','type_id','manu_id','count'];
     public $timestamps=false;
 
     //detail bill
@@ -31,8 +31,8 @@ class Product extends Model
     }
 
     //product image
-    public function ProductImage(){
-        return $this->hasMany('App\ProductImage','product_id','id');
+    public function ImageProduct(){
+        return $this->hasMany('App\ImageProduct','product_id','id');
     }
     
 }

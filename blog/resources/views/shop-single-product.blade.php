@@ -26,56 +26,28 @@
           <div class="col-sm-6 col-xs-12 mb-60">
 
             <div class="flickity flickity-slider-wrap mfp-hover" id="gallery-main">
-
+              @foreach ($products->ImageProduct  as $item => $value)
               <div class="gallery-cell">
-                <a href="{{url('img/image_product/'.$products->image)}}" class="lightbox-img">
-                  <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
+                <a href="{{url('img/image_product/'.$value->image_product)}}" class="lightbox-img">
+                  <img src="{{url('img/image_product/'.$value->image_product)}}" alt="" />
                   <i class="icon arrow_expand"></i>
                 </a>
               </div>
-              <div class="gallery-cell">
-                <a href="{{url('img/shop/single_img_2.jpg')}}" class="lightbox-img">
-                  <img src="{{url('img/shop/single_img_2.jpg')}}" alt="" />
-                  <i class="icon arrow_expand"></i>
-                </a>
-              </div>
-              <div class="gallery-cell">
-                <a href="{{url('img/shop/single_img_3.jpg')}}" class="lightbox-img">
-                  <img src="{{url('img/shop/single_img_3.jpg')}}" alt="" />
-                  <i class="icon arrow_expand"></i>
-                </a>
-              </div>
-              <div class="gallery-cell">
-                <a href="{{url('img/shop/single_img_4.jpg')}}" class="lightbox-img">
-                  <img src="{{url('img/shop/single_img_4.jpg')}}" alt="" />
-                  <i class="icon arrow_expand"></i>
-                </a>
-              </div>
-              <div class="gallery-cell">
-                <a href="{{url('img/shop/single_img_5.jpg')}}" class="lightbox-img">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" />
-                  <i class="icon arrow_expand"></i>
-                </a>
-              </div>
+              @endforeach
+       
+             
+             
             </div> <!-- end gallery main -->
 
             <div class="gallery-thumbs">
-
-              <div class="gallery-cell">
-                <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
-              </div>
-              <div class="gallery-cell">
-              <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
-              </div>
-              <div class="gallery-cell">
-              <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
-              </div>
-              <div class="gallery-cell">
-              <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
-              </div>
-              <div class="gallery-cell">
-                       <img src="{{url('img/image_product/'.$products->image)}}" alt="" />
-              </div>
+          
+              @foreach ($products->ImageProduct  as $item => $value)
+                  <div class="gallery-cell">
+                    <img src="{{url('img/image_product/'.$value->image_product)}}" alt="" />
+                  </div>
+              @endforeach
+            
+              
 
             </div> <!-- end gallery thumbs -->
 
@@ -175,7 +147,8 @@
                 
                 <div class="tab-pane fade in active" id="tab-description">
                   <p>
-                  We possess within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious. Our subconscious mind contains such power and complexity that it literally staggers the imagination.And finally the subconscious is the mechanism through which thought impulses which are repeated regularly with feeling and emotion are quickened, charged. Our subconscious mind contains such power and complexity that it literally staggers the imagination.And finally the subconscious is the mechanism through which thought impulses.
+                  {{-- We possess within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious. Our subconscious mind contains such power and complexity that it literally staggers the imagination.And finally the subconscious is the mechanism through which thought impulses which are repeated regularly with feeling and emotion are quickened, charged. Our subconscious mind contains such power and complexity that it literally staggers the imagination.And finally the subconscious is the mechanism through which thought impulses. --}}
+                  {!! $products->note !!}
                   </p>
                 </div>
                 
