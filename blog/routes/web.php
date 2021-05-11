@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Product;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::group(['prefix'=>'user'],function(){
 //admin route
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
+Route::post('/admin/UploadImageProduct','AdminController@UploadImageProduct');
+
 
 //user route
 Route::get('allproducts','ProductController@getAllProduct');

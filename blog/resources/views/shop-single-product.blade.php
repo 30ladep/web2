@@ -131,7 +131,7 @@
               </li> 
               <li>
                 <div class="quantity buttons_added">
-                  <input type="button" value="-" class="minus" /><input type="number" step="1" min="0" value="{!! !!}" title="Qty" class="input-text qty text" /><input type="button" value="+" class="plus" />
+                  <input type="button" value="-" class="minus" /><input type="number" step="1" min="0" value="" title="Qty" class="input-text qty text" /><input type="button" value="+" class="plus" />
                 </div>
               </li>          
             </ul>
