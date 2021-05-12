@@ -3,8 +3,18 @@
 @php
     $stt = 1;
 @endphp
+<style>
+    body{
+        position: relative;
+    }
+    img:hover{
+        width: 300px !important;
+        position: absolute;
+        transition: width 1s;
+    }
+</style>
 <!-- DataTales Example -->
-<div class="card shadow mb-4">
+<div class="card shadow mb-5">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Danh sách sản phẩm</h6>
     </div>
@@ -48,7 +58,6 @@
                         <td>
                             <a href="{{url('/product/delete/'.$item->id)}}" class="text-danger"><i class="fas fa-trash"></i></a>
                             <a href="{{url('/admin/product/edit/'.$item->id)}}" class="text-primary"><i class="fas fa-edit"></i></a>
-                          
                         </td>
                     </tr>
                     @endforeach
