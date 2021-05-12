@@ -46,6 +46,9 @@ Route::post('user/login','UserController@postLogin');
 //logout
 Route::get('user/logout','UserController@Logout');
 //register
+Route::get('user/them','UserController@getThem');
+Route::post('user/them','UserController@postThem');
+
 Route::group(['prefix'=>'user'],function(){
     Route::get('danhsach','UserController@layDanhSach');
     

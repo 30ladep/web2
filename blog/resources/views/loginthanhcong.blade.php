@@ -1,3 +1,5 @@
-@if($user)
-    {{$user->name}}
-@endif
+{{
+    echo "<pre>";
+        print_r( $request);
+    echo "</pre>";
+}}
