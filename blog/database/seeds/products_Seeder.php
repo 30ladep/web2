@@ -35,9 +35,6 @@ class products_Seeder extends Seeder
                 'sold' => rand(1,50),
                 'view'=> rand(25,520),
                 'color'=>Str::random($color[0],$color[6])
-              
-                               
-
             ]->where('id',$i));
         }
        
