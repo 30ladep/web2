@@ -6,14 +6,33 @@
     <div class="top-bar-line">
       <div class="row">
         <div class="top-bar-links">
-          <ul class="col-sm-6 top-bar-acc">
-              @if(isset($user))
-              <li class="top-bar-link"><a href="#">{{$user->name}}</a></li>
-              @endif
-           
-            <li class="top-bar-link"><a href="{!! url('/login')!!}">Login</a></li>       
-            <li class="top-bar-link"><a href="{!! url('/')!!}">Logout</a></li>
-            <li class="top-bar-link"><a href="{{url('/contact')}}">Contact</a></li>
+          <ul class="col-sm-6 top-bar-acc">          
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+               
+            @else
+            
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>                  
+                           {{ Auth::user()->username }} 
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                     </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+       
+            @endguest
           </ul>
 
           <ul class="col-sm-6 text-right top-bar-currency-language">
