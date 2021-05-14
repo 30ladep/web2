@@ -67,27 +67,27 @@ class UserController extends Controller
     }
 
     //post login
-    public function postLogin(Request $request){
-        $this->validate($request,[
-            'email'=>'required|',
-            'password'=>'required|min:3|max:30'
+    // public function postLogin(Request $request){
+    //     $this->validate($request,[
+    //         'email'=>'required|',
+    //         'password'=>'required|min:3|max:30'
 
-        ],
-        [
-            'email.required'=>'Ban chua nhap email',
-            'password.required'=>'Ban chua nhap password',
-            'password.min'=>'Password phai co hon 3 ky tu',
-            'password.man'=>'Password toi da 30 ky tu'
-        ]);
+    //     ],
+    //     [
+    //         'email.required'=>'Ban chua nhap email',
+    //         'password.required'=>'Ban chua nhap password',
+    //         'password.min'=>'Password phai co hon 3 ky tu',
+    //         'password.man'=>'Password toi da 30 ky tu'
+    //     ]);
 
-        //Auth
-        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
-            return ridirect('index');
-        }
-        else
-        {
-            return ridirect('login')->with('thongbao','dang nhap khong thanh cong');
-        }
-    }
+    //     //Auth
+    //     if(Auth::attempt(['email'=>$request->email,'password'=>$request->password])){
+    //         return ridirect('index');
+    //     }
+    //     else
+    //     {
+    //         return ridirect('login')->with('thongbao','dang nhap khong thanh cong');
+    //     }
+    // }
 
 }
