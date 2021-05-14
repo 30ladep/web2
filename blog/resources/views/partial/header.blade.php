@@ -11,8 +11,8 @@
               <li class="top-bar-link"><a href="#">{{$user->name}}</a></li>
               @endif
            
-            <li class="top-bar-link"><a href="{!! url('user/login')!!}">Login</a></li>
-            <li class="top-bar-link"><a href="{!! url('user/login')!!}">Logout</a></li>
+            <li class="top-bar-link"><a href="{!! url('/login')!!}">Login</a></li>       
+            <li class="top-bar-link"><a href="{!! url('/')!!}">Logout</a></li>
             <li class="top-bar-link"><a href="{{url('/contact')}}">Contact</a></li>
           </ul>
 

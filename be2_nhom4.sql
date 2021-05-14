@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3309
--- Generation Time: May 11, 2021 at 12:08 PM
+-- Generation Time: May 14, 2021 at 10:06 AM
 -- Server version: 10.3.14-MariaDB
--- PHP Version: 7.2.18
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `be2_nhom4`
+-- Database: `demoauth`
 --
 
 -- --------------------------------------------------------
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `image_products` (
 --
 
 INSERT INTO `image_products` (`id`, `product_id`, `image_product`, `created_at`, `updated_at`) VALUES
-(1, 2, '655105_XKBWE_9275_002_100_0000_Light.jpg', '2021-05-10 06:14:00', '2021-05-10 06:14:00'),
+(1, 2, '655105_XKBWE_9275_002_100_0000_Light.jpg', '2021-05-09 23:14:00', '2021-05-09 23:14:00'),
 (2, 2, '655105_XKBWE_9275_004_100_0000_Light.jpg', NULL, NULL),
 (3, 2, '655105_XKBWE_9275_005_100_0000_Light.jpg', NULL, NULL),
 (4, 2, '655105_XKBWE_9275_010_100_0000_Light.jpg', NULL, NULL),
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -206,18 +206,20 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
-(2, '2019_08_19_000000_create_failed_jobs_table', 1),
-(3, '2021_05_01_091019_create_type_users_table', 1),
-(4, '2021_05_01_091259_create_contacts_table', 1),
-(5, '2021_05_01_091419_create_partners_table', 1),
-(6, '2021_05_01_091525_create_manufactures_table', 1),
-(7, '2021_05_01_091711_create_type_products_table', 1),
-(8, '2021_05_01_091913_create_evalutes_table', 1),
-(9, '2021_05_01_092510_create_bills_table', 1),
-(10, '2021_05_01_092647_create_detail_bills_table', 1),
-(11, '2021_05_01_092745_create_products_table', 1),
-(12, '2021_05_05_022844_create_image_products_table', 1),
-(13, '2021_05_08_060726_create_roles_table', 1);
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2021_05_01_091019_create_type_users_table', 1),
+(5, '2021_05_01_091259_create_contacts_table', 1),
+(6, '2021_05_01_091419_create_partners_table', 1),
+(7, '2021_05_01_091525_create_manufactures_table', 1),
+(8, '2021_05_01_091711_create_type_products_table', 1),
+(9, '2021_05_01_091913_create_evalutes_table', 1),
+(10, '2021_05_01_092510_create_bills_table', 1),
+(11, '2021_05_01_092647_create_detail_bills_table', 1),
+(12, '2021_05_01_092745_create_products_table', 1),
+(13, '2021_05_05_022844_create_image_products_table', 1),
+(14, '2021_05_08_060726_create_roles_table', 1),
+(15, '2021_05_11_222407_delete_column_user', 1);
 
 -- --------------------------------------------------------
 
@@ -233,6 +235,19 @@ CREATE TABLE IF NOT EXISTS `partners` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -388,7 +403,16 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `role_name`, `created_at`, `updated_at`) VALUES
+(1, 'user', NULL, NULL),
+(2, 'admin', NULL, NULL),
+(3, 'super_admin', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -427,7 +451,15 @@ CREATE TABLE IF NOT EXISTS `type_users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `type_users`
+--
+
+INSERT INTO `type_users` (`id`, `type_user_name`, `created_at`, `updated_at`) VALUES
+(1, 'customer', NULL, NULL),
+(2, 'vip', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -441,7 +473,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token_cart` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_user_id` int(11) NOT NULL,

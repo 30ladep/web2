@@ -33,15 +33,8 @@ Route::get('testHasOne',function(){
    // echo "</pre>";
 });
 
-//authencation
-Route::get('user/login',function(){
-    return view('login');
-});
 
 
-//login
-Route::get('user/login','UserController@getLogin');
-Route::post('user/login','UserController@postLogin');
 
 //logout
 Route::get('user/logout','UserController@Logout');
@@ -121,3 +114,6 @@ Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
 // Route::get('/gioithieu', 'WellcomeController@GioiThieu');
 // Route::get('/lienhe', 'WellcomeController@LienHe');
 // Route::get('/sanpham/{product?}', 'WellcomeController@SanPham');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
