@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3309
--- Generation Time: May 14, 2021 at 10:06 AM
+-- Generation Time: May 14, 2021 at 03:12 PM
 -- Server version: 10.3.14-MariaDB
 -- PHP Version: 7.3.5
 
@@ -474,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token_cart` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token_cart` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type_user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -483,7 +483,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   KEY `users_type_user_id_foreign` (`type_user_id`),
   KEY `users_role_id_foreign` (`role_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `token_cart`, `type_user_id`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'teo', '$2y$10$gXWm3aJnyNqVMKhkK5VKK.fgIo2zeBT.MGbjHrPzS2mkA3gqC4x4i', 'teo@gmail.com', '1234567891', NULL, 1, 0, 'KtgizNrql6AQX3aQUcLafAQWBnkgnuIpm1teoSxbndlo4JCu5jUMjfT0RVP5', NULL, NULL),
+(2, 'teodeptrai', '$2y$10$AuKz0wa1SV0I.uDSukei3eMmVg5r1PTQt20JyzNd4E48wI.WPZWO2', 'teodeptrai@gmail.com', '1234567889', NULL, 1, 0, NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
