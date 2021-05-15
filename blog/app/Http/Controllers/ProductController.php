@@ -9,9 +9,17 @@ use DB;
 
 class ProductController extends Controller
 {
- 
+    //get all product
     function getAllProduct(){
         $products= Product::all();
+        return view('index',array(
+            'products' => $products
+        ));
+    }
+
+    //get all product with paginate 
+    function getAllProductPaginate(){
+        $products = Product::paginate(10);
         return view('index',array(
             'products' => $products
         ));

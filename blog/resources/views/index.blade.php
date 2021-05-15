@@ -107,12 +107,13 @@
                 </span>
               </div>
             </div>
-          </div>
+          </div> 
         @endforeach
-                     
-
+      
+         
         </div> <!-- end row -->
       </div>
+      {{$products->links()}}
     </section> <!-- end new arrivals -->
 
     <!-- Best Sellers -->

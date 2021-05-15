@@ -33,36 +33,16 @@ Route::get('testHasOne',function(){
    // echo "</pre>";
 });
 
+//Auth router
+Auth::routes();
 
-
-
-//logout
-Route::get('user/logout','UserController@Logout');
-//register
-Route::get('user/them','UserController@getThem');
-Route::post('user/them','UserController@postThem');
-
-Route::group(['prefix'=>'user'],function(){
-    Route::get('danhsach','UserController@layDanhSach');
-    
-    Route::get('sua/{id}','UserController@getSua');
-    Route::post('sua/{id}','UserController@postSua');
-
-    Route::get('them','UserController@getThem');
-    Route::post('them','UserController@postThem');
-
-    Route::get('xoa/{id}','UserController@getXoa');
-});
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 //admin route
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 Route::post('/admin/UploadImageProduct','AdminController@UploadImageProduct');
-
-
-//user route
-Route::get('allproducts','ProductController@getAllProduct');
 
 
 
@@ -85,35 +65,7 @@ Route::get('/report/bestsale', 'ReportController@bestsale');
 Route::get('/report/bestview', 'ReportController@bestview');
 Route::get('/report/sales', 'ReportController@sales');
 
-Route::get('/','ProductController@getAllProduct');
+Route::get('/','ProductController@getAllProductPaginate');
 Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
-//test detail route
-// Route::get('allproducts/{id?}  ',function($id){
-//     echo "dit me".$id;
-//     $productsDetailByID = Product::get()->where('id',$id)->toArray();
-//      echo "<pre>";
-//     print_r($productsDetailByID);
-//     echo "</pre>";
-// });
-//test 
-// Route::get('allproducts',function(){
-//     $data= Product::all()->toArray();
-//     echo "<pre>";
-//     foreach ($data as $key => $value) {
-//         print_r($value);
-//     }
-  
-//     echo "</pre>";
-// });
-//Route::get('products','HomeController@getAllProducts');
-//Route::get('/{controller?}', 'HomeController@Index');
 
-//Route::get('/', 'HomeController@Index');
-// Route::get('/admin')->middleware("CheckAge");
-// Route::get('/{controller?}/{id?}', 'WellcomeController@Index');
-// Route::get('/gioithieu', 'WellcomeController@GioiThieu');
-// Route::get('/lienhe', 'WellcomeController@LienHe');
-// Route::get('/sanpham/{product?}', 'WellcomeController@SanPham');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
