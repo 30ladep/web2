@@ -19,16 +19,16 @@ class ProductController extends Controller
 
     //get all product with paginate 
     function getAllProductPaginate(){
-        $products = Product::paginate(10);
+        $products = Product::paginate(12);
+        $productsBestSeller = Product::all()->take(8)->sortBy('sold');
         return view('index',array(
-            'products' => $products
+            'products' => $products,'productsbestseller'=>$productsBestSeller
         ));
     }
 
     //get detail product
     function getDetailProductByID(Request $request){       
-        $id = $request->id;
-        // $productsDetailByID = Product::find($id)->first();   
+        $id = $request->id;        
         $productsDetailByID = Product::where('id',$id)->first();
         return view('shop-single-product',['products'=>$productsDetailByID]);
     }        
@@ -40,7 +40,20 @@ class ProductController extends Controller
         $typeIDproduct = Prododuct::where('id',$id)->select('type_id');
         $productsRelated = Product::where('type_id',$id)->get();
     }
+    
 
+    //get product search
+    function searchProduct(Request $request){
+        $keysword = $request->timkiem;
+        $products = Product::where('product_name','like',"%$keysword%")->orWhere('note','like',"%$keysword%")->take(15)->paginate(8);
+        $productsBestSeller = Product::all()->take(8)->sortBy('sold');
+        return view('searchproduct',['products'=>$products,'tukhoa'=>$keysword,'productsbestseller'=>$productsBestSeller]);
+    }
+
+    //get product best seller 
+    function getProductBestSeller(){
+        $products = Product::all()->sort('sold');
+    }
    
     
 }

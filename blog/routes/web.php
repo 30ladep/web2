@@ -33,6 +33,9 @@ Route::get('testHasOne',function(){
    // echo "</pre>";
 });
 
+//tim kiem product
+Route::post('/search','ProductController@searchProduct');
+
 //Auth router
 Auth::routes();
 
