@@ -23,7 +23,7 @@
               <div class="col-md-8">
                 <p class="ecommerce-info">
                   Returning Customer? 
-                  <a href="#" class="showlogin">Click here to login</a>
+                <a href="{{ route('login')}}" class="showlogin">Click here to login</a>
                 </p>
               </div>
             </div>

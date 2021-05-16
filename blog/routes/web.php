@@ -14,24 +14,33 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//test cart 
 
+Route::get('add-cart/{id}',['as'=>'add-cart','uses'=>'ProductController@addCart']);
+Route::get('cart',['as'=>'cart','uses'=>'ProductController@cart']);
+//test cart
+// Route::get('cart/{id}',['as'=>'cart',function($id){
+//    // echo "dmcs";
+//    $productByID = DB::table('products')->where('id',$id)->first();
+//    Cart::add(array('id'=>$id,'name'=>$productByID->product_name,'qty'=>1,'price'=>$productByID->price,'weight'=>0,'options'=>array( 'image'=>$productByID->image,'sold'=>$productByID->sold,'hot'=>$productByID->hot,'note'=>$productByID->note,'create_date'=>$productByID->create_date)));
+
+//    echo "<pre>";
+//    print_r(Cart::content());
+//    echo "</pre>";
+// }]);
 
 //test lien ket 
-Route::get('testHasOne',function(){
-    // $product = Product::where('id',5)->get()->toArray();
-    // $typeID = Product::where('id',5)->select('type_id')->get()->toArray();
-    // $
-    // var_dump($typeIDproduct);
-    // var_dump($typeIDproduct->type_name);
-    // var_dump($product);
-    // $product =Product::find(6)->get()->toArray();
-    // echo "<pre>";
-    // foreach ($typeIDproduct as $key) {
-    //     var_dump($typeIDproduct);
-    // }
-    // var_dump($product);
-   // echo "</pre>";
+Route::get('/shop-cart',function(){
+   return view('shop-cart');
 });
+
+Route::get('/shop-checkout',function(){
+    return view('shop-checkout');
+ });
+
+//product
+Route::get('/','ProductController@getAllProductPaginate');
+Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
 
 //tim kiem product
 Route::post('/search','ProductController@searchProduct');
@@ -68,7 +77,5 @@ Route::get('/report/bestsale', 'ReportController@bestsale');
 Route::get('/report/bestview', 'ReportController@bestview');
 Route::get('/report/sales', 'ReportController@sales');
 
-Route::get('/','ProductController@getAllProductPaginate');
-Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
 
 

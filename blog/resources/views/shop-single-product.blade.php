@@ -1,6 +1,7 @@
 @extends('layout.master_layout')
 @section('content')
 
+{{-- {{ dd($products)}} --}}
 
 <!-- Breadcrumbs -->
 <div class="container">
@@ -22,9 +23,7 @@
     <section class="section-wrap single-product">
       <div class="container relative">
         <div class="row">
-
           <div class="col-sm-6 col-xs-12 mb-60">
-
             <div class="flickity flickity-slider-wrap mfp-hover" id="gallery-main">
               @foreach ($products->ImageProduct  as $item => $value)
               <div class="gallery-cell">
@@ -60,10 +59,10 @@
             </span>
             <span class="price">
               <del>
-                <span>$1550.00</span>
+                <span>{!!number_format(($products->price)*2)!!}</span>
               </del>
               <ins>
-                <span class="ammount">{!!$products->price!!}</span>
+                <span class="ammount">>{!!number_format($products->price)!!}</span>
               </ins>
             </span>
             <p class="product-description">{!!$products->note!!}</p>
@@ -94,7 +93,7 @@
             <ul class="product-actions clearfix">
               
               <li>
-                <a href="#" class="btn btn-color btn-lg add-to-cart left"><span>Add to Cart</span></a>
+              <a href="{!!url('add-cart',[$products->id,$products->alias])!!}" class="btn btn-color btn-lg add-to-cart left"><span>Add to Cart</span></a>
               </li>                
               <li>
                 <div class="icon-add-to-wishlist left">

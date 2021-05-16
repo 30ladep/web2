@@ -21,6 +21,14 @@ return [
         'vendor/symfony/console/',
         'vendor/symfony/var-dumper/',
     ],
+    
+    'providers'=>[
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+    ],
+    
+    'aliases '=>[
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class
+    ],
 
     // A directory list that defines files that will be excluded
     // from static analysis, but whose class and method
