@@ -29,7 +29,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                {{-- {{dd($cart)}} --}}
+               
                 @foreach ($cart as $item)
                   <tr class="cart_item">
                       <td class="product-thumbnail">
@@ -49,7 +49,9 @@
                       </td>
                       <td class="product-quantity">
                         <div class="quantity buttons_added">
-                          <input type="button" value="-" class="minus" /><input type="number" step="1" min="0" value="{!!$item->qty!!}" title="Qty" class="input-text qty text" /><input type="button" value="+" class="plus">
+                        <input type="button" src="{!!url()!!}" value="-" class="minus" />
+                          <input type="number" step="1" min="0" value="{!!$item->qty!!}" title="Qty" class="input-text qty text" />
+                          <input type="button" src="{!!url()!!} value="+" class="plus">
                         </div>
                       </td>
                       <td class="product-subtotal">
@@ -68,12 +70,7 @@
             </div>
 
             <div class="row mb-50">
-              <div class="col-md-5 col-sm-12">
-                <div class="coupon">
-                  <input type="text" name="coupon_code" id="coupon_code" class="input-text form-control" value placeholder="Coupon code">
-                  <input type="submit" name="apply_coupon" class="btn btn-md btn-dark" value="Apply">
-                </div>
-              </div>
+              
 
               <div class="col-md-7">
                 <div class="actions right">

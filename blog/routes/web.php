@@ -16,8 +16,26 @@ use Illuminate\Http\Request;
 */
 //test cart 
 
+Route::get('testdec',function(){
+   $cart = Cart::content(); 
+  
+  // $rowId = $cart[0];
+  
+   foreach ($cart as $key=>$value) {
+      echo "<pre>";
+      print_r($value);
+      echo "</pre>";
+   }
+ 
+   //Cart::update($rowId, 0); // Will update the quantity
+});
+
 Route::get('add-cart/{id}',['as'=>'add-cart','uses'=>'ProductController@addCart']);
 Route::get('cart',['as'=>'cart','uses'=>'ProductController@cart']);
+//decrement quality 
+Route::get('de-quality',['as'=>'de-quality','uses'=>'ProductController@deQuality']);
+//incremnet quality
+Route::get('in-quality',['as'=>'in-quality','uses'=>'ProductController@inQuality']);
 //test cart
 // Route::get('cart/{id}',['as'=>'cart',function($id){
 //    // echo "dmcs";

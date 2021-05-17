@@ -62,8 +62,6 @@ class ProductController extends Controller
         Cart::add(array('id'=>$id,'name'=>$productByID->product_name,'qty'=>1,'price'=>$productByID->price,'weight'=>0,'options'=>array( 'image'=>$productByID->image,'sold'=>$productByID->sold,'hot'=>$productByID->hot,'note'=>$productByID->note,'create_date'=>$productByID->create_date)));
         
         return redirect()->route('cart');
-
-       
     }
    
     //cart
@@ -72,5 +70,18 @@ class ProductController extends Controller
         $cart_priceTotal = Cart::priceTotal();
         return view('shop-cart',compact('cart','cart_priceTotal'));
     }
+
+    //decrement quality
+    function deQuality($rowid){
+        $cart = Cart::content(); 
+        $rowId = $cart::rowID();
+        
+        Cart::update($rowId, 0); // Will update the quantity
+        return redirect()->route('cart');
+    }
     
+    //increment quality
+    function inQuality($rowid){
+        
+    }
 }
