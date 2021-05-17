@@ -14,7 +14,20 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//test cart 
 
+Route::get('add-cart/{id}',['as'=>'add-cart','uses'=>'ProductController@addCart']);
+Route::get('cart',['as'=>'cart','uses'=>'ProductController@cart']);
+//test cart
+// Route::get('cart/{id}',['as'=>'cart',function($id){
+//    // echo "dmcs";
+//    $productByID = DB::table('products')->where('id',$id)->first();
+//    Cart::add(array('id'=>$id,'name'=>$productByID->product_name,'qty'=>1,'price'=>$productByID->price,'weight'=>0,'options'=>array( 'image'=>$productByID->image,'sold'=>$productByID->sold,'hot'=>$productByID->hot,'note'=>$productByID->note,'create_date'=>$productByID->create_date)));
+
+//    echo "<pre>";
+//    print_r(Cart::content());
+//    echo "</pre>";
+// }]);
 
 //test lien ket 
 Route::get('/shop-cart',function(){
@@ -27,14 +40,18 @@ Route::get('/shop-checkout',function(){
 
 //product
 Route::get('/','ProductController@getAllProductPaginate');
-Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
+//chi tiet san pham
+// Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
+Route::get('shop-single-product/{id?}',[
+   'as'=>'detailProduct',
+   'uses'=>'ProductController@getDetailProductByID']
+   );
 
 //tim kiem product
 Route::post('/search','ProductController@searchProduct');
 
 //Auth router
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -45,10 +62,7 @@ Route::post('/admin/UploadImageProduct','AdminController@UploadImageProduct');
 
 
 
-Route::get('shop-single-product/{id?}',[
-'as'=>'detailProduct',
-'uses'=>'ProductController@getDetailProductByID']
-);
+
 
 //AdminController - product
 Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');

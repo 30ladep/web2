@@ -85,14 +85,7 @@
                 <div class="product-label">
                   <span class="sale">sale</span>
                 </div>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
+                
                 <a href="{{url('shop-single-product?id='.$item->id)}}" class="product-quickview">Quick View</a>
               </div>
               <div class="product-details">

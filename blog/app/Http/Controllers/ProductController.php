@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\Product;
-use DB;
+use DB,Cart;
 
 class ProductController extends Controller
 {
@@ -55,6 +55,22 @@ class ProductController extends Controller
     function getProductBestSeller(){
         $products = Product::all()->sort('sold');
     }
+
+    //addcart
+    function addCart($id){
+        $productByID = DB::table('products')->where('id',$id)->first();
+        Cart::add(array('id'=>$id,'name'=>$productByID->product_name,'qty'=>1,'price'=>$productByID->price,'weight'=>0,'options'=>array( 'image'=>$productByID->image,'sold'=>$productByID->sold,'hot'=>$productByID->hot,'note'=>$productByID->note,'create_date'=>$productByID->create_date)));
+        
+        return redirect()->route('cart');
+
+       
+    }
    
+    //cart
+    function cart(){
+        $cart = Cart::content(); 
+        $cart_priceTotal = Cart::priceTotal();
+        return view('shop-cart',compact('cart','cart_priceTotal'));
+    }
     
 }

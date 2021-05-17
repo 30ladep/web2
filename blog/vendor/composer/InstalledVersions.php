@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '7a3f1d95cf40b1d82cfde68ea946012ef0c0ef77',
+    'reference' => '858b964b947b8f083020cd84d947e617a967d353',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -52,6 +52,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
+    ),
+    'bumbummen99/shoppingcart' => 
+    array (
+      'pretty_version' => '4.0.0',
+      'version' => '4.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f2c763e311b0fc58b2dfdfa2c41c6318a7c884e1',
     ),
     'cordoval/hamcrest-php' => 
     array (
@@ -437,7 +446,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '7a3f1d95cf40b1d82cfde68ea946012ef0c0ef77',
+      'reference' => '858b964b947b8f083020cd84d947e617a967d353',
     ),
     'laravel/tinker' => 
     array (
