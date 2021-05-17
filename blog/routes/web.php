@@ -40,14 +40,18 @@ Route::get('/shop-checkout',function(){
 
 //product
 Route::get('/','ProductController@getAllProductPaginate');
-Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
+//chi tiet san pham
+// Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
+Route::get('shop-single-product/{id?}',[
+   'as'=>'detailProduct',
+   'uses'=>'ProductController@getDetailProductByID']
+   );
 
 //tim kiem product
 Route::post('/search','ProductController@searchProduct');
 
 //Auth router
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -58,10 +62,7 @@ Route::post('/admin/UploadImageProduct','AdminController@UploadImageProduct');
 
 
 
-Route::get('shop-single-product/{id?}',[
-'as'=>'detailProduct',
-'uses'=>'ProductController@getDetailProductByID']
-);
+
 
 //AdminController - product
 Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');

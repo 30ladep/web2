@@ -68,7 +68,9 @@ class ProductController extends Controller
    
     //cart
     function cart(){
-        return view('shop-cart');
+        $cart = Cart::content(); 
+        $cart_priceTotal = Cart::priceTotal();
+        return view('shop-cart',compact('cart','cart_priceTotal'));
     }
     
 }
