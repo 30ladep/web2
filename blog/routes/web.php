@@ -17,21 +17,17 @@ use Illuminate\Http\Request;
 
 
 //test lien ket 
-Route::get('testHasOne',function(){
-    // $product = Product::where('id',5)->get()->toArray();
-    // $typeID = Product::where('id',5)->select('type_id')->get()->toArray();
-    // $
-    // var_dump($typeIDproduct);
-    // var_dump($typeIDproduct->type_name);
-    // var_dump($product);
-    // $product =Product::find(6)->get()->toArray();
-    // echo "<pre>";
-    // foreach ($typeIDproduct as $key) {
-    //     var_dump($typeIDproduct);
-    // }
-    // var_dump($product);
-   // echo "</pre>";
+Route::get('/shop-cart',function(){
+   return view('shop-cart');
 });
+
+Route::get('/shop-checkout',function(){
+    return view('shop-checkout');
+ });
+
+//product
+Route::get('/','ProductController@getAllProductPaginate');
+Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
 
 //tim kiem product
 Route::post('/search','ProductController@searchProduct');
@@ -68,7 +64,5 @@ Route::get('/report/bestsale', 'ReportController@bestsale');
 Route::get('/report/bestview', 'ReportController@bestview');
 Route::get('/report/sales', 'ReportController@sales');
 
-Route::get('/','ProductController@getAllProductPaginate');
-Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
 
 

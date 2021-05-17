@@ -106,7 +106,7 @@
                 <div class="actions right">
                   <input type="submit" name="update_cart" value="Update Cart" class="btn btn-md btn-dark">
                   <div class="wc-proceed-to-checkout">
-                    <a href="checkout.html" class="btn btn-md btn-color"><span>proceed to checkout</span></a>
+                  <a href="{{url('shop-checkout')}}" class="btn btn-md btn-color"><span>proceed to checkout</span></a>
                   </div>
                 </div>
               </div>
