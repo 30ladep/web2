@@ -238,5 +238,9 @@
       height: 260px;
       display: inline-block;
     }
+    .pagination{
+      margin: 0 auto;
+      display: inline-block;
+    }
   </style>
 </header> <!-- end navigation -->
