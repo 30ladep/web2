@@ -47,18 +47,41 @@
                       <td class="product-price">
                         <span class="amount">{!!$item->price!!}</span>
                       </td>
+
                       <td class="product-quantity">
+                          <div class="cart_quantity_button">
+                              
+                              <form method="POST" action="{{url("cart?product_id=$item->id&increment=1")}}">
+                                  <input type="hidden" name="product_id" value="{{ $item->id }}">
+                                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                  <button type="submit" class="cart_quantity_up">
+                                      +
+                                  </button>
+                              </form>
+                              <input class="cart_quantity_input" type="text" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2">
+                              <a class="cart_quantity_down" href="{{url("cart?product_id=$item->id&decrease=1")}}"> - </a>
+                          </div>
+                       </td>
+                      {{-- <td class="product-quantity">
                         <div class="quantity buttons_added">
-                        <input type="button" src="{!!url()!!}" value="-" class="minus" />
+                          {{-- <form action="{!!url('de-quality',$item->rowId)!!}" method="get">
+                              <input type="submit"  value="-" class="minus" />
+                          </form> --}}
+                          {{-- <a class="cart_quantity_up" href='{{url("cart?product_id=$item->id&increment=1")}}'> + </a>
                           <input type="number" step="1" min="0" value="{!!$item->qty!!}" title="Qty" class="input-text qty text" />
-                          <input type="button" src="{!!url()!!} value="+" class="plus">
+                          <a class="cart_quantity_down" href='{{url("cart?product_id=$item->id&decrease=1")}}'> - </a> --}}
+                        
+                          {{-- <form action="{!!url('in-quality',$item->rowId)!!}" method="get">
+                              <input type="submit" value="+" class="plus">
+                          </form> --}}
+                          
                         </div>
-                      </td>
+                      </td> --}}
                       <td class="product-subtotal">
                         <span class="amount">{!!number_format($item->price*$item->qty,0,",",".").'vnd' !!}</span>
                       </td>
-                      <td class="product-remove">
-                        <a href="#" class="remove" title="Remove this item">
+                      <td class="product-remove">                       
+                        <a href="{!!url('delete-item',$item->rowId)!!}" class="remove" title="Remove this item">
                           <i class="icon icon_close"></i>
                         </a>
                       </td>
@@ -74,7 +97,8 @@
 
               <div class="col-md-7">
                 <div class="actions right">
-                  <input type="submit" name="update_cart" value="Update Cart" class="btn btn-md btn-dark">
+                    <a href="{{url('shop-update')}}" class="btn btn-md btn-dark"><span>Update Cart</span></a>
+                  {{-- <input type="submit" name="update_cart" value="Update Cart" class="btn btn-md btn-dark"> --}}
                   <div class="wc-proceed-to-checkout">
                   <a href="{{url('shop-checkout')}}" class="btn btn-md btn-color"><span>proceed to checkout</span></a>
                   </div>

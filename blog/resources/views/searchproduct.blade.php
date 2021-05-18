@@ -72,14 +72,14 @@
         </div>
 
         <div class="row row-10">              
-        @if($products=="")
+        @if($products_search==" ")
             <div class="row heading-row">
             <div class="col-md-12 text-center">
             <h2 class="heading uppercase"><small> Khong co san pham:  {!! $tukhoa!!}</small></h2>
             </div>
             </div>
         @else
-                @foreach($products as $item)
+                @foreach($products_search as $item)
                 
                 <div class="col-md-3 col-xs-6">
                     <div class="product-item">
@@ -118,7 +118,7 @@
         
         <div class="row">
           <div class="col-md-12 text-center">
-            {{$products->links('pagination::bootstrap-4')}}
+            {{$products_search->withQueryString()->links()}}
           </div>
         </div>
       </div>

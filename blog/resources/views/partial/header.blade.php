@@ -82,8 +82,8 @@
 
               <!-- Search -->
               <div class="nav-search hidden-sm hidden-xs">
-                <form method="POST" action="{{url('search')}}">
-                  @csrf
+                <form method="get" action="{{url('search')}}">
+                  {{-- @csrf --}}
                   <input type="search" class="form-control" name="timkiem" placeholder="Nhap ten san pham">
                   <button type="submit" class="search-button">
                     <i class="icon icon_search"></i>
@@ -94,7 +94,7 @@
               <!-- Logo -->
               <div class="logo-container">
                 <div class="logo-wrap text-center">
-                  <a href="index.html">
+                  <a href="{{url('/')}}">
                     <img class="logo" src="{{url('/img/logo_dark.png')}}" alt="logo">
                   </a>
                 </div>

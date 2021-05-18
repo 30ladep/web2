@@ -46,9 +46,17 @@ class ProductController extends Controller
     //get product search
     function searchProduct(Request $request){
         $keysword = $request->timkiem;
-        $products = Product::where('product_name','like',"%$keysword%")->orWhere('note','like',"%$keysword%")->take(15)->paginate(8);
+         $products_search = Product::where('product_name','like',"%$keysword%")->orWhere('note','like',"%$keysword%")->take(16)->paginate(8);
+
+        // echo "<pre>";
+        // print_r($products_search);
+        // echo "</pre>";
+        // $products_search = Product::search($keysword)->take(16)->paginate(8);
+        //     echo "<pre>";
+        //     print_r($products_search);
+        //     echo "</pre>";
         $productsBestSeller = Product::all()->take(8)->sortBy('sold');
-        return view('searchproduct',['products'=>$products,'tukhoa'=>$keysword,'productsbestseller'=>$productsBestSeller]);
+        return view('searchproduct',['products_search'=>$products_search,'tukhoa'=>$keysword,'productsbestseller'=>$productsBestSeller]);
     }
 
     //get product best seller 
@@ -72,16 +80,18 @@ class ProductController extends Controller
     }
 
     //decrement quality
-    function deQuality($rowid){
-        $cart = Cart::content(); 
-        $rowId = $cart::rowID();
-        
-        Cart::update($rowId, 0); // Will update the quantity
+    function deQuality($rowID){
+        $row = Cart::get($rowID);
+        Cart::update($rowID,$row->qty -=1);
+        $content = Cart::content();  
         return redirect()->route('cart');
     }
     
     //increment quality
-    function inQuality($rowid){
-        
+    function inQuality($rowID){
+        $row = Cart::get($rowID);
+        Cart::update($rowID,$row->qty +=1);
+        $content = Cart::content();
+        return redirect()->route('cart');
     }
 }
