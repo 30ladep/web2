@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3309
--- Generation Time: May 16, 2021 at 12:12 PM
+-- Generation Time: May 18, 2021 at 03:54 PM
 -- Server version: 10.3.14-MariaDB
 -- PHP Version: 7.3.5
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 DROP TABLE IF EXISTS `detail_bills`;
 CREATE TABLE IF NOT EXISTS `detail_bills` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `bill_id` int(11) NOT NULL,
+  `bill_id` int(11) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
   `count_product` int(11) NOT NULL,
   `count_price` double(8,2) NOT NULL,
@@ -80,7 +80,17 @@ CREATE TABLE IF NOT EXISTS `detail_bills` (
   PRIMARY KEY (`id`),
   KEY `detail_bills_bill_id_foreign` (`bill_id`),
   KEY `detail_bills_product_id_foreign` (`product_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `detail_bills`
+--
+
+INSERT INTO `detail_bills` (`id`, `bill_id`, `product_id`, `count_product`, `count_price`, `created_at`, `updated_at`) VALUES
+(9, NULL, 3, 1, 1800.00, NULL, NULL),
+(6, NULL, 8, 1, 980.00, NULL, NULL),
+(8, NULL, 3, 1, 1800.00, NULL, NULL),
+(7, NULL, 6, 1, 1400.00, NULL, NULL);
 
 -- --------------------------------------------------------
 

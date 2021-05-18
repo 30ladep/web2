@@ -34,7 +34,7 @@
                   <tr class="cart_item">
                       <td class="product-thumbnail">
                         <a href="#">
-                          <img src="{{url('/img/image_product/'.$item->image)}}" alt="">
+                          <img src="{{url('/img/image_product/'.$item->options->image)}}" alt="">
                         </a>
                       </td>
                       <td class="product-name">
@@ -48,35 +48,22 @@
                         <span class="amount">{!!$item->price!!}</span>
                       </td>
 
+                     
                       <td class="product-quantity">
-                          <div class="cart_quantity_button">
-                              
-                              <form method="POST" action="{{url("cart?product_id=$item->id&increment=1")}}">
-                                  <input type="hidden" name="product_id" value="{{ $item->id }}">
-                                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                  <button type="submit" class="cart_quantity_up">
-                                      +
-                                  </button>
-                              </form>
-                              <input class="cart_quantity_input" type="text" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2">
-                              <a class="cart_quantity_down" href="{{url("cart?product_id=$item->id&decrease=1")}}"> - </a>
-                          </div>
-                       </td>
-                      {{-- <td class="product-quantity">
                         <div class="quantity buttons_added">
-                          {{-- <form action="{!!url('de-quality',$item->rowId)!!}" method="get">
+                          <form action="{!!url('de-quality',$item->rowId)!!}" method="get">
                               <input type="submit"  value="-" class="minus" />
-                          </form> --}}
-                          {{-- <a class="cart_quantity_up" href='{{url("cart?product_id=$item->id&increment=1")}}'> + </a>
+                          </form> 
+                          {{-- <a class="cart_quantity_up" href='{{url("cart?product_id=$item->id&increment=1")}}'> + </a> --}}
                           <input type="number" step="1" min="0" value="{!!$item->qty!!}" title="Qty" class="input-text qty text" />
-                          <a class="cart_quantity_down" href='{{url("cart?product_id=$item->id&decrease=1")}}'> - </a> --}}
+                          {{-- <a class="cart_quantity_down" href='{{url("cart?product_id=$item->id&decrease=1")}}'> - </a>  --}}
                         
-                          {{-- <form action="{!!url('in-quality',$item->rowId)!!}" method="get">
+                          <form action="{!!url('in-quality',$item->rowId)!!}" method="get">
                               <input type="submit" value="+" class="plus">
-                          </form> --}}
+                          </form> 
                           
                         </div>
-                      </td> --}}
+                      </td>  
                       <td class="product-subtotal">
                         <span class="amount">{!!number_format($item->price*$item->qty,0,",",".").'vnd' !!}</span>
                       </td>
