@@ -14,17 +14,6 @@ class CartController extends Controller
     function addCart($id){
         $productByID = DB::table('products')->where('id',$id)->first();
         Cart::add(array('id'=>$id,'name'=>$productByID->product_name,'qty'=>1,'price'=>$productByID->price,'weight'=>0,'options'=>array( 'image'=>$productByID->image,'sold'=>$productByID->sold,'hot'=>$productByID->hot,'note'=>$productByID->note,'create_date'=>$productByID->create_date)));
-       
-        // $detailBill = New DetailBill();
-        // // $productByID = Product::where('id',$id)->first();
-        // // $isCheckItem = DetailBill::find();
-        // // // $productByID = DB::table('products')->where('id',$id)->first();
-        // // Cart::add(array('id'=>$id,'name'=>$productByID->product_name,'qty'=>1,'price'=>$productByID->price,'weight'=>0,'options'=>array( 'image'=>$productByID->image,'sold'=>$productByID->sold,'hot'=>$productByID->hot,'note'=>$productByID->note,'create_date'=>$productByID->create_date)));
-        // // $detailBill->product_id = $id;
-        // // $detailBill->count_product = 1;
-        // // $detailBill->count_price = $productByID->price ;
-        // // $detailBill->save();
-        
 
         return redirect()->route('cart');
     }
@@ -41,37 +30,6 @@ class CartController extends Controller
         $row = Cart::get($rowID);
         Cart::update($rowID,$row->qty -1);
 
-        // if($row->qty > 0){
-        //     $product_id =   $row->id; 
-        //     Cart::update($rowID,$row->qty -1);
-        //     $detailBill = DetailBill::find( $product_id);
-        //     $newRow = Cart::get($rowID);
-        //     $detailBill->count_product =$newRow->qty;
-        //     $detailBill->count_price = $row->price ;
-
-        //     echo "<pre>";
-        //     print_r($detailBill);
-        //     echo "</pre>";
-
-        //     //$detailBill->save();
-        // }
-        // if($row->qty ==0){
-           
-        //     $product_id =   $row->id; 
-        //     $detailBill = DetailBill::find( $product_id);
-        //     $detailBill->deltete();
-        //     echo "<pre>";
-        //     print_r($detailBill);
-        //     echo "</pre>";
-        //     Cart::remove($rowID);
-        //     //return redirect()->route('cart');
-        // }      
-        // echo "<pre>";
-        // print_r($detailBill);
-        // echo "</pre>";
-        // Cart::remove($rowID);
-   
-
        return redirect()->route('cart');
     }
     
@@ -81,12 +39,7 @@ class CartController extends Controller
         $product_id =   $row->id; 
         Cart::update($rowID,$row->qty +1);
      
-        // $detailBill = DetailBill::find( $product_id);
-        // $newRow = Cart::get($rowID);
-        // $detailBill->count_product =$newRow->qty;
-        // $detailBill->count_price = $row->price ;
-        // $detailBill->save();
-        
+   
         return redirect()->route('cart');
     }
 

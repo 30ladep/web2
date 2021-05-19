@@ -63,36 +63,6 @@ class AdminController extends Controller
 
 
 
-//    //ham them 4 hình san phẩm 
-//    public function UploadProduct(Request $request)
-//     {
-//         //dd(public_path('\img\image_product'));
-//         //dd($request->all());
-//         if($request->hasFile('image'))
-//         {
-           
-
-//             $imageName1 = time().'_'.$request->image_1->getClientOriginalName();
-//             $imageName2 = time().'_'.$request->image_2->getClientOriginalName();
-//             $imageName3 = time().'_'.$request->image_3->getClientOriginalName();
-//             $imageName4 = time().'_'.$request->image_4->getClientOriginalName();
-//             DB::table('image_products')->insert(
-//                 ['prodcut' =>
-//                 'image_product' =>$imageName1,
-//                 'image_product' =>$imageName2,   
-//                 'image_product' =>$imageName3,
-//                 'image_product' =>$imageName4 
-//                 ]
-//             );
-
-//             $request->imageName1->move(public_path('\img\image_product'), $imageName1);
-//             $request->imageName2->move(public_path('\img\image_product'), $imageName2);
-//             $request->imageName3->move(public_path('\img\image_product'), $imageName3);
-//             $request->imageName4->move(public_path('\img\image_product'), $imageName4);
-//         }
-//         return redirect('/admin/ListProduct');
-//     }
-
 
 
 
