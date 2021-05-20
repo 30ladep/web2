@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Product;
 use App\Manufacture;
-use App\TypeProduct ;
-
-class AdminController extends Controller
+class ManufactureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
         $manu = Manufacture::all();
-        $typeProduct = TypeProduct::all();
-        return view('admin-pages.ListProduct',compact('products','manu','typeProduct'));
+        return view('admin-pages.ListManufacture',compact('manu'));
     }
 
     /**
@@ -30,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin-pages.AddManufacture');
     }
 
     /**
@@ -41,7 +36,11 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $manu = new Manufacture(); 
+        $manu->manu_name = $request->manufactureName;
+        $manu->save();
+       return redirect()->route('manufacuters.index');
+     
     }
 
     /**
@@ -63,7 +62,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $manu = Manufacture::findOrFail($id);
+        return view('admin-pages.EditManufacture',compact('manu'));
     }
 
     /**
@@ -74,8 +74,11 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+        $manu = Manufacture::findOrFail($id);
+        $manu->manu_name =  $request->manufactureName;
+        $manu->save();
+        return redirect()->route('manufacuters.index ');
     }
 
     /**
@@ -86,6 +89,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $manu = Manufacture::findOrFail($id);
+        $manu->delete();
+        return redirect()->back();
     }
 }

@@ -75,11 +75,30 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('/admin/ListProduct')}}">Danh sách</a>
-                        <a class="collapse-item" href="{{url('/admin/UploadProduct')}}">Thêm mới</a>
+                        <a class="collapse-item" href="{{url('/admins')}}">Danh sách</a>
+                        <a class="collapse-item" href="{{url('/admin/products/create')}}">Thêm mới</a>
                     </div>
                 </div>
             </li>
+
+            {{-- manufacture --}}
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Manufacutre</span>
+                </a>
+                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{url('/admin/manufacuters')}}">Danh Sách</a>
+                        <a class="collapse-item" href="{{url('/admin/manufacuters/create')}}">Thêm mới</a>                       
+                    </div>
+                </div>
+            </li>
+
+
 
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
