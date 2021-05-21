@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Manufacture;
-class ManufactureController extends Controller
+use App\TypeProduct;
+class TypeProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ManufactureController extends Controller
      */
     public function index()
     {
-        $manu = Manufacture::all();
-        return view('admin-pages.ListManufacture',compact('manu'));
+        $typeProducts = TypeProduct::all();
+        return view('admin-pages.ListTypeProduct',compact('typeProducts'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ManufactureController extends Controller
      */
     public function create()
     {
-        return view('admin-pages.AddManufacture');
+        return view('admin-pages.AddTypeProduct');
     }
 
     /**
@@ -36,11 +36,10 @@ class ManufactureController extends Controller
      */
     public function store(Request $request)
     {
-        $manu = new Manufacture(); 
-        $manu->manu_name = $request->manufactureName;
-        $manu->save();
-      return redirect()->route('manufacuters.index');
-     
+        $typeProduct = new TypeProduct();
+        $typeProduct->type_name = $request->typeProductName;
+        $typeProduct->save();
+        return redirect()->route('typeproducts.index');
     }
 
     /**
@@ -62,8 +61,9 @@ class ManufactureController extends Controller
      */
     public function edit($id)
     {
-        $manu = Manufacture::findOrFail($id);
-        return view('admin-pages.EditManufacture',compact('manu'));
+        $typeProduct = TypeProduct::findOrFail($id);
+
+        return view('admin-pages.EditTypeProduct',compact('typeProduct'));
     }
 
     /**
@@ -74,11 +74,11 @@ class ManufactureController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { 
-        $manu = Manufacture::findOrFail($id);
-        $manu->manu_name =  $request->manufactureName;
-        $manu->save();
-        return redirect()->route('manufacuters.index');
+    {
+        $typeProduct = TypeProduct::findOrFail($id);
+        $typeProduct->type_name = $request->typeProductName;
+        $typeProduct->save();
+        return redirect()->route('typeproducts.index');
     }
 
     /**
@@ -89,8 +89,8 @@ class ManufactureController extends Controller
      */
     public function destroy($id)
     {
-        $manu = Manufacture::findOrFail($id);
-        $manu->delete();
+        $typeProduct = TypeProduct::findOrFail($id);
+        $typeProduct->delete();
         return redirect()->back();
     }
 }

@@ -16,7 +16,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-5">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Danh sách nhà sản xuất</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Danh sách loại sản phẩm</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -25,30 +25,24 @@
                     <tr>
                         <th>STT</th>       
                         <th>ID</th>    
-                        <th>Tên nhà sản xuất</th>                    
+                        <th>Tên loại sản phẩm</th>                    
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($manu as $item)
+                    @foreach ($typeProducts as $item)
                     <tr>
                     <td>{{$stt++}}</td>
                     <td>{{$item->id}}</td>
-                    <td>{{$item->manu_name}}</td>
+                    <td>{{$item->type_name}}</td>
                     <td>
-                    {{-- <form action="{{route('manufacuters.destroy')}}" method="get">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="_method" value="PUT">
-                            <a href="" class="text-danger"><i class="fas fa-trash"></i></a>
-
-                    </form> --}}
-
-                    <form action="{{ route('manufacuters.destroy', $item->id) }}" method="POST">
+                   
+                    <form action="{{ route('typeproducts.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm" title="Delete">Delete</button>
                     </form>
-                    <form action="{{ route('manufacuters.edit', $item->id) }}" method="GET">
+                    <form action="{{ route('typeproducts.edit', $item->id) }}" method="GET">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             @method('PATCH')
                             <button class="fas fa-edit" title="Edit">Edit</button>

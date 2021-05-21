@@ -74,6 +74,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('admins','Admin\AdminController');
 Route::resource('admin/products','Admin\ProductController');
 Route::resource('admin/manufacuters','Admin\ManufactureController');
+Route::resource('admin/typeproducts','Admin\TypeProductController');
 
 // Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 // Route::get('/admin/{action?}','AdminController@index');

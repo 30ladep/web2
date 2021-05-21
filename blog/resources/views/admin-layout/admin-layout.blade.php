@@ -98,6 +98,23 @@
                 </div>
             </li>
 
+             {{-- typeproduct --}}
+             <hr class="sidebar-divider my-0">
+             <li class="nav-item">
+                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+                     aria-controls="collapseTwo">
+                     <i class="fas fa-shopping-cart"></i>
+                     <span>TypeProduct</span>
+                 </a>
+                 <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
+                     data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">
+                         <a class="collapse-item" href="{{route('typeproducts.index')}}">Danh Sách</a>
+                         <a class="collapse-item" href="{{route('typeproducts.create')}}">Thêm mới</a>                       
+                     </div>
+                 </div>
+             </li>
+
 
 
             <hr class="sidebar-divider my-0">

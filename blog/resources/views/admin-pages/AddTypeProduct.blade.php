@@ -12,21 +12,18 @@
 </style>
 
     <div class="ml-2">
-        <h3>Chỉnh sửa nhà sản xuất</h3>
-        <form class="row" action="{{ route('manufacuters.update',$manu->id) }}" method="POST" enctype="multipart/form-data">
+        <h3>Thêm mới loại sản phẩm</h3>
+        <form class="row" action="{{ route('typeproducts.store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
-            @method('PUT')
-            <input type="number" name="id" value="{{$manu->id}}" hidden>
             <div class="col-5">
                 <div class="form-group">
-                <label>Manufacuture name:</label>
-                <input type="text" name="manufactureName" class="form-control" value="{{$manu->manu_name}}" required>
-            </div>       
-        
+                <label>TypeProduct name:</label>
+                <input type="text" name="typeProductName" class="form-control" required>
+            </div>           
             <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
         </form>
     </div>
+   
 
 <div style="margin-bottom: 100px"></div>
 
