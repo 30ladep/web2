@@ -14,10 +14,20 @@
         <!-- login -->
 <section class="section-wrap login-register pt-0 pb-40">           
                 <!--Register -->
+                <!--  Error handle -->
+        @if($errors->any())
+        <div class="row collapse">
+            <ul class="alert-box warning radius">
+                @foreach($errors->all() as $error)
+                    <li> {{ $error }} </li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="col-sm-5">       
             <div class="register">
                   
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{route('register') }}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <p class="form-row form-row-wide">
                         <label>User Name
