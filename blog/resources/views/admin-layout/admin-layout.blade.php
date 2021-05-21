@@ -1,8 +1,4 @@
-<?php
-    // $img = Session::get('img');
-    $img = "";
-    $name = Session::get('name');
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -135,7 +131,7 @@
 
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/account')}}">
+                <a class="nav-link" href="{{route('users.index')}}">
                     <i class="fas fa-shield-alt"></i>
                     <span>Phân quyền</span></a>
             </li>

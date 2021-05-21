@@ -25,7 +25,11 @@ class User extends Authenticatable
 
     //evaluate
     public function Evaluate(){
-        return $this->hasMany('App\Evaluate','	user_id','id');
+        return $this->hasMany('App\Evaluate','user_id','id');
+    }
+    //role 
+    public function Role(){
+        return $this->belongsTo('App\Role');
     }
     /**
      * The attributes that are mass assignable.
