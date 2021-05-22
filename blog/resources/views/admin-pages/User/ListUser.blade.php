@@ -19,6 +19,7 @@
     <div class="card-header py-3">
     <span> <a href="{{url('admin/users/create')}}">Thêm mới user</a></span>  
         <h6 class="m-0 font-weight-bold text-primary">Danh sách user</h6>
+        
     </div>
     <div class="card-body">
         <div class="table-responsive">

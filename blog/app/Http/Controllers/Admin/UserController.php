@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-
+use App\Http\Requests\UserRequest;
+use Hash;
 class UserController extends Controller
 {
     /**
@@ -35,9 +36,19 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+       // dd($request);
+        $user = new User();
+        $user->username = $request->username;
+        $user->email=$request->email;
+        $user->password =Hash::make($request->password);
+        $user->phone=$request->phone;
+        $user->type_user_id = $request->type_user_id;
+        $user->role_id=$request->role_id;
+
+       $user->save();
+      return redirect()->route('users.index');
     }
 
     /**

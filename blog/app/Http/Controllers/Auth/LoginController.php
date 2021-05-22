@@ -33,7 +33,7 @@ class LoginController extends Controller
             return '/home';
         }
         if (auth()->user()->role_id == 2) {
-            return '/admin';
+            return route('admins.index');
         }
       
     }

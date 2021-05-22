@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\DetailBill;
 use App\Role;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

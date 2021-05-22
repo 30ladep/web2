@@ -1,4 +1,4 @@
-
+@if (Auth::check())
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,14 +31,19 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
+           
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand align-items-center justify-content-center mb-5" href="{{url('/admin')}}">
                 <div class="sidebar-brand-icon">
                     <img width="50px" src="https://i.pinimg.com/170x/3c/63/1a/3c631aab6d165c9abafa4e387ebf6936.jpg" alt="avatar">
                 </div>
-                <div><span id="name">Admin</span></div>
-                <div class="sidebar-brand-text mx-3">@yield('admin-name')</div>
+              
+                {{ $admin=Auth::user()->username }}
+                {{-- <div><span id="name">{{ $admin}}</span></div> --}}
+                {{-- <div class="sidebar-brand-text mx-3">@yield('admin-name')</div> --}}
+            
+                
+               
             </a>
 
             <!-- Divider -->
@@ -207,12 +212,12 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{route('logout')}}">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <a class="dropdown-item" href="{{route('logout')}}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -290,3 +295,6 @@
 </body>
 
 </html>
+@else
+    {{ "Biến"}}
+@endif

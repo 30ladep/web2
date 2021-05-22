@@ -75,6 +75,7 @@ class RegisterController extends Controller
             'type_user_id' => 1,
             'role_id' =>1,
         ]);
+        
     }
 
         
