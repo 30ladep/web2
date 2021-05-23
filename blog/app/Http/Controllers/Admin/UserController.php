@@ -70,7 +70,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin-pages.User.EditUser',compact('user'));
     }
 
     /**
@@ -80,9 +81,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->username = $request->username;
+        $user->email=$request->email;
+        $user->password =Hash::make($request->password);
+        $user->phone=$request->phone;
+        $user->type_user_id = $request->type_user_id;
+        $user->role_id=$request->role_id;
+
+        $user->save();
+        return redirect()->route('users.index');
+
     }
 
     /**
@@ -93,6 +104,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('users.index');
     }
 }
