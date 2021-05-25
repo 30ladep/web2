@@ -55,11 +55,14 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone'=>['required','string','min:8','max:10'],
-          
-        
+            'repassword' => ['required', 'string', 'min:8', 'confirmed','same:password'],
+            
         ]);
     }
 
+    public function message(){
+        
+    }
     /**
      * Create a new user instance after a valid registration.
      *@

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Hash;
+use Gate;
 class UserController extends Controller
 {
     /**
@@ -17,7 +18,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin-pages.User.ListUser',compact('users'));
+       
+            return view('admin-pages.User.ListUser',compact('users'));
+        
     }
 
     /**
@@ -27,7 +30,14 @@ class UserController extends Controller
      */
     public function create()
     {
-         return view('admin-pages.User.AddUser');
+   
+        //$this->authorize('create');
+       if(Gate::allows('add-user')){
+        return view('admin-pages.User.AddUser');
+       }else{
+           abort(403);
+       }
+       
     }
 
     /**
@@ -39,12 +49,13 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
        // dd($request);
+      
         $user = new User();
         $user->username = $request->username;
         $user->email=$request->email;
         $user->password =Hash::make($request->password);
         $user->phone=$request->phone;
-        $user->type_user_id = $request->type_user_id;
+        $user->type_user_id = 3;
         $user->role_id=$request->role_id;
 
        $user->save();
@@ -88,7 +99,7 @@ class UserController extends Controller
         $user->email=$request->email;
         $user->password =Hash::make($request->password);
         $user->phone=$request->phone;
-        $user->type_user_id = $request->type_user_id;
+        $user->type_user_id = 3;
         $user->role_id=$request->role_id;
 
         $user->save();

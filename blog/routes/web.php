@@ -71,17 +71,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::get('test',function(){
-   $role = Role::all();
-   foreach ($role as $key => $value) {
-      echo "<pre>";
-      print_r($value->User[0]['username']);
-      echo "</pre>";
-   }
-});
 
 //AdminController - product
-Route::resource('admins','Admin\AdminController');
+Route::resource('admins','Admin\AdminController')->middleware('CheckAdmin');
 Route::resource('admin/products','Admin\ProductController');
 Route::resource('admin/manufacuters','Admin\ManufactureController');
 Route::resource('admin/typeproducts','Admin\TypeProductController');

@@ -64,7 +64,8 @@
                 <input type="radio" id="role_id" name="role_id" value="2" checked>Admin<br>  
                 <input type="radio" id="role_id" name="role_id" value="1">User<br>
  
-                @endif               
+                @endif   
+                            
             </div>           
             <button type="submit" class="btn btn-primary">Edit</button>
         </form>

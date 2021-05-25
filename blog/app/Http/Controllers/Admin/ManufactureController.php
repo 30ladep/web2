@@ -15,7 +15,7 @@ class ManufactureController extends Controller
     public function index()
     {
         $manu = Manufacture::all();
-        return view('admin-pages.ListManufacture',compact('manu'));
+        return view('admin-pages.Manufactures.ListManufacture',compact('manu'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ManufactureController extends Controller
      */
     public function create()
     {
-        return view('admin-pages.AddManufacture');
+        return view('admin-pages.Manufactures.AddManufacture');
     }
 
     /**
@@ -63,7 +63,7 @@ class ManufactureController extends Controller
     public function edit($id)
     {
         $manu = Manufacture::findOrFail($id);
-        return view('admin-pages.EditManufacture',compact('manu'));
+        return view('admin-pages.Manufactures.EditManufacture',compact('manu'));
     }
 
     /**

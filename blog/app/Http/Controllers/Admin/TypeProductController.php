@@ -15,7 +15,7 @@ class TypeProductController extends Controller
     public function index()
     {
         $typeProducts = TypeProduct::all();
-        return view('admin-pages.ListTypeProduct',compact('typeProducts'));
+        return view('admin-pages.TypeProduct.ListTypeProduct',compact('typeProducts'));
     }
 
     /**
@@ -25,7 +25,7 @@ class TypeProductController extends Controller
      */
     public function create()
     {
-        return view('admin-pages.AddTypeProduct');
+        return view('admin-pages.TypeProduct.AddTypeProduct');
     }
 
     /**
@@ -63,7 +63,7 @@ class TypeProductController extends Controller
     {
         $typeProduct = TypeProduct::findOrFail($id);
 
-        return view('admin-pages.EditTypeProduct',compact('typeProduct'));
+        return view('admin-pages.TypeProduct.EditTypeProduct',compact('typeProduct'));
     }
 
     /**

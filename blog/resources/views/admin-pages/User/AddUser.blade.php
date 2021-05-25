@@ -36,13 +36,14 @@
                 <input type="text" name="email" class="form-control" required>
                 <label>Số điện thoại:</label>
                 <input type="text" name="phone" class="form-control" required>
-                <h3>Type User:</h3>
+                {{-- <h3>Type User:</h3>
                 <input type="radio" id="type_user_id" name="type_user_id" value="1">Customer<br>
-                <input type="radio" id="type_user_id" name="type_user_id" value="2">Vip   <br>
-                <input type="radio" id="type_user_id" name="type_user_id" value="3">Admin<br>
+                <input type="radio" id="type_user_id" name="type_user_id" value="2">Vip<br>
+                <input type="radio" id="type_user_id" name="type_user_id" value="3">Admin<br> --}}
                 <h3>Role:</h3>
                 <input type="radio" id="role_id" name="role_id" value="1">User<br>
-                <input type="radio" id="role_id" name="role_id" value="2">Admin<br>       
+                <input type="radio" id="role_id" name="role_id" value="2">Admin<br>    
+                <input type="radio" id="role_id" name="role_id" value="3">Super Admin<br>      
             </div>           
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
