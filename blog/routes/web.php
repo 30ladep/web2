@@ -60,7 +60,7 @@ Route::get('/shop-checkout',function(){
 
 
 //Auth router
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
