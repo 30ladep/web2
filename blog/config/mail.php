@@ -45,8 +45,8 @@ return [
             'host' => env('MAIL_HOST'),
             'port' => env('MAIL_PORT'),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('thienaka2p@gmail.com'),
-            'password' => env('0987850041Vinh'),
+            'username' => env('backend2nhom4@gmail.com'),
+            'password' => env('ycyzgbpunauyezcy'),
         ],
 
         'ses' => [
@@ -82,7 +82,11 @@ return [
     'from' => [
         // 'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         // 'name' => env('MAIL_FROM_NAME', 'Example'),
-        'address' => env('MAIL_FROM'), 'name' => env('MAIL_NAME'),
+
+
+          'address' => env('MAIL_FROM_ADDRESS', 'backend2nhom4@gmail.com'),
+         'name' => env('MAIL_FROM_NAME', 'backend2nhom4'),
+        //'address' => env('backend2nhom4@gmail.com'), 'name' => env('backend2nhom4'),
     ],
 
     /*
