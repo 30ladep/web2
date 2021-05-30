@@ -1,7 +1,7 @@
 <?php
-    // $img = Session::get('img');
-    $img = "";
-    $name = Session::get('name');
+//     if(Auth::user() == null){
+//       return redirect()->route('home');
+//    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +28,9 @@
     <link href="{{url('../resources/views/admin-layout/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     
 </head>
+@if(Auth::user() == null)
+  <script>window.location = "{{ route('home') }}";</script>
+@endif
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -58,8 +61,8 @@
                 <div id="collapseTwoDashboard" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('/report/bestsale')}}">Bán chạy</a>
-                        <a class="collapse-item" href="{{url('/admin/bestview')}}">Xem nhiều</a>
+                        <a class="collapse-item" href="{{url('/bill/bestsale')}}">Bán chạy</a>
+                        <a class="collapse-item" href="{{url('/bill/bestview')}}">Xem nhiều</a>
                         <a class="collapse-item" href="{{url('/admin/sales')}}">Doanh thu</a>
                     </div>
                 </div>

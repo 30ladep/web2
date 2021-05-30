@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\Product;
-use DB,Cart;
-
+use DB,Cart,Auth;
 class ProductController extends Controller
 {
     //get all product
@@ -59,7 +58,18 @@ class ProductController extends Controller
     //addcart
     function addCart($id){
         $productByID = DB::table('products')->where('id',$id)->first();
-        Cart::add(array('id'=>$id,'name'=>$productByID->product_name,'qty'=>1,'price'=>$productByID->price,'weight'=>0,'options'=>array( 'image'=>$productByID->image,'sold'=>$productByID->sold,'hot'=>$productByID->hot,'note'=>$productByID->note,'create_date'=>$productByID->create_date)));
+        Cart::add(array(
+            'id'=>$id,
+            'name'=>$productByID->product_name,
+            'qty'=>1,
+            'price'=>$productByID->price,
+            'weight'=>0,
+            'options'=>array( 
+                'image'=>$productByID->image,
+                'sold'=>$productByID->sold,
+                'hot'=>$productByID->hot,
+                'note'=>$productByID->note,
+                'create_date'=>$productByID->create_date)));
         
         return redirect()->route('cart');
     }
