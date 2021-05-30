@@ -128,8 +128,8 @@
                      <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
                          data-parent="#accordionSidebar">
                          <div class="bg-white py-2 collapse-inner rounded">
-                             <a class="collapse-item" href="{{route('typeproducts.index')}}">Danh Sách</a>
-                             <a class="collapse-item" href="{{route('typeproducts.create')}}">Thêm mới</a>                       
+                             <a class="collapse-item" href="{{route('banners.index')}}">Danh Sách</a>
+                             <a class="collapse-item" href="{{route('banners.create')}}">Thêm mới</a>                       
                          </div>
                      </div>
                  </li>

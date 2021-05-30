@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Banner;
 
 class BannerController extends Controller
 {
@@ -14,7 +15,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        $banners = Banner::all();
+        return view('admin-pages.Banner.ListBanner',compact('banners'));
     }
 
     /**
@@ -24,7 +26,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin-pages.Banner.AddBanner');
     }
 
     /**
@@ -35,7 +37,27 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('image_slide')){
+            $banner = New Banner();
+            $banner->content = $request->content;
+           
+          
+    
+            $request->validate([
+                'image_slide' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+      
+            $imageSlideName = time().'.'.$request->image_slide->getClientOriginalName();  
+            $banner->image_slide= $imageSlideName;
+       
+            $request->image_slide->move(public_path('img/banner'), $imageSlideName);
+            $banner->save();
+    
+        }
+      
+       
+        
+        return redirect()->route('banners.index');
     }
 
     /**
