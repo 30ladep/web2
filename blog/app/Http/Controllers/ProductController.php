@@ -34,7 +34,7 @@ class ProductController extends Controller
     }        
     
 
-    //get product related 
+    //get product related đang làm
     function getProductRelated(Request $request){
         $id = $request->id;
         $typeIDproduct = Prododuct::where('id',$id)->select('type_id');

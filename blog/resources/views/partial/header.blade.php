@@ -84,7 +84,7 @@
               <div class="nav-search hidden-sm hidden-xs">
                 <form method="get" action="{{url('search')}}">
                   {{-- @csrf --}}
-                  <input type="search" class="form-control" name="timkiem" placeholder="Nhap ten san pham">
+                  <input type="search" class="form-control" name="timkiem" placeholder="Search">
                   <button type="submit" class="search-button">
                     <i class="icon icon_search"></i>
                   </button>

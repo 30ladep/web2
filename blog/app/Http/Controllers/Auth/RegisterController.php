@@ -55,15 +55,13 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone'=>['required','string','min:8','max:10'],
-          
-        
+           
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
+     *@
      * @return \App\User
      */
     protected function create(array $data)
@@ -74,10 +72,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
             'type_user_id' => 1,
-            'role_id' =>0,
+            'role_id' =>1,
         ]);
     }
 
-    
+        
     
 }

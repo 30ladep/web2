@@ -36,12 +36,12 @@
               <input type="submit" value="Gửi" class="btn btn-primary">
             </form>
 
-          </div> <!-- end ecommerce -->
+@endsection
+  @endif
+  
 
-        </div> <!-- end row -->
-      </div> <!-- end container -->
-    </section> <!-- end checkout -->
 
+<<<<<<< HEAD
 
 <script>
 var loadFile = function(event) {
@@ -51,3 +51,5 @@ var loadFile = function(event) {
 };
 </script>
 @endsection
+=======
+>>>>>>> 5eaa826e363c40520170cd7cd64b13fc1a55a080

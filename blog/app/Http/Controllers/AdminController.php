@@ -12,6 +12,7 @@ class AdminController extends Controller
     //man hinh them san pham
     public function index($action = "index")
     {
+         
         //$color = DB::table('color')->get();
         $typeProduct = DB::table('type_products')->get();
         $manu = DB::table('manufactures')->get();

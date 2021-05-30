@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3309
--- Generation Time: May 18, 2021 at 03:54 PM
+-- Generation Time: May 22, 2021 at 02:43 PM
 -- Server version: 10.3.14-MariaDB
 -- PHP Version: 7.3.5
 
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `manufactures` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `manufactures`
@@ -194,7 +194,8 @@ INSERT INTO `manufactures` (`id`, `manu_name`, `created_at`, `updated_at`) VALUE
 (2, 'Adidas', NULL, NULL),
 (3, 'Tommy', NULL, NULL),
 (4, 'Chanel', NULL, NULL),
-(5, 'Hermas', NULL, NULL);
+(5, 'Hermas', NULL, NULL),
+(16, 'Gang teo 2', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -259,6 +260,13 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('teodeptrai@gmail.com', '$2y$10$ug/z0MCjYRivcckM8PsRU.Fq/QaV5a3yYlYgD95uHVQ86ENtjVSTe', '2021-05-18 17:01:47');
 
 -- --------------------------------------------------------
 
@@ -437,7 +445,7 @@ CREATE TABLE IF NOT EXISTS `type_products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `type_products`
@@ -446,7 +454,8 @@ CREATE TABLE IF NOT EXISTS `type_products` (
 INSERT INTO `type_products` (`id`, `type_name`, `created_at`, `updated_at`) VALUES
 (1, 'Shirt', NULL, NULL),
 (2, 'Trousers', NULL, NULL),
-(3, 'Dress', NULL, NULL);
+(3, 'Dress', NULL, NULL),
+(5, 'Luis Vuitton', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -461,7 +470,7 @@ CREATE TABLE IF NOT EXISTS `type_users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `type_users`
@@ -469,7 +478,8 @@ CREATE TABLE IF NOT EXISTS `type_users` (
 
 INSERT INTO `type_users` (`id`, `type_user_name`, `created_at`, `updated_at`) VALUES
 (1, 'customer', NULL, NULL),
-(2, 'vip', NULL, NULL);
+(2, 'vip', NULL, NULL),
+(3, 'admmin', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -493,15 +503,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   KEY `users_type_user_id_foreign` (`type_user_id`),
   KEY `users_role_id_foreign` (`role_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `token_cart`, `type_user_id`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'teo', '$2y$10$gXWm3aJnyNqVMKhkK5VKK.fgIo2zeBT.MGbjHrPzS2mkA3gqC4x4i', 'teo@gmail.com', '1234567891', NULL, 1, 0, 'KtgizNrql6AQX3aQUcLafAQWBnkgnuIpm1teoSxbndlo4JCu5jUMjfT0RVP5', NULL, NULL),
-(2, 'teodeptrai', '$2y$10$AuKz0wa1SV0I.uDSukei3eMmVg5r1PTQt20JyzNd4E48wI.WPZWO2', 'teodeptrai@gmail.com', '1234567889', NULL, 1, 0, NULL, NULL, NULL);
+(1, 'teo', '$2y$10$gXWm3aJnyNqVMKhkK5VKK.fgIo2zeBT.MGbjHrPzS2mkA3gqC4x4i', 'teo@gmail.com', '1234567891', NULL, 1, 1, 'KtgizNrql6AQX3aQUcLafAQWBnkgnuIpm1teoSxbndlo4JCu5jUMjfT0RVP5', NULL, NULL),
+(2, 'teodeptrai', '$2y$10$AuKz0wa1SV0I.uDSukei3eMmVg5r1PTQt20JyzNd4E48wI.WPZWO2', 'teodeptrai@gmail.com', '1234567889', NULL, 1, 1, NULL, NULL, NULL),
+(3, 'teo23', '$2y$10$kg9kEcvS/wm5I5mSxuh8wuHJwQNzVyNnJ9kkrphtToGGqEJWxCJe6', 'teo23@gmail.com', '123456789', NULL, 1, 1, NULL, NULL, NULL),
+(4, 'teonv', '$2y$10$9/WbFsYt/J5HO08QbFaIe.ktKfcdEEE5DI/GsrYDB.URFKW9UWxNS', 'teonv@gmail.com', '123456890', NULL, 1, 1, NULL, NULL, NULL),
+(6, 'admin1', '$2y$10$A5KlAC5LhlLx4ZfCe4BCfOenvGY5v0GVNY2FoYEqXfmIQ3LPLK/MS', 'admin1@gmail.com', '123456789', NULL, 3, 2, NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

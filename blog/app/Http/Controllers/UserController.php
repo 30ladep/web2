@@ -31,7 +31,8 @@ class UserController extends Controller
             'password'=>'required|min:3|max:30',
             'passwordmatch'=>'required|same:password'
            
-        ],[
+        ],
+        [
             'username.required'=>'Ban chua nhap ten',
             'username.min'=>'Ten phai hon 3 ky tu',
             'fullname.required'=>'Ban chua  ten day du',
@@ -80,7 +81,7 @@ class UserController extends Controller
             'email.required'=>'Ban chua nhap email',
             'password.required'=>'Ban chua nhap password',
             'password.min'=>'Password phai co hon 3 ky tu',
-            'password.man'=>'Password toi da 30 ky tu'
+            'password.max'=>'Password toi da 30 ky tu'
         ]);
 
         //Auth

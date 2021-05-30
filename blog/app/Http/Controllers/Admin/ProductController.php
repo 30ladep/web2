@@ -17,9 +17,7 @@ class ProductController extends Controller
      */
     public function index($action = "index")
     {
-        // $typeProducts = TypeProduct::all();
-        // $manufactures = Manufacture::all();
-
+       
         $typeProduct = DB::table('type_products')->get();
         $manu = DB::table('manufactures')->get();
         $products = DB::table('products')->orderby('id','desc')->get();
@@ -38,8 +36,15 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {
-        $products = new Product();
+    {    $typeProduct = DB::table('type_products')->get();
+        $manu = DB::table('manufactures')->get();
+        $products = DB::table('products')->orderby('id','desc')->get();
+         return view('admin-pages.UploadProduct', array(
+            //'color' => $color,
+            'typeProduct' => $typeProduct,
+            'manu' => $manu,
+            'products' => $products
+        ));
     }
 
     /**
@@ -50,7 +55,55 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd(public_path('\img\image_product'));
+          //dd($request->all());
+          //Khoi tao mang chua image name
+          $imageName = [];
+          if($request->hasFile('image'))
+          {
+              //dd(count($request->image));
+              //dd($image->getClientOriginalName());
+              for($i = 0; $i < count($request->image); $i++){
+                  $imageName[$i] = (time() + $i).'_'.$request->image[$i]->getClientOriginalName();
+              }
+              //dd($imageName);
+              $hot = false;
+              if($request->hot == "on"){
+                  $hot = true;
+              }
+              $check = DB::table('products')->insert(
+                  ['product_name' => $request->productName,
+                   'image' => $imageName[0],
+                   'price' => $request->price,
+                   'size' => $request->size,
+                   'hot' => $hot,
+                   'note' => $request->note,
+                   'create_date' => Carbon::now()->format('Y-m-d'),
+                   //'color' => $request->color,
+                   'gender' => $request->gender,
+                   'type_id' => $request->productType,
+                   'manu_id' => $request->manuid,
+                   'count' => $request->count
+                   ]
+              );
+              $pd = DB::table('products')->orderBy('id', 'DESC')->first();
+              //dd(DB::table('products')->orderBy('id', 'DESC')->first());
+              //$request->image->move(public_path('\img\image_product'), $imageName);
+              //insert image product
+              if($check == true){
+                    $index = 0;
+                    foreach($request->image as $item){
+                        DB::table('image_products')->insert(
+                        ['product_id' => $pd->id,
+                        'image' => $imageName[$index]
+                        ]);
+                        $item->move(public_path('\img\image_product'), $imageName[$index]);
+                        $index++;
+                    }
+              }
+              
+          }
+          return redirect('/admin/ListProduct');
     }
 
     /**

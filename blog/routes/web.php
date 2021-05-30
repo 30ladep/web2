@@ -5,7 +5,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\DetailBill;
 use Illuminate\Support\Facades\Auth;
-
+use App\Role;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,7 +63,7 @@ Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
 Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 
 //Auth router
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -71,7 +71,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/admin/{action?}','AdminController@index');
 // Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 // Route::post('/admin/UploadImageProduct','AdminController@UploadImageProduct');
-
 
 
 

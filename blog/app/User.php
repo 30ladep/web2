@@ -6,9 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    // use Notifiable;
+     use Notifiable;
     protected $table='users';
     protected $fillable=['id','username','password','email','phone','token_cart','remmember_token','role_id','type_user_id'];
     public $timestamps=false;
@@ -25,7 +25,11 @@ class User extends Authenticatable
 
     //evaluate
     public function Evaluate(){
-        return $this->hasMany('App\Evaluate','	user_id','id');
+        return $this->hasMany('App\Evaluate','user_id','id');
+    }
+    //role 
+    public function Role(){
+        return $this->belongsTo('App\Role');
     }
     /**
      * The attributes that are mass assignable.
@@ -41,7 +45,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = 'password';
+    protected $hidden = ['password', 'remember_token'];
 
     /**
      * The attributes that should be cast to native types.

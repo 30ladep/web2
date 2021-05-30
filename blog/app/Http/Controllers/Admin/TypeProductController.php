@@ -4,11 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Product;
-use App\Manufacture;
-use App\TypeProduct ;
-
-class AdminController extends Controller
+use App\TypeProduct;
+class TypeProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $manu = Manufacture::all();
-        $typeProduct = TypeProduct::all();
-        return view('admin-pages.ListProduct',compact('products','manu','typeProduct'));
+        $typeProducts = TypeProduct::all();
+        return view('admin-pages.TypeProduct.ListTypeProduct',compact('typeProducts'));
     }
 
     /**
@@ -30,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin-pages.TypeProduct.AddTypeProduct');
     }
 
     /**
@@ -41,7 +36,10 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $typeProduct = new TypeProduct();
+        $typeProduct->type_name = $request->typeProductName;
+        $typeProduct->save();
+        return redirect()->route('typeproducts.index');
     }
 
     /**
@@ -63,7 +61,9 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $typeProduct = TypeProduct::findOrFail($id);
+
+        return view('admin-pages.TypeProduct.EditTypeProduct',compact('typeProduct'));
     }
 
     /**
@@ -75,7 +75,10 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $typeProduct = TypeProduct::findOrFail($id);
+        $typeProduct->type_name = $request->typeProductName;
+        $typeProduct->save();
+        return redirect()->route('typeproducts.index');
     }
 
     /**
@@ -86,6 +89,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $typeProduct = TypeProduct::findOrFail($id);
+        $typeProduct->delete();
+        return redirect()->back();
     }
 }
