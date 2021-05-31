@@ -53,26 +53,6 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwoDashboard" aria-expanded="true"
-                    aria-controls="collapseTwo">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Dashboard</span>
-                </a>
-                <div id="collapseTwoDashboard" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{url('/bill/bestsale')}}">Bán chạy</a>
-                        <a class="collapse-item" href="{{url('/bill/bestview')}}">Xem nhiều</a>
-                        <a class="collapse-item" href="{{url('/admin/sales')}}">Doanh thu</a>
-                    </div>
-                  
-                    {{ $admin=Auth::user()->username }}
-                    {{-- <div><span id="name">{{ $admin}}</span></div> --}}
-                    {{-- <div class="sidebar-brand-text mx-3">@yield('admin-name')</div> --}}
-                
-                    
-                   
-                </a>
     
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
@@ -88,8 +68,8 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{url('/report/bestsale')}}">Bán chạy</a>
-                            <a class="collapse-item" href="{{url('/admin/bestview')}}">Xem nhiều</a>
-                            <a class="collapse-item" href="{{url('/admin/sales')}}">Doanh thu</a>
+                            <a class="collapse-item" href="{{url('/report/bestview')}}">Xem nhiều</a>
+                            <a class="collapse-item" href="{{url('/report/sales')}}">Doanh thu</a>
                         </div>
                     </div>
                 </li>
@@ -104,14 +84,14 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{url('/admins')}}">Danh sách</a>
-                            <a class="collapse-item" href="{{url('/admin/products/create')}}">Thêm mới</a>
+                            <a class="collapse-item" href="{{url('/admin/ListProduct')}}">Danh sách</a>
+                            <a class="collapse-item" href="{{url('/admin/UploadProduct')}}">Thêm mới</a>
                         </div>
                     </div>
                 </li>
     
                 {{-- manufacture --}}
-                <hr class="sidebar-divider my-0">
+                {{-- <hr class="sidebar-divider my-0">
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
                         aria-controls="collapseTwo">
@@ -125,10 +105,10 @@
                             <a class="collapse-item" href="{{url('/admin/manufacuters/create')}}">Thêm mới</a>                       
                         </div>
                     </div>
-                </li>
+                </li> --}}
     
                  {{-- typeproduct --}}
-                 <hr class="sidebar-divider my-0">
+                 {{-- <hr class="sidebar-divider my-0">
                  <li class="nav-item">
                      <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
                          aria-controls="collapseTwo">
@@ -142,7 +122,7 @@
                              <a class="collapse-item" href="{{route('typeproducts.create')}}">Thêm mới</a>                       
                          </div>
                      </div>
-                 </li>
+                 </li> --}}
     
     
     
@@ -156,8 +136,8 @@
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{url('/bill/paid')}}">Đã thanh toán</a>
-                            <a class="collapse-item" href="{{url('/bill/unpaid')}}">Chưa thanh toán</a>
+                            <a class="collapse-item" href="{{url('/bill/paid')}}">Đã xác nhận</a>
+                            <a class="collapse-item" href="{{url('/bill/unpaid')}}">Chưa xác nhận</a>
                         </div>
                     </div>
                 </li>
@@ -332,17 +312,4 @@
         <script src="{{url('../resources/views/admin-layout/js/demo/datatables-demo.js')}}"></script>
     </body>
     
-    </html>
-        @else
-        {{ "Bạn không có quyền admin, vui lòng quay lại" }}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('/') }}">{{ __('Trang chủ') }}</a>
-        </li>
-    @endif
-
-@else
-    {{ "Bạn chưa đăng nhập! Vui lòng đăng nhập" }}
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-    </li>
-@endif
+</html>

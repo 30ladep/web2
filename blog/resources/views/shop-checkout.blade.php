@@ -35,13 +35,11 @@
               <input type="file" name="image" onchange="loadFile(event)" id="hinhanh" accept="image/*" required><br>
               <input type="submit" value="Gửi" class="btn btn-primary">
             </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
-@endsection
-  @endif
-  
-
-
-<<<<<<< HEAD
 
 <script>
 var loadFile = function(event) {
@@ -51,5 +49,3 @@ var loadFile = function(event) {
 };
 </script>
 @endsection
-=======
->>>>>>> 5eaa826e363c40520170cd7cd64b13fc1a55a080

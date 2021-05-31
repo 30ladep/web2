@@ -32,6 +32,9 @@ Route::get('shop-single-product/{id?}',[
 //tim kiem product
 Route::get('/search','ProductController@searchProduct');
 
+//TRANG TIM KIEM SAN PHAM
+Route::get('/catalog','ProductController@Catalog');
+
 //cart
 Route::get('add-cart/{id}',['as'=>'add-cart','uses'=>'CartController@addCart']);
 Route::get('cart',['as'=>'cart','uses'=>'CartController@cart']);
@@ -67,11 +70,6 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-//admin route
-// Route::get('/admin/{action?}','AdminController@index');
-// Route::post('/admin/UploadProduct','AdminController@UploadProduct');
-// Route::post('/admin/UploadImageProduct','AdminController@UploadImageProduct');
-
 
 
 
@@ -79,7 +77,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::resource('admins','Admin\AdminController');
 // Route::resource('admin/products','Admin\ProductController');
 
-
+//ADMIN
 Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');

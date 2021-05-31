@@ -23,17 +23,6 @@
 
           <div class="col-md-9 catalogue-col right mb-50">
 
-            <!-- Banner -->
-            <div class="banner-wrap relative">
-              <img src="img/banner.jpg" alt="">
-              <div class="hero-holder text-center right-align">
-                <div class="hero-lines mb-0">
-                  <h1 class="hero-heading white">Women Collection</h1>
-                  <h4 class="hero-subheading white uppercase">HOT AND FRESH TRENDS OF THIS YEAR</h4>
-                </div>
-              </div>
-            </div>
-
             <div class="shop-filter">
               <p class="result-count">Showing: 1-12 of 80 results</p>
 
@@ -541,18 +530,6 @@
                 </li>
               </ul>
             </div>
-
-            <!-- Filter by Price -->
-            <div class="widget filter-by-price clearfix">
-              <h3 class="widget-title uppercase">Filter by Price</h3>
-               
-              <div id="slider-range"></div>
-              <p>
-                <label for="amount">Price:</label>
-                <input type="text" id="amount" readonly style="border:0;">
-                <a href="#" class="btn btn-sm btn-dark">Filter</a>
-              </p>
-            </div>
             
             <!-- Bestsellers -->
             <div class="widget bestsellers">
@@ -583,22 +560,6 @@
                   </li>               
                 </ul>
               </div>
-            </div>
-
-            <!-- Tags -->
-            <div class="widget tags clearfix">
-              <h3 class="widget-title uppercase">Tags</h3>
-              <a href="#">Multi-purpose</a>
-              <a href="#">Creative</a>
-              <a href="#">Elegant</a>
-              <a href="#">Clean</a>
-              <a href="#">Modern</a>
-              <a href="#">Responsive</a>
-              <a href="#">E-commerce</a>
-              <a href="#">WordPress</a>
-              <a href="#">Woocommerce</a>
-              <a href="#">Store</a>
-              <a href="#">Business</a>
             </div>
 
           </aside> <!-- end sidebar -->

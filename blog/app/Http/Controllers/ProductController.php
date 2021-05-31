@@ -96,4 +96,7 @@ class ProductController extends Controller
         $content = Cart::content();
         return redirect()->route('cart');
     }
+    function Catalog(){
+        return view('shop-catalog');
+    }
 }
