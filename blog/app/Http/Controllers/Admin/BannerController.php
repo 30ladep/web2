@@ -55,7 +55,6 @@ class BannerController extends Controller
     
         }
       
-       
         
         return redirect()->route('banners.index');
     }
@@ -68,7 +67,7 @@ class BannerController extends Controller
      */
     public function show($id)
     {
-        //
+     
     }
 
     /**
@@ -79,7 +78,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $banner = Banner::findOrFail($id);
+        return view('admin-pages.Banner.EditBanner',compact('banner'));
     }
 
     /**
@@ -91,7 +91,27 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       // dd($request->all());
+        $banner = Banner::findOrFail($id);
+        
+        if($request->hasFile('image_slide')){
+            $banner->content = $request->content;
+            $request->validate([
+                'image_slide' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+      
+            $imageSlideName = time().'.'.$request->image_slide->getClientOriginalName();  
+            $banner->image_slide= $imageSlideName;
+       
+            $request->image_slide->move(public_path('\img\banner'), $imageSlideName);
+                
+        }else{
+            $banner->content = $request->content;
+            $banner->image_slide=$request->image_slide;
+            
+        }
+        $banner->save();
+        return redirect()->route('banners.index');
     }
 
     /**
@@ -102,6 +122,8 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $banner = Banner::findOrFail($id);
+        $banner->delete();
+        return redirect()->route('banners.index');
     }
 }

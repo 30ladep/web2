@@ -15,24 +15,25 @@
         <h3>Chỉnh sửa Banner</h3>
         <form class="row" action="{{ route('banners.update',$banner->id) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
+            @method('PUT')
             <input type="number" name="id" value="{{$banner->id}}" hidden>
             <div class="col-5">
                 <div class="form-group">
                 <label>Content:</label>
-                <input type="text" name="productName" class="form-control" value="{{$banner->content}}" required>
+                <input type="text" name="content" class="form-control" value="{{$banner->content}}" required>
             </div>
           
            
             
           
             <div class="form-group">
-                <label>Image Slide <i class="fas fa-exclamation-triangle" data-toggle="tooltip"></i></label><br>
+                <label>Image Slide </label><br>
        
-                    <img class="img-show" src="{{url('/img/image_product/'.$banner->image_slide)}}" width="50px" alt="" srcset="">
-              
-                <input type="file" id="img-file" onchange="loadFile(event)" multiple name="image[]" accept="image/*" class="form-control-file">
+                    {{-- <img class="img-show" src="{{url('/img/banner/'.$banner->image_slide)}}" width="300px" height="300px" alt="" srcset=""> --}}
+                    <img  class="img-show" src="{{ public_path('\img\banner\\'.$banner->image_slide) }}" alt="" style="width: 300px; height: 300px">
+                <input type="file" id="img-file" onchange="loadFile(event)"  name="image_slide" accept="image/*" class="form-control-file">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Edit</button>
             </div>
         </form>
     </div>
