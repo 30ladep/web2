@@ -30,6 +30,10 @@
 </head>
 @if(Auth::user() == null)
   <script>window.location = "{{ route('home') }}";</script>
+@else
+  @if (Auth::user()->role_id == 1)
+      <script>window.location = "{{ url('/') }}";</script>
+  @endif
 @endif
 <body id="page-top">
 

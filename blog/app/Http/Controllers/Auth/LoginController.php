@@ -32,11 +32,8 @@ class LoginController extends Controller
         if (auth()->user()->role_id == 1) {
             return '/';
         }
-        if (auth()->user()->role_id == 2) {
-            return route('admins.index');
-        }
-        if (auth()->user()->role_id == 3) {
-            return route('admins.index');
+        else{
+            return '/admin';
         }
       
     }
