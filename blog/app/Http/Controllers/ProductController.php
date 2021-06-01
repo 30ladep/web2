@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use  App\Product;
 use DB,Cart;
+use  App\Banner;
 
 class ProductController extends Controller
 {
@@ -20,9 +21,10 @@ class ProductController extends Controller
     //get all product with paginate 
     function getAllProductPaginate(){
         $products = Product::paginate(12);
+        $banners = Banner::all();
         $productsBestSeller = Product::all()->take(8)->sortBy('sold');
         return view('index',array(
-            'products' => $products,'productsbestseller'=>$productsBestSeller
+            'products' => $products,'productsbestseller'=>$productsBestSeller,'banners'=>$banners
         ));
     }
 

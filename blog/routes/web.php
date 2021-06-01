@@ -80,6 +80,11 @@ Route::resource('admin/manufacuters','Admin\ManufactureController');
 Route::resource('admin/typeproducts','Admin\TypeProductController');
 Route::resource('admin/users','Admin\UserController');
 Route::resource('admin/banners','Admin\BannerController');
+
+
+//xac nhan email
+Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
+
 // Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 // Route::get('/admin/{action?}','AdminController@index');
 // Route::post('/admin/UploadProduct','AdminController@UploadProduct');

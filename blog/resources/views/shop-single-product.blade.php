@@ -1,7 +1,7 @@
 @extends('layout.master_layout')
 @section('content')
 
-{{-- {{ dd($products)}} --}}
+{{ dd($products)}}
 
 <!-- Breadcrumbs -->
 <div class="container">
