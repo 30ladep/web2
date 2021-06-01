@@ -1,7 +1,6 @@
 @extends('layout.master_layout')
 @section('content')
 
-{{ dd($products)}}
 
 <!-- Breadcrumbs -->
 <div class="container">
@@ -59,10 +58,10 @@
             </span>
             <span class="price">
               <del>
-                <span>{!!number_format(($products->price)*2)!!}</span>
+                <span>{!!number_format(($products->price)*2).' vnd'!!}</span>
               </del>
               <ins>
-                <span class="ammount">>{!!number_format($products->price)!!}</span>
+                <span class="ammount">>{!!number_format($products->price).' vnd'!!}</span>
               </ins>
             </span>
             <p class="product-description">{!!$products->note!!}</p>
@@ -132,10 +131,7 @@
               <ul class="nav nav-tabs">                                 
                 <li class="active">
                   <a href="#tab-description" data-toggle="tab">Description</a>
-                </li>                                 
-                <li>
-                  <a href="#tab-info" data-toggle="tab">Information</a>
-                </li>                                 
+                </li>                                                                              
                 <li>
                   <a href="#tab-reviews" data-toggle="tab">Reviews</a>
                 </li>                                 
@@ -146,30 +142,12 @@
                 
                 <div class="tab-pane fade in active" id="tab-description">
                   <p>
-                  {{-- We possess within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind, the hidden and mysterious subconscious. Our subconscious mind contains such power and complexity that it literally staggers the imagination.And finally the subconscious is the mechanism through which thought impulses which are repeated regularly with feeling and emotion are quickened, charged. Our subconscious mind contains such power and complexity that it literally staggers the imagination.And finally the subconscious is the mechanism through which thought impulses. --}}
+           
                   {!! $products->note !!}
                   </p>
                 </div>
                 
-                <div class="tab-pane fade" id="tab-info">
-                  <table class="table">
-
-                    <tbody>
-                      <tr>
-                        <th>CPU</th>
-                        <td>2.7GHz quad-core Intel Core i5 Turbo Boost up to 3.2GHz</td>
-                      </tr>
-                      <tr>
-                        <th>RAM</th>
-                        <td>8GB (two 4GB) memory</td>
-                      </tr>
-                      <tr>
-                        <th>Video</th>
-                        <td>Intel Iris Pro Graphics</td>
-                      </tr>                                     
-                    </tbody>
-                  </table>
-                </div>
+               
                 
                 <div class="tab-pane fade" id="tab-reviews">
 
@@ -227,7 +205,34 @@
 
           <div id="owl-related-products" class="owl-carousel owl-theme nopadding">
 
-            <div class="product-item">
+            @foreach ($productRelated as $item)
+               <div class="product-item">
+              <div class="product-img">
+                <a href="{{url('shop-single-product?id='.$item->id)}}">
+                  <img src="{{url('img/image_product/'.$item->image)}}" alt="">
+                  <img src="{{url('img/image_product/'.$item->image)}}" alt="" class="back-img">
+                </a>
+                <div class="product-label">
+                  <span class="sale">sale</span>
+                </div>            
+                <a href="{{url('shop-single-product?id='.$item->id)}}" class="product-quickview">Quick View</a>
+              </div>
+              <div class="product-details">
+                <h3>
+                  <a class="product-title"href="{{url('shop-single-product?id='.$item->id)}}">{{$item->product_name}}</a>
+                </h3>
+                <span class="price">
+                  <del>
+                    <span>{{ number_format( ($item->price)*2).' vnd'}}</span>
+                  </del>
+                  <ins>
+                    <span class="ammount">{{number_format(($item->price)).' vnd'}}</span>
+                  </ins>
+                </span>
+              </div>
+            </div>
+            @endforeach
+            {{-- <div class="product-item">
               <div class="product-img">
                 <a href="#">
                   <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
@@ -259,217 +264,9 @@
                   </ins>
                 </span>
               </div>
-            </div>
+            </div> --}}
 
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
-                </a>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Elegant White Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$219.00</span>
-                  </ins>
-                </span>
-              </div>                          
-            </div>
-
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
-                </a>
-                <span class="sold-out valign">out of stock</span>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Long Black Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$99.00</span>
-                  </ins>
-                </span>
-              </div>                        
-            </div>
-
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
-                </a>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Sexy Pink Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$120.00</span>
-                  </ins>
-                </span>
-              </div>                        
-            </div>
-
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
-                </a>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Minty Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$399.00</span>
-                  </ins>
-                </span>
-              </div>                          
-            </div>
-
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
-                </a>
-                <div class="product-label">
-                  <span class="sale">sale</span>
-                </div>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Sexy White Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$119.00</span>
-                  </ins>
-                </span>
-              </div>
-            </div>
-
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
-                </a>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Elegant Pink Dress</a>
-                </h3>
-                <span class="price">
-                  <ins>
-                    <span class="ammount">$1379.00</span>
-                  </ins>
-                </span>
-              </div>              
-            </div>
-
-            <div class="product-item">
-              <div class="product-img">
-                <a href="#">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="">
-                  <img src="{{url('img/shop/single_img_5.jpg')}}" alt="" class="back-img">
-                </a>
-                <div class="product-label">
-                  <span class="sale">sale</span>
-                </div>
-                <div class="product-actions">
-                  <a href="#" class="product-add-to-compare" data-toggle="tooltip" data-placement="bottom" title="Add to compare">
-                    <i class="fa fa-exchange"></i>
-                  </a>
-                  <a href="#" class="product-add-to-wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist">
-                    <i class="fa fa-heart"></i>
-                  </a>                    
-                </div>
-                <a href="#" class="product-quickview">Quick View</a>
-              </div>
-
-              <div class="product-details">
-                <h3>
-                  <a class="product-title" href="shop-single-product.html">Gray California Dress</a>
-                </h3>
-                <span class="price">
-                  <del>
-                    <span>$350.00</span>
-                  </del>
-                  <ins>
-                    <span class="ammount">$150.00</span>
-                  </ins>
-                </span>
-              </div>
-            </div>
+           
 
           </div> <!-- end owl -->
 

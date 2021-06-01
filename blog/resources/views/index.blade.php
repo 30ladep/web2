@@ -59,7 +59,7 @@
              <a class="product-title" href="{{url('shop-single-product?id='.$item->id)}}">{{$item->product_name}}</a>   
                 </h3>
                 <span class="price">
-                    <span>$ {{$item->price}}</span>
+                    <span>$ {{number_format(($item->price)).'vnd'}}</span>
                 </span>
               </div>
             </div>
@@ -114,7 +114,7 @@
                     </h3>
                     <span class="price">
                         <ins>
-                        <span>$ {{$item->price}}</span>
+                        <span>$ {{number_format(($item->price)).'vnd'}}</span>
                       </ins>
                     </span>              
                     </span>

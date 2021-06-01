@@ -32,17 +32,14 @@ class ProductController extends Controller
     function getDetailProductByID(Request $request){       
         $id = $request->id;        
         $productsDetailByID = Product::where('id',$id)->first();
-      
-        return view('shop-single-product',['products'=>$productsDetailByID]);
+        $typeProductRelated = $productsDetailByID->type_id;
+        $productRelated = Product::where('type_id',$typeProductRelated)->get();
+        $productRelated->take(8);
+        return view('shop-single-product',['products'=>$productsDetailByID,'productRelated'=>$productRelated]);
     }        
     
 
-    //get product related đang làm
-    function getProductRelated(Request $request){
-        $id = $request->id;
-        $typeIDproduct = Prododuct::where('id',$id)->select('type_id');
-        $productsRelated = Product::where('type_id',$id)->get();
-    }
+   
     
 
     //get product search
