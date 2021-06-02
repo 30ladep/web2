@@ -12,13 +12,12 @@ class AdminController extends Controller
     //man hinh them san pham
     public function index($action = "index")
     {
-         
         //$color = DB::table('color')->get();
         $typeProduct = DB::table('type_products')->get();
         $manu = DB::table('manufactures')->get();
         $products = DB::table('products')->orderby('id','desc')->get();
         return view('admin-pages.'.$action, array(
-            // 'color' => $color,
+            //'color' => $color,
             'typeProduct' => $typeProduct,
             'manu' => $manu,
             'products' => $products
@@ -140,7 +139,7 @@ class AdminController extends Controller
                     foreach($request->image as $item){
                         DB::table('image_products')->insert(
                         ['product_id' => $pd->id,
-                        'image' => $imageName[$index]
+                        'image_product' => $imageName[$index]
                         ]);
                         $item->move(public_path('\img\image_product'), $imageName[$index]);
                         $index++;
@@ -190,7 +189,7 @@ class AdminController extends Controller
                 foreach($request->image as $item){
                     DB::table('image_products')->insert(
                     ['product_id' => $pd->id,
-                    'image' => $imageName[$index]
+                    'image_product' => $imageName[$index]
                     ]);
                     $item->move(public_path('\img\image_product'), $imageName[$index]);
                     $index++;

@@ -41,6 +41,7 @@
                         <td>{{$stt++}}</td>
                         <td>{{$item->product_name}}</td>
                         <td><img style="width: 50px" src="{{url('/img/image_product/'.$item->image)}}" alt=""></td>
+                        {{-- <td>{{$item->image}}</td> --}}
                         <td>{{$item->size}}</td>
                         <td>
                             @foreach ($typeProduct->where('id', $item->type_id) as $type)
@@ -56,8 +57,8 @@
                         <td>{{$item->count}}</td>
                         <td>${{$item->price}}</td>
                         <td>
-                            <a href="{{url('/admin/products/'.$item->id)}}" class="text-danger"><i class="fas fa-trash"></i></a>
-                            <a href="{{url('/admin/product/'.$item->id.'/edit')}}" class="text-primary"><i class="fas fa-edit"></i></a>
+                            <a href="{{url('/product/delete/'.$item->id)}}" class="text-danger"><i class="fas fa-trash"></i></a>
+                            <a href="{{url('/admin/product/edit/'.$item->id)}}" class="text-primary"><i class="fas fa-edit"></i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -1,51 +1,62 @@
-@if (Auth::check())
-    @if (Auth::check(Auth::user()->role_id==2))
-    <!DOCTYPE html>
-    <html lang="en">
+<?php
+//     if(Auth::user() == null){
+//       return redirect()->route('home');
+//    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="{{url('../resources/views/admin-layout/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url('../resources/views/admin-layout/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="{{url('../resources/views/admin-layout/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     
-    <head>
-    
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-    
-        <title>Admin</title>
-    
-        <!-- Custom fonts for this template -->
-        <link href="{{url('../resources/views/admin-layout/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-        <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
-    
-        <!-- Custom styles for this template -->
-        <link href="{{url('../resources/views/admin-layout/css/sb-admin-2.min.css')}}" rel="stylesheet">
-        <!-- Custom styles for this page -->
-        <link href="{{url('../resources/views/admin-layout/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-        
-    </head>
-    <body id="page-top">
-    
-        <!-- Page Wrapper -->
-        <div id="wrapper">
-    
-            <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-               
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand align-items-center justify-content-center mb-5" href="{{url('/admin')}}">
-                    <div class="sidebar-brand-icon">
-                        <img width="50px" src="https://i.pinimg.com/170x/3c/63/1a/3c631aab6d165c9abafa4e387ebf6936.jpg" alt="avatar">
-                    </div>
-                  
-                    {{ $admin=Auth::user()->username }}
-                    {{-- <div><span id="name">{{ $admin}}</span></div> --}}
-                    {{-- <div class="sidebar-brand-text mx-3">@yield('admin-name')</div> --}}
-                
-                    
-                   
-                </a>
+</head>
+@if(Auth::user() == null)
+  <script>window.location = "{{ route('home') }}";</script>
+@else
+  @if (Auth::user()->role_id == 1)
+      <script>window.location = "{{ url('/') }}";</script>
+  @endif
+@endif
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand align-items-center justify-content-center mb-5" href="{{url('/admin')}}">
+                <div class="sidebar-brand-icon">
+                    <img width="50px" src="https://i.pinimg.com/170x/3c/63/1a/3c631aab6d165c9abafa4e387ebf6936.jpg" alt="avatar">
+                </div>
+                <div><span id="name">Admin</span></div>
+                <div class="sidebar-brand-text mx-3">@yield('admin-name')</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
     
                 <!-- Divider -->
                 <hr class="sidebar-divider my-0">
@@ -61,8 +72,8 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{url('/report/bestsale')}}">Bán chạy</a>
-                            <a class="collapse-item" href="{{url('/admin/bestview')}}">Xem nhiều</a>
-                            <a class="collapse-item" href="{{url('/admin/sales')}}">Doanh thu</a>
+                            <a class="collapse-item" href="{{url('/report/bestview')}}">Xem nhiều</a>
+                            <a class="collapse-item" href="{{url('/report/sales')}}">Doanh thu</a>
                         </div>
                     </div>
                 </li>
@@ -77,14 +88,14 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{url('/admins')}}">Danh sách</a>
-                            <a class="collapse-item" href="{{url('/admin/products/create')}}">Thêm mới</a>
+                            <a class="collapse-item" href="{{url('/admin/ListProduct')}}">Danh sách</a>
+                            <a class="collapse-item" href="{{url('/admin/UploadProduct')}}">Thêm mới</a>
                         </div>
                     </div>
                 </li>
     
                 {{-- manufacture --}}
-                <hr class="sidebar-divider my-0">
+                {{-- <hr class="sidebar-divider my-0">
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
                         aria-controls="collapseTwo">
@@ -98,10 +109,10 @@
                             <a class="collapse-item" href="{{url('/admin/manufacuters/create')}}">Thêm mới</a>                       
                         </div>
                     </div>
-                </li>
+                </li> --}}
     
                  {{-- typeproduct --}}
-                 <hr class="sidebar-divider my-0">
+                 {{-- <hr class="sidebar-divider my-0">
                  <li class="nav-item">
                      <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
                          aria-controls="collapseTwo">
@@ -146,8 +157,8 @@
                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{url('/bill/paid')}}">Đã thanh toán</a>
-                            <a class="collapse-item" href="{{url('/bill/unpaid')}}">Chưa thanh toán</a>
+                            <a class="collapse-item" href="{{url('/bill/paid')}}">Đã xác nhận</a>
+                            <a class="collapse-item" href="{{url('/bill/unpaid')}}">Chưa xác nhận</a>
                         </div>
                     </div>
                 </li>
@@ -322,17 +333,4 @@
         <script src="{{url('../resources/views/admin-layout/js/demo/datatables-demo.js')}}"></script>
     </body>
     
-    </html>
-        @else
-        {{ "Bạn không có quyền admin, vui lòng quay lại" }}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('/') }}">{{ __('Trang chủ') }}</a>
-        </li>
-    @endif
-
-@else
-    {{ "Bạn chưa đăng nhập! Vui lòng đăng nhập" }}
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-    </li>
-@endif
+</html>

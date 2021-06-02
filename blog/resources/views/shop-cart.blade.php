@@ -87,7 +87,7 @@
                     <a href="{{url('shop-update')}}" class="btn btn-md btn-dark"><span>Update Cart</span></a>
                   {{-- <input type="submit" name="update_cart" value="Update Cart" class="btn btn-md btn-dark"> --}}
                   <div class="wc-proceed-to-checkout">
-                  <a href="{{url('shop-checkout')}}" class="btn btn-md btn-color"><span>proceed to checkout</span></a>
+                  <a href="{{url('shop-checkout')}}" class="btn btn-md btn-color"><span>Thanh Toán</span></a>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@
          
           <div class="col-md-4 col-md-offset-2">
             <div class="cart_totals">
-              <h2 class="heading relative heading-small uppercase mb-30">Cart Totals</h2>
+              <h2 class="heading relative heading-small uppercase mb-30">Tổng đơn hàng</h2>
 
               <table class="table shop_table">
                 <tbody>

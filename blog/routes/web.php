@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Product;
 use Illuminate\Http\Request;
 use App\DetailBill;
+use Illuminate\Support\Facades\Auth;
 use App\Role;
 
 
@@ -35,6 +36,9 @@ Route::get('shop-single-product/{id?}',[
 //tim kiem product
 Route::get('/search','ProductController@searchProduct');
 
+//TRANG TIM KIEM SAN PHAM
+Route::get('/catalog','ProductController@Catalog');
+
 //cart
 Route::get('add-cart/{id}',['as'=>'add-cart','uses'=>'CartController@addCart']);
 Route::get('cart',['as'=>'cart','uses'=>'CartController@cart']);
@@ -55,20 +59,20 @@ Route::get('/shop-update',function(){
 
 });
 //checkout 
+
 Route::get('/shop-checkout',function(){
+   if(Auth::user() == null){
+      return redirect()->route('home');
+   }
     return view('shop-checkout');
  });
-
+Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
+Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 
 //Auth router
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-//admin route
-// Route::get('/admin/{action?}','AdminController@index');
-// Route::post('/admin/UploadProduct','AdminController@UploadProduct');
-// Route::post('/admin/UploadImageProduct','AdminController@UploadImageProduct');
 
 
 
@@ -90,9 +94,18 @@ Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified
 // Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 // Route::post('/admin/EditProduct','AdminController@EditProduct');
 // Route::get('/product/delete/{id}','AdminController@DeleteProduct');
+// Route::resource('admins','Admin\AdminController');
+// Route::resource('admin/products','Admin\ProductController');
+
+//ADMIN
+Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
+Route::get('/admin/{action?}','AdminController@index');
+Route::post('/admin/UploadProduct','AdminController@UploadProduct');
+Route::post('/admin/EditProduct','AdminController@EditProduct');
+Route::get('/product/delete/{id}','AdminController@DeleteProduct');
 //BillController
-// Route::get('/bill/paid', 'BillController@paid');
-// Route::get('/bill/unpaid', 'BillController@unpaid');
+Route::get('/bill/paid', 'BillController@paid');
+Route::get('/bill/unpaid', 'BillController@unpaid');
 // //ReportController
 // Route::get('/report/bestsale', 'ReportController@bestsale');
 // Route::get('/report/bestview', 'ReportController@bestview');

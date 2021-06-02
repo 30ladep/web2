@@ -33,11 +33,12 @@ class LoginController extends Controller
             return '/';
         }
         if (auth()->user()->role_id == 2) {
-            return route('admins.index');
+            return '/admin';
         }
         if (auth()->user()->role_id == 3) {
-            return route('admins.index');
+            return '/admin';
         }
+       
       
     }
 

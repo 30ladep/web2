@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label>Price: $</label>
-                <input type="number" name="price" class="form-control" min="0" required>
+                <input type="number" name="price" class="form-control" min="0" max="9999999" required>
             </div>
             <div class="form-group">
                 <label>Product type:</label>
@@ -63,7 +63,7 @@
             </div>
             <div class="form-group">
                 <label>Count:</label>
-                <input type="number" class="form-control" name="count" min="0" required>
+                <input type="number" class="form-control" name="count" min="0" max="500" required>
             </div>
             <div class="form-group">
                 <label>Image product <i class="fas fa-exclamation-triangle" data-toggle="tooltip" title="Tối đa 5 ảnh: Ảnh ngoài cùng bên trái là ảnh chính"></i></label><br>
@@ -91,7 +91,7 @@
             </div>
             <div class="form-group">
                 <label>Price: $</label>
-                <input type="number" name="price" class="form-control" min="0" value="{{$product->price}}" required>
+                <input type="number" name="price" class="form-control" min="0" max="9999999" value="{{$product->price}}" required>
             </div>
             <div class="form-group">
                 <label>Product type:</label>
@@ -139,7 +139,7 @@
             </div>
             <div class="form-group">
                 <label>Count:</label>
-                <input type="number" class="form-control" name="count" min="0" value="{{$product->count}}" required>
+                <input type="number" class="form-control" name="count" min="0" max="500" value="{{$product->count}}" required>
             </div>
             <div class="form-group">
                 <label>Image product <i class="fas fa-exclamation-triangle" data-toggle="tooltip" title="Tối đa 5 ảnh: Ảnh ngoài cùng bên trái là ảnh chính"></i></label><br>
@@ -150,7 +150,7 @@
                     @php
                         $count--;
                     @endphp
-                    <img class="img-show" src="{{url('/img/image_product/'.$item->image)}}" width="50px" alt="" srcset="">
+                    <img class="img-show" src="{{url('/img/image_product/'.$item->image_product)}}" width="50px" alt="" srcset="">
                 @endforeach
                 @for ($i = 0; $i < $count; $i++)
                     <img class="img-show" src="" width="50px" alt="" srcset="">

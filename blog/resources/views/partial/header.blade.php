@@ -141,74 +141,10 @@
                 </li>
 
                 <li class="dropdown">
-                  <a href="#">Pages</a>
-                  <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"></i>
-                  <ul class="dropdown-menu">
-                    <li><a href="{{url('/about-us')}}">About Us</a></li>
-                    <li><a href="{{url('/contact')}}">Contact</a></li>
-                    <li><a href="{{url('/login')}}">Login</a></li>
-                    <li><a href="{{url('/faq')}}">F.A.Q</a></li>
-                  </ul>
-                </li>
-
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories</a>
-                  <ul class="dropdown-menu megamenu">
-                    <li>
-                      <div class="megamenu-wrap">
-                        <div class="row">
-
-                          <div class="col-md-3 megamenu-item">
-                            <h6>For Man</h6>
-                            <ul class="menu-list">
-                              <li><a href="{{url('/shop-catalog')}}">Shirts</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Jeans</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Accessories</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Shoes</a></li>
-                            </ul>
-                          </div>
-
-                          <div class="col-md-3 megamenu-item">
-                            <h6>For Woman</h6>
-                            <ul class="menu-list">
-                              <li><a href="{{url('/shop-catalog')}}">Dresses</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Coats</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Accessories</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Sandals</a></li>
-                            </ul>
-                          </div>
-
-                          <div class="col-md-3 megamenu-item">
-                            <h6>Accessories</h6>
-                            <ul class="menu-list">
-                              <li><a href="{{url('/shop-catalog')}}">Wallets</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Watches</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Belts</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Scarfs</a></li>
-                            </ul>
-                          </div>
-
-                          <div class="col-md-3 megamenu-item">
-                            <h6>Bags</h6>
-                            <ul class="menu-list">
-                              <li><a href="{{url('/shop-catalog')}}">Leather</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Sports</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Street Style</a></li>
-                              <li><a href="{{url('/shop-catalog')}}">Creative</a></li>
-                            </ul>
-                          </div>
-
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </li> <!-- end categories -->
-
-                <li class="dropdown">
                   <a href="#">Shop</a>
                   <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"></i>
                   <ul class="dropdown-menu">
-                    <li><a href="{{url('/shop-catalog')}}">Catalog</a></li>
+                    <li><a href="{{url('/catalog')}}">Catalog</a></li>
                   </ul>
                 </li>
 
