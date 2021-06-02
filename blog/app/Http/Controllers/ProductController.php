@@ -45,9 +45,10 @@ class ProductController extends Controller
     //get product search
     function searchProduct(Request $request){
         $keysword = $request->timkiem;
+        $banners = Banner::all();
          $products_search = Product::where('product_name','like',"%$keysword%")->orWhere('note','like',"%$keysword%")->take(16)->paginate(8);
         $productsBestSeller = Product::all()->take(8)->sortBy('sold');
-        return view('searchproduct',['products_search'=>$products_search,'tukhoa'=>$keysword,'productsbestseller'=>$productsBestSeller]);
+        return view('searchproduct',['products_search'=>$products_search,'tukhoa'=>$keysword,'productsbestseller'=>$productsBestSeller,'banners'=>$banners]);
     }
 
     //get product best seller 

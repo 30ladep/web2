@@ -25,7 +25,7 @@
           </div>
         </div> <!-- end slider -->
       </div>
-    </section> <!-- end hero slider -->
+  </section> <!-- end hero slider -->
 
     <!-- New Arrivals -->
     <section class="section-wrap new-arrivals pb-40">
