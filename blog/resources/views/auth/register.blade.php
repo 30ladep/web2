@@ -29,6 +29,15 @@
                   
                 <form method="POST" action="{{route('register') }}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                         <p class="form-row form-row-wide">
                         <label>User Name
                             <abbr class="required" title="required">*</abbr>

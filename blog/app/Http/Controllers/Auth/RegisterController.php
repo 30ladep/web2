@@ -59,6 +59,13 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function message(){
+        return [
+            'username.required'=>'Vui lòng điền username',
+            'username.string'=>'Không điền kí tự',
+            'username.max'=>'Quá số chữ qui định ',
+        ];
+    }
     /**
      * Create a new user instance after a valid registration.
      *@

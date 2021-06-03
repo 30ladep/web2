@@ -94,8 +94,8 @@
                     </div>
                 </li>
     
-                {{-- manufacture --}}
-                {{-- <hr class="sidebar-divider my-0">
+                {{--  manufacture --}}
+                <hr class="sidebar-divider my-0">
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
                         aria-controls="collapseTwo">
@@ -109,10 +109,10 @@
                             <a class="collapse-item" href="{{url('/admin/manufacuters/create')}}">Thêm mới</a>                       
                         </div>
                     </div>
-                </li> --}}
+                </li>
     
                  {{-- typeproduct --}}
-                 {{-- <hr class="sidebar-divider my-0">
+                 <hr class="sidebar-divider my-0">
                  <li class="nav-item">
                      <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
                          aria-controls="collapseTwo">
