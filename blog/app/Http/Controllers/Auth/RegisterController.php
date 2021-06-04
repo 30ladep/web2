@@ -54,16 +54,20 @@ class RegisterController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone'=>['required','string','min:8','max:10'],
+            'phone'=>['required','string','min:8','max:11'],
            
         ]);
     }
 
-    public function message(){
+    public function messages(){
         return [
             'username.required'=>'Vui lòng điền username',
-            'username.string'=>'Không điền kí tự',
             'username.max'=>'Quá số chữ qui định ',
+            'email.required'=>'Vui lòng điền email',           
+            'email.unique'=>'Email đã có người đăng kí',
+            'phone.required'=>'Vui lòng điền số diện thoại',
+            'phone.min'=>'Số điện thoại phải lớn hơn 8 kí tự số',
+            'phone.max'=>'Số điện thoại không vượt quá 10 kí tự số',
         ];
     }
     /**

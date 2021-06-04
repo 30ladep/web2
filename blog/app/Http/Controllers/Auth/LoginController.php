@@ -32,11 +32,11 @@ class LoginController extends Controller
         if (auth()->user()->role_id == 1) {
             return '/';
         }
-        if (auth()->user()->role_id == 2) {
-            return '/admin';
+        if (auth()->user()->role_id === 2) {
+            return route('admins.index');
         }
-        if (auth()->user()->role_id == 3) {
-            return '/admin';
+        if (auth()->user()->role_id === 3) {
+            return route('admins.index');
         }
        
       
@@ -52,7 +52,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    
+   
 
     /**
      * Get the login username to be used by the controller.
