@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         $users = User::all();
        
-            return view('admin-pages.User.ListUser',compact('users'));
+        return view('admin-pages.User.ListUser',compact('users'));
         
     }
 
@@ -49,7 +49,14 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
        // dd($request);
-      
+       $validatedData = $request->validate([
+        'username' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'phone'=>['required','string','min:8','max:11'],
+        'role_id'=>['accepted'],
+        'comfirmpassword'=>['required','same:password'],      
+         ]);
         $user = new User();
         $user->username = $request->username;
         $user->email=$request->email;

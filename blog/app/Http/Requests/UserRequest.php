@@ -24,24 +24,31 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username'=>'required|unique:users',
-            'email'=>'required',
-            'phone'=>'required',
-            'password'=>'required',
-            'comfirmpassword'=>'required|same:password',      
 
+            'username' => ['required', 'string', 'max:255','unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'phone'=>['required','string','min:8','max:11'],
+            'comfirmpassword'=>['required','same:password'], 
+            'role_id'=>['accepted'],
         ];
 
         
     }
-    public function message(){
+ 
+    public function messages(){
         return [
             'username.required'=>'Nhap username',
-            'username.unique'=>'User name da ton tai',
-            'phone.required'=>'Nhap phone',
+            'username.unique'=>'Username đã tồn tại',
+            'email.email'=>'Vui lòng điền đúng định dạng email',
+            'email.unique'=>'email đã tồn tại',
+            'password.min'=>'Password phải lớn hơn 8 kí tự',
+            'phone.min'=>'Phone phải lớn hơn 8 kí tự',
+            'phone.max'=>'Phone phải bé hơn 11 kí tự',
             'password.required'=>'Nhap password',
             'comfirmpassword.required'=>'Nhap xac nhan password',
-            'comfirmpassword.same'=>'Not match',
+            'comfirmpassword.same'=>'Xác nhận lại mật khẩu không đúng',
+            'role_id.accepted'=>'Chưa cấp quyền cho user'
         ];
     }
 }
