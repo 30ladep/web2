@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class UserRequest extends FormRequest
 {
     /**
@@ -30,7 +30,10 @@ class UserRequest extends FormRequest
             'password' => ['required', 'string', 'min:8'],
             'phone'=>['required','string','min:8','max:11'],
             'comfirmpassword'=>['required','same:password'], 
-            'role_id'=>['accepted'],
+            'role_id'=>[
+                'required',
+                Rule::in(['1', '2','3']),
+            ],
         ];
 
         
@@ -48,7 +51,7 @@ class UserRequest extends FormRequest
             'password.required'=>'Nhap password',
             'comfirmpassword.required'=>'Nhap xac nhan password',
             'comfirmpassword.same'=>'Xác nhận lại mật khẩu không đúng',
-            'role_id.accepted'=>'Chưa cấp quyền cho user'
+            'role_id.required'=>'Chưa cấp quyền cho user'
         ];
     }
 }

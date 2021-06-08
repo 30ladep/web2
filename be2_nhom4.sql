@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 31, 2021 at 10:21 AM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Host: 127.0.0.1:3309
+-- Generation Time: Jun 06, 2021 at 12:22 PM
+-- Server version: 10.3.14-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `be2_nhom4`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banners`
+--
+
+DROP TABLE IF EXISTS `banners`;
+CREATE TABLE IF NOT EXISTS `banners` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_slide` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `content`, `image_slide`, `created_at`, `updated_at`) VALUES
+(8, 'Gucci Equilibrium is our commitment to generate positive change for people and our planet', '1622468069.z2507759305665_125c3318b0e2daaeda3544f47a9dfdd3.jpg', NULL, NULL),
+(7, 'Bad Bunny Cake Topper', '1622467991.z2507758172663_f2aa65393823da9650eaf511abd34ac5.jpg', NULL, NULL),
+(11, 'SUNSET MONOGRAM SPORTY SHORTS', '1622512402.z2507758174798_b3f5b5b1c4f94faffbc8693301fc293d.jpg', NULL, NULL),
+(10, 'Presenting CHIME FOR CHANGE’s new creative identity, ArtWalls, nonprofit projects & creative collaborations', '1622512345.z2507758177868_67cc6986c22ab2a39b4c6763b015ca9c.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -41,18 +67,7 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `bills_user_id_foreign` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `bills`
---
-
-INSERT INTO `bills` (`id`, `price`, `create_date`, `status`, `image_check_out`, `address`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 2135.00, '2021-05-30 00:00:00', '1', '1622364930_43.PNG', '', 3, NULL, NULL),
-(2, 2135.00, '2021-05-30 00:00:00', '1', '1622364997_43.PNG', '', 3, NULL, NULL),
-(3, 2500.00, '2021-05-30 00:00:00', '0', '1622365187_2018_mclaren_570s_spider_5k-wide.jpg', '', 1, NULL, NULL),
-(4, 2500.00, '2021-05-30 00:00:00', '1', '1622365562_42803600_350446119031454_2110659053670629376_n.jpg', '', 1, NULL, NULL),
-(5, 980.00, '2021-05-31 00:00:00', '0', '1622452047_screen-5.jpg', '', 1, NULL, NULL);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -91,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `detail_bills` (
   PRIMARY KEY (`id`),
   KEY `detail_bills_bill_id_foreign` (`bill_id`),
   KEY `detail_bills_product_id_foreign` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `detail_bills`
@@ -101,12 +116,7 @@ INSERT INTO `detail_bills` (`id`, `bill_id`, `product_id`, `count_product`, `cou
 (9, NULL, 3, 1, 1800.00, NULL, NULL),
 (6, NULL, 8, 1, 980.00, NULL, NULL),
 (8, NULL, 3, 1, 1800.00, NULL, NULL),
-(7, NULL, 6, 1, 1400.00, NULL, NULL),
-(10, 2, 2, 0, 0.00, NULL, NULL),
-(11, 2, 12, 0, 0.00, NULL, NULL),
-(12, 3, 4, 0, 0.00, NULL, NULL),
-(13, 4, 4, 1, 2500.00, NULL, NULL),
-(14, 5, 8, 1, 980.00, NULL, NULL);
+(7, NULL, 6, 1, 1400.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -143,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `image_products` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `image_products_product_id_foreign` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `image_products`
@@ -199,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `manufactures` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `manufactures`
@@ -210,7 +220,8 @@ INSERT INTO `manufactures` (`id`, `manu_name`, `created_at`, `updated_at`) VALUE
 (2, 'Adidas', NULL, NULL),
 (3, 'Tommy', NULL, NULL),
 (4, 'Chanel', NULL, NULL),
-(5, 'Hermas', NULL, NULL);
+(5, 'Hermas', NULL, NULL),
+(16, 'Gang teo 2', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -224,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -245,7 +256,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2021_05_01_092745_create_products_table', 1),
 (13, '2021_05_05_022844_create_image_products_table', 1),
 (14, '2021_05_08_060726_create_roles_table', 1),
-(15, '2021_05_11_222407_delete_column_user', 1);
+(15, '2021_05_11_222407_delete_column_user', 1),
+(16, '2021_05_26_035225_inster_email_verified', 2),
+(17, '2021_05_30_144826_create_banners_table', 3);
 
 -- --------------------------------------------------------
 
@@ -276,6 +289,14 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('teodeptrai@gmail.com', '$2y$10$ug/z0MCjYRivcckM8PsRU.Fq/QaV5a3yYlYgD95uHVQ86ENtjVSTe', '2021-05-18 17:01:47'),
+('teo@gmail.com', '$2y$10$ooAR9ppi0xxYfqf5FnQ1nOXxMOksU9eg3mnWVtLRAeoearvhFC52S', '2021-05-25 20:00:45');
+
 -- --------------------------------------------------------
 
 --
@@ -287,24 +308,24 @@ CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` double(12,2) NOT NULL DEFAULT 0.00,
-  `sold` int(11) NOT NULL DEFAULT 0,
-  `size` double NOT NULL DEFAULT 0,
+  `price` double(8,2) NOT NULL,
+  `sold` int(11) NOT NULL,
+  `size` double NOT NULL,
   `hot` tinyint(4) NOT NULL,
   `note` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `create_date` date DEFAULT NULL,
-  `view` int(11) NOT NULL DEFAULT 0,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `create_date` date NOT NULL,
+  `view` int(11) NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_id` int(11) NOT NULL,
   `manu_id` int(11) NOT NULL,
-  `count` int(11) NOT NULL DEFAULT 0,
+  `count` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `products_type_id_foreign` (`type_id`),
   KEY `products_manu_id_foreign` (`manu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
@@ -381,6 +402,7 @@ INSERT INTO `products` (`id`, `product_name`, `image`, `price`, `sold`, `size`, 
 (69, 'pants navy cotton', '1620484071_pants-navy-blue-cotton-tweed-cotton-tweed-packshot-default-p70076v61614nb347-8836708597790.jpg', 786.00, 3, 45, 0, 'Form rộng thoải mái.', '2021-05-08', 0, '0', '0', 2, 4, 2, NULL, NULL),
 (70, 'Plant hermas 114', '1620486156_114-201710021935_2.jpg', 45.00, 3, 54, 0, 'Chất liệu : Cotton 100%', '2021-05-08', 0, '0', '0', 2, 5, 2, NULL, NULL),
 (71, 'Plant hermas 163', '1620486144_beige-synthetic-hermes-trousers-12051656-2_1.jpg', 32.00, 3, 44, 1, 'Chất liệu : Cotton 100%', '2021-05-08', 0, '0', '0', 2, 5, 2, NULL, NULL),
+(108, 'Saint germain fitted', '1620486093_saint-germain-fitted-pants--155040H360-worn-2-0-0-1000-1000_b.jpg', 1000.00, 3, 32, 1, 'Chất liệu : Cotton 100%', '2021-05-08', 0, '0', '1', 2, 5, 2, NULL, NULL),
 (75, 'Dress gucci xk37', '1620484283_606017_XKA4A_6367_002_100_0000_Light.jpg', 554.00, 3, 45, 1, 'không còn đứng phom', '2021-05-08', 0, '0', '0', 3, 1, 2, NULL, NULL),
 (76, 'GG jackquard', '1620484316_GG-jacquard.jpg', 64.00, 3, 54, 0, 'Vải thoáng mát', '2021-05-08', 0, '0', '0', 3, 1, 2, NULL, NULL),
 (77, 'za gucci dress', '1620484344_643352_ZAFGT_3408_002_100_0000_Light.jpg', 7.00, 3, 52, 0, 'Chất liệu: Polyester', '2021-05-08', 0, '0', '0', 3, 1, 2, NULL, NULL),
@@ -452,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `type_products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `type_products`
@@ -461,7 +483,8 @@ CREATE TABLE IF NOT EXISTS `type_products` (
 INSERT INTO `type_products` (`id`, `type_name`, `created_at`, `updated_at`) VALUES
 (1, 'Shirt', NULL, NULL),
 (2, 'Trousers', NULL, NULL),
-(3, 'Dress', NULL, NULL);
+(3, 'Dress', NULL, NULL),
+(5, 'Luis Vuitton', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -476,7 +499,7 @@ CREATE TABLE IF NOT EXISTS `type_users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `type_users`
@@ -484,7 +507,8 @@ CREATE TABLE IF NOT EXISTS `type_users` (
 
 INSERT INTO `type_users` (`id`, `type_user_name`, `created_at`, `updated_at`) VALUES
 (1, 'customer', NULL, NULL),
-(2, 'vip', NULL, NULL);
+(2, 'vip', NULL, NULL),
+(3, 'admmin', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -505,19 +529,24 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `users_type_user_id_foreign` (`type_user_id`),
   KEY `users_role_id_foreign` (`role_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `token_cart`, `type_user_id`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'teo', '$2y$10$gXWm3aJnyNqVMKhkK5VKK.fgIo2zeBT.MGbjHrPzS2mkA3gqC4x4i', 'teo@gmail.com', '1234567891', NULL, 1, 0, 'VIGUU3deh3QmA0KLNGVlLja0DOy8YDxnGE6JDHOd6rPwoFqF3DJk6VtEu90F', NULL, NULL),
-(2, 'teodeptrai', '$2y$10$AuKz0wa1SV0I.uDSukei3eMmVg5r1PTQt20JyzNd4E48wI.WPZWO2', 'teodeptrai@gmail.com', '1234567889', NULL, 1, 0, NULL, NULL, NULL),
-(3, 'admin', '$2y$10$de252X0GcdCs97TlAWQILOV9gPAR7GwzphczkSPygf0psl1EWDvWy', 'tri.minh.it.0297@gmail.com', '0359611166', NULL, 1, 0, NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `token_cart`, `type_user_id`, `role_id`, `remember_token`, `created_at`, `updated_at`, `email_verified_at`) VALUES
+(1, 'teoedit', '$2y$10$wJwhGiwCiJE/uhtlMx2pQ.MNKdHq55tImI0DBZQN.mP/P/T0GEGyq', 'teo@gmail.com', '1234567891', NULL, 2, 1, 'KtgizNrql6AQX3aQUcLafAQWBnkgnuIpm1teoSxbndlo4JCu5jUMjfT0RVP5', NULL, NULL, NULL),
+(2, 'teodeptrai', '$2y$10$AuKz0wa1SV0I.uDSukei3eMmVg5r1PTQt20JyzNd4E48wI.WPZWO2', 'teodeptrai@gmail.com', '1234567889', NULL, 1, 1, NULL, NULL, NULL, NULL),
+(3, 'teo23', '$2y$10$kg9kEcvS/wm5I5mSxuh8wuHJwQNzVyNnJ9kkrphtToGGqEJWxCJe6', 'teo23@gmail.com', '123456789', NULL, 1, 1, NULL, NULL, NULL, NULL),
+(4, 'teonv', '$2y$10$9/WbFsYt/J5HO08QbFaIe.ktKfcdEEE5DI/GsrYDB.URFKW9UWxNS', 'teonv@gmail.com', '123456890', NULL, 1, 1, NULL, NULL, NULL, NULL),
+(6, 'admin1', '$2y$10$A5KlAC5LhlLx4ZfCe4BCfOenvGY5v0GVNY2FoYEqXfmIQ3LPLK/MS', 'admin1@gmail.com', '123456789', NULL, 3, 2, NULL, NULL, NULL, NULL),
+(49, 'nguyenteo', '$2y$10$Rh3KrlhECrlyKwYkcek1wOPuvcmVfbGY4JLE5Po5QuvnWzIt3J4dO', 'backend2nhom4@gmail.com', '1234567890', NULL, 3, 3, '8f8ZSvkv1aI0RXfASq2ELQQfGCpPIL7TBuFVO6AEKOJ7pZJBXp1RZXsVomrt', NULL, NULL, '2021-05-31 18:33:59'),
+(50, 'vuducthien', '$2y$10$6i9VqkASpnW84sab5TlHueWs.nLlKC2AgNstdnywRGofNPLEgys36', 'thienaka2p@gmail.com', '123434124', NULL, 3, 2, NULL, NULL, NULL, '2021-06-01 18:51:47');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
