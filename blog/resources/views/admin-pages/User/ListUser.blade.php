@@ -49,14 +49,14 @@
                     <td>{{$value->Role->role_name}}</td>
                     <td>
                   
-                    <form action="{{ route('users.destroy', $value->id) }}" method="POST">
+                    <form action="{{route('users.destroy', $value->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-sm" title="Delete">Delete</button>
                     </form>
-                    <form action="{{ route('users.edit', $value->id) }}" method="GET">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                            @method('PATCH')
+                    <form action="{{ route('users.edit',$value->id) }}" method="GET">
+                        @method('PATCH')
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />                      
                             <button class="fas fa-edit" title="Edit">Edit</button>
                     </form>
 

@@ -23,9 +23,9 @@
         </div>
         @endif
         {{-- {{dd($user)}} --}}
-        <form class="row" action="{{ route('users.update',$user->id) }}" method="POST" enctype="multipart/form-data">
+        <form class="row" action="{{route('users.update',$user->id) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
-            @method('PUT')
+            @method('PATCH')
             <div class="col-5">
                 <div class="form-group">
                 <label>Username:</label>
@@ -33,7 +33,8 @@
                 <label>Password:</label>
                 <input type="password" name="password" class="form-control" value="{{$user->password}}"required>
                 <label>Comfirm Password:</label>
-                <input type="password" name="comfirmpassword" class="form-control" value="{{$user->password}}" required>
+                {{-- <input type="password" name="comfirmpassword" class="form-control" value="{{$user->password}}" required> --}}
+                  <input type="password" name="comfirmpassword" class="form-control" value="{{$user->password}}" required>
                 <label>Email:</label>
                 <input type="text" name="email" class="form-control" value="{{$user->email}}"required>
                 <label>Số điện thoại:</label>
@@ -59,11 +60,12 @@
                 @if ($user->role_id === 1)
                 <input type="radio" id="role_id" name="role_id" value="1" checked>User<br>
                 <input type="radio" id="role_id" name="role_id" value="2">Admin<br>  
+                <input type="radio" id="role_id" name="role_id" value="3">Super Admin<br> 
                 @endif
                 @if ($user->role_id === 2)
                 <input type="radio" id="role_id" name="role_id" value="2" checked>Admin<br>  
                 <input type="radio" id="role_id" name="role_id" value="1">User<br>
- 
+                <input type="radio" id="role_id" name="role_id" value="3">Super Admin<br> 
                 @endif   
                             
             </div>           

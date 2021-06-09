@@ -26,23 +26,24 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
+     protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo()
     {
         if (auth()->user()->role_id == 1) {
              return '/';
-            //dd(auth()->user()->role_id);
-        }
-        if (auth()->user()->role_id === 2) {
+            
+        }else{
             return route('admins.index');
-           // dd(auth()->user()->role_id);
         }
-        if (auth()->user()->role_id === 3) {
-             return route('admins.index');
-           //dd(auth()->user()->role_id);
-        }
+        // if (auth()->user()->role_id === 2) {
+        //     return route('admins.index');
+           
+        // }
+        // if (auth()->user()->role_id === 3) {
+        //      return route('admins.index');
+          
+        // }
        
-      
     }
 
     /**
@@ -54,9 +55,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-   
-
     /**
      * Get the login username to be used by the controller.
      *

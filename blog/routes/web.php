@@ -54,12 +54,8 @@ Route::get('/shop-cart',function(){
    return view('shop-cart');
 });
 
-//update cart
-Route::get('/shop-update',function(){
 
-});
 //checkout 
-
 Route::get('/shop-checkout',function(){
    if(Auth::user() == null){
       return redirect()->route('home');
@@ -72,6 +68,8 @@ Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 //Auth router
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
+//xac nhan email
+Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 
 
 
@@ -86,16 +84,13 @@ Route::resource('admin/users','Admin\UserController');
 Route::resource('admin/banners','Admin\BannerController');
 
 
-//xac nhan email
-Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 
 // Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 // Route::get('/admin/{action?}','AdminController@index');
 // Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 // Route::post('/admin/EditProduct','AdminController@EditProduct');
 // Route::get('/product/delete/{id}','AdminController@DeleteProduct');
-// Route::resource('admins','Admin\AdminController');
-// Route::resource('admin/products','Admin\ProductController');
+
 
 //ADMIN
 Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');

@@ -9,7 +9,9 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements MustVerifyEmail
 {
      use Notifiable;
-    protected $table='users';
+  
+  
+     protected $table='users';
     protected $fillable=['id','username','password','email','phone','token_cart','remmember_token','role_id','type_user_id','email_verified_at'];
     public $timestamps=false;
 
