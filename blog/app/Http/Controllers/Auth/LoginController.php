@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use  Illuminate\Http\Request;
 class LoginController extends Controller
 {
     /*
@@ -26,26 +26,42 @@ class LoginController extends Controller
      *
      * @var string
      */
-     protected $redirectTo = RouteServiceProvider::HOME;
-    protected function redirectTo()
-    {
-        if (auth()->user()->role_id == 1) {
-             return '/';
-            
-        }else{
-            return route('admins.index');
-        }
-        // if (auth()->user()->role_id === 2) {
-        //     return route('admins.index');
+     //protected $redirectTo = RouteServiceProvider::HOME;
+    // protected function redirectTo()
+    // {
+    //     if (auth()->user()->role_id !== 1) {
+    //         return route('admins.index');
            
-        // }
-        // if (auth()->user()->role_id === 3) {
-        //      return route('admins.index');
+    //     }else{
+    //         return '/';
+    //     }
+    //     // if (auth()->user()->role_id === 2) {
+    //     //     return route('admins.index');
+           
+    //     // }
+    //     // if (auth()->user()->role_id === 3) {
+    //     //      return route('admins.index');
           
-        // }
+    //     // }
        
-    }
+    // }
+    protected function authenticated()
+    {
+       
 
+        if (auth()->user()->role_id === 3) {
+            return redirect()->route('admins.index');
+           
+        }
+        else if(auth()->user()->role_id === 2)
+        {
+            return redirect()->route('admins.index');
+        }
+        else
+        {
+        return '/';
+        }
+    }
     /**
      * Create a new controller instance.
      *
