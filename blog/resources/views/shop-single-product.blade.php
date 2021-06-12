@@ -152,31 +152,41 @@
                 <div class="tab-pane fade" id="tab-reviews">
 
                   <div class="reviews">
+                    @if ($DuocDanhGia == 1)
+                        <form action="{{url('/AddComment')}}" method="post">
+                          {{ csrf_field() }}
+                          <input type="number" name="rate" id="rate" hidden>
+                          <input type="number" name="ProductID" value="{{$products->id}}" hidden>
+                          <a href="javascript:;" style="color: gray"><i class="fas fa-star rr" data-id="1"></i></a>
+                          <a href="javascript:;" style="color: gray"><i class="fas fa-star rr" data-id="2"></i></a>
+                          <a href="javascript:;" style="color: gray"><i class="fas fa-star rr" data-id="3"></i></a>
+                          <a href="javascript:;" style="color: gray"><i class="fas fa-star rr" data-id="4"></i></a>
+                          <a href="javascript:;" style="color: gray"><i class="fas fa-star rr" data-id="5"></i></a>
+                          <br><br>
+                          <textarea name="Comment" id="" cols="10" rows="5" style="resize: none" placeholder="Nhập đánh giá"></textarea>
+                          <input type="submit" value="Xác nhận" class="btn btn-primary">
+                        </form>
+                    @endif
                     <ul class="reviews-list">
-                      <li>
-                        <div class="review-body">
-                          <div class="review-content">
-                            <p class="review-author"><strong>Alexander Samokhin</strong> - May 6, 2014 at 12:48 pm</p>
-                            <div class="rating">
-                              <a href="#"></a>
+                      @foreach ($comment as $item)
+                        <li>
+                          <div class="review-body">
+                            <div class="review-content">
+                              <p class="review-author"><strong>{{$users->where('id', $item->user_id)->first()->username}}</strong> - {{$item->createDate}}</p>
+                              <div class="">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    @if ($i <= $item->rate)
+                                        <a href="javascript:;" style="color: yellow; font-size: 12px"><i class="fas fa-star"></i></a>
+                                    @else
+                                        <a href="javascript:;" style="color: gray; font-size: 12px"><i class="fas fa-star"></i></a>
+                                    @endif
+                                @endfor
+                              </div>
+                              <p>{{$item->comment}}</p>
                             </div>
-                            <p>This template is so awesome. I didn’t expect so many features inside. E-commerce pages are very useful, you can launch your online store in few seconds. I will rate 5 stars.</p>
                           </div>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="review-body">
-                          <div class="review-content">
-                            <p class="review-author"><strong>Christopher Robins</strong> - May 6, 2014 at 12:48 pm</p>
-                            <div class="rating">
-                              <a href="#"></a>
-                            </div>
-                            <p>This template is so awesome. I didn’t expect so many features inside. E-commerce pages are very useful, you can launch your online store in few seconds. I will rate 5 stars.</p>
-                          </div>
-                        </div>
-                      </li>
-
+                        </li>
+                      @endforeach
                     </ul>         
                   </div> <!--  end reviews -->
                 </div>
@@ -273,5 +283,20 @@
         </div> <!-- end row -->
       </div> <!-- end container -->
     </section> <!-- end related products -->
-
+<script>
+  $('.rr').on('click', function(){
+    var NamSao = $('.rr');
+    //console.log(NamSao);
+    var DanhGia = $(this).attr('data-id');
+    for(var i = 0; i < NamSao.length; i++){
+      if(i < DanhGia){
+        $(NamSao[i]).css('color','yellow');
+      }
+      else{
+        $(NamSao[i]).css('color','gray');
+      }
+    }
+    $('#rate').val(DanhGia);
+  });
+</script>
 @endsection

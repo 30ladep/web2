@@ -25,7 +25,9 @@ class ProductController extends Controller
         $banners = Banner::all();
         $productsBestSeller = Product::all()->take(8)->sortBy('sold');
         return view('index',array(
-            'products' => $products,'productsbestseller'=>$productsBestSeller,'banners'=>$banners
+            'products' => $products,
+            'productsbestseller'=>$productsBestSeller,
+            'banners'=>$banners
         ));
     }
 
@@ -36,7 +38,25 @@ class ProductController extends Controller
         $typeProductRelated = $productsDetailByID->type_id;
         $productRelated = Product::where('type_id',$typeProductRelated)->get();
         $productRelated->take(8);
-        return view('shop-single-product',['products'=>$productsDetailByID,'productRelated'=>$productRelated]);
+        $DuocDanhGia = -1;
+        //dd($DuocDanhGia);
+        //kiem tra xem nguoi nay duoc danh gia khong
+        if(Auth::user() != null){
+            $bills = DB::table('bills')->where('user_id', Auth::user()->id)->where('status', 1)->get();
+            if(count($bills) > 0){
+                $DuocDanhGia = 1;
+            }
+        }
+        //danh sach danh gia
+        $comment = DB::table('comment')->where('product_id', $id)->orderBy('id','desc')->get();
+        $user = DB::table('users')->get();
+        return view('shop-single-product',
+        ['products'=>$productsDetailByID,
+        'productRelated'=>$productRelated,
+        'DuocDanhGia'=>$DuocDanhGia,
+        'comment'=>$comment,
+        'users'=>$user
+        ]);
     }        
     
 
