@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Manufacture;
 use App\TypeProduct ;
+use Auth;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -17,10 +19,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $manu = Manufacture::all();
-        $typeProduct = TypeProduct::all();
-        return view('admin-pages.ListProduct',compact('products','manu','typeProduct'));
+        // $products = Product::all();
+        // $manu = Manufacture::all();
+        // $typeProduct = TypeProduct::all();
+        // return view('admin-pages.ListProduct',compact('products','manu','typeProduct'));
+
+      
+        $id = Auth::user()->id;
+        $user = User::where('id',$id)->first();
+      
+        return view('admin-pages.Admin.infoAdmin',compact('user'));
     }
 
     /**

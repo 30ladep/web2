@@ -44,7 +44,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand align-items-center justify-content-center mb-5" href="{{url('/admin')}}">
+            <a class="sidebar-brand align-items-center justify-content-center mb-5" href="{{route('admins.index')}}">
                 <div class="sidebar-brand-icon">
                     <img width="50px" src="https://i.pinimg.com/170x/3c/63/1a/3c631aab6d165c9abafa4e387ebf6936.jpg" alt="avatar">
                 </div>

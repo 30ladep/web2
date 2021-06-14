@@ -12,7 +12,7 @@
 </style>
 
     <div class="ml-2">
-        <h3>Edit User</h3>
+        <h3>Edit Admin</h3>
         @if($errors->any())
         <div class="row collapse">
             <ul class="alert-box warning radius">

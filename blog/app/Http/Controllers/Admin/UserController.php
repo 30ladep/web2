@@ -105,42 +105,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules = [
-            'username' => ['required', 'string', 'max:255','unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-            'phone'=>['required','string','min:8','max:11'],
-            'comfirmpassword'=>['required','same:password'], 
-            'role_id'=>[
-                'required',
-                Rule::in(['1', '2','3']),
-            ],
-        ];
-
-        $messages = [
-            'username.required'=>'Nhap username',
-            'username.unique'=>'Username đã tồn tại',
-            'email.email'=>'Vui lòng điền đúng định dạng email',
-            'email.unique'=>'email đã tồn tại',
-            'password.min'=>'Password phải lớn hơn 8 kí tự',
-            'phone.min'=>'Phone phải lớn hơn 8 kí tự',
-            'phone.max'=>'Phone phải bé hơn 11 kí tự',
-            'password.required'=>'Nhap password',
-            'comfirmpassword.required'=>'Nhap xac nhan password',
-            'comfirmpassword.same'=>'Xác nhận lại mật khẩu không đúng',
-            'role_id.required'=>'Chưa cấp quyền cho user'
-        ];
-        $validator = Validator::make($request->all(), $rules, $messages);
+        //dd($request->all());
         $user = User::findOrFail($id);
-        $user->username = $request->username;
-        $user->email=$request->email;
-        $user->password =Hash::make($request->password);
-        $user->phone=$request->phone;
+        if($request->input('password')){
+            $this->validate($request,[
+                'comfirmpassword'=>'same:comfirmpassword'
+            ],[
+                'comfirmpassword.same'=>'Xác nhận lại mật khẩu không đúng'
+            ]);
+
+            $pass = $request->input('password');
+            $user->password =Hash::make($pass);
+        }
         $user->type_user_id = 3;
         $user->role_id=$request->role_id;
 
+       
         $user->save();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with(['flash_level'=>'Cập nhật thành công']);
 
     }
 
