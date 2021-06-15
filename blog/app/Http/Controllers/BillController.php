@@ -66,4 +66,17 @@ class BillController extends Controller
          ]);
          return redirect('/bill/unpaid');
     }
+    public function AddComment(Request $request){
+         $rate = $request->rate;
+         $ProductID = $request->ProductID;
+         $Comment = $request->Comment;
+         DB::table('comment')->insert([
+              'rate'=>$rate,
+              'comment'=>$Comment,
+              'user_id'=>Auth::user()->id,
+              'product_id'=>$ProductID,
+              'createDate'=>Carbon::now()->format('Y-m-d')
+         ]);
+         return redirect('shop-single-product?id=2');
+    }
 }

@@ -1,4 +1,5 @@
 -- phpMyAdmin SQL Dump
+<<<<<<< HEAD
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
@@ -6,6 +7,15 @@
 -- Thời gian đã tạo: Th6 14, 2021 lúc 02:21 PM
 -- Phiên bản máy phục vụ: 8.0.18
 -- Phiên bản PHP: 7.3.11
+=======
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 12, 2021 at 07:21 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
+>>>>>>> 64bbcb4bf4c39fc4a031b1ffe9a01959982b52e0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -61,8 +71,47 @@ CREATE TABLE `bills` (
   `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
+<<<<<<< HEAD
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `bills_user_id_foreign` (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bills`
+--
+
+INSERT INTO `bills` (`id`, `price`, `create_date`, `status`, `image_check_out`, `address`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1000.00, '2021-06-12 00:00:00', '1', '1623518845_2018_mclaren_570s_spider_5k-wide.jpg', '', 2, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rate` int(11) NOT NULL DEFAULT 1,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `createDate` date NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `rate`, `comment`, `createDate`, `user_id`, `product_id`) VALUES
+(1, 4, 'ddddd', '2021-06-12', 2, 2),
+(2, 1, 'san pham khong giong anh', '2021-06-12', 2, 2);
+>>>>>>> 64bbcb4bf4c39fc4a031b1ffe9a01959982b52e0
 
 --
 -- Đang đổ dữ liệu cho bảng `bills`
@@ -102,8 +151,16 @@ CREATE TABLE `detail_bills` (
   `count_product` int(11) NOT NULL,
   `count_price` double(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
+<<<<<<< HEAD
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `detail_bills_bill_id_foreign` (`bill_id`),
+  KEY `detail_bills_product_id_foreign` (`product_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> 64bbcb4bf4c39fc4a031b1ffe9a01959982b52e0
 
 --
 -- Đang đổ dữ liệu cho bảng `detail_bills`
@@ -114,10 +171,14 @@ INSERT INTO `detail_bills` (`id`, `bill_id`, `product_id`, `count_product`, `cou
 (6, NULL, 8, 1, 980.00, NULL, NULL),
 (8, NULL, 3, 1, 1800.00, NULL, NULL),
 (7, NULL, 6, 1, 1400.00, NULL, NULL),
+<<<<<<< HEAD
 (10, 1, 5, 1, 1400.00, NULL, NULL),
 (11, 1, 3, 1, 1800.00, NULL, NULL),
 (12, 2, 5, 1, 1400.00, NULL, NULL),
 (13, 2, 3, 1, 1800.00, NULL, NULL);
+=======
+(10, 1, 2, 1, 1000.00, NULL, NULL);
+>>>>>>> 64bbcb4bf4c39fc4a031b1ffe9a01959982b52e0
 
 -- --------------------------------------------------------
 

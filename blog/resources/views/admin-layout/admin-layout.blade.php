@@ -97,12 +97,12 @@
                 {{--  manufacture --}}
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#Manufacutre" aria-expanded="true"
                         aria-controls="collapseTwo">
                         <i class="fas fa-shopping-cart"></i>
                         <span>Manufacutre</span>
                     </a>
-                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
+                    <div id="Manufacutre" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{url('/admin/manufacuters')}}">Danh Sách</a>
@@ -114,12 +114,12 @@
                  {{-- typeproduct --}}
                  <hr class="sidebar-divider my-0">
                  <li class="nav-item">
-                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#TypeProduct" aria-expanded="true"
                          aria-controls="collapseTwo">
                          <i class="fas fa-shopping-cart"></i>
                          <span>TypeProduct</span>
                      </a>
-                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
+                     <div id="TypeProduct" class="collapse" aria-labelledby="headingTwo"
                          data-parent="#accordionSidebar">
                          <div class="bg-white py-2 collapse-inner rounded">
                              <a class="collapse-item" href="{{route('typeproducts.index')}}">Danh Sách</a>
@@ -131,12 +131,12 @@
                  {{-- banner --}}
                  <hr class="sidebar-divider my-0">
                  <li class="nav-item">
-                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#Banner" aria-expanded="true"
                          aria-controls="collapseTwo">
                          <i class="fas fa-shopping-cart"></i>
                          <span>Banner</span>
                      </a>
-                     <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
+                     <div id="Banner" class="collapse" aria-labelledby="headingTwo"
                          data-parent="#accordionSidebar">
                          <div class="bg-white py-2 collapse-inner rounded">
                              <a class="collapse-item" href="{{route('banners.index')}}">Danh Sách</a>
@@ -149,12 +149,12 @@
     
                 <hr class="sidebar-divider my-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true"
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#DonHang" aria-expanded="true"
                         aria-controls="collapseTwo">
                         <i class="fas fa-shopping-cart"></i>
                         <span>Đơn hàng</span>
                     </a>
-                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo"
+                    <div id="DonHang" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{url('/bill/paid')}}">Đã xác nhận</a>

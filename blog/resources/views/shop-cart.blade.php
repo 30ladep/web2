@@ -50,7 +50,7 @@
 
                      
                       <td class="product-quantity">
-                        <div class="quantity buttons_added">
+                        <div class="quantity buttons_added" style="display: flex">
                           <form action="{!!url('de-quality',$item->rowId)!!}" method="get">
                               <input type="submit"  value="-" class="minus" />
                           </form> 

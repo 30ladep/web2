@@ -65,6 +65,8 @@ Route::get('/shop-checkout',function(){
 Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
 Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 
+
+
 //Auth router
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
@@ -87,6 +89,8 @@ Route::resource('admin/users','Admin\UserController');
 Route::resource('admin/banners','Admin\BannerController');
 
 
+//xac nhan email
+//Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 
 // Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 // Route::get('/admin/{action?}','AdminController@index');
@@ -102,8 +106,17 @@ Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 Route::post('/admin/EditProduct','AdminController@EditProduct');
 Route::get('/product/delete/{id}','AdminController@DeleteProduct');
 //BillController
+Route::get('/shop-checkout',function(){
+   if(Auth::user() == null){
+      return redirect()->route('home');
+   }
+    return view('shop-checkout');
+ });
+Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
+Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 Route::get('/bill/paid', 'BillController@paid');
 Route::get('/bill/unpaid', 'BillController@unpaid');
+Route::post('/AddComment', 'BillController@AddComment');
 // //ReportController
 // Route::get('/report/bestsale', 'ReportController@bestsale');
 // Route::get('/report/bestview', 'ReportController@bestview');
