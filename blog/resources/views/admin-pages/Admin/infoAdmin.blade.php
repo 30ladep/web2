@@ -123,7 +123,7 @@
                                 Ho Ten:  {{$user->username}}
                                 </h5>
                                 <h6>
-                                Chuc Vu: {{$user->role_id}}
+                                Chuc Vu: {{$user->Role->role_name}}
                                 </h6>                           
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">

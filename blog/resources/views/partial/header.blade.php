@@ -44,11 +44,8 @@
             <ul class="col-sm-6 text-right top-bar-currency-language">
               <li>
                 <div class="social-icons">
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                  <a href="#"><i class="fa fa-google-plus"></i></a>
-                  <a href="#"><i class="fa fa-linkedin"></i></a>
-                  <a href="#"><i class="fa fa-vimeo"></i></a>
+                <a href="{{route('admins.index')}}"> <i class="fas fa-user-astronaut  fa-2x"></i></a>
+                <a href="{{url('/infouser')}}"><i class="far fa-user-circle  fa-2x"></i></a>
                 </div>
               </li>
             </ul>

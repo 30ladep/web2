@@ -68,6 +68,9 @@ Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 //Auth router
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/infouser',function(){
+   return view('infouser');
+});
 //xac nhan email
 Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 

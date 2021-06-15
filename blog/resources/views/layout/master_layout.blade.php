@@ -24,7 +24,11 @@
     <link rel="shortcut icon" href="{{url('/img/apple-touch-icon.html')}}" />
     <link rel="shortcut icon" href="{{url('/img/apple-touch-icon-72x72.png')}}" />
     <link rel="shortcut icon" href="{{url('/img/apple-touch-icon-114x114.png')}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css
 
+
+
+    ">
 
 	<title>@yield('title')</title>
 </head>

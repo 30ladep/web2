@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3309
--- Generation Time: Jun 06, 2021 at 12:22 PM
--- Server version: 10.3.14-MariaDB
--- PHP Version: 7.3.5
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th6 14, 2021 lúc 02:21 PM
+-- Phiên bản máy phục vụ: 8.0.18
+-- Phiên bản PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,27 +19,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `be2_nhom4`
+-- Cơ sở dữ liệu: `be2_nhom4`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banners`
+-- Cấu trúc bảng cho bảng `banners`
 --
 
-DROP TABLE IF EXISTS `banners`;
-CREATE TABLE IF NOT EXISTS `banners` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_slide` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `banners` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_slide` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `banners`
+-- Đang đổ dữ liệu cho bảng `banners`
 --
 
 INSERT INTO `banners` (`id`, `content`, `image_slide`, `created_at`, `updated_at`) VALUES
@@ -51,112 +49,108 @@ INSERT INTO `banners` (`id`, `content`, `image_slide`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bills`
+-- Cấu trúc bảng cho bảng `bills`
 --
 
-DROP TABLE IF EXISTS `bills`;
-CREATE TABLE IF NOT EXISTS `bills` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bills` (
+  `id` int(10) UNSIGNED NOT NULL,
   `price` double(8,2) NOT NULL,
   `create_date` datetime NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_check_out` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_check_out` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `bills_user_id_foreign` (`user_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `bills`
+--
+
+INSERT INTO `bills` (`id`, `price`, `create_date`, `status`, `image_check_out`, `address`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 3200.00, '2021-06-09 00:00:00', '1', '1623203174_z2527536115438_4a53d3f91e6e5bd07819ea5238c25040.jpg', '', 51, NULL, NULL),
+(2, 3200.00, '2021-06-09 00:00:00', '0', '1623204325_z2494297864368_ec9c4a6fa26c905f3b0df37e2a4b1179.jpg', '', 51, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contacts`
+-- Cấu trúc bảng cho bảng `contacts`
 --
 
-DROP TABLE IF EXISTS `contacts`;
-CREATE TABLE IF NOT EXISTS `contacts` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` text COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_bills`
+-- Cấu trúc bảng cho bảng `detail_bills`
 --
 
-DROP TABLE IF EXISTS `detail_bills`;
-CREATE TABLE IF NOT EXISTS `detail_bills` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `detail_bills` (
+  `id` int(10) UNSIGNED NOT NULL,
   `bill_id` int(11) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
   `count_product` int(11) NOT NULL,
   `count_price` double(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `detail_bills_bill_id_foreign` (`bill_id`),
-  KEY `detail_bills_product_id_foreign` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `detail_bills`
+-- Đang đổ dữ liệu cho bảng `detail_bills`
 --
 
 INSERT INTO `detail_bills` (`id`, `bill_id`, `product_id`, `count_product`, `count_price`, `created_at`, `updated_at`) VALUES
 (9, NULL, 3, 1, 1800.00, NULL, NULL),
 (6, NULL, 8, 1, 980.00, NULL, NULL),
 (8, NULL, 3, 1, 1800.00, NULL, NULL),
-(7, NULL, 6, 1, 1400.00, NULL, NULL);
+(7, NULL, 6, 1, 1400.00, NULL, NULL),
+(10, 1, 5, 1, 1400.00, NULL, NULL),
+(11, 1, 3, 1, 1800.00, NULL, NULL),
+(12, 2, 5, 1, 1400.00, NULL, NULL),
+(13, 2, 3, 1, 1800.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evalutes`
+-- Cấu trúc bảng cho bảng `evalutes`
 --
 
-DROP TABLE IF EXISTS `evalutes`;
-CREATE TABLE IF NOT EXISTS `evalutes` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `rate` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `evalutes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `rate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_id` int(11) NOT NULL,
-  `comment` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `evalutes_product_id_foreign` (`product_id`),
-  KEY `evalutes_user_id_foreign` (`user_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `image_products`
+-- Cấu trúc bảng cho bảng `image_products`
 --
 
-DROP TABLE IF EXISTS `image_products`;
-CREATE TABLE IF NOT EXISTS `image_products` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `image_products` (
+  `id` int(10) UNSIGNED NOT NULL,
   `product_id` int(10) UNSIGNED NOT NULL,
-  `image_product` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_product` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `image_products_product_id_foreign` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `image_products`
+-- Đang đổ dữ liệu cho bảng `image_products`
 --
 
 INSERT INTO `image_products` (`id`, `product_id`, `image_product`, `created_at`, `updated_at`) VALUES
@@ -199,20 +193,18 @@ INSERT INTO `image_products` (`id`, `product_id`, `image_product`, `created_at`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manufactures`
+-- Cấu trúc bảng cho bảng `manufactures`
 --
 
-DROP TABLE IF EXISTS `manufactures`;
-CREATE TABLE IF NOT EXISTS `manufactures` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `manu_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `manufactures` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `manu_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `manufactures`
+-- Đang đổ dữ liệu cho bảng `manufactures`
 --
 
 INSERT INTO `manufactures` (`id`, `manu_name`, `created_at`, `updated_at`) VALUES
@@ -226,19 +218,17 @@ INSERT INTO `manufactures` (`id`, `manu_name`, `created_at`, `updated_at`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Cấu trúc bảng cho bảng `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Đang đổ dữ liệu cho bảng `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -263,34 +253,31 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `partners`
+-- Cấu trúc bảng cho bảng `partners`
 --
 
-DROP TABLE IF EXISTS `partners`;
-CREATE TABLE IF NOT EXISTS `partners` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `partners` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Cấu trúc bảng cho bảng `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
-CREATE TABLE IF NOT EXISTS `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `password_resets` (
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `password_resets`
+-- Đang đổ dữ liệu cho bảng `password_resets`
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
@@ -300,35 +287,31 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
   `sold` int(11) NOT NULL,
   `size` double NOT NULL,
   `hot` tinyint(4) NOT NULL,
-  `note` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `create_date` date NOT NULL,
   `view` int(11) NOT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_id` int(11) NOT NULL,
   `manu_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `products_type_id_foreign` (`type_id`),
-  KEY `products_manu_id_foreign` (`manu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`id`, `product_name`, `image`, `price`, `sold`, `size`, `hot`, `note`, `create_date`, `view`, `color`, `gender`, `type_id`, `manu_id`, `count`, `created_at`, `updated_at`) VALUES
@@ -440,20 +423,18 @@ INSERT INTO `products` (`id`, `product_name`, `image`, `price`, `sold`, `size`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Cấu trúc bảng cho bảng `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `role_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `role_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `roles`
+-- Đang đổ dữ liệu cho bảng `roles`
 --
 
 INSERT INTO `roles` (`id`, `role_name`, `created_at`, `updated_at`) VALUES
@@ -464,20 +445,18 @@ INSERT INTO `roles` (`id`, `role_name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type_products`
+-- Cấu trúc bảng cho bảng `type_products`
 --
 
-DROP TABLE IF EXISTS `type_products`;
-CREATE TABLE IF NOT EXISTS `type_products` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `type_products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `type_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `type_products`
+-- Đang đổ dữ liệu cho bảng `type_products`
 --
 
 INSERT INTO `type_products` (`id`, `type_name`, `created_at`, `updated_at`) VALUES
@@ -489,20 +468,18 @@ INSERT INTO `type_products` (`id`, `type_name`, `created_at`, `updated_at`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `type_users`
+-- Cấu trúc bảng cho bảng `type_users`
 --
 
-DROP TABLE IF EXISTS `type_users`;
-CREATE TABLE IF NOT EXISTS `type_users` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `type_user_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `type_users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `type_user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `type_users`
+-- Đang đổ dữ liệu cho bảng `type_users`
 --
 
 INSERT INTO `type_users` (`id`, `type_user_name`, `created_at`, `updated_at`) VALUES
@@ -513,30 +490,26 @@ INSERT INTO `type_users` (`id`, `type_user_name`, `created_at`, `updated_at`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token_cart` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token_cart` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type_user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `users_type_user_id_foreign` (`type_user_id`),
-  KEY `users_role_id_foreign` (`role_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `email_verified_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `token_cart`, `type_user_id`, `role_id`, `remember_token`, `created_at`, `updated_at`, `email_verified_at`) VALUES
@@ -545,8 +518,197 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `token_cart
 (3, 'teo23', '$2y$10$kg9kEcvS/wm5I5mSxuh8wuHJwQNzVyNnJ9kkrphtToGGqEJWxCJe6', 'teo23@gmail.com', '123456789', NULL, 1, 1, NULL, NULL, NULL, NULL),
 (4, 'teonv', '$2y$10$9/WbFsYt/J5HO08QbFaIe.ktKfcdEEE5DI/GsrYDB.URFKW9UWxNS', 'teonv@gmail.com', '123456890', NULL, 1, 1, NULL, NULL, NULL, NULL),
 (6, 'admin1', '$2y$10$A5KlAC5LhlLx4ZfCe4BCfOenvGY5v0GVNY2FoYEqXfmIQ3LPLK/MS', 'admin1@gmail.com', '123456789', NULL, 3, 2, NULL, NULL, NULL, NULL),
-(49, 'nguyenteo', '$2y$10$Rh3KrlhECrlyKwYkcek1wOPuvcmVfbGY4JLE5Po5QuvnWzIt3J4dO', 'backend2nhom4@gmail.com', '1234567890', NULL, 3, 3, '8f8ZSvkv1aI0RXfASq2ELQQfGCpPIL7TBuFVO6AEKOJ7pZJBXp1RZXsVomrt', NULL, NULL, '2021-05-31 18:33:59'),
-(50, 'vuducthien', '$2y$10$6i9VqkASpnW84sab5TlHueWs.nLlKC2AgNstdnywRGofNPLEgys36', 'thienaka2p@gmail.com', '123434124', NULL, 3, 2, NULL, NULL, NULL, '2021-06-01 18:51:47');
+(49, 'nguyenteo', '$2y$10$Rh3KrlhECrlyKwYkcek1wOPuvcmVfbGY4JLE5Po5QuvnWzIt3J4dO', 'backend2nhom4@gmail.com', '1234567890', NULL, 3, 3, 'vLGlWSTjrUYt0nzaBtXpJgkwTfxrN1hnp33BfROqAcujMby8SLZC39ujNu5o', NULL, NULL, '2021-05-31 18:33:59'),
+(50, 'vuducthien', '$2y$10$6i9VqkASpnW84sab5TlHueWs.nLlKC2AgNstdnywRGofNPLEgys36', 'thienaka2p@gmail.com', '123434124', NULL, 3, 2, NULL, NULL, NULL, '2021-06-01 18:51:47'),
+(51, 'nhquyen', '$2y$10$b43A84tyWPrdpRasLMExCOm40c05ISibMNtQkraG2oBN7g9JzpHT6', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 3, NULL, NULL, NULL, '2021-06-01 20:52:35'),
+(52, 'adminquyen', '$2y$10$M5hXrf12eQngjrzuVJG6DOn5kErxpBd78WJcLYSg4P6a4459iGBjC', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 2, NULL, NULL, NULL, '2021-06-08 20:22:11'),
+(54, 'superadminquyen', '$2y$10$nfNcSqi8fcNeR..Tpd8fZOf7zNg.s7uUjS.pFM0MKE8u/aSODR5oC', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 3, NULL, NULL, NULL, '2021-06-09 06:56:45');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `banners`
+--
+ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `bills`
+--
+ALTER TABLE `bills`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `bills_user_id_foreign` (`user_id`);
+
+--
+-- Chỉ mục cho bảng `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `detail_bills`
+--
+ALTER TABLE `detail_bills`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `detail_bills_bill_id_foreign` (`bill_id`),
+  ADD KEY `detail_bills_product_id_foreign` (`product_id`);
+
+--
+-- Chỉ mục cho bảng `evalutes`
+--
+ALTER TABLE `evalutes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `evalutes_product_id_foreign` (`product_id`),
+  ADD KEY `evalutes_user_id_foreign` (`user_id`);
+
+--
+-- Chỉ mục cho bảng `image_products`
+--
+ALTER TABLE `image_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `image_products_product_id_foreign` (`product_id`);
+
+--
+-- Chỉ mục cho bảng `manufactures`
+--
+ALTER TABLE `manufactures`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `partners`
+--
+ALTER TABLE `partners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_type_id_foreign` (`type_id`),
+  ADD KEY `products_manu_id_foreign` (`manu_id`);
+
+--
+-- Chỉ mục cho bảng `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `type_products`
+--
+ALTER TABLE `type_products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `type_users`
+--
+ALTER TABLE `type_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `users_type_user_id_foreign` (`type_user_id`),
+  ADD KEY `users_role_id_foreign` (`role_id`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `banners`
+--
+ALTER TABLE `banners`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng `bills`
+--
+ALTER TABLE `bills`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT cho bảng `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `detail_bills`
+--
+ALTER TABLE `detail_bills`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `evalutes`
+--
+ALTER TABLE `evalutes`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `image_products`
+--
+ALTER TABLE `image_products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT cho bảng `manufactures`
+--
+ALTER TABLE `manufactures`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT cho bảng `partners`
+--
+ALTER TABLE `partners`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+
+--
+-- AUTO_INCREMENT cho bảng `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `type_products`
+--
+ALTER TABLE `type_products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `type_users`
+--
+ALTER TABLE `type_users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
