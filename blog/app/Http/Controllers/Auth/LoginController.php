@@ -42,7 +42,7 @@ class LoginController extends Controller
         }
         else
         {
-        return '/';
+            return view('index');
         }
     }
     

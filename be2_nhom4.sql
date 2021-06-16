@@ -1,21 +1,11 @@
 -- phpMyAdmin SQL Dump
-<<<<<<< HEAD
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th6 14, 2021 lúc 02:21 PM
--- Phiên bản máy phục vụ: 8.0.18
--- Phiên bản PHP: 7.3.11
-=======
--- version 4.9.2
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: Jun 12, 2021 at 07:21 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
->>>>>>> 64bbcb4bf4c39fc4a031b1ffe9a01959982b52e0
+-- Host: 127.0.0.1:3309
+-- Generation Time: Jun 16, 2021 at 01:04 AM
+-- Server version: 10.3.14-MariaDB
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,25 +19,27 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `be2_nhom4`
+-- Database: `be2_nhom4`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `banners`
+-- Table structure for table `banners`
 --
 
-CREATE TABLE `banners` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_slide` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `banners`;
+CREATE TABLE IF NOT EXISTS `banners` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_slide` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `banners`
+-- Dumping data for table `banners`
 --
 
 INSERT INTO `banners` (`id`, `content`, `image_slide`, `created_at`, `updated_at`) VALUES
@@ -59,159 +51,112 @@ INSERT INTO `banners` (`id`, `content`, `image_slide`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bills`
+-- Table structure for table `bills`
 --
 
-CREATE TABLE `bills` (
-  `id` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `bills`;
+CREATE TABLE IF NOT EXISTS `bills` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `price` double(8,2) NOT NULL,
   `create_date` datetime NOT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_check_out` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_check_out` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-<<<<<<< HEAD
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-=======
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `bills_user_id_foreign` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `bills`
---
-
-INSERT INTO `bills` (`id`, `price`, `create_date`, `status`, `image_check_out`, `address`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1000.00, '2021-06-12 00:00:00', '1', '1623518845_2018_mclaren_570s_spider_5k-wide.jpg', '', 2, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `comment`
---
-
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE IF NOT EXISTS `comment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `rate` int(11) NOT NULL DEFAULT 1,
-  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `createDate` date NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `comment`
---
-
-INSERT INTO `comment` (`id`, `rate`, `comment`, `createDate`, `user_id`, `product_id`) VALUES
-(1, 4, 'ddddd', '2021-06-12', 2, 2),
-(2, 1, 'san pham khong giong anh', '2021-06-12', 2, 2);
->>>>>>> 64bbcb4bf4c39fc4a031b1ffe9a01959982b52e0
-
---
--- Đang đổ dữ liệu cho bảng `bills`
---
-
-INSERT INTO `bills` (`id`, `price`, `create_date`, `status`, `image_check_out`, `address`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 3200.00, '2021-06-09 00:00:00', '1', '1623203174_z2527536115438_4a53d3f91e6e5bd07819ea5238c25040.jpg', '', 51, NULL, NULL),
-(2, 3200.00, '2021-06-09 00:00:00', '0', '1623204325_z2494297864368_ec9c4a6fa26c905f3b0df37e2a4b1179.jpg', '', 51, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `contacts`
---
-
-CREATE TABLE `contacts` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `detail_bills`
+-- Table structure for table `contacts`
 --
 
-CREATE TABLE `detail_bills` (
-  `id` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE IF NOT EXISTS `contacts` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_bills`
+--
+
+DROP TABLE IF EXISTS `detail_bills`;
+CREATE TABLE IF NOT EXISTS `detail_bills` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `bill_id` int(11) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
   `count_product` int(11) NOT NULL,
   `count_price` double(8,2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-<<<<<<< HEAD
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-=======
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `detail_bills_bill_id_foreign` (`bill_id`),
   KEY `detail_bills_product_id_foreign` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
->>>>>>> 64bbcb4bf4c39fc4a031b1ffe9a01959982b52e0
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `detail_bills`
+-- Dumping data for table `detail_bills`
 --
 
 INSERT INTO `detail_bills` (`id`, `bill_id`, `product_id`, `count_product`, `count_price`, `created_at`, `updated_at`) VALUES
 (9, NULL, 3, 1, 1800.00, NULL, NULL),
 (6, NULL, 8, 1, 980.00, NULL, NULL),
 (8, NULL, 3, 1, 1800.00, NULL, NULL),
-(7, NULL, 6, 1, 1400.00, NULL, NULL),
-<<<<<<< HEAD
-(10, 1, 5, 1, 1400.00, NULL, NULL),
-(11, 1, 3, 1, 1800.00, NULL, NULL),
-(12, 2, 5, 1, 1400.00, NULL, NULL),
-(13, 2, 3, 1, 1800.00, NULL, NULL);
-=======
-(10, 1, 2, 1, 1000.00, NULL, NULL);
->>>>>>> 64bbcb4bf4c39fc4a031b1ffe9a01959982b52e0
+(7, NULL, 6, 1, 1400.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `evalutes`
+-- Table structure for table `evalutes`
 --
 
-CREATE TABLE `evalutes` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `rate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `evalutes`;
+CREATE TABLE IF NOT EXISTS `evalutes` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `rate` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_id` int(11) NOT NULL,
-  `comment` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comment` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `evalutes_product_id_foreign` (`product_id`),
+  KEY `evalutes_user_id_foreign` (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `image_products`
+-- Table structure for table `image_products`
 --
 
-CREATE TABLE `image_products` (
-  `id` int(10) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `image_products`;
+CREATE TABLE IF NOT EXISTS `image_products` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `product_id` int(10) UNSIGNED NOT NULL,
-  `image_product` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_product` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `image_products_product_id_foreign` (`product_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=418 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `image_products`
+-- Dumping data for table `image_products`
 --
 
 INSERT INTO `image_products` (`id`, `product_id`, `image_product`, `created_at`, `updated_at`) VALUES
@@ -249,23 +194,397 @@ INSERT INTO `image_products` (`id`, `product_id`, `image_product`, `created_at`,
 (32, 8, '657861_ZAGZG_4337_002_100_0000_Light.jpg', NULL, NULL),
 (33, 8, '657861_ZAGZG_4337_004_100_0000_Light.jpg', NULL, NULL),
 (34, 8, '657861_ZAGZG_4337_005_100_0000_Light.jpg', NULL, NULL),
-(35, 8, '657861_ZAGZG_4337_011_100_0000_Light.jpg', NULL, NULL);
+(35, 8, '657861_ZAGZG_4337_011_100_0000_Light.jpg', NULL, NULL),
+(42, 9, '548334_XJDNH_1082_001_100_0000_Light.jpg', NULL, NULL),
+(43, 9, '548334_XJDNH_1082_004_100_0000_Light.jpg', NULL, NULL),
+(44, 9, '548334_XJDNH_1082_005_100_0000_Light.jpg', NULL, NULL),
+(45, 9, '548334_XJDNH_1082_010_100_0000_Light.jpg', NULL, NULL),
+(46, 9, '548334_XJDNH_1082_002_100_0000_Light.jpg', NULL, NULL),
+(47, 10, '548334_XJDJV_9095_001_100_0000_Light.jpg', NULL, NULL),
+(48, 10, '548334_XJDJV_9095_002_100_0000_Light.jpg', NULL, NULL),
+(49, 10, '548334_XJDJV_9095_004_100_0000_Light.jpg', NULL, NULL),
+(50, 10, '548334_XJDJV_9095_005_100_0000_Light.jpg', NULL, NULL),
+(51, 10, '548334_XJDJV_9095_010_100_0000_Light.jpg', NULL, NULL),
+(52, 11, '655459_XJDLY_5904_001_100_0000_Light-T-shirt-with-25-Gucci-Eschatology-in-Pink-1921-print.jpg', NULL, NULL),
+(53, 11, '645251_XJC6F_7252_001_100_0000_Light-Striped-cotton-polo-with-patch.jpg', NULL, NULL),
+(54, 11, '645251_XJC6F_7121_002_100_0000_Light.jpg', NULL, NULL),
+(55, 11, '615044_XJDGQ_1082_002_100_0000_Light.jpg', NULL, NULL),
+(56, 11, '539080_XJA9C_7136_001_100_0000_Light-Oversize-T-shirt-with-Gucci-logo.jpg', NULL, NULL),
+(57, 12, 'Ao_thun_Tokyo_Run_DJen_GD5031_02_laydown.jpg', NULL, NULL),
+(58, 12, 'Ao_thun_Tokyo_Run_DJen_GD5031_21_model.jpg', NULL, NULL),
+(59, 12, 'Ao_thun_Tokyo_Run_DJen_GD5031_22_model.jpg', NULL, NULL),
+(60, 12, 'Ao_thun_Tokyo_Run_DJen_GD5031_23_hover_model.jpg', NULL, NULL),
+(61, 12, 'Ao_thun_Tokyo_Run_DJen_GD5031_25_model.png', NULL, NULL),
+(62, 13, 'Ao_Tap_Tiro_Arsenal_GR4158_01_laydown.jpg', NULL, NULL),
+(63, 13, 'Ao_Tap_Tiro_Arsenal_GR4158_21_model.jpg', NULL, NULL),
+(64, 13, 'Ao_Tap_Tiro_Arsenal_GR4158_25_model.jpg', NULL, NULL),
+(65, 13, 'Ao_Tap_Tiro_Arsenal_GR4158_41_detail.jpg', NULL, NULL),
+(66, 13, 'Ao_Tap_Tiro_Arsenal_GR4158_42_detail.jpg', NULL, NULL),
+(67, 14, 'M_PHOTO_TEE_DJen_HA3643_01_laydown.jpg', NULL, NULL),
+(68, 14, 'M_PHOTO_TEE_DJen_HA3643_21_model.jpg', NULL, NULL),
+(69, 14, 'M_PHOTO_TEE_DJen_HA3643_23_hover_model.jpg', NULL, NULL),
+(70, 14, 'M_PHOTO_TEE_DJen_HA3643_25_model.jpg', NULL, NULL),
+(71, 14, 'M_PHOTO_TEE_DJen_HA3643_41_detail.jpg', NULL, NULL),
+(72, 15, 'Ao_Thun_Graphic_Parley_(Unisex)_trang_HB1549_01_laydown.jpg', NULL, NULL),
+(73, 15, 'Ao_Thun_Graphic_Parley_(Unisex)_trang_HB1549_21_model.jpg', NULL, NULL),
+(74, 15, 'Ao_Thun_Graphic_Parley_(Unisex)_trang_HB1549_23_hover_model.jpg', NULL, NULL),
+(75, 15, 'Ao_Thun_Graphic_Parley_(Unisex)_trang_HB1549_25_model.jpg', NULL, NULL),
+(76, 15, 'Ao_Thun_Graphic_Parley_(Unisex)_trang_HB1549_41_detail.jpg', NULL, NULL),
+(77, 16, 'Ao_jersey_Squadra_21_trai_cam_GN8092_01_laydown.jpg', NULL, NULL),
+(78, 16, 'Ao_jersey_Squadra_21_trai_cam_GN8092_21_model.jpg', NULL, NULL),
+(79, 16, 'Ao_jersey_Squadra_21_trai_cam_GN8092_23_hover_model.jpg', NULL, NULL),
+(80, 16, 'Ao_jersey_Squadra_21_trai_cam_GN8092_25_model.jpg', NULL, NULL),
+(81, 16, 'Ao_jersey_Squadra_21_trai_cam_GN8092_42_detail.jpg', NULL, NULL),
+(82, 17, 'M_3S_TEE_mau_xanh_la_HA3636_01_laydown.jpg', NULL, NULL),
+(83, 17, 'M_3S_TEE_mau_xanh_la_HA3636_21_model.jpg', NULL, NULL),
+(84, 17, 'M_3S_TEE_mau_xanh_la_HA3636_23_hover_model.jpg', NULL, NULL),
+(85, 17, 'M_3S_TEE_mau_xanh_la_HA3636_41_detail.jpg', NULL, NULL),
+(86, 17, 'M_3S_TEE_mau_xanh_la_HA3636_42_detail.jpg', NULL, NULL),
+(87, 18, 'Ao_Tank_Top_Love_Unites_(Unisex)_DJen_H43967_01_laydown.jpg', NULL, NULL),
+(88, 18, 'Ao_Tank_Top_Love_Unites_(Unisex)_DJen_H43967_21_model.jpg', NULL, NULL),
+(89, 18, 'Ao_Tank_Top_Love_Unites_(Unisex)_DJen_H43967_23_hover_model.jpg', NULL, NULL),
+(90, 18, 'Ao_Tank_Top_Love_Unites_(Unisex)_DJen_H43967_25_model.jpg', NULL, NULL),
+(91, 18, 'Ao_Tank_Top_Love_Unites_(Unisex)_DJen_H43967_41_detail.jpg', NULL, NULL),
+(92, 19, 'Ao_Thun_Logo_Essentials_(Unisex)_DJen_GS8749_01_laydown.jpg', NULL, NULL),
+(93, 19, 'Ao_Thun_Logo_Essentials_(Unisex)_DJen_GS8749_21_model.jpg', NULL, NULL),
+(94, 19, 'Ao_Thun_Logo_Essentials_(Unisex)_DJen_GS8749_23_hover_model.jpg', NULL, NULL),
+(95, 19, 'Ao_Thun_Logo_Essentials_(Unisex)_DJen_GS8749_41_detail.jpg', NULL, NULL),
+(96, 19, 'Ao_Thun_Logo_Essentials_(Unisex)_DJen_GS8749_42_detail.jpg', NULL, NULL),
+(97, 20, 'Ao_Tank_Top_Det_Thoi_HEAT.RDY_Warrior_trang_GT8268_01_laydown.jpg', NULL, NULL),
+(98, 20, 'Ao_Tank_Top_Det_Thoi_HEAT.RDY_Warrior_trang_GT8268_21_model.jpg', NULL, NULL),
+(99, 20, 'Ao_Tank_Top_Det_Thoi_HEAT.RDY_Warrior_trang_GT8268_22_model.jpg', NULL, NULL),
+(100, 20, 'Ao_Tank_Top_Det_Thoi_HEAT.RDY_Warrior_trang_GT8268_23_hover_model.jpg', NULL, NULL),
+(101, 20, 'Ao_Tank_Top_Det_Thoi_HEAT.RDY_Warrior_trang_GT8268_25_model.jpg', NULL, NULL),
+(102, 21, 'Ao_Truoc_Tran_DJau_Real_Madrid_Hong_GR4309_01_laydown.jpg', NULL, NULL),
+(103, 21, 'Ao_Truoc_Tran_DJau_Real_Madrid_Hong_GR4309_21_model.jpg', NULL, NULL),
+(104, 21, 'Ao_Truoc_Tran_DJau_Real_Madrid_Hong_GR4309_23_hover_model.jpg', NULL, NULL),
+(105, 21, 'Ao_Truoc_Tran_DJau_Real_Madrid_Hong_GR4309_25_model.jpg', NULL, NULL),
+(106, 21, 'Ao_Truoc_Tran_DJau_Real_Madrid_Hong_GR4309_41_detail.jpg', NULL, NULL),
+(107, 22, 'tommy-hilfiger-White-Tape-Short-Sleeve-Shirt.jpg', NULL, NULL),
+(108, 22, '12721948-6264858271382318.jpg', NULL, NULL),
+(109, 22, '12721948-6394858271426805.jpg', NULL, NULL),
+(110, 22, '12721948-8074858271467041.jpg', NULL, NULL),
+(111, 27, 'tom-and-jerry-chanel-shirt-Ladies-tee.jpg', NULL, NULL),
+(112, 27, 'tom-and-jerry-chanel-shirt-Hoodie.jpg', NULL, NULL),
+(113, 27, 'tom-and-jerry-chanel-shirt-Sweater.jpg', NULL, NULL),
+(114, 27, 'tom-and-jerry-chanel-shirt-Tank-top.jpg', NULL, NULL),
+(115, 28, 'never-underestimate-an-old-man-who-loves-badminton-and-was-born-in-august-shirt-4.jpg', NULL, NULL),
+(116, 28, 'never-underestimate-an-old-man-who-loves-badminton-and-was-born-in-august-shirt-12.jpg', NULL, NULL),
+(117, 29, 'golden-girls-chibi-thank-you-for-being-a-friend-shirt-Unisex.jpg', NULL, NULL),
+(118, 29, 'golden-girls-chibi-thank-you-for-being-a-friend-shirt-Hoodie.jpg', NULL, NULL),
+(119, 29, 'golden-girls-chibi-thank-you-for-being-a-friend-shirt-Sweater.jpg', NULL, NULL),
+(120, 29, 'golden-girls-chibi-thank-you-for-being-a-friend-shirt-Tank-top.jpg', NULL, NULL),
+(121, 30, 'dear-coronavirus-donald-trump-fuck-you-shirt-14.jpg', NULL, NULL),
+(122, 30, 'dear-coronavirus-donald-trump-fuck-you-shirt-17.jpg', NULL, NULL),
+(123, 30, 'dear-coronavirus-donald-trump-fuck-you-shirt-18.jpg', NULL, NULL),
+(124, 31, 'you-look-bit-but-my-god-is-bigger-covid-19-shirt-8.jpg', NULL, NULL),
+(125, 31, 'you-look-bit-but-my-god-is-bigger-covid-19-shirt-17.jpg', NULL, NULL),
+(126, 31, 'you-look-bit-but-my-god-is-bigger-covid-19-shirt-5.jpg', NULL, NULL),
+(127, 31, 'you-look-bit-but-my-god-is-bigger-covid-19-shirt-6.jpg', NULL, NULL),
+(128, 32, 'chanel-logo-loose-tee-768x955.jpg', NULL, NULL),
+(129, 32, 'chanel-logo-tshirt-768x955.jpg', NULL, NULL),
+(130, 33, 'karl-black-loose-tee-768x955.jpg', NULL, NULL),
+(131, 33, 'karl-loose-tee-768x955.jpg', NULL, NULL),
+(132, 34, 'cc-dog-tee-768x955.jpg', NULL, NULL),
+(133, 34, 'cc-dog-black-tee-768x955.jpg', NULL, NULL),
+(134, 34, 'cc-dog-loose-tee-768x955.jpg', NULL, NULL),
+(135, 35, 'blue-hermes-bag-loose-tee-1-768x955.jpg', NULL, NULL),
+(136, 35, 'blue-hermes-bag-t-shirt-1-768x955.jpg', NULL, NULL),
+(137, 35, 'hermes-blue-bag-tshirt-woman-1-768x955.jpg', NULL, NULL),
+(138, 35, 'hermes-blue-bag-tshirt-grey-1-768x955.jpg', NULL, NULL),
+(139, 36, 'double-cotes-h-t-shirt--157330HA69-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(140, 36, 'double-cotes-h-t-shirt--157330HA69-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(141, 36, 'double-cotes-h-t-shirt--157330HA69-worn-4-0-0-1700-1700-q99_b.jpg', NULL, NULL),
+(142, 36, 'double-cotes-h-t-shirt--157330HA69-worn-5-0-0-1700-1700-q99_b.jpg', NULL, NULL),
+(143, 37, 'rayure-sellier-polo-shirt-with-pocket--157930HA2Q-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(144, 37, 'rayure-sellier-polo-shirt-with-pocket--157930HA2Q-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(145, 37, 'rayure-sellier-polo-shirt-with-pocket--157930HA2Q-worn-4-0-0-850-850_b.jpg', NULL, NULL),
+(146, 37, 'rayure-sellier-polo-shirt-with-pocket--157930HA2Q-worn-5-0-0-850-850_b.jpg', NULL, NULL),
+(147, 38, 'jacket-shirt-with-swing-collar--156520HI66-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(148, 38, 'jacket-shirt-with-swing-collar--156520HI66-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(149, 38, 'jacket-shirt-with-swing-collar--156520HI66-worn-4-0-0-850-850_b.jpg', NULL, NULL),
+(150, 38, 'jacket-shirt-with-swing-collar--156520HI66-worn-5-0-0-850-850_b.jpg', NULL, NULL),
+(151, 38, 'jacket-shirt-with-swing-collar--156520HI66-worn-6-0-0-850-850_b.jpg', NULL, NULL),
+(152, 39, 'flash-t-shirt--157870HA90-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(153, 39, 'flash-t-shirt--157870HA90-worn-4-0-0-850-850_b.jpg', NULL, NULL),
+(154, 39, 'flash-t-shirt--157870HA90-worn-5-0-0-850-850_b.jpg', NULL, NULL),
+(155, 40, 'bicolor-jogging-t-shirt--157700HA2D-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(156, 40, 'bicolor-jogging-t-shirt--157700HA2D-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(157, 40, 'bicolor-jogging-t-shirt--157700HA2D-worn-4-0-0-850-850_b.jpg', NULL, NULL),
+(158, 40, 'bicolor-jogging-t-shirt--157700HA2D-worn-5-0-0-850-850_b.jpg', NULL, NULL),
+(159, 41, 'maillons-t-shirt--157220HA0X-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(160, 41, 'maillons-t-shirt--157220HA0X-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(161, 41, 'maillons-t-shirt--157220HA0X-worn-4-0-0-850-850_b.jpg', NULL, NULL),
+(162, 41, 'maillons-t-shirt--157220HA0X-worn-5-0-0-850-850_b.jpg', NULL, NULL),
+(163, 42, 'reversible-rib-trim-jacket--152660HHGV-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(164, 42, 'reversible-rib-trim-jacket--152660HHGV-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(165, 42, 'reversible-rib-trim-jacket--152660HHGV-worn-4-0-0-850-850_b.jpg', NULL, NULL),
+(166, 42, 'reversible-rib-trim-jacket--152660HHGV-worn-5-0-0-850-850_b.jpg', NULL, NULL),
+(167, 42, 'reversible-rib-trim-jacket--152660HHGV-worn-6-0-0-850-850_b.jpg', NULL, NULL),
+(168, 43, '663651_ZAGZI_4303_001_100_0000_Light-Online-Exclusive-pond-print-pajama-trousers.jpg', NULL, NULL),
+(169, 43, '663651_ZAGZI_4303_004_100_0000_Light-Online-Exclusive-pond-print-pajama-trousers.jpg', NULL, NULL),
+(170, 43, '663651_ZAGZI_4303_005_100_0000_Light-Online-Exclusive-pond-print-pajama-trousers.jpg', NULL, NULL),
+(171, 43, '663651_ZAGZI_4303_011_100_0000_Light-Online-Exclusive-pond-print-pajama-trousers.jpg', NULL, NULL),
+(172, 44, '664495_XDBMO_9011_002_100_0000_Light-Organic-denim-flared-trousers.jpg', NULL, NULL),
+(173, 44, '664495_XDBMO_9011_001_100_0000_Light-Organic-denim-flared-trousers.jpg', NULL, NULL),
+(174, 44, '664495_XDBMO_9011_004_100_0000_Light-Organic-denim-flared-trousers.jpg', NULL, NULL),
+(175, 44, '664495_XDBMO_9011_005_100_0000_Light-Organic-denim-flared-trousers.jpg', NULL, NULL),
+(176, 45, '655146_XJDF0_3305_001_100_0000_Light-GG-jersey-jogging-trousers-with-Web.jpg', NULL, NULL),
+(177, 45, '655146_XJDF0_3305_002_100_0000_Light-GG-jersey-jogging-trousers-with-Web.jpg', NULL, NULL),
+(178, 45, '655146_XJDF0_3305_004_100_0000_Light-GG-jersey-jogging-trousers-with-Web.jpg', NULL, NULL),
+(179, 45, '655146_XJDF0_3305_005_100_0000_Light-GG-jersey-jogging-trousers-with-Web.jpg', NULL, NULL),
+(180, 46, '572183_XDBPO_4759_001_100_0000_Light-Childrens-trousers-with-Gucci-cat-patch.jpg', NULL, NULL),
+(181, 46, '572183_XDBPO_4759_002_100_0000_Light-Childrens-trousers-with-Gucci-cat-patch.jpg', NULL, NULL),
+(182, 46, '572183_XDBPO_4759_011_100_0000_Light-Childrens-trousers-with-Gucci-cat-patch.jpg', NULL, NULL),
+(183, 47, '653788_XWAPH_4265_001_100_0000_Light-Childrens-stretch-gabardine-trousers.jpg', NULL, NULL),
+(184, 47, '653788_XWAPH_4265_002_100_0000_Light-Childrens-stretch-gabardine-trousers.jpg', NULL, NULL),
+(185, 47, '653788_XWAPH_4265_011_100_0000_Light-Childrens-stretch-gabardine-trousers.jpg', NULL, NULL),
+(186, 48, '663569_XJDE9_1043_001_100_0000_Light-GG-jacquard-jersey-jogging-trousers.jpg', NULL, NULL),
+(187, 48, '663569_XJDE9_1043_002_100_0000_Light-GG-jacquard-jersey-jogging-trousers.jpg', NULL, NULL),
+(188, 48, '663569_XJDE9_1043_004_100_0000_Light-GG-jacquard-jersey-jogging-trousers.jpg', NULL, NULL),
+(189, 48, '663569_XJDE9_1043_005_100_0000_Light-GG-jacquard-jersey-jogging-trousers.jpg', NULL, NULL),
+(190, 49, '651728_ZAGPY_9813_001_100_0000_Light-Cotton-canvas-trousers-with-Gucci-cat.jpg', NULL, NULL),
+(191, 49, '651728_ZAGPY_9813_002_100_0000_Light-Cotton-canvas-trousers-with-Gucci-cat.jpg', NULL, NULL),
+(192, 49, '651728_ZAGPY_9813_004_100_0000_Light-Cotton-canvas-trousers-with-Gucci-cat.jpg', NULL, NULL),
+(193, 49, '651728_ZAGPY_9813_005_100_0000_Light-Cotton-canvas-trousers-with-Gucci-cat.jpg', NULL, NULL),
+(194, 50, 'Quan_the_thao_Primeblue_SST_DJen_GD2361_01_laydown.jpg', NULL, NULL),
+(195, 50, 'Quan_the_thao_Primeblue_SST_DJen_GD2361_21_model.jpg', NULL, NULL),
+(196, 50, 'Quan_the_thao_Primeblue_SST_DJen_GD2361_22_model.jpg', NULL, NULL),
+(197, 50, 'Quan_the_thao_Primeblue_SST_DJen_GD2361_23_hover_model.jpg', NULL, NULL),
+(198, 50, 'Quan_the_thao_Primeblue_SST_DJen_GD2361_43_detail.jpg', NULL, NULL),
+(199, 51, 'Quan_Bo_Dang_Dai_Techfit_Marimekko_DJen_GR8030_01_laydown.jpg', NULL, NULL),
+(200, 51, 'Quan_Bo_Dang_Dai_Techfit_Marimekko_DJen_GR8030_21_model.jpg', NULL, NULL),
+(201, 51, 'Quan_Bo_Dang_Dai_Techfit_Marimekko_DJen_GR8030_23_hover_model.jpg', NULL, NULL),
+(202, 51, 'Quan_Bo_Dang_Dai_Techfit_Marimekko_DJen_GR8030_25_model.jpg', NULL, NULL),
+(203, 51, 'Quan_Bo_Dang_Dai_Techfit_Marimekko_DJen_GR8030_41_detail.jpg', NULL, NULL),
+(204, 52, 'Quan_Short_Marathon_20_DJen_GK5265_01_laydown.jpg', NULL, NULL),
+(205, 52, 'Quan_Short_Marathon_20_DJen_GK5265_21_model.jpg', NULL, NULL),
+(206, 52, 'Quan_Short_Marathon_20_DJen_GK5265_23_hover_model.jpg', NULL, NULL),
+(207, 52, 'Quan_Short_Marathon_20_DJen_GK5265_25_model.jpg', NULL, NULL),
+(208, 52, 'Quan_Short_Marathon_20_DJen_GK5265_42_detail.jpg', NULL, NULL),
+(209, 53, 'Quan_short_Tokyo_Run_DJen_GD5029_01_laydown.jpg', NULL, NULL),
+(210, 53, 'Quan_short_Tokyo_Run_DJen_GD5029_21_model.jpg', NULL, NULL),
+(211, 53, 'Quan_short_Tokyo_Run_DJen_GD5029_22_model.jpg', NULL, NULL),
+(212, 53, 'Quan_short_Tokyo_Run_DJen_GD5029_23_hover_model.jpg', NULL, NULL),
+(213, 53, '00.jpg', NULL, NULL),
+(214, 54, 'Quan_Short_Colorblock_Love_Unites_(Unisex)_Nhieu_mau_H43975_01_laydown.jpg', NULL, NULL),
+(215, 54, 'Quan_Short_Colorblock_Love_Unites_(Unisex)_Nhieu_mau_H43975_21_model.jpg', NULL, NULL),
+(216, 54, 'Quan_Short_Colorblock_Love_Unites_(Unisex)_Nhieu_mau_H43975_23_hover_model.jpg', NULL, NULL),
+(217, 54, 'Quan_Short_Colorblock_Love_Unites_(Unisex)_Nhieu_mau_H43975_25_model.jpg', NULL, NULL),
+(218, 54, 'Quan_Short_Colorblock_Love_Unites_(Unisex)_Nhieu_mau_H43975_41_detail.jpg', NULL, NULL),
+(219, 55, 'Quan_short_3_Soc_Ultimate365_Mau_xanh_da_troi_GM0313_01_laydown.jpg', NULL, NULL),
+(220, 55, 'Quan_short_3_Soc_Ultimate365_Mau_xanh_da_troi_GM0313_21_model.jpg', NULL, NULL),
+(221, 55, 'Quan_short_3_Soc_Ultimate365_Mau_xanh_da_troi_GM0313_23_hover_model.jpg', NULL, NULL),
+(222, 55, 'Quan_short_3_Soc_Ultimate365_Mau_xanh_da_troi_GM0313_42_detail.jpg', NULL, NULL),
+(223, 56, 'Quan_adidas_Z.N.E._DJen_GM3282_01_laydown.jpg', NULL, NULL),
+(224, 56, 'Quan_adidas_Z.N.E._DJen_GM3282_21_model.jpg', NULL, NULL),
+(225, 56, 'Quan_adidas_Z.N.E._DJen_GM3282_22_model.jpg', NULL, NULL),
+(226, 56, 'Quan_adidas_Z.N.E._DJen_GM3282_23_hover_model.jpg', NULL, NULL),
+(227, 56, 'Quan_adidas_Z.N.E._DJen_GM3282_42_detail.jpg', NULL, NULL),
+(228, 57, 'Quan_Short_Marimekko_DJen_H20477_01_laydown.jpg', NULL, NULL),
+(229, 57, 'Quan_Short_Marimekko_DJen_H20477_21_model.jpg', NULL, NULL),
+(230, 57, 'Quan_Short_Marimekko_DJen_H20477_23_hover_model.jpg', NULL, NULL),
+(231, 57, 'Quan_Short_Marimekko_DJen_H20477_41_detail.jpg', NULL, NULL),
+(232, 58, 'DM0DM09595_PR9_alternate3.jpg', NULL, NULL),
+(233, 58, 'DM0DM09595_PR9_main.jpg', NULL, NULL),
+(234, 58, 'DM0DM09595_PR9_alternate1.jpg', NULL, NULL),
+(235, 58, 'DM0DM09595_PR9_alternate2.jpg', NULL, NULL),
+(236, 59, 'DM0DM09595_BDS_alternate3.jpg', NULL, NULL),
+(237, 59, 'DM0DM09595_BDS_main.jpg', NULL, NULL),
+(238, 59, 'DM0DM09595_BDS_alternate1.jpg', NULL, NULL),
+(239, 59, 'DM0DM09595_BDS_alternate2.jpg', NULL, NULL),
+(240, 60, 'DM0DM10876_0K7_alternate3.jpg', NULL, NULL),
+(241, 60, 'DM0DM10876_0K7_main.jpg', NULL, NULL),
+(242, 60, 'DM0DM10876_0K7_alternate1.jpg', NULL, NULL),
+(243, 60, 'DM0DM10876_0K7_alternate2.jpg', NULL, NULL),
+(244, 61, 'DM0DM10877_0ZS_alternate3.jpg', NULL, NULL),
+(245, 61, 'DM0DM10877_0ZS_main.jpg', NULL, NULL),
+(246, 61, 'DM0DM10877_0ZS_alternate1.jpg', NULL, NULL),
+(247, 61, 'DM0DM10877_0ZS_alternate2.jpg', NULL, NULL),
+(248, 62, 'DM0DM10559_1AB_alternate3.jpg', NULL, NULL),
+(249, 62, 'DM0DM10559_1AB_main.jpg', NULL, NULL),
+(250, 62, 'DM0DM10559_1AB_alternate1.jpg', NULL, NULL),
+(251, 62, 'DM0DM10559_1AB_alternate2.jpg', NULL, NULL),
+(252, 63, 'm_607aef8aae766fe575c7991e.jpg', NULL, NULL),
+(253, 63, 'm_607aef8943895fbc760588e6.jpg', NULL, NULL),
+(254, 63, 'm_607aef88ff830404d023f26f.jpg', NULL, NULL),
+(255, 63, 'm_607aef8bffba94c3a4ba38f7.jpg', NULL, NULL),
+(256, 64, 'm_606786eb7176608c00e3cfac.jpg', NULL, NULL),
+(257, 64, 'm_606786eb47471a771ea99949.jpg', NULL, NULL),
+(258, 64, 'm_606786ecfc204ddfcb71a1ca.jpg', NULL, NULL),
+(259, 64, 'm_606786ebfdea1bcb77478efa.jpg', NULL, NULL),
+(260, 65, 'm_5ff11c6943895f6ee71ee9a8.jpg', NULL, NULL),
+(261, 65, 'm_5ff11c6743895f6ee71ee997.jpg', NULL, NULL),
+(262, 65, 'm_5ff11c6843895f6ee71ee9a3.jpg', NULL, NULL),
+(263, 65, 'm_5ff11c6a43895f6ee71ee9ab.jpg', NULL, NULL),
+(264, 66, 'm_5d0e487a16105d6164eabd79.jpg', NULL, NULL),
+(265, 66, 'm_5d0e487dd4000812e53a63ce.jpg', NULL, NULL),
+(266, 66, 'm_5d0e48842e7c2f2eeea71cee.jpg', NULL, NULL),
+(267, 66, 'm_5d0e4881264a55f3602172c9.jpg', NULL, NULL),
+(268, 67, 'm_5bb7d50b534ef92df0691df8.jpg', NULL, NULL),
+(269, 67, 'm_5bb7d5312e1478b2cce02918.jpg', NULL, NULL),
+(270, 67, 'm_5bb7d53ac2e9fea596cb6606.jpg', NULL, NULL),
+(271, 67, 'm_5bb7d547e944bad8da3d8cb7.jpg', NULL, NULL),
+(272, 68, 'm_5fc4372f691412d916e181cb.jpg', NULL, NULL),
+(273, 68, 'm_5fc43730bcdb2f689b9202ae.jpg', NULL, NULL),
+(274, 68, 'm_5fc43732bcdb2f5eea9202cd.jpg', NULL, NULL),
+(275, 68, 'm_5fc437338da5c972acf4754b.jpg', NULL, NULL),
+(276, 69, 'm_5de2b40ede696a43f608dbd2.jpg', NULL, NULL),
+(277, 69, 'm_5d179004bbf076efe7ed1805.jpg', NULL, NULL),
+(278, 69, 'm_5cf975df689ebcad4e50f183.jpg', NULL, NULL),
+(279, 69, 'm_5cf975ec1153baefefe9e199.jpg', NULL, NULL),
+(280, 70, '16114260_30214026_800.jpg', NULL, NULL),
+(281, 70, '16114260_30215225_800.jpg', NULL, NULL),
+(282, 70, '16114260_30214027_800.jpg', NULL, NULL),
+(283, 70, '16114260_30214011_800.jpg', NULL, NULL),
+(284, 71, 'petar-petrov-Ivory-Gea-Cream-Woven-Shorts.jpg', NULL, NULL),
+(285, 71, 'petrov-Ivory-Gea-Cream-Woven-Shorts.jpg', NULL, NULL),
+(286, 75, '657870_XDBP0_5237_001_100_0000_Light-Baby-GG-Multicolour-canvas-dress.jpg', NULL, NULL),
+(287, 75, '657870_XDBP0_5237_002_100_0000_Light-Baby-GG-Multicolour-canvas-dress.jpg', NULL, NULL),
+(288, 75, '657870_XDBP0_5237_011_100_0000_Light-Baby-GG-Multicolour-canvas-dress.jpg', NULL, NULL),
+(289, 76, '661678_XKBSK_6117_001_100_0000_Light-Fine-cotton-knit-polo-dress.jpg', NULL, NULL),
+(290, 76, '661678_XKBSK_6117_002_100_0000_Light-Fine-cotton-knit-polo-dress.jpg', NULL, NULL),
+(291, 76, '661678_XKBSK_6117_005_100_0000_Light-Fine-cotton-knit-polo-dress.jpg', NULL, NULL),
+(292, 76, '661678_XKBSK_6117_011_100_0000_Light-Fine-cotton-knit-polo-dress.jpg', NULL, NULL),
+(293, 77, '653408_XJDE4_9133_001_100_0000_Light-Blue-trimmed-jersey-dress-with-belt.jpg', NULL, NULL),
+(294, 77, '653408_XJDE4_9133_002_100_0000_Light-Blue-trimmed-jersey-dress-with-belt.jpg', NULL, NULL),
+(295, 77, '653408_XJDE4_9133_005_100_0000_Light-Blue-trimmed-jersey-dress-with-belt.jpg', NULL, NULL),
+(296, 77, '653408_XJDE4_9133_011_100_0000_Light-Blue-trimmed-jersey-dress-with-belt.jpg', NULL, NULL),
+(297, 78, '658350_XKBVO_6167_001_100_0000_Light-Double-G-chain-dress.jpg', NULL, NULL),
+(298, 78, '658350_XKBVO_6167_002_100_0000_Light-Double-G-chain-dress.jpg', NULL, NULL),
+(299, 78, '658350_XKBVO_6167_005_100_0000_Light-Double-G-chain-dress.jpg', NULL, NULL),
+(300, 78, '658350_XKBVO_6167_011_100_0000_Light-Double-G-chain-dress.jpg', NULL, NULL),
+(301, 79, '657895_XKBSJ_4668_001_100_0000_Light-Striped-cotton-knit-polo-dress.jpg', NULL, NULL),
+(302, 79, '657895_XKBSJ_4668_002_100_0000_Light-Striped-cotton-knit-polo-dress.jpg', NULL, NULL),
+(303, 79, '657895_XKBSJ_4668_005_100_0000_Light-Striped-cotton-knit-polo-dress.jpg', NULL, NULL),
+(304, 79, '657895_XKBSJ_4668_011_100_0000_Light-Striped-cotton-knit-polo-dress.jpg', NULL, NULL),
+(305, 80, '643430_ZAF5U_4035_001_100_0000_Light-Tweed-crpe-dress.jpg', NULL, NULL),
+(306, 80, '643430_ZAF5U_4035_002_100_0000_Light-Tweed-crpe-dress.jpg', NULL, NULL),
+(307, 80, '643430_ZAF5U_4035_005_100_0000_Light-Tweed-crpe-dress.jpg', NULL, NULL),
+(308, 80, '643430_ZAF5U_4035_010_100_0000_Light-Tweed-crpe-dress.jpg', NULL, NULL),
+(309, 81, '654450_ZAGR4_9376_001_100_0000_Light-Nautical-print-cotton-linen-dress.jpg', NULL, NULL),
+(310, 81, '654450_ZAGR4_9376_002_100_0000_Light-Nautical-print-cotton-linen-dress.jpg', NULL, NULL),
+(311, 81, '654450_ZAGR4_9376_005_100_0000_Light-Nautical-print-cotton-linen-dress.jpg', NULL, NULL),
+(312, 81, '654450_ZAGR4_9376_011_100_0000_Light-Nautical-print-cotton-linen-dress.jpg', NULL, NULL),
+(313, 82, '652584_ZAGER_6285_002_100_0000_Light-Childrens-poplin-dress-with-GG-hearts.jpg', NULL, NULL),
+(314, 82, '652584_ZAGER_6285_011_100_0000_Light-Childrens-poplin-dress-with-GG-hearts.jpg', NULL, NULL),
+(315, 83, '647003_XJC85_9023_001_100_0000_Light-Baby-cotton-dress-with-Web-and-Interlocking-G.jpg', NULL, NULL),
+(316, 83, '647003_XJC85_9023_002_100_0000_Light-Baby-cotton-dress-with-Web-and-Interlocking-G.jpg', NULL, NULL),
+(317, 83, '647003_XJC85_9023_011_100_0000_Light-Baby-cotton-dress-with-Web-and-Interlocking-G.jpg', NULL, NULL),
+(318, 84, 'adicolor_dress_DJen_FM5653_01_laydown.jpg', NULL, NULL),
+(319, 84, 'adicolor_dress_DJen_FM5653_02_laydown_hover.jpg', NULL, NULL),
+(320, 84, 'adicolor_dress_DJen_FM5653_41_detail.jpg', NULL, NULL),
+(321, 84, 'adicolor_dress_DJen_FM5653_42_detail.jpg', NULL, NULL),
+(322, 85, 'Ao_Vay_Love_Unites_DJen_H43973_01_laydown.jpg', NULL, NULL),
+(323, 85, 'Ao_Vay_Love_Unites_DJen_H43973_21_model.jpg', NULL, NULL),
+(324, 85, 'Ao_Vay_Love_Unites_DJen_H43973_23_hover_model.jpg', NULL, NULL),
+(325, 85, 'Ao_Vay_Love_Unites_DJen_H43973_25_model.jpg', NULL, NULL),
+(326, 85, 'Ao_Vay_Love_Unites_DJen_H43973_41_detail.jpg', NULL, NULL),
+(327, 86, 'Ao_Vay_Ba_La_Hoa_Tiet_Marimekko_DJo_H20486_01_laydown.jpg', NULL, NULL),
+(328, 86, 'Ao_Vay_Ba_La_Hoa_Tiet_Marimekko_DJo_H20486_21_model.jpg', NULL, NULL),
+(329, 86, 'Ao_Vay_Ba_La_Hoa_Tiet_Marimekko_DJo_H20486_23_hover_model.jpg', NULL, NULL),
+(330, 86, 'Ao_Vay_Ba_La_Hoa_Tiet_Marimekko_DJo_H20486_41_detail.jpg', NULL, NULL),
+(331, 86, 'Ao_Vay_Ba_La_Hoa_Tiet_Marimekko_DJo_H20486_42_detail.jpg', NULL, NULL),
+(332, 87, 'Vay_Tank_Top_Midi_Marimekko_DJen_H20489_01_laydown.jpg', NULL, NULL),
+(333, 87, 'Vay_Tank_Top_Midi_Marimekko_DJen_H20489_21_model.jpg', NULL, NULL),
+(334, 87, 'Vay_Tank_Top_Midi_Marimekko_DJen_H20489_23_hover_model.jpg', NULL, NULL),
+(335, 87, 'Vay_Tank_Top_Midi_Marimekko_DJen_H20489_41_detail.jpg', NULL, NULL),
+(336, 87, 'Vay_Tank_Top_Midi_Marimekko_DJen_H20489_42_detail.jpg', NULL, NULL),
+(337, 88, 'Chan_Vay_DJan_Day_DJen_H20235_01_laydown.jpg', NULL, NULL),
+(338, 88, 'Chan_Vay_DJan_Day_DJen_H20235_21_model.jpg', NULL, NULL),
+(339, 88, 'Chan_Vay_DJan_Day_DJen_H20235_23_hover_model.jpg', NULL, NULL),
+(340, 88, 'Chan_Vay_DJan_Day_DJen_H20235_25_model.jpg', NULL, NULL),
+(341, 88, 'Chan_Vay_DJan_Day_DJen_H20235_41_detail.jpg', NULL, NULL),
+(342, 89, 'Ao_Vay_Ba_La_3D_Adicolor_trang_GN2848_01_laydown.jpg', NULL, NULL),
+(343, 89, 'Ao_Vay_Ba_La_3D_Adicolor_trang_GN2848_21_model.jpg', NULL, NULL),
+(344, 89, 'Ao_Vay_Ba_La_3D_Adicolor_trang_GN2848_23_hover_model.jpg', NULL, NULL),
+(345, 89, 'Ao_Vay_Ba_La_3D_Adicolor_trang_GN2848_41_detail.jpg', NULL, NULL),
+(346, 89, 'Ao_Vay_Ba_La_3D_Adicolor_trang_GN2848_42_detail.jpg', NULL, NULL),
+(347, 90, 'Ao_vay_tay_lat_Classics_Adicolor_DJen_GN2777_01_laydown.jpg', NULL, NULL),
+(348, 90, 'Ao_vay_tay_lat_Classics_Adicolor_DJen_GN2777_21_model.jpg', NULL, NULL),
+(349, 90, 'Ao_vay_tay_lat_Classics_Adicolor_DJen_GN2777_23_hover_model.jpg', NULL, NULL),
+(350, 90, 'Ao_vay_tay_lat_Classics_Adicolor_DJen_GN2777_41_detail.jpg', NULL, NULL),
+(351, 90, 'Ao_vay_tay_lat_Classics_Adicolor_DJen_GN2777_42_detail.jpg', NULL, NULL),
+(352, 91, 'DW0DW10440_TZ8_alternate3.jpg', NULL, NULL),
+(353, 91, 'DW0DW10440_TZ8_main.jpg', NULL, NULL),
+(354, 91, 'DW0DW10440_TZ8_alteDW0DW10440_TZ8_alternate2.jpgrnate2.jpg', NULL, NULL),
+(355, 91, 'DW0DW10440_TZ8_alternate1.jpg', NULL, NULL),
+(356, 92, 'DW0DW10122_XNL_alternate3.jpg', NULL, NULL),
+(357, 92, 'DW0DW10122_XNL_main.jpg', NULL, NULL),
+(358, 92, 'DW0DW10122_XNL_alternate1.jpg', NULL, NULL),
+(359, 92, 'DW0DW10122_XNL_alternate2.jpg', NULL, NULL),
+(360, 93, 'DW0DW10261_0GJ_alternate3.jpg', NULL, NULL),
+(361, 93, 'DW0DW10261_0GJ_main.jpg', NULL, NULL),
+(362, 93, 'DW0DW10261_0GJ_alternate1.jpg', NULL, NULL),
+(363, 93, 'DW0DW10261_0GJ_alternate2.jpg', NULL, NULL),
+(364, 94, 'WW0WW30508_DW5_alternate3.jpg', NULL, NULL),
+(365, 94, 'WW0WW30508_DW5_main.jpg', NULL, NULL),
+(366, 94, 'WW0WW30508_DW5_alternate1.jpg', NULL, NULL),
+(367, 94, 'WW0WW30508_DW5_alternate2.jpg', NULL, NULL),
+(368, 95, 'WW0WW30337_0KV_alternate4.jpg', NULL, NULL),
+(369, 95, 'WW0WW30337_0KV_main.jpg', NULL, NULL),
+(370, 95, 'WW0WW30337_0KV_alternate1.jpg', NULL, NULL),
+(371, 95, 'WW0WW30337_0KV_alternate3.jpg', NULL, NULL),
+(372, 96, 'WW0WW30498_YBR_alternate3.jpg', NULL, NULL),
+(373, 96, 'WW0WW30498_YBR_main.jpg', NULL, NULL),
+(374, 96, 'WW0WW30498_YBR_alternate1.jpg', NULL, NULL),
+(375, 96, 'WW0WW30498_YBR_alternate2.jpg', NULL, NULL),
+(383, 101, '14139156_18938923_1000.jpg', NULL, NULL),
+(382, 101, '14139156_18938937_1000.jpg', NULL, NULL),
+(389, 103, 'parcours-sans-faute-long-beach-dress--P21LKMB22F-worn-2-50-0-580-580_b.jpg', NULL, NULL),
+(381, 101, '14139156_18938945_1000.jpg', NULL, NULL),
+(380, 101, '14139156_18938952_1000.jpg', NULL, NULL),
+(388, 103, 'parcours-sans-faute-long-beach-dress--P21LKMB22F-worn-3-50-0-580-580_b.jpg', NULL, NULL),
+(384, 102, '15194099_26396811_1000.jpg', NULL, NULL),
+(385, 102, '15194099_26396812_1000.jpg', NULL, NULL),
+(386, 102, '15194099_26396814_1000.jpg', NULL, NULL),
+(387, 102, '15194099_26396815_1000.jpg', NULL, NULL),
+(390, 103, 'parcours-sans-faute-long-beach-dress--P21LKMB22F-worn-4-50-0-580-580_b.jpg', NULL, NULL),
+(391, 104, 'silk-dress--1028088 92-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(392, 104, 'silk-dress--1028088 92-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(393, 104, 'silk-dress--1028088 92-worn-6-0-0-850-850_b.jpg', NULL, NULL),
+(394, 104, 'silk-dress--1028088 92-worn-5-0-0-1700-1700-q99_b.jpg', NULL, NULL),
+(395, 105, 'l-epopee-d-hermes-shawl-140--243691S 01-worn-7-0-0-850-850_b.jpg', NULL, NULL),
+(396, 105, 'l-epopee-d-hermes-shawl-140--243691S 01-flat-1-300-0-850-850_b.jpg', NULL, NULL),
+(397, 106, 'straight-dress--1E0524DM02-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(398, 106, 'straight-dress--1E0524DM02-worn-3-0-0-850-850_b.jpg', NULL, NULL),
+(399, 106, 'straight-dress--1E0524DM02-worn-4-0-0-850-850_b.jpg', NULL, NULL),
+(400, 106, 'straight-dress--1E0524DM02-worn-5-0-0-850-850_b.jpg', NULL, NULL),
+(401, 107, 'circuit-24-maxi-jacquard-straight-dress--1E4505DC02-worn-2-0-0-850-850_b.jpg', NULL, NULL),
+(402, 107, 'circuit-24-maxi-jacquard-straight-dress--1E4505DC02-worn-4-0-0-850-850_b.jpg', NULL, NULL),
+(403, 107, 'circuit-24-maxi-jacquard-straight-dress--1E4505DC02-worn-5-0-0-850-850_b.jpg', NULL, NULL),
+(404, 107, 'circuit-24-maxi-jacquard-straight-dress--1E4505DC02-worn-6-0-0-850-850_b.jpg', NULL, NULL),
+(405, 26, 'MW17618_400_FNT.jpg', NULL, NULL),
+(406, 26, 'MW17618_400_BCK.jpg', NULL, NULL),
+(407, 26, 'MW17618_400_DE1.jpg', NULL, NULL),
+(408, 23, '78J2331_410_FNT.jpg', NULL, NULL),
+(409, 23, '78J2331_410_BCK.jpg', NULL, NULL),
+(410, 23, '78J2331_410_DE1.jpg', NULL, NULL),
+(411, 24, 'DM11518_400_FNT.jpg', NULL, NULL),
+(412, 24, 'DM11518_400_BCK.jpg', NULL, NULL),
+(413, 24, 'DM11518_400_DE1.jpg', NULL, NULL),
+(414, 24, 'DM11518_400_DE2.jpg', NULL, NULL),
+(415, 24, 'DM11518_400_DE3.jgp', NULL, NULL),
+(416, 25, '78J2944_660_FNT.jpg', NULL, NULL),
+(417, 25, '78J2944_660_BCK.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `manufactures`
+-- Table structure for table `manufactures`
 --
 
-CREATE TABLE `manufactures` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `manu_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `manufactures`;
+CREATE TABLE IF NOT EXISTS `manufactures` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `manu_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `manufactures`
+-- Dumping data for table `manufactures`
 --
 
 INSERT INTO `manufactures` (`id`, `manu_name`, `created_at`, `updated_at`) VALUES
@@ -274,22 +593,24 @@ INSERT INTO `manufactures` (`id`, `manu_name`, `created_at`, `updated_at`) VALUE
 (3, 'Tommy', NULL, NULL),
 (4, 'Chanel', NULL, NULL),
 (5, 'Hermas', NULL, NULL),
-(16, 'Gang teo 2', NULL, NULL);
+(17, 'Gang teo 1234567', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migrations`
+-- Table structure for table `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -314,31 +635,34 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `partners`
+-- Table structure for table `partners`
 --
 
-CREATE TABLE `partners` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `partners`;
+CREATE TABLE IF NOT EXISTS `partners` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_resets`
+-- Table structure for table `password_resets`
 --
 
-CREATE TABLE `password_resets` (
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `password_resets`
+-- Dumping data for table `password_resets`
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
@@ -348,31 +672,35 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products`
+-- Table structure for table `products`
 --
 
-CREATE TABLE `products` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
   `sold` int(11) NOT NULL,
   `size` double NOT NULL,
   `hot` tinyint(4) NOT NULL,
-  `note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `create_date` date NOT NULL,
   `view` int(11) NOT NULL,
-  `color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type_id` int(11) NOT NULL,
   `manu_id` int(11) NOT NULL,
   `count` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `products_type_id_foreign` (`type_id`),
+  KEY `products_manu_id_foreign` (`manu_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=109 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `product_name`, `image`, `price`, `sold`, `size`, `hot`, `note`, `create_date`, `view`, `color`, `gender`, `type_id`, `manu_id`, `count`, `created_at`, `updated_at`) VALUES
@@ -484,18 +812,20 @@ INSERT INTO `products` (`id`, `product_name`, `image`, `price`, `sold`, `size`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `roles`
+-- Table structure for table `roles`
 --
 
-CREATE TABLE `roles` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `role_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `role_name`, `created_at`, `updated_at`) VALUES
@@ -506,18 +836,20 @@ INSERT INTO `roles` (`id`, `role_name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `type_products`
+-- Table structure for table `type_products`
 --
 
-CREATE TABLE `type_products` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `type_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `type_products`;
+CREATE TABLE IF NOT EXISTS `type_products` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `type_products`
+-- Dumping data for table `type_products`
 --
 
 INSERT INTO `type_products` (`id`, `type_name`, `created_at`, `updated_at`) VALUES
@@ -529,247 +861,62 @@ INSERT INTO `type_products` (`id`, `type_name`, `created_at`, `updated_at`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `type_users`
+-- Table structure for table `type_users`
 --
 
-CREATE TABLE `type_users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `type_user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+DROP TABLE IF EXISTS `type_users`;
+CREATE TABLE IF NOT EXISTS `type_users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type_user_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `type_users`
+-- Dumping data for table `type_users`
 --
 
 INSERT INTO `type_users` (`id`, `type_user_name`, `created_at`, `updated_at`) VALUES
 (1, 'customer', NULL, NULL),
 (2, 'vip', NULL, NULL),
-(3, 'admmin', NULL, NULL);
+(3, 'admin', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token_cart` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token_cart` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type_user_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `users_type_user_id_foreign` (`type_user_id`),
+  KEY `users_role_id_foreign` (`role_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `token_cart`, `type_user_id`, `role_id`, `remember_token`, `created_at`, `updated_at`, `email_verified_at`) VALUES
-(1, 'teoedit', '$2y$10$wJwhGiwCiJE/uhtlMx2pQ.MNKdHq55tImI0DBZQN.mP/P/T0GEGyq', 'teo@gmail.com', '1234567891', NULL, 2, 1, 'KtgizNrql6AQX3aQUcLafAQWBnkgnuIpm1teoSxbndlo4JCu5jUMjfT0RVP5', NULL, NULL, NULL),
-(2, 'teodeptrai', '$2y$10$AuKz0wa1SV0I.uDSukei3eMmVg5r1PTQt20JyzNd4E48wI.WPZWO2', 'teodeptrai@gmail.com', '1234567889', NULL, 1, 1, NULL, NULL, NULL, NULL),
-(3, 'teo23', '$2y$10$kg9kEcvS/wm5I5mSxuh8wuHJwQNzVyNnJ9kkrphtToGGqEJWxCJe6', 'teo23@gmail.com', '123456789', NULL, 1, 1, NULL, NULL, NULL, NULL),
-(4, 'teonv', '$2y$10$9/WbFsYt/J5HO08QbFaIe.ktKfcdEEE5DI/GsrYDB.URFKW9UWxNS', 'teonv@gmail.com', '123456890', NULL, 1, 1, NULL, NULL, NULL, NULL),
-(6, 'admin1', '$2y$10$A5KlAC5LhlLx4ZfCe4BCfOenvGY5v0GVNY2FoYEqXfmIQ3LPLK/MS', 'admin1@gmail.com', '123456789', NULL, 3, 2, NULL, NULL, NULL, NULL),
-(49, 'nguyenteo', '$2y$10$Rh3KrlhECrlyKwYkcek1wOPuvcmVfbGY4JLE5Po5QuvnWzIt3J4dO', 'backend2nhom4@gmail.com', '1234567890', NULL, 3, 3, 'vLGlWSTjrUYt0nzaBtXpJgkwTfxrN1hnp33BfROqAcujMby8SLZC39ujNu5o', NULL, NULL, '2021-05-31 18:33:59'),
-(50, 'vuducthien', '$2y$10$6i9VqkASpnW84sab5TlHueWs.nLlKC2AgNstdnywRGofNPLEgys36', 'thienaka2p@gmail.com', '123434124', NULL, 3, 2, NULL, NULL, NULL, '2021-06-01 18:51:47'),
-(51, 'nhquyen', '$2y$10$b43A84tyWPrdpRasLMExCOm40c05ISibMNtQkraG2oBN7g9JzpHT6', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 3, NULL, NULL, NULL, '2021-06-01 20:52:35'),
-(52, 'adminquyen', '$2y$10$M5hXrf12eQngjrzuVJG6DOn5kErxpBd78WJcLYSg4P6a4459iGBjC', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 2, NULL, NULL, NULL, '2021-06-08 20:22:11'),
-(54, 'superadminquyen', '$2y$10$nfNcSqi8fcNeR..Tpd8fZOf7zNg.s7uUjS.pFM0MKE8u/aSODR5oC', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 3, NULL, NULL, NULL, '2021-06-09 06:56:45');
-
---
--- Chỉ mục cho các bảng đã đổ
---
-
---
--- Chỉ mục cho bảng `banners`
---
-ALTER TABLE `banners`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `bills`
---
-ALTER TABLE `bills`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `bills_user_id_foreign` (`user_id`);
-
---
--- Chỉ mục cho bảng `contacts`
---
-ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `detail_bills`
---
-ALTER TABLE `detail_bills`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `detail_bills_bill_id_foreign` (`bill_id`),
-  ADD KEY `detail_bills_product_id_foreign` (`product_id`);
-
---
--- Chỉ mục cho bảng `evalutes`
---
-ALTER TABLE `evalutes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `evalutes_product_id_foreign` (`product_id`),
-  ADD KEY `evalutes_user_id_foreign` (`user_id`);
-
---
--- Chỉ mục cho bảng `image_products`
---
-ALTER TABLE `image_products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `image_products_product_id_foreign` (`product_id`);
-
---
--- Chỉ mục cho bảng `manufactures`
---
-ALTER TABLE `manufactures`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `partners`
---
-ALTER TABLE `partners`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `products_type_id_foreign` (`type_id`),
-  ADD KEY `products_manu_id_foreign` (`manu_id`);
-
---
--- Chỉ mục cho bảng `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `type_products`
---
-ALTER TABLE `type_products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `type_users`
---
-ALTER TABLE `type_users`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `users_type_user_id_foreign` (`type_user_id`),
-  ADD KEY `users_role_id_foreign` (`role_id`);
-
---
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
--- AUTO_INCREMENT cho bảng `banners`
---
-ALTER TABLE `banners`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT cho bảng `bills`
---
-ALTER TABLE `bills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `contacts`
---
-ALTER TABLE `contacts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `detail_bills`
---
-ALTER TABLE `detail_bills`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT cho bảng `evalutes`
---
-ALTER TABLE `evalutes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `image_products`
---
-ALTER TABLE `image_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT cho bảng `manufactures`
---
-ALTER TABLE `manufactures`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT cho bảng `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT cho bảng `partners`
---
-ALTER TABLE `partners`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
-
---
--- AUTO_INCREMENT cho bảng `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `type_products`
---
-ALTER TABLE `type_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `type_users`
---
-ALTER TABLE `type_users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+(54, 'superadminquyen', '$2y$10$nfNcSqi8fcNeR..Tpd8fZOf7zNg.s7uUjS.pFM0MKE8u/aSODR5oC', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 3, NULL, NULL, NULL, '2021-06-08 23:56:45'),
+(52, 'adminquyen', '$2y$10$M5hXrf12eQngjrzuVJG6DOn5kErxpBd78WJcLYSg4P6a4459iGBjC', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 2, NULL, NULL, NULL, '2021-06-08 13:22:11'),
+(49, 'nguyenteo', '$2y$10$05KfSvqvqtsUd1Lnx4oK7OnmdYutNpVwLEgf0l78zx4KwAduPWUJO', 'backend2nhom4@gmail.com', '098765432', NULL, 3, 3, 'wIvjHYVRjnNJNOWqzpufFbGvskIG6zJEzRrNsf60NTL3fSv85xtuRbUkoice', NULL, NULL, '2021-05-31 18:33:59'),
+(55, 'vuducthien', '$2y$10$lvDmh1mftf0axLy52hFrEOCYXwIUWd.c8bo5c5Xwwy/QCxry2.v0O', 'thienaka2p@gmail.com', '1234564356', NULL, 3, 2, NULL, NULL, NULL, '2021-06-09 06:52:09'),
+(51, 'nhquyen', '$2y$10$b43A84tyWPrdpRasLMExCOm40c05ISibMNtQkraG2oBN7g9JzpHT6', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 1, 1, NULL, NULL, NULL, '2021-06-01 13:52:35');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -116,6 +116,22 @@ class AdminController extends Controller
             $user->save();
             return view('admin-pages.Admin.infoAdmin',compact('user'));
         }else{
+
+            $this->validate($request,[
+                'username'=>[Rule::unique('users')->ignore($user->id)],
+                'email' => ['string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],               
+                'phone'=>['string','min:8','max:11'],
+               
+            ]
+            ,
+            [
+              
+                'username.unique'=>'Username đã tồn tại',
+                'email.email'=>'Vui lòng điền đúng định dạng email',             
+                'phone.min'=>'Phone phải lớn hơn 8 kí tự',
+                'phone.max'=>'Phone phải bé hơn 11 kí tự',
+                                           
+            ]);
             $user->username = $request->username;
             $user->email=$request->email;
             $user->password =Hash::make($request->password);
