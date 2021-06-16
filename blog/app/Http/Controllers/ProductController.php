@@ -33,7 +33,7 @@ class ProductController extends Controller
 
     //get detail product
     function getDetailProductByID(Request $request){       
-        $id = $request->id;        
+        $id = $request->id;      
         $productsDetailByID = Product::where('id',$id)->first();
         $typeProductRelated = $productsDetailByID->type_id;
         $productRelated = Product::where('type_id',$typeProductRelated)->get();
@@ -44,7 +44,12 @@ class ProductController extends Controller
         if(Auth::user() != null){
             $bills = DB::table('bills')->where('user_id', Auth::user()->id)->where('status', 1)->get();
             if(count($bills) > 0){
-                $DuocDanhGia = 1;
+                foreach($bills as $item){
+                    $detail_bills = DB::table('detail_bills')->where('bill_id', $item->id)->where('product_id', $id)->get();            
+                    if(count($detail_bills) > 0){
+                        $DuocDanhGia = 1;
+                    }
+                }
             }
         }
         //danh sach danh gia

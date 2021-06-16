@@ -172,7 +172,7 @@
                         <li>
                           <div class="review-body">
                             <div class="review-content">
-                              <p class="review-author"><strong>{{$users->where('id', $item->user_id)->first()->username}}</strong> - {{$item->createDate}}</p>
+                              <p class="review-author"><strong>{{$users->where('id', $item->user_id)->first() == null ? "*Người dùng không tồn tại" : $users->where('id', $item->user_id)->first()->username}}</strong> - {{$item->createDate}}</p>
                               <div class="">
                                 @for ($i = 1; $i <= 5; $i++)
                                     @if ($i <= $item->rate)

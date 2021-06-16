@@ -74,7 +74,7 @@ Route::get('/infouser',function(){
    return view('infouser');
 });
 //xac nhan email
-Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
+//Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 
 
 
@@ -91,7 +91,9 @@ Route::resource('admin/banners','Admin\BannerController');
 
 //xac nhan email
 //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
-
+// Route::get('cart', function () {
+//    // Only verified users may enter...
+// })->middleware('verified');
 // Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 // Route::get('/admin/{action?}','AdminController@index');
 // Route::post('/admin/UploadProduct','AdminController@UploadProduct');
@@ -107,11 +109,8 @@ Route::post('/admin/EditProduct','AdminController@EditProduct');
 Route::get('/product/delete/{id}','AdminController@DeleteProduct');
 //BillController
 Route::get('/shop-checkout',function(){
-   if(Auth::user() == null){
-      return redirect()->route('home');
-   }
-    return view('shop-checkout');
- });
+   //.....
+ })->middleware('verified');
 Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
 Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 Route::get('/bill/paid', 'BillController@paid');

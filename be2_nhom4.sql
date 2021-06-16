@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3309
--- Generation Time: Jun 16, 2021 at 01:04 AM
--- Server version: 10.3.14-MariaDB
--- PHP Version: 7.3.5
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 16, 2021 at 02:32 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -67,7 +67,43 @@ CREATE TABLE IF NOT EXISTS `bills` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `bills_user_id_foreign` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bills`
+--
+
+INSERT INTO `bills` (`id`, `price`, `create_date`, `status`, `image_check_out`, `address`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1000.00, '2021-06-12 00:00:00', '1', '1623518845_2018_mclaren_570s_spider_5k-wide.jpg', '', 56, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE IF NOT EXISTS `comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rate` int(11) NOT NULL DEFAULT 1,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `createDate` date NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `rate`, `comment`, `createDate`, `user_id`, `product_id`) VALUES
+(1, 4, 'ddddd', '2021-06-12', 2, 2),
+(2, 1, 'san pham khong giong anh', '2021-06-12', 2, 2),
+(3, 5, 'omazing good job', '2021-06-12', 2, 2),
+(4, 5, 'trí đánh giá lại', '2021-06-16', 56, 2),
+(5, 1, 'đánh giá lại', '2021-06-16', 56, 2),
+(6, 1, 'không đánh giá', '2021-06-16', 56, 2);
 
 -- --------------------------------------------------------
 
@@ -106,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `detail_bills` (
   PRIMARY KEY (`id`),
   KEY `detail_bills_bill_id_foreign` (`bill_id`),
   KEY `detail_bills_product_id_foreign` (`product_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `detail_bills`
@@ -116,7 +152,8 @@ INSERT INTO `detail_bills` (`id`, `bill_id`, `product_id`, `count_product`, `cou
 (9, NULL, 3, 1, 1800.00, NULL, NULL),
 (6, NULL, 8, 1, 980.00, NULL, NULL),
 (8, NULL, 3, 1, 1800.00, NULL, NULL),
-(7, NULL, 6, 1, 1400.00, NULL, NULL);
+(7, NULL, 6, 1, 1400.00, NULL, NULL),
+(10, 1, 2, 1, 1000.00, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -905,7 +942,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   KEY `users_type_user_id_foreign` (`type_user_id`),
   KEY `users_role_id_foreign` (`role_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -916,7 +953,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `token_cart
 (52, 'adminquyen', '$2y$10$M5hXrf12eQngjrzuVJG6DOn5kErxpBd78WJcLYSg4P6a4459iGBjC', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 3, 2, NULL, NULL, NULL, '2021-06-08 13:22:11'),
 (49, 'nguyenteo', '$2y$10$05KfSvqvqtsUd1Lnx4oK7OnmdYutNpVwLEgf0l78zx4KwAduPWUJO', 'backend2nhom4@gmail.com', '098765432', NULL, 3, 3, 'wIvjHYVRjnNJNOWqzpufFbGvskIG6zJEzRrNsf60NTL3fSv85xtuRbUkoice', NULL, NULL, '2021-05-31 18:33:59'),
 (55, 'vuducthien', '$2y$10$lvDmh1mftf0axLy52hFrEOCYXwIUWd.c8bo5c5Xwwy/QCxry2.v0O', 'thienaka2p@gmail.com', '1234564356', NULL, 3, 2, NULL, NULL, NULL, '2021-06-09 06:52:09'),
-(51, 'nhquyen', '$2y$10$b43A84tyWPrdpRasLMExCOm40c05ISibMNtQkraG2oBN7g9JzpHT6', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 1, 1, NULL, NULL, NULL, '2021-06-01 13:52:35');
+(51, 'nhquyen', '$2y$10$b43A84tyWPrdpRasLMExCOm40c05ISibMNtQkraG2oBN7g9JzpHT6', 'nguyenhuuquyen2001@gmail.com', '0123456789', NULL, 1, 1, NULL, NULL, NULL, '2021-06-01 13:52:35'),
+(56, 'admin1', '$2y$10$xH0kXZtXvT6PpoEQNF5XX.tPaoftul.MTKPT2bMpVXqH1EysP5zF2', 'tri.minh.it.0297@gmail.com', '0359611166', NULL, 1, 1, NULL, NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

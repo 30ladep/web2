@@ -24,11 +24,10 @@
     <link rel="shortcut icon" href="{{url('/img/apple-touch-icon.html')}}" />
     <link rel="shortcut icon" href="{{url('/img/apple-touch-icon-72x72.png')}}" />
     <link rel="shortcut icon" href="{{url('/img/apple-touch-icon-114x114.png')}}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-
-
-    ">
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 	<title>@yield('title')</title>
 </head>
