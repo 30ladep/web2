@@ -109,8 +109,11 @@ Route::post('/admin/EditProduct','AdminController@EditProduct');
 Route::get('/product/delete/{id}','AdminController@DeleteProduct');
 //BillController
 Route::get('/shop-checkout',function(){
-   //.....
- })->middleware('verified');
+   if(Auth::user() == null){
+      return redirect()->route('home');
+   }
+    return view('shop-checkout');
+ });
 Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
 Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 Route::get('/bill/paid', 'BillController@paid');
