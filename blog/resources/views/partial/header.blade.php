@@ -144,14 +144,6 @@
                   <a href="{{url('/')}}">Home</a>
                 </li>
 
-                <li class="dropdown">
-                  <a href="#">Shop</a>
-                  <i class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"></i>
-                  <ul class="dropdown-menu">
-                    <li><a href="{{url('/catalog')}}">Catalog</a></li>
-                  </ul>
-                </li>
-
                 <li class="mobile-links">
                   <ul>
                     <li>

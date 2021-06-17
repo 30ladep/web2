@@ -75,6 +75,8 @@ Route::get('/infouser',function(){
 })->middleware('verified');
 //xac nhan email
  //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
+//Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
+
 
 //  Route::get('/', function () {
 //    // Only verified users may enter...
@@ -91,6 +93,21 @@ Route::resource('admin/users','Admin\UserController');
 Route::resource('admin/banners','Admin\BannerController');
 
 
+<<<<<<< HEAD
+=======
+//xac nhan email
+//Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
+// Route::get('cart', function () {
+//    // Only verified users may enter...
+// })->middleware('verified');
+// Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
+// Route::get('/admin/{action?}','AdminController@index');
+// Route::post('/admin/UploadProduct','AdminController@UploadProduct');
+// Route::post('/admin/EditProduct','AdminController@EditProduct');
+// Route::get('/product/delete/{id}','AdminController@DeleteProduct');
+
+
+>>>>>>> 0ce843a0808d627286f00b46428b3c3e947723ad
 //ADMIN
 Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 Route::get('/admin/{action?}','AdminController@index');

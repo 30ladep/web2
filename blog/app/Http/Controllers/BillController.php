@@ -67,7 +67,7 @@ class BillController extends Controller
          return redirect('/bill/unpaid');
     }
     public function AddComment(Request $request){
-         $rate = $request->rate;
+         $rate = $request->rate == null ? 1 : $request->rate;
          $ProductID = $request->ProductID;
          $Comment = $request->Comment;
          DB::table('comment')->insert([
