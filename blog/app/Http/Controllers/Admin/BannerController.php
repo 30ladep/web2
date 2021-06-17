@@ -93,22 +93,17 @@ class BannerController extends Controller
     {
        // dd($request->all());
         $banner = Banner::findOrFail($id);
-        
         if($request->hasFile('image_slide')){
             $banner->content = $request->content;
             $request->validate([
                 'image_slide' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-      
             $imageSlideName = time().'.'.$request->image_slide->getClientOriginalName();  
             $banner->image_slide= $imageSlideName;
-       
             $request->image_slide->move(public_path('\img\banner'), $imageSlideName);
-                
         }else{
             $banner->content = $request->content;
             $banner->image_slide=$request->image_slide;
-            
         }
         $banner->save();
         return redirect()->route('banners.index');

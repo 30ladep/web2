@@ -35,6 +35,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create(Request $request)
     {    $typeProduct = DB::table('type_products')->get();
         $manu = DB::table('manufactures')->get();

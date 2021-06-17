@@ -75,7 +75,6 @@ class UserController extends Controller
         $this->validate($request,[
             'email'=>'required|',
             'password'=>'required|min:3|max:30'
-
         ],
         [
             'email.required'=>'Ban chua nhap email',
@@ -83,7 +82,6 @@ class UserController extends Controller
             'password.min'=>'Password phai co hon 3 ky tu',
             'password.max'=>'Password toi da 30 ky tu'
         ]);
-
         //Auth
         $passwordd=Hash::make($request->password);
         if(Auth::attempt(['email'=>$request->email,'password'=> $passwordd])){

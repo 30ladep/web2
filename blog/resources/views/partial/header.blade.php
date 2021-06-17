@@ -173,5 +173,10 @@
       margin: 0 auto;
       display: inline-block;
     }
+    .banner-img{
+      width: 1140px !important;
+      height: 760px !important;
+      display: inline-block;
+    }
   </style>
 </header> <!-- end navigation -->
