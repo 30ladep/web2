@@ -72,11 +72,13 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/infouser',function(){
    return view('infouser');
-});
+})->middleware('verified');
 //xac nhan email
-Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
+ //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 
-
+//  Route::get('/', function () {
+//    // Only verified users may enter...
+// })->middleware('verified');
 
 
 
@@ -87,16 +89,6 @@ Route::resource('admin/manufacuters','Admin\ManufactureController');
 Route::resource('admin/typeproducts','Admin\TypeProductController');
 Route::resource('admin/users','Admin\UserController');
 Route::resource('admin/banners','Admin\BannerController');
-
-
-//xac nhan email
-//Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
-
-// Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
-// Route::get('/admin/{action?}','AdminController@index');
-// Route::post('/admin/UploadProduct','AdminController@UploadProduct');
-// Route::post('/admin/EditProduct','AdminController@EditProduct');
-// Route::get('/product/delete/{id}','AdminController@DeleteProduct');
 
 
 //ADMIN
@@ -111,16 +103,12 @@ Route::get('/shop-checkout',function(){
       return redirect()->route('home');
    }
     return view('shop-checkout');
- });
+ })->middleware('verified');
 Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
 Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 Route::get('/bill/paid', 'BillController@paid');
 Route::get('/bill/unpaid', 'BillController@unpaid');
 Route::post('/AddComment', 'BillController@AddComment');
-// //ReportController
-// Route::get('/report/bestsale', 'ReportController@bestsale');
-// Route::get('/report/bestview', 'ReportController@bestview');
-// Route::get('/report/sales', 'ReportController@sales');
 
 
 

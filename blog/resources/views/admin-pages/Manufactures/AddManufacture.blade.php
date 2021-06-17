@@ -12,15 +12,18 @@
 </style>
 
     <div class="ml-2">
-        <h3>Thêm mới nhà sản xuất</h3>
+        <h3>Thêm  nhà sản xuất</h3>
         <form class="row" action="{{ route('manufacuters.store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="col-5">
                 <div class="form-group">
                 <label>Manufacture name:</label>
-                <input type="text" name="manufactureName" class="form-control" required>
+                <input type="text" name="manu_name" class="form-control" required>
+                @error('manu_name')
+                <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
             </div>           
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Thêm</button>
         </form>
     </div>
    

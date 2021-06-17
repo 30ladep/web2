@@ -17,15 +17,20 @@
             {{ csrf_field() }}
             <div class="col-5">
                 <div class="form-group">
-                <label>Content:</label>
-                <input type="text" name="content" class="form-control" required>
+                <label>Content:</label><br>
+                <textarea name="content" id="content" cols="50" rows="10" required></textarea>
+                {{-- <input type="text" name="content" class="form-control" required> --}}
+                @error('content')
+                <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
             </div>
           
             <div class="form-group">
-                <label>Image Slide</label><br>
-                
- 
+                <label>Image Slide</label><br>                 
                 <input type="file" id="img-file" onchange="loadFile(event)" multiple name="image_slide" accept="image/*" class="form-control-file" required>
+                @error('image_slide')
+                <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
             </div>

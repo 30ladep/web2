@@ -20,10 +20,13 @@
             <div class="col-5">
                 <div class="form-group">
                 <label>Manufacuture name:</label>
-                <input type="text" name="manufactureName" class="form-control" value="{{$manu->manu_name}}" required>
+                <input type="text" name="manu_name" class="form-control" value="{{$manu->manu_name}}" required>
+                @error('manu_name')
+                <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
             </div>       
         
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Chỉnh Sửa</button>
             </div>
         </form>
     </div>

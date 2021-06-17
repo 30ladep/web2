@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Manufacture;
+use Illuminate\Validation\Rule;
+
 class ManufactureController extends Controller
 {
     /**
@@ -37,7 +39,18 @@ class ManufactureController extends Controller
     public function store(Request $request)
     {
         $manu = new Manufacture(); 
-        $manu->manu_name = $request->manufactureName;
+    
+        $this->validate($request,[   
+            'manu_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255','unique:manufactures'],   
+        ]
+        ,
+        [ 
+            'manu_name.unique'=>'Nhà sản xuất đã tồn tại',  
+            'manu_name.regex'=>'Nhà sản xuất phải là chữ, không chứa số, kí tự',                              
+            'manu_name.min'=>'Nhà sản xuất phải lớn hơn 2 kí tự',
+            'manu_name.max'=>'Nhà sản xuất phải bé hơn 255 kí tự',                                      
+        ]);
+        $manu->manu_name = $request->manu_name;
         $manu->save();
       return redirect()->route('manufacuters.index');
      
@@ -76,9 +89,26 @@ class ManufactureController extends Controller
     public function update(Request $request, $id)
     { 
         $manu = Manufacture::findOrFail($id);
-        $manu->manu_name =  $request->manufactureName;
+        if($request->input('manu_name')){
+            $this->validate($request,[   
+                'manu_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255', Rule::unique('manufactures')->ignore($manu->id)],   
+            ]
+            ,
+            [         
+                'manu_name.unique'=>'Nhà sản xuất đã tồn tại',
+                 'manu_name.regex'=>'Nhà sản xuất phải là chữ, không chứa số,kí tự',
+                'manu_name.string'=>'Nhà sản xuất phải là chữ',        
+                'manu_name.min'=>'Nhà sản xuất phải lớn hơn 2 kí tự',
+                'manu_name.max'=>'Nhà sản xuất phải bé hơn 255 kí tự',                                      
+            ]);
+            $manu->manu_name =  $request->manu_name;
+            $manu->save();
+            return redirect()->route('manufacuters.index');
+        }else{
         $manu->save();
         return redirect()->route('manufacuters.index');
+        }
+      
     }
 
     /**

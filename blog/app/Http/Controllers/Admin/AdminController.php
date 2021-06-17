@@ -94,7 +94,7 @@ class AdminController extends Controller
                 'username'=>[Rule::unique('users')->ignore($user->id)],
                 'email' => ['string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
                 'password' => [ 'string', 'min:8'],
-                'phone'=>['string','min:8','max:11'],
+                'phone'=>['string','integer','min:8','max:11'],
                 'comfirmpassword'=>['same:comfirmpassword']
             ]
             ,
@@ -105,7 +105,7 @@ class AdminController extends Controller
                 'password.min'=>'Password phải lớn hơn 8 kí tự',
                 'phone.min'=>'Phone phải lớn hơn 8 kí tự',
                 'phone.max'=>'Phone phải bé hơn 11 kí tự',
-                                           
+                'phone.integer'=>'Số điện thoại phải là số',
             ]);
             
             $pass = $request->input('password');
@@ -120,7 +120,7 @@ class AdminController extends Controller
             $this->validate($request,[
                 'username'=>[Rule::unique('users')->ignore($user->id)],
                 'email' => ['string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],               
-                'phone'=>['string','min:8','max:11'],
+                'phone'=>['string','integer','min:8','max:11'],
                
             ]
             ,
@@ -130,6 +130,7 @@ class AdminController extends Controller
                 'email.email'=>'Vui lòng điền đúng định dạng email',             
                 'phone.min'=>'Phone phải lớn hơn 8 kí tự',
                 'phone.max'=>'Phone phải bé hơn 11 kí tự',
+                'phone.integer'=>'Số điện thoại phải là số',
                                            
             ]);
             $user->username = $request->username;
