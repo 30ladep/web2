@@ -93,8 +93,6 @@ Route::resource('admin/users','Admin\UserController');
 Route::resource('admin/banners','Admin\BannerController');
 
 
-<<<<<<< HEAD
-=======
 //xac nhan email
 //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 // Route::get('cart', function () {
@@ -107,7 +105,6 @@ Route::resource('admin/banners','Admin\BannerController');
 // Route::get('/product/delete/{id}','AdminController@DeleteProduct');
 
 
->>>>>>> 0ce843a0808d627286f00b46428b3c3e947723ad
 //ADMIN
 Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 Route::get('/admin/{action?}','AdminController@index');

@@ -110,7 +110,8 @@
                   <div class="nav-cart-outer">
                     <div class="nav-cart-inner">
                     {{-- <a href="{{url('/cart')}}" class="nav-cart-icon">2</a> --}}
-                      <a href="{{url('/cart')}}" class="nav-cart-icon"></a>
+                    
+                      <a href="{{url('/cart')}}" class="nav-cart-icon">{!!Cart::count() !!}</a>
                     </div>
                   </div>
                 </div>
@@ -118,7 +119,7 @@
                   <span>
                     Cart /
                     <a href="{{url('/cart')}}">{!!Cart::total() !!}</a>
-                    <a href="{{url('/cart')}}">{!!Cart::count() !!}</a>
+                    {{-- <a href="{{url('/cart')}}">{!!Cart::count() !!}</a> --}}
                   </span>
                 </div>
               </div> <!-- end cart -->
