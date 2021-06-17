@@ -72,11 +72,15 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/infouser',function(){
    return view('infouser');
-});
+})->middleware('verified');
 //xac nhan email
+ //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 
 
+//  Route::get('/', function () {
+//    // Only verified users may enter...
+// })->middleware('verified');
 
 
 
@@ -113,16 +117,12 @@ Route::get('/shop-checkout',function(){
       return redirect()->route('home');
    }
     return view('shop-checkout');
- });
+ })->middleware('verified');
 Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
 Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 Route::get('/bill/paid', 'BillController@paid');
 Route::get('/bill/unpaid', 'BillController@unpaid');
 Route::post('/AddComment', 'BillController@AddComment');
-// //ReportController
-// Route::get('/report/bestsale', 'ReportController@bestsale');
-// Route::get('/report/bestview', 'ReportController@bestview');
-// Route::get('/report/sales', 'ReportController@sales');
 
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\TypeProduct;
+use Illuminate\Validation\Rule;
 class TypeProductController extends Controller
 {
     /**
@@ -37,7 +38,17 @@ class TypeProductController extends Controller
     public function store(Request $request)
     {
         $typeProduct = new TypeProduct();
-        $typeProduct->type_name = $request->typeProductName;
+        $this->validate($request,[   
+            'type_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255','unique:type_products'],   
+        ]
+        ,
+        [ 
+            'type_name.unique'=>'Loại sản phẩm đã tồn tại',  
+            'type_name.regex'=>'Loại sản phẩm phải là chữ, không chứa số, kí tự',                              
+            'type_name.min'=>'Loại sản phẩm phải lớn hơn 2 kí tự',
+            'type_name.max'=>'Loại sản phẩm phải bé hơn 255 kí tự',                                      
+        ]);
+        $typeProduct->type_name = $request->type_name;
         $typeProduct->save();
         return redirect()->route('typeproducts.index');
     }
@@ -76,9 +87,27 @@ class TypeProductController extends Controller
     public function update(Request $request, $id)
     {
         $typeProduct = TypeProduct::findOrFail($id);
-        $typeProduct->type_name = $request->typeProductName;
-        $typeProduct->save();
-        return redirect()->route('typeproducts.index');
+        
+
+        if($request->input('type_name')){
+            $this->validate($request,[   
+                'type_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255', Rule::unique('type_products')->ignore($typeProduct->id)],   
+            ]
+            ,
+            [         
+                'type_name.unique'=>'Loại sản phẩm đã tồn tại',
+                'type_name.regex'=>'Loại sản phẩm phải là chữ, không chứa số,kí tự',
+                'type_name.string'=>'Loại sản phẩm phải là chữ',        
+                'type_name.min'=>'Loại sản phẩm phải lớn hơn 2 kí tự',
+                'type_name.max'=>'Loại sản phẩm phải bé hơn 255 kí tự',                                      
+            ]);
+            $typeProduct->type_name = $request->type_name;
+            $typeProduct->save();
+            return redirect()->route('typeproducts.index');
+        }else{
+            $typeProduct->save();
+            return redirect()->route('typeproducts.index');
+        }
     }
 
     /**

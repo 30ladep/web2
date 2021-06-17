@@ -17,10 +17,13 @@
             {{ csrf_field() }}
             <div class="col-5">
                 <div class="form-group">
-                <label>TypeProduct name:</label>
-                <input type="text" name="typeProductName" class="form-control" required>
+                <label>Tên loại sản phẩm:</label>
+                <input type="text" name="type_name" class="form-control" required>
+                @error('type_name')
+                <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
             </div>           
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Thêm</button>
         </form>
     </div>
    
