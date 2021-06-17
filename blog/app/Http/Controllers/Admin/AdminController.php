@@ -21,12 +21,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // $products = Product::all();
-        // $manu = Manufacture::all();
-        // $typeProduct = TypeProduct::all();
-        // return view('admin-pages.ListProduct',compact('products','manu','typeProduct'));
 
-      
         $id = Auth::user()->id;
         $user = User::where('id',$id)->first();
         
