@@ -26,12 +26,13 @@
     <link href="{{url('../resources/views/admin-layout/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="{{url('../resources/views/admin-layout/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-    
+    {{-- jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 @if(Auth::user() == null)
   <script>window.location = "{{ route('home') }}";</script>
 @else
-  @if (Auth::user()->role_id == 1)
+  @if (Auth::user()->role_id != 1)
       <script>window.location = "{{ url('/') }}";</script>
   @endif
 @endif
@@ -157,8 +158,9 @@
                     <div id="DonHang" class="collapse" aria-labelledby="headingTwo"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="{{url('/bill/paid')}}">Đã xác nhận</a>
                             <a class="collapse-item" href="{{url('/bill/unpaid')}}">Chưa xác nhận</a>
+                            <a class="collapse-item" href="{{url('/bill/paid')}}">Đang vận chuyển</a>
+                            <a class="collapse-item" href="{{url('/bill/BillSuccess')}}">Hoàn thành</a>
                         </div>
                     </div>
                 </li>
@@ -193,33 +195,51 @@
     
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
-    
+                            @php
+                                $DonHangChuaXacNhan = count(DB::table('bills')->where('status',0)->get());
+                            @endphp
                             <!-- Nav Item - Messages -->
                             <li class="nav-item dropdown no-arrow mx-1">
                                 <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-envelope fa-fw"></i>
                                     <!-- Counter - Messages -->
-                                    <span class="badge badge-danger badge-counter">7</span>
+                                    @if ($DonHangChuaXacNhan > 0)
+                                        <span class="badge badge-danger badge-counter">{{$DonHangChuaXacNhan}}</span>
+                                    @endif
                                 </a>
                                 <!-- Dropdown - Messages -->
+                               
                                 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="messagesDropdown">
                                     <h6 class="dropdown-header">
                                         Message Center
                                     </h6>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                                alt="">
-                                            <div class="status-indicator bg-success"></div>
-                                        </div>
-                                        <div>
-                                            <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                                told me that people say this to all dogs, even if they aren't good...</div>
-                                            <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                        </div>
-                                    </a>
+                                     @if ($DonHangChuaXacNhan > 0)
+                                        <a class="dropdown-item d-flex align-items-center" href="{{url('/bill/unpaid')}}">
+                                            <div class="dropdown-list-image mr-3">
+                                                <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                                    alt="">
+                                                <div class="status-indicator bg-success"></div>
+                                            </div>
+                                            <div>
+                                                <div class="text-truncate">Bạn có {{$DonHangChuaXacNhan}} đơn hàng chưa xác nhận</div>
+                                                <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                            </div>
+                                        </a>
+                                    @else
+                                        <a class="dropdown-item d-flex align-items-center" href="javascript:;">
+                                            <div class="dropdown-list-image mr-3">
+                                                <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                                    alt="">
+                                                <div class="status-indicator bg-success"></div>
+                                            </div>
+                                            <div>
+                                                <div class="text-truncate">Không có thông báo :))</div>
+                                                <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                            </div>
+                                        </a>
+                                    @endif
                                 </div>
                             </li>
     

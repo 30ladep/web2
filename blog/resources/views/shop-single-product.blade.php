@@ -69,22 +69,7 @@
             <div class="select-options">
               <div class="row row-20">
                 <div class="col-sm-6">
-                  <select class="color-select">
-                    <option value>{!!$products->color!!}</option>
-                    <option selected value>Yellow</option>
-                    <option value="Red">Red</option>
-                    <option value="White">White</option>
-                    <option value="Black">Black</option>
-                    <option value="Blue">Blue</option>
-                    <option value="Pink">Pink</option>
-                    <option value="Organe">Organe</option>
-                  </select>
-                </div>
-
-                <div class="col-sm-6">
-                  <select class="size-options">
-                    <option value>{!!$products->size!!}</option>
-                  </select>
+                  Size: {!!$products->size!!}
                 </div>
               </div>
             </div>
@@ -94,16 +79,11 @@
               <li>
               <a href="{!!url('add-cart',[$products->id,$products->alias])!!}" class="btn btn-color btn-lg add-to-cart left"><span>Add to Cart</span></a>
               </li>                
-              <li>
+              {{-- <li>
                 <div class="icon-add-to-wishlist left">
                   <a href="#"><i class="icon icon_heart_alt"></i></a>
                 </div>
-              </li> 
-              <li>
-                <div class="quantity buttons_added">
-                  <input type="button" value="-" class="minus" /><input type="number" step="1" min="0" value="" title="Qty" class="input-text qty text" /><input type="button" value="+" class="plus" />
-                </div>
-              </li>          
+              </li>           --}}
             </ul>
 
             <div class="product_meta">

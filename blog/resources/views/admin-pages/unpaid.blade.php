@@ -15,6 +15,7 @@
                     <tr>
                         <th>Mã bill</th>
                         <th>Ngày tạo bill</th>
+                        <th>Địa chỉ</th>
                         <th>Hình ảnh</th>
                         <th>Giá</th>
                         <th>Trạng thái</th>
@@ -25,9 +26,10 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{(date('d-m-Y', strtotime($item->create_date)))}}</td>
+                        <td>{{$item->address}}</td>
                         <td><a href="{{url('/img/image_bill/'.$item->image_check_out)}}" target="_blank" ><img style="width: 50px" src="{{url('/img/image_bill/'.$item->image_check_out)}}" alt=""></a></td>
                         <td>{{$item->price}}</td>
-                        <td><a class="btn btn-success" href="{{url('/bill/XacNhanDonHang/'.$item->id)}}">Xác nhận đơn hàng</a></td>
+                        <td><a class="btn btn-success" href="{{url('/bill/XacNhanDonHang/'.$item->id)}}">Gửi hàng</a></td>
                     </tr>
                     @endforeach
                 </tbody>
