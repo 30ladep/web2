@@ -13,27 +13,27 @@ class CartController extends Controller
     //addcart
     function addCart($id){
         $productByID = DB::table('products')->where('id',$id)->first();
-        Cart::add(array(
+        Cart::add([
             'id'=>$id,
             'name'=>$productByID->product_name,
             'qty'=>1,
             'price'=>$productByID->price,
-            'weight'=>0,'
-            options'=>array( 
+            'weight'=>0,
+            'options'=>[ 
                 'image'=>$productByID->image,
                 'sold'=>$productByID->sold,
                 'hot'=>$productByID->hot,
                 'note'=>$productByID->note,
-                'create_date'=>$productByID->create_date)));
-
+                'create_date'=>$productByID->create_date] 
+        ]);
+       // dd(Cart::content());
         return redirect()->route('cart');
     }
    
     //cart
     function cart(){
         $cart = Cart::content(); 
-        // $cc = array('id'=>4444,'name'=>"tris");
-        // dd($cc);
+       // dd($cart);
         $cart_priceTotal = Cart::priceTotal();
         return view('shop-cart',compact('cart','cart_priceTotal'));
     }

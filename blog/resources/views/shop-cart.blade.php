@@ -31,6 +31,8 @@
                 <tbody>
                
                 @foreach ($cart as $item)
+                {{-- {{dd($item)}} --}}
+                {{-- {{dd($item->options->has('image') ? $row->options->image : '')}} --}}
                   <tr class="cart_item">
                       <td class="product-thumbnail">
                         <a href="#">
@@ -54,9 +56,9 @@
                           <form action="{!!url('de-quality',$item->rowId)!!}" method="get">
                               <input type="submit"  value="-" class="minus" />
                           </form> 
-                          {{-- <a class="cart_quantity_up" href='{{url("cart?product_id=$item->id&increment=1")}}'> + </a> --}}
+
                           <input type="number" step="1" min="0" value="{!!$item->qty!!}" title="Qty" class="input-text qty text" />
-                          {{-- <a class="cart_quantity_down" href='{{url("cart?product_id=$item->id&decrease=1")}}'> - </a>  --}}
+
                         
                           <form action="{!!url('in-quality',$item->rowId)!!}" method="get">
                               <input type="submit" value="+" class="plus">
@@ -84,8 +86,6 @@
 
               <div class="col-md-7">
                 <div class="actions right">
-                    <a href="{{url('shop-update')}}" class="btn btn-md btn-dark"><span>Update Cart</span></a>
-                  {{-- <input type="submit" name="update_cart" value="Update Cart" class="btn btn-md btn-dark"> --}}
                   <div class="wc-proceed-to-checkout">
                   <a href="{{url('shop-checkout')}}" class="btn btn-md btn-color"><span>Thanh Toán</span></a>
                   </div>
