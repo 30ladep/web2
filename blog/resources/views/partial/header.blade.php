@@ -70,6 +70,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+
             <!-- Mobile cart -->
             <div class="nav-cart mobile-cart hidden-lg hidden-md">
               <div class="nav-cart-outer">
@@ -108,16 +109,17 @@
                 <div class="nav-cart right">
                   <div class="nav-cart-outer">
                     <div class="nav-cart-inner">
-                      {{-- <a href="{{url('/cart')}}" class="nav-cart-icon">2</a> --}}
-                      <a href="{{url('/cart')}}" class="nav-cart-icon"></a>
+                    {{-- <a href="{{url('/cart')}}" class="nav-cart-icon">2</a> --}}
+                    
+                      <a href="{{url('/cart')}}" class="nav-cart-icon">{!!Cart::count() !!}</a>
                     </div>
                   </div>
                 </div>
                 <div class="menu-cart-amount right">
                   <span>
                     Cart /
-                    {{-- <a href="{{url('/cart')}}">{!!Cart::total() !!}</a> --}}
-                    <a href="{{url('/cart')}}"></a>
+                    <a href="{{url('/cart')}}">{!!Cart::total() !!}</a>
+                    {{-- <a href="{{url('/cart')}}">{!!Cart::count() !!}</a> --}}
                   </span>
                 </div>
               </div> <!-- end cart -->
@@ -171,6 +173,11 @@
     }
     .pagination{
       margin: 0 auto;
+      display: inline-block;
+    }
+    .banner-img{
+      width: 1140px !important;
+      height: 760px !important;
       display: inline-block;
     }
   </style>

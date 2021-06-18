@@ -12,7 +12,7 @@
             <ul class="slides clearfix">
               @foreach ($banners as $item)
               <li>              
-                   <img src="{{'img/banner/'.$item->image_slide}}" alt="">                
+                   <img class="banner-img" src="{{'img/banner/'.$item->image_slide}}" alt="">                
                   <div class="hero-holder text-center right-align">
                     <div class="hero-lines">                  
                       <h4 class="hero-subheading white uppercase">{{$item->content}}</h4>

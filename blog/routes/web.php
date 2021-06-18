@@ -70,11 +70,15 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/infouser',function(){
    return view('infouser');
-});
+})->middleware('verified');
 //xac nhan email
+ //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
 
 
+//  Route::get('/', function () {
+//    // Only verified users may enter...
+// })->middleware('verified');
 
 
 

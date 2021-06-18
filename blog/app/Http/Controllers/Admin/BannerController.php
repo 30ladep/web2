@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Banner;
 
+use Illuminate\Validation\Rule;
+
 class BannerController extends Controller
 {
     /**
@@ -37,25 +39,38 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasFile('image_slide')){
-            $banner = New Banner();
-            $banner->content = $request->content;
-           
-          
-    
-            $request->validate([
-                'image_slide' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-      
-            $imageSlideName = time().'.'.$request->image_slide->getClientOriginalName();  
-            $banner->image_slide= $imageSlideName;
+        $banner = New Banner();    
        
-            $request->image_slide->move(public_path('img/banner'), $imageSlideName);
-            $banner->save();
+
+
+        if($request->hasFile('image_slide')){
+            
+            $request->validate(
+            [
+                'content' => ['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255','unique:banners'],
+                'image_slide' => ['required','image','mimes:jpg,png,jpeg,gif,svg','max:2048','dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'],
+                'image_slide'=> 'unique:banners,image_slide',
+            ],
+            [
+                'content.unique'=>'Nội dung đã tồn tại',  
+                'content.regex'=>'Nội dung phải là chữ, không chứa số, kí tự',                              
+                'content.min'=>'Nội dung phải lớn hơn 2 kí tự',
+                'content.max'=>'Nội dung phải bé hơn 255 kí tự',   
+                'image_slide.image'=>'Đây không phải định dạng hình, vui lòng chọn đúng định dạng',
+                'image_slide.mimes'=>'Đây không phải định dạng hình, vui lòng chọn đúng định dạng',
+                'image_slide.max'=>'Hình đã vượt quá kích thước qui định, vui lòng chọn lại ',
+                // 'image_slide.unique'=>'Hình đã tồn tại, vui lòng chọn lại ',
+              
+            ]);
+           
     
         }
-      
-        
+        $banner->content = $request->content;
+        $imageSlideName = time().'.'.$request->image_slide->getClientOriginalName();  
+        $banner->image_slide= $imageSlideName;
+   
+        $request->image_slide->move(public_path('img/banner'), $imageSlideName);
+        $banner->save();
         return redirect()->route('banners.index');
     }
 
@@ -93,22 +108,52 @@ class BannerController extends Controller
     {
        // dd($request->all());
         $banner = Banner::findOrFail($id);
-        
         if($request->hasFile('image_slide')){
-            $banner->content = $request->content;
-            $request->validate([
-                'image_slide' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           
+            $request->validate(
+            [
+                'content' => ['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255', Rule::unique('banners')->ignore($banner->id)],
+                'image_slide' => ['required','image','mimes:jpg,png,jpeg,gif,svg','max:2048','dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'],
+            ],
+            [
+                'content.unique'=>'Nội dung đã tồn tại',  
+                'content.regex'=>'Nội dung phải là chữ, không chứa số, kí tự',                              
+                'content.min'=>'Nội dung phải lớn hơn 2 kí tự',
+                'content.max'=>'Nội dung phải bé hơn 255 kí tự',   
+                'image_slide.image'=>'Đây không phải định dạng hình, vui lòng chọn đúng định dạng',
+                'image_slide.mimes'=>'Đây không phải định dạng hình, vui lòng chọn đúng định dạng',
+                'image_slide.max'=>'Hình đã vượt quá kích thước qui định, vui lòng chọn lại ',
+                // 'image_slide.exists'=>'Hình đã tồn tại, vui lòng chọn lại ',
+                
             ]);
-      
+<<<<<<< HEAD
+=======
+            $banner->content = $request->content;
+>>>>>>> 85fb6216dbf81933d5efacb4d44feadaaa23d37b
             $imageSlideName = time().'.'.$request->image_slide->getClientOriginalName();  
             $banner->image_slide= $imageSlideName;
-       
             $request->image_slide->move(public_path('\img\banner'), $imageSlideName);
-                
         }else{
+            $request->validate(
+                [
+                    'content' => ['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255', Rule::unique('banners')->ignore($banner->id)],
+                   
+                ],
+                [
+                    'content.unique'=>'Nội dung đã tồn tại',  
+                    'content.regex'=>'Nội dung phải là chữ, không chứa số, kí tự',                              
+                    'content.min'=>'Nội dung phải lớn hơn 2 kí tự',
+                    'content.max'=>'Nội dung phải bé hơn 255 kí tự',   
+                   
+                    
+                ]);
             $banner->content = $request->content;
+<<<<<<< HEAD
             $banner->image_slide=$request->image_slide;
+=======
+         
             
+>>>>>>> 85fb6216dbf81933d5efacb4d44feadaaa23d37b
         }
         $banner->save();
         return redirect()->route('banners.index');

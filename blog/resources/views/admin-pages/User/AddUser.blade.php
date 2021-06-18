@@ -12,48 +12,46 @@
 </style>
 
     <div class="ml-2">
-        <h3>Thêm User</h3>
-
-        {{-- @if($errors->any())      
-        <div class="row collapse">
-            <ul class="alert-box warning radius">
-                @foreach($errors->all() as $error)
-          
-                    <li> {{  $error }} </li>              
-                @endforeach
-            </ul>
-        </div>
-        @endif --}}
-        @if (count($errors )>0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                         <li>{!!$error!!}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+        <h3>Thêm Admin</h3>
         <form class="row" action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="col-5">
                 <div class="form-group">
                 <label>Username:</label>
                 <input type="text" name="username" class="form-control" value="{{old('username')}}"required>
+                @error('username')
+                <div class="alert alert-danger">{{ $message  }}</div>
+                 @enderror
                 <label>Password:</label>
                 <input type="password" name="password" class="form-control" required>
+                @error('password')
+                    <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
                 <label>Comfirm Password:</label>
                 <input type="password" name="comfirmpassword" class="form-control" required>
+                @error('comfirmpassword')
+                    <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
                 <label>Email:</label>
-                <input type="text" name="email" class="form-control" required>
+                <input type="text" name="email" class="form-control"  value="{{old('email')}}" required>
+                @error('email')
+                    <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
                 <label>Số điện thoại:</label>
-                <input type="text" name="phone" class="form-control" required>
+                <input type="text" name="phone" class="form-control" value="{{old('phone')}}" required>
+                @error('phone')
+                    <div class="alert alert-danger">{{ $message  }}</div>
+                @enderror
                 {{-- <h3>Type User:</h3>
                 <input type="radio" id="type_user_id" name="type_user_id" value="1">Customer<br>
                 <input type="radio" id="type_user_id" name="type_user_id" value="2">Vip<br>
                 <input type="radio" id="type_user_id" name="type_user_id" value="3">Admin<br> --}}
                 <h3>Role:</h3>
                 <input type="radio" id="role_id" name="role_id" value="2">Admin<br>    
-                <input type="radio" id="role_id" name="role_id" value="3">Super Admin<br>      
+                <input type="radio" id="role_id" name="role_id" value="3">Super Admin<br> 
+                @error('role_id')
+                <div class="alert alert-danger">{{ $message  }}</div>
+                 @enderror
             </div>           
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
