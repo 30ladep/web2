@@ -31,7 +31,7 @@ Route::get('/','ProductController@getAllProductPaginate');
 Route::get('shop-single-product/{id?}',[
    'as'=>'detailProduct',
    'uses'=>'ProductController@getDetailProductByID']
-   );
+);
 
 //tim kiem product
 Route::get('/search','ProductController@searchProduct');
@@ -73,14 +73,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/infouser',function(){
    return view('infouser');
 })->middleware('verified');
-//xac nhan email
- //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
-//Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
-
-
-//  Route::get('/', function () {
-//    // Only verified users may enter...
-// })->middleware('verified');
 
 
 
@@ -89,20 +81,8 @@ Route::resource('admins','Admin\AdminController')->middleware('CheckAdmin');
 Route::resource('admin/products','Admin\ProductController');
 Route::resource('admin/manufacuters','Admin\ManufactureController');
 Route::resource('admin/typeproducts','Admin\TypeProductController');
-Route::resource('admin/users','Admin\UserController');
+Route::resource('admin/users','Admin\UserController')->middleware('CheckSuperAdmin');
 Route::resource('admin/banners','Admin\BannerController');
-
-
-//xac nhan email
-//Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
-// Route::get('cart', function () {
-//    // Only verified users may enter...
-// })->middleware('verified');
-// Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
-// Route::get('/admin/{action?}','AdminController@index');
-// Route::post('/admin/UploadProduct','AdminController@UploadProduct');
-// Route::post('/admin/EditProduct','AdminController@EditProduct');
-// Route::get('/product/delete/{id}','AdminController@DeleteProduct');
 
 
 //ADMIN

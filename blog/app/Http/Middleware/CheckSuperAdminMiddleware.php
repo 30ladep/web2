@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
-class CheckAdminMidlleware
+
+class CheckSuperAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,9 +16,10 @@ class CheckAdminMidlleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
+
+     if(Auth::check()){
             $user = Auth::user();
-            if($user->role_id ===1){
+            if($user->role_id !== 3){
                 // return view('index');
                return  response()->view('errors.403checkadmin');
             }
@@ -25,6 +27,5 @@ class CheckAdminMidlleware
         }else{
             return redirect()->route('login');
         }
-       
     }
 }

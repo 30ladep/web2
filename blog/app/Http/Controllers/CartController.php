@@ -33,7 +33,7 @@ class CartController extends Controller
     //cart
     function cart(){
         $cart = Cart::content(); 
-       // dd($cart);
+     
         $cart_priceTotal = Cart::priceTotal();
         return view('shop-cart',compact('cart','cart_priceTotal'));
     }

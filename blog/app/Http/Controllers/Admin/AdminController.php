@@ -69,7 +69,6 @@ class AdminController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        //dd($user);
         return view('admin-pages.Admin.editAdmin',compact('user'));
     }
 
@@ -82,7 +81,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request);
+
         $user = User::findOrFail($id);
         if($request->input('password')){
             $this->validate($request,[

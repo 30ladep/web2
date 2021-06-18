@@ -31,8 +31,6 @@
                 <tbody>
                
                 @foreach ($cart as $item)
-                {{-- {{dd($item)}} --}}
-                {{-- {{dd($item->options->has('image') ? $row->options->image : '')}} --}}
                   <tr class="cart_item">
                       <td class="product-thumbnail">
                         <a href="#">

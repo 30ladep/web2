@@ -84,15 +84,7 @@ class UserController extends Controller
     public function edit($id)
     {
         
-         $user = User::findOrFail($id);
-        // dd(Crypt::decryptString($user->password));
-        // try{
-        //     $decrypted = Crypt::decryptString($user->getOriginal(password));
-        //     dd($decrypted);
-        // }catch(DecryptException  $e){
-
-        // }
-       
+         $user = User::findOrFail($id);     
         return view('admin-pages.User.EditUser',compact('user'));
     }
 
@@ -105,7 +97,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
         $user = User::findOrFail($id);
         if($request->input('password')){
             $this->validate($request,[
@@ -135,7 +126,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('users.index');
+        if( $user->Role->id === 3){
+            echo "khong co quyen xoa";
+        }
+        else{
+            echo "xoa thanh cong";
+            // $user->delete();
+            // return redirect()->route('users.index');
+        }
+    
+    
     }
 }

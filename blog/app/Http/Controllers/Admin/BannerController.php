@@ -126,14 +126,13 @@ class BannerController extends Controller
                 // 'image_slide.exists'=>'Hình đã tồn tại, vui lòng chọn lại ',
                 
             ]);
-<<<<<<< HEAD
-=======
             $banner->content = $request->content;
->>>>>>> 85fb6216dbf81933d5efacb4d44feadaaa23d37b
             $imageSlideName = time().'.'.$request->image_slide->getClientOriginalName();  
             $banner->image_slide= $imageSlideName;
             $request->image_slide->move(public_path('\img\banner'), $imageSlideName);
-        }else{
+        }
+        else
+        {
             $request->validate(
                 [
                     'content' => ['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255', Rule::unique('banners')->ignore($banner->id)],
@@ -147,13 +146,7 @@ class BannerController extends Controller
                    
                     
                 ]);
-            $banner->content = $request->content;
-<<<<<<< HEAD
-            $banner->image_slide=$request->image_slide;
-=======
-         
-            
->>>>>>> 85fb6216dbf81933d5efacb4d44feadaaa23d37b
+            $banner->content = $request->content;           
         }
         $banner->save();
         return redirect()->route('banners.index');
