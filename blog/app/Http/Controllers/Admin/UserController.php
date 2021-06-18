@@ -127,12 +127,15 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         if( $user->Role->id === 3){
-            echo "khong co quyen xoa";
+          
+            // session()->flash('danger','Không có quyền xóa');
+            
+            return redirect()->route('users.index');
         }
         else{
-            echo "xoa thanh cong";
-            // $user->delete();
-            // return redirect()->route('users.index');
+          
+             $user->delete();
+            return redirect()->route('users.index');
         }
     
     

@@ -229,7 +229,13 @@
     
                 <!-- Main Content -->
                 <div id="content">
-    
+                    {{-- @if (session()->has('danger'))
+                        <div class="alert alert-danger">
+
+                            {{session()->get('danger')}}
+
+                        </div>
+                    @endif --}}
                     <div class="container-fluid">
                         @yield('content')
                     </div>
