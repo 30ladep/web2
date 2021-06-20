@@ -50,26 +50,31 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255'],
+       
+         return Validator::make($data, [
+            'username' => ['required', 'string', 'max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone'=>['required','string','min:8','max:11'],
-           
-        ]);
-    }
-
-    public function messages(){
-        return [
-            'username.required'=>'Vui lòng điền username',
+            'password' => ['required', 'string', 'min:8', 'max:255','confirmed'],       
+            'password_confirmation' => ['same:password'],
+            'phone'=>['required','digits:10'],
+        ],
+        [
+            'username.unique'=>'Username đã tồn tại',          
             'username.max'=>'Quá số chữ qui định ',
             'email.required'=>'Vui lòng điền email',           
             'email.unique'=>'Email đã có người đăng kí',
-            'phone.required'=>'Vui lòng điền số diện thoại',
-            'phone.min'=>'Số điện thoại phải lớn hơn 8 kí tự số',
-            'phone.max'=>'Số điện thoại không vượt quá 10 kí tự số',
-        ];
+            'email.email'=>'Email phải đúng định dạng',
+            'password.min'=>'Password phải lớn hơn 8 kí tự',
+            'password.max'=>'Password không vượt quá 255 kí tự',    
+            'password.confirmed'=>'Password không khớp',    
+            'password_confirmation.same'=>'Password không khớp',                              
+            'phone.digits'=>'Số điện thoại chỉ chứa  kí tự số',
+            'phone.10'=>'Số điện thoại chỉ đúng 10 kí tự số',
+        ]);
+        
     }
+
+    
     /**
      * Create a new user instance after a valid registration.
      *@

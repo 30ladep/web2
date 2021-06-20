@@ -129,12 +129,12 @@ class UserController extends Controller
         if( $user->Role->id === 3){
           
             // session()->flash('danger','Không có quyền xóa');
-            
-            return redirect()->route('users.index');
+      
+           return redirect()->route('users.index');
         }
         else{
-          
-             $user->delete();
+                    
+            $user->delete();
             return redirect()->route('users.index');
         }
     

@@ -29,24 +29,15 @@
                   
                 <form method="POST" action="{{route('register') }}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                         <p class="form-row form-row-wide">
                         <label>User Name
                             <abbr class="required" title="required">*</abbr>
                         </label>
                         <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
                         @error('username')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                         @enderror
                         </p>  
                         
@@ -54,19 +45,23 @@
                             <label>Phone Number
                             <abbr class="required" title="required">*</abbr>
                             </label>
-                            <input type="text" class="input-text" placeholder="Nhap PhoneNumber" value="" name="phone">
+                            <input type="text" class="input-text" placeholder="Nhap PhoneNumber" value="{{ old('phone') }}" name="phone" required>
+                        @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                         </p>      
                         <p class="form-row form-row-wide">
                             <label>Email
                                 <abbr class="required" title="required">*</abbr>
                             </label>
                             <input id="email" type="email"  placeholder="Nhập Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         </p>
                         <p class="form-row form-row-wide">
                             <label>Password
@@ -74,7 +69,6 @@
                             </label>
                           
                             <input id="password" type="password" class="form-control  @error('password') is-invalid @enderror"  placeholder="Nhap Password" name="password" required autocomplete="new-password">
-
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -86,6 +80,11 @@
                                 <abbr class="required" title="required">*</abbr>
                             </label>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            @error('password_confirmation')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         </p>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
