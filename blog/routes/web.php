@@ -62,8 +62,6 @@ Route::get('/shop-checkout',function(){
    }
     return view('shop-checkout');
  });
-Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
-Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
 
 
 
@@ -85,24 +83,43 @@ Route::resource('admin/users','Admin\UserController')->middleware('CheckSuperAdm
 Route::resource('admin/banners','Admin\BannerController');
 
 
-//ADMIN
+//xac nhan email
+//Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
+// Route::get('cart', function () {
+//    // Only verified users may enter...
+// })->middleware('verified');
+// Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
+// Route::get('/admin/{action?}','AdminController@index');
+// Route::post('/admin/UploadProduct','AdminController@UploadProduct');
+// Route::post('/admin/EditProduct','AdminController@EditProduct');
+// Route::get('/product/delete/{id}','AdminController@DeleteProduct');
+
+
+//ADMIN product
 Route::get('/admin/product/{action?}/{id?}','AdminController@ProductAction');
 Route::get('/admin/{action?}','AdminController@index');
 Route::post('/admin/UploadProduct','AdminController@UploadProduct');
 Route::post('/admin/EditProduct','AdminController@EditProduct');
 Route::get('/product/delete/{id}','AdminController@DeleteProduct');
+
 //BillController
 Route::get('/shop-checkout',function(){
    if(Auth::user() == null){
       return redirect()->route('home');
    }
     return view('shop-checkout');
- })->middleware('verified');
+ });
 Route::post('/GuiAnhThanhToan','BillController@GuiAnhThanhToan');
 Route::get('/bill/XacNhanDonHang/{id}', 'BillController@XacNhanDonHang');
+Route::get('/bill/HoanThanhDonHang/{id}', 'BillController@HoanThanhDonHang');
 Route::get('/bill/paid', 'BillController@paid');
 Route::get('/bill/unpaid', 'BillController@unpaid');
+Route::get('/bill/BillSuccess', 'BillController@BillSuccess');
 Route::post('/AddComment', 'BillController@AddComment');
-
+// //ReportController
+Route::get('/report/bestsale', 'ReportController@bestsale');
+Route::get('/report/bestview', 'ReportController@bestview');
+Route::get('/report/sales', 'ReportController@sales');
+Route::post('/report/KiemTraDoanhThu', 'ReportController@KiemTraDoanhThu')->name('KiemTraDoanhThu');
 
 

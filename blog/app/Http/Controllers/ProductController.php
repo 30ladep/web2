@@ -39,6 +39,11 @@ class ProductController extends Controller
         $productRelated = Product::where('type_id',$typeProductRelated)->get();
         $productRelated->take(8);
         $DuocDanhGia = -1;
+        //thêm lượt xem
+        $view = DB::table('products')->where('id', $id)->first()->view + 1;
+        DB::table('products')->where('id', $id)->update([
+            'view'=>$view
+        ]);
         //dd($DuocDanhGia);
         //kiem tra xem nguoi nay duoc danh gia khong
         if(Auth::user() != null){

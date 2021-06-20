@@ -3,16 +3,6 @@
 @php
     $stt = 1;
 @endphp
-<style>
-    body{
-        position: relative;
-    }
-    img:hover{
-        width: 300px !important;
-        position: absolute;
-        transition: width 1s;
-    }
-</style>
 <!-- DataTales Example -->
 <div class="card shadow mb-5">
     <div class="card-header py-3">
@@ -37,10 +27,10 @@
                 </thead>
                 <tbody>
                     @foreach ($products as $item)
-                        <tr @php if($item->count < 10){echo "style='color:red'";} @endphp>
+                    <tr @php if($item->count < 10){echo "style='color:red'";} @endphp>
                         <td>{{$stt++}}</td>
                         <td>{{$item->product_name}}</td>
-                        <td><img style="width: 50px" src="{{url('/img/image_product/'.$item->image)}}" alt=""></td>
+                        <td><a href="{{url('/img/image_product/'.$item->image)}}" target="_blank"><img style="width: 50px" src="{{url('/img/image_product/'.$item->image)}}" alt=""></a></td>
                         {{-- <td>{{$item->image}}</td> --}}
                         <td>{{$item->size}}</td>
                         <td>
@@ -57,7 +47,7 @@
                         <td>{{$item->count}}</td>
                         <td>${{$item->price}}</td>
                         <td>
-                            <a href="{{url('/product/delete/'.$item->id)}}" class="text-danger"><i class="fas fa-trash"></i></a>
+                            <a href="javascript:;" data-url="{{url('/product/delete/'.$item->id)}}" class="text-danger btn-xoa"><i class="fas fa-trash"></i></a>
                             <a href="{{url('/admin/product/edit/'.$item->id)}}" class="text-primary"><i class="fas fa-edit"></i></a>
                         </td>
                     </tr>
@@ -67,4 +57,13 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).on('click', '.btn-xoa', function(){
+        var url = $(this).attr('data-url');
+        //alert(url);
+        if(confirm('Bạn có chắc muốn xóa?')){
+            window.location = url;
+        }
+    });
+</script>
 @endsection

@@ -27,10 +27,11 @@
                 </p>
               </div>
             </div> --}}
-            <span class="text-danger">Vui lòng gửi hình ảnh chứng minh bạn đã thanh toán. Admin sẽ xác nhận và gửi hàng trong thời gian sớm nhất</span>
+            <span class="text-danger">Vui lòng gửi hình ảnh chứng minh bạn đã thanh toán và nhập đúng địa chỉ. Admin sẽ xác nhận và gửi hàng trong thời gian sớm nhất</span>
             <br><br>
             <form action="{{ url('/GuiAnhThanhToan') }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
+              <label for="DiaChi">Địa chỉ</label><input type="text" name="DiaChi" required>
               <img class="img-show" src="" width="100px" alt="" srcset="">
               <input type="file" name="image" onchange="loadFile(event)" id="hinhanh" accept="image/*" required><br>
               <input type="submit" value="Gửi" class="btn btn-primary">

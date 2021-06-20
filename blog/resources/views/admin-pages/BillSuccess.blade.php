@@ -18,7 +18,6 @@
                         <th>Địa chỉ</th>
                         <th>Hình ảnh</th>
                         <th>Giá</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +28,6 @@
                         <td>{{$item->address}}</td>
                         <td><a href="{{url('/img/image_bill/'.$item->image_check_out)}}" target="_blank" ><img style="width: 50px" src="{{url('/img/image_bill/'.$item->image_check_out)}}" alt=""></a></td>
                         <td>{{$item->price}}</td>
-                        <td><a class="btn btn-success" href="{{url('/bill/HoanThanhDonHang/'.$item->id)}}">Hoàn Thành</a></td>
                     </tr>
                     @endforeach
                 </tbody>

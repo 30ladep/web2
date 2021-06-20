@@ -24,6 +24,12 @@ class BillController extends Controller
               'unnn' => $unpaid
          ));
     }
+    public function BillSuccess(){
+         $unpaid = DB::table('bills')->where('status', '=', 2)->orderby('id','desc')->get();
+         return view('admin-pages.BillSuccess', array(
+              'unnn' => $unpaid
+         ));
+    }
     public function GuiAnhThanhToan(Request $request){
           $cart = Cart::content(); 
           $cart_priceTotal = Cart::priceTotal();
@@ -41,7 +47,7 @@ class BillController extends Controller
                        'create_date'=>Carbon::now()->format('Y-m-d'),
                        'status'=>0,
                        'image_check_out'=>$imageName,
-                       'address'=>'',
+                       'address'=>$request->DiaChi,
                        'user_id'=>Auth::user()->id
                    ]
               );
@@ -65,6 +71,25 @@ class BillController extends Controller
                'status'=>1
          ]);
          return redirect('/bill/unpaid');
+    }
+    public function HoanThanhDonHang($id){
+         DB::table('bills')->where('id', $id)->update([
+               'status'=>2
+         ]);
+         //danh sach chi tiet don hàng
+         $DSChiTietDonHang = DB::table('detail_bills')->where('bill_id',$id)->get();
+         //tinh lai so luong da ban
+         foreach($DSChiTietDonHang as $item){
+               $DSChiTiet = DB::table('detail_bills')->where('product_id',$item->product_id)->get();
+               $SoLuongBan = 0;
+               foreach($DSChiTiet as $chitiet){
+                    $SoLuongBan += $chitiet->count_product;
+               }
+               DB::table('products')->where('id', $item->product_id)->update([
+                         'sold'=>$SoLuongBan
+               ]);
+          }
+         return redirect('/bill/paid');
     }
     public function AddComment(Request $request){
          $rate = $request->rate == null ? 1 : $request->rate;
