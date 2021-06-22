@@ -127,9 +127,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         if( $user->Role->id === 3){
-          
-            // session()->flash('danger','Không có quyền xóa');
-      
+
            return redirect()->route('users.index');
         }
         else{

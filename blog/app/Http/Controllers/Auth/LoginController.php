@@ -43,7 +43,8 @@ class LoginController extends Controller
         }
         else
         {
-            return view('index');
+            // return view('/');
+            return redirect()->route('home');
         }
     }
     
@@ -66,10 +67,5 @@ class LoginController extends Controller
         return 'username';
     }
 
-    // protected function sendFailedLoginResponse(Request $request)
-    // {
-    //     throw ValidationException::withMessages([
-    //         'Username hoặc password không đúng'
-    //         ]);
-    // }
+   
 }

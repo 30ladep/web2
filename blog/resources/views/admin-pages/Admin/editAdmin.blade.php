@@ -13,19 +13,7 @@
 
     <div class="ml-2">
         <h3>Edit Admin</h3>
-        {{-- @if($errors->any())
-        <div class="row collapse">
-            <ul class="alert-box warning radius">
-                @foreach($errors->all() as $error)
-                    <li> {{ $error }} </li>
 
-                    {{dd($error)}}
-                    
-                @endforeach
-            </ul>
-        </div>
-        @endif --}}
-        {{-- {{dd($user)}} --}}
         <form class="row" action="{{route('admins.update',$user->id) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PATCH')

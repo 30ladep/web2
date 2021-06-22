@@ -88,7 +88,7 @@ class AdminController extends Controller
                 'username'=>[Rule::unique('users')->ignore($user->id)],
                 'email' => ['string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
                 'password' => [ 'string', 'min:8'],
-                'phone'=>['string','integer','min:8','max:11'],
+                'phone'=>['required','digits:10'],
                 'comfirmpassword'=>['same:comfirmpassword']
             ]
             ,
@@ -97,9 +97,8 @@ class AdminController extends Controller
                 'username.unique'=>'Username đã tồn tại',
                 'email.email'=>'Vui lòng điền đúng định dạng email',
                 'password.min'=>'Password phải lớn hơn 8 kí tự',
-                'phone.min'=>'Phone phải lớn hơn 8 kí tự',
-                'phone.max'=>'Phone phải bé hơn 11 kí tự',
-                'phone.integer'=>'Số điện thoại phải là số',
+                'phone.digits'=>'Số điện thoại chỉ chứa  kí tự số',
+                 'phone.10'=>'Số điện thoại chỉ đúng 10 kí tự số',
             ]);
             
             $pass = $request->input('password');
@@ -114,7 +113,7 @@ class AdminController extends Controller
             $this->validate($request,[
                 'username'=>[Rule::unique('users')->ignore($user->id)],
                 'email' => ['string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],               
-                'phone'=>['string','integer','min:8','max:11'],
+                'phone'=>['required','digits:10'],
                
             ]
             ,
@@ -122,9 +121,8 @@ class AdminController extends Controller
               
                 'username.unique'=>'Username đã tồn tại',
                 'email.email'=>'Vui lòng điền đúng định dạng email',             
-                'phone.min'=>'Phone phải lớn hơn 8 kí tự',
-                'phone.max'=>'Phone phải bé hơn 11 kí tự',
-                'phone.integer'=>'Số điện thoại phải là số',
+                'phone.digits'=>'Số điện thoại chỉ chứa  kí tự số',
+                 'phone.10'=>'Số điện thoại chỉ đúng 10 kí tự số',
                                            
             ]);
             $user->username = $request->username;
