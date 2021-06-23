@@ -25,7 +25,8 @@ use App\Role;
 
 
 //product
-Route::get('/','ProductController@getAllProductPaginate');
+Route::get('/','ProductController@getAllProductPaginate')->name('/');
+
 //chi tiet san pham
 // Route::get('/detailProduct/{id}','ProductController@getDetailProductByID');
 Route::get('shop-single-product/{id?}',[
@@ -76,12 +77,12 @@ Route::get('/infouser',function(){
 
 //AdminController - product
 Route::resource('admins','Admin\AdminController')->middleware('CheckAdmin');
-Route::resource('admin/products','Admin\ProductController');
-Route::resource('admin/manufacuters','Admin\ManufactureController');
-Route::resource('admin/typeproducts','Admin\TypeProductController');
+Route::resource('admin/products','Admin\ProductController')->middleware('CheckAdmin');
+Route::resource('admin/manufacuters','Admin\ManufactureController')->middleware('CheckAdmin');
+Route::resource('admin/typeproducts','Admin\TypeProductController')->middleware('CheckAdmin');
 Route::resource('admin/users','Admin\UserController')->middleware('CheckSuperAdmin');
-Route::resource('admin/banners','Admin\BannerController');
-
+Route::resource('admin/banners','Admin\BannerController')->middleware('CheckAdmin');
+Route::resource('admin','Admin\AdminController')->middleware('CheckAdmin');
 
 //xac nhan email
 //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');
