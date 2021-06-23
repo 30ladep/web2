@@ -12,6 +12,9 @@ class AdminController extends Controller
     //man hinh them san pham
     public function index($action = "index")
     {
+        if($action == "index"){
+            return redirect('/admins');
+        }
         //$color = DB::table('color')->get();
         $typeProduct = DB::table('type_products')->get();
         $manu = DB::table('manufactures')->get();
@@ -99,8 +102,6 @@ class AdminController extends Controller
       //ham them moi san pham - TriS
       public function UploadProduct(Request $request)
       {
-          //dd(public_path('\img\image_product'));
-          //dd($request->all());
           //Khoi tao mang chua image name
           $imageName = [];
           if($request->hasFile('image'))

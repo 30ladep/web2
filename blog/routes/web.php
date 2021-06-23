@@ -82,7 +82,7 @@ Route::resource('admin/manufacuters','Admin\ManufactureController')->middleware(
 Route::resource('admin/typeproducts','Admin\TypeProductController')->middleware('CheckAdmin');
 Route::resource('admin/users','Admin\UserController')->middleware('CheckSuperAdmin');
 Route::resource('admin/banners','Admin\BannerController')->middleware('CheckAdmin');
-Route::resource('admin','Admin\AdminController')->middleware('CheckAdmin');
+//Route::resource('admin','Admin\AdminController')->middleware('CheckAdmin');
 
 //xac nhan email
 //Route::get('/', 'ProductController@getAllProductPaginate')->middleware('verified');

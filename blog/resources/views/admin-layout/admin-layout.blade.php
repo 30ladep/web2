@@ -32,9 +32,9 @@
 @if(Auth::user() == null)
   <script>window.location = "{{ route('home') }}";</script>
 @else
-  {{-- @if (Auth::user()->role_id != 1)
+  @if (Auth::user()->role_id == 1)
       <script>window.location = "{{ url('/') }}";</script>
-  @endif --}}
+  @endif
 @endif
 <body id="page-top">
 
@@ -209,8 +209,7 @@
                                     @endif
                                 </a>
                                 <!-- Dropdown - Messages -->
-                               
-                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                <div id="messagesDropdown-ct" class="dropdown-list dropdown-menu dropdown-menu-right shadow animated-grow-in"
                                     aria-labelledby="messagesDropdown">
                                     <h6 class="dropdown-header">
                                         Message Center
@@ -339,7 +338,6 @@
                 </div>
             </div>
         </div>
-    
         <!-- Bootstrap core JavaScript-->
         <script src="{{url('../resources/views/admin-layout/vendor/jquery/jquery.min.js')}}"></script>
         <script src="{{url('../resources/views/admin-layout/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
