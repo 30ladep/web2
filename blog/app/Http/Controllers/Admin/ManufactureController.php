@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Manufacture;
+use App\Product;
 use Illuminate\Validation\Rule;
 
 class ManufactureController extends Controller
@@ -119,8 +120,20 @@ class ManufactureController extends Controller
      */
     public function destroy($id)
     {
-        $manu = Manufacture::findOrFail($id);
-        $manu->delete();
-        return redirect()->back();
+        $Product = Product::where('type_id', $id)->count();
+        if($Product == 0){
+            $manu = Manufacture::findOrFail($id);
+            $manu->delete();
+            return redirect()->back();
+        }
+        else{
+            echo "<script type='text/javascript'>
+                alert('You can not delete this Manufactures');
+                window.location = '";
+                    echo route('manufacuters.index');
+            echo"'
+            </script>";
+            
+        }
     }
 }
