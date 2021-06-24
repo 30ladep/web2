@@ -133,7 +133,6 @@ class ManufactureController extends Controller
                     echo route('manufacuters.index');
             echo"'
             </script>";
-            
         }
     }
 }
