@@ -120,7 +120,7 @@ class ManufactureController extends Controller
      */
     public function destroy($id)
     {
-        $Product = Product::where('type_id', $id)->count();
+        $Product = Product::where('manu_id', $id)->count();
         if($Product == 0){
             $manu = Manufacture::findOrFail($id);
             $manu->delete();
