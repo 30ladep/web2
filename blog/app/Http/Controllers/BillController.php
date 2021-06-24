@@ -63,7 +63,7 @@ class BillController extends Controller
                     );
                }
           }
-         return redirect('/admin');
+         return redirect('/');
     }
 
     public function XacNhanDonHang($id){
@@ -102,6 +102,6 @@ class BillController extends Controller
               'product_id'=>$ProductID,
               'createDate'=>Carbon::now()->format('Y-m-d')
          ]);
-         return redirect('shop-single-product?id=2');
+         return redirect('shop-single-product?id='.$ProductID);
     }
 }

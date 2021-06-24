@@ -132,7 +132,7 @@
                 <div class="tab-pane fade" id="tab-reviews">
 
                   <div class="reviews">
-                    @if ($DuocDanhGia == 1)
+                    @if ($DuocDanhGia == 1 || $DuocDanhGia == 2)
                         <form action="{{url('/AddComment')}}" method="post">
                           {{ csrf_field() }}
                           <input type="number" name="rate" id="rate" hidden>

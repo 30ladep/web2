@@ -12,18 +12,18 @@
 
     <!-- Css -->
     <!-- <link rel="stylesheet" href="{{url('/css/bootstrap.min.css')}}" /> -->
-    <link rel="stylesheet" href="{{url('/css/bootstrap.min.css')}}" />
-    <link rel="stylesheet" href="{{url('/css/magnific-popup.css')}}" />
-    <link rel="stylesheet" href="{{url('/css/font-icons.css')}}" />
-    <link rel="stylesheet" href="{{url('/css/sliders.css')}}" />
-    <link rel="stylesheet" href="{{url('/css/style.css')}}" />
-    <link rel="stylesheet" href="{{url('/css/animate.min.css')}}" />
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../public/css/magnific-popup.css" />
+    <link rel="stylesheet" href="../public/css/font-icons.css" />
+    <link rel="stylesheet" href="../public/css/sliders.css" />
+    <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/animate.min.css" />
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{url('/img/favicon.ico')}}" />
-    <link rel="shortcut icon" href="{{url('/img/apple-touch-icon.html')}}" />
-    <link rel="shortcut icon" href="{{url('/img/apple-touch-icon-72x72.png')}}" />
-    <link rel="shortcut icon" href="{{url('/img/apple-touch-icon-114x114.png')}}" />
+    <link rel="shortcut icon" href="../public/img/favicon.ico" />
+    <link rel="shortcut icon" href="../public/img/apple-touch-icon.html" />
+    <link rel="shortcut icon" href="../public/img/apple-touch-icon-72x72.png" />
+    <link rel="shortcut icon" href="../public/img/apple-touch-icon-114x114.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     {{-- jquery --}}
@@ -54,10 +54,10 @@
   </main> <!-- end main container -->
 
   <!-- jQuery Scripts -->
-  <script type="text/javascript" src="{{url('/js/jquery.min.js')}}"></script>
-  <script type="text/javascript" src="{{url('/js/bootstrap.min.js')}}"></script>
-  <script type="text/javascript" src="{{url('/js/plugins.js')}}"></script>
-  <script type="text/javascript" src="{{url('/js/scripts.js')}}"></script>
+  <script type="text/javascript" src="../public/js/jquery.min.js"></script>
+  <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../public/js/plugins.js"></script>
+  <script type="text/javascript" src="../public/js/scripts.js"></script>
     
 </body>
 </html>
