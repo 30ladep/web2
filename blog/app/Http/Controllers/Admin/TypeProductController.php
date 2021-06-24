@@ -88,11 +88,10 @@ class TypeProductController extends Controller
     public function update(Request $request, $id)
     {
         $typeProduct = TypeProduct::findOrFail($id);
-        
-
         if($request->input('type_name')){
             $this->validate($request,[   
-                'type_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255', Rule::unique('type_products')->ignore($typeProduct->id)],   
+                'type_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255',
+                Rule::unique('type_products')->ignore($typeProduct->id)],   
             ]
             ,
             [         
@@ -132,8 +131,6 @@ class TypeProductController extends Controller
                     echo route('typeproducts.index');
             echo"'
             </script>";
-            
         }
-        
     }
 }

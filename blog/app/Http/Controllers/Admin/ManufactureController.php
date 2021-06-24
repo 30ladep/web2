@@ -40,7 +40,6 @@ class ManufactureController extends Controller
     public function store(Request $request)
     {
         $manu = new Manufacture(); 
-    
         $this->validate($request,[   
             'manu_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255','unique:manufactures'],   
         ]
@@ -54,7 +53,6 @@ class ManufactureController extends Controller
         $manu->manu_name = $request->manu_name;
         $manu->save();
       return redirect()->route('manufacuters.index');
-     
     }
 
     /**
@@ -87,12 +85,14 @@ class ManufactureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     { 
         $manu = Manufacture::findOrFail($id);
         if($request->input('manu_name')){
             $this->validate($request,[   
-                'manu_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255', Rule::unique('manufactures')->ignore($manu->id)],   
+                'manu_name'=>['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255',
+                Rule::unique('manufactures')->ignore($manu->id)],   
             ]
             ,
             [         
@@ -109,7 +109,6 @@ class ManufactureController extends Controller
         $manu->save();
         return redirect()->route('manufacuters.index');
         }
-      
     }
 
     /**
@@ -118,6 +117,7 @@ class ManufactureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         $Product = Product::where('manu_id', $id)->count();

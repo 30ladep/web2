@@ -51,7 +51,6 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-   
         $user = new User();
         $user->username = $request->username;
         $user->email=$request->email;
@@ -59,8 +58,7 @@ class UserController extends Controller
         $user->phone=$request->phone;
         $user->type_user_id = 3;
         $user->role_id=$request->role_id;
-
-       $user->save();
+        $user->save();
       return redirect()->route('users.index');
     }
 
@@ -95,6 +93,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -104,17 +103,13 @@ class UserController extends Controller
             ],[
                 'comfirmpassword.same'=>'Xác nhận lại mật khẩu không đúng'
             ]);
-
             $pass = $request->input('password');
             $user->password =Hash::make($pass);
         }
         $user->type_user_id = 3;
         $user->role_id=$request->role_id;
-
-       
         $user->save();
         return redirect()->route('users.index')->with(['flash_level'=>'Cập nhật thành công']);
-
     }
 
     /**
@@ -123,6 +118,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
     */
+
     public function destroy($id)
     {
         $user = User::findOrFail($id);
@@ -131,11 +127,8 @@ class UserController extends Controller
            return redirect()->route('users.index');
         }
         else{
-                    
             $user->delete();
             return redirect()->route('users.index');
         }
-    
-    
     }
 }

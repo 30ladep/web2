@@ -39,16 +39,14 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        $banner = New Banner();    
-       
-
-
+        $banner = New Banner();
         if($request->hasFile('image_slide')){
             
             $request->validate(
             [
                 'content' => ['string','regex:/^[a-zA-ZÑñ\s]+$/','min:2','max:255','unique:banners'],
-                'image_slide' => ['required','image','mimes:jpg,png,jpeg,gif,svg','max:2048','dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'],
+                'image_slide' => ['required','image','mimes:jpg,png,jpeg,gif,svg','max:2048',
+                'dimensions:min_width=100,min_height=100,max_width=1000,max_height=1000'],
                 'image_slide'=> 'unique:banners,image_slide',
             ],
             [
@@ -60,15 +58,11 @@ class BannerController extends Controller
                 'image_slide.mimes'=>'Đây không phải định dạng hình, vui lòng chọn đúng định dạng',
                 'image_slide.max'=>'Hình đã vượt quá kích thước qui định, vui lòng chọn lại ',
                 // 'image_slide.unique'=>'Hình đã tồn tại, vui lòng chọn lại ',
-              
             ]);
-           
-    
         }
         $banner->content = $request->content;
         $imageSlideName = time().'.'.$request->image_slide->getClientOriginalName();  
         $banner->image_slide= $imageSlideName;
-   
         $request->image_slide->move(public_path('img/banner'), $imageSlideName);
         $banner->save();
         return redirect()->route('banners.index');
